@@ -47,3 +47,12 @@ po/*~
 
 # RStudio Connect folder
 rsconnect/
+**/.DS_Store
+
+_bookdown_files/
+_book
+
+.quarto/
+
+
+/.quarto/
