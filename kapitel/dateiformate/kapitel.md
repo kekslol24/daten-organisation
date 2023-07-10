@@ -1,7 +1,7 @@
 ---
 # bibliography: references.bib
 
-title: Variablen
+title: Dateiformate
 
 abstract: ""
 
