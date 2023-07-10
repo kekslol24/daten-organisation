@@ -187,7 +187,7 @@ Logische Ausdrücke werden schnell komplex und unübersichtlich. Die Boole'sche 
 
 Viele Programmiersprachen werten logische Ausdrücke von links nach rechts aus und brechen die Auswertung ab, sobald das Ergebnis feststeht. Das ist bei der Boole'schen Algebra eigentlich nicht möglich, weil die Reihenfolge der Auswertung nicht festgelegt ist. Um die Auswertung logischer Ausdrücke in Programmiersprachen zu unterstützen, sollten die Teilaussagen in ihrer Wichtigkeit und Komplexität absteigend angeordnet werden.
 
-> Logische Ausdrücken haben in der Programmierpraxis eine grosse Bedeutung. Aus diesem Grund verfügen alle Programmiersprachen die Möglichkeit *beliebige* Zahlen als Wahrheitswerte zu behandeln. **Dabei gilt die Konvention, dass die Zahl `0` als `FALSCH` und alle anderen Zahlen als `WAHR` interpretiert werden.**
+> Logische Ausdrücke haben in der Programmierpraxis eine grosse Bedeutung. Aus diesem Grund verfügen alle Programmiersprachen die Möglichkeit *beliebige* Zahlen als Wahrheitswerte zu behandeln. **Dabei gilt die Konvention, dass die Zahl `0` als `FALSCH` und alle anderen Zahlen als `WAHR` interpretiert werden.**
 
 ## Vergleiche
 
@@ -206,4 +206,10 @@ Zusätzlich sind die kombinierten Vergleiche wichtig:
 | kleiner oder gleich | $a \leq b$ | $(a < b) \lor (a = b)$| 
 | grösser oder gleich | $a \geq b$ | $(a > b) \lor (a = b)$ |
 
-Für die Arbeit mit Vektoren ist zusätzlich der Vergleich der **Existenz** wichtig. Dabei wird der Vergleich `WAHR` zurückgegeben, wenn der linke Operand ein Element des rechten Operanden ist. In diesem Fall wird der Vergleich formal als $a \in B$ geschrieben, wobei $B$ eine Menge bzw. ein Vektor von Werten ist.
+Für die Arbeit mit Vektoren ist zusätzlich der Vergleich der **Existenz** wichtig. Dabei wird der Wert `WAHR` zurückgegeben, wenn der linke Operand ein Element des rechten Operanden ist. In diesem Fall wird der Vergleich formal als $a \in B$ geschrieben, wobei $B$ eine Menge bzw. ein Vektor von Werten ist. Dieser Vergleich entspricht einer `ODER`-Operation, mit der die Elemente des Vektors $B$ einzelnt mit dem Wert $a$ auf Gleichheit geprüft werden, wie im folgenden Beispiel gezeigt wird.
+
+$$
+a \in \{ 1, 2, 3, 4, 5 \} \Leftrightarrow (a = 1) \lor (a = 2) \lor (a = 3) \lor (a = 4) \lor (a = 5)
+$$
+
+> Die expliziten Vergleiche sind nicht immer für logische Ausdrücke geeignet. In vielen Fällen sind die zu prüfenden Elemente in $B$ nicht vorab bekannt oder die Anzahl der Elemente variiert. In diesem Fall ist eine explizite `ODER`-Operation nicht möglich. Auch in weniger komplexen Fällen, empfielt es sich, die `ODER`-Operation zu vermeiden und die Existenzprüfung vorzuziehen, weil sie die Lesbarkeit eines logischen Ausdrucks erhöht. 
