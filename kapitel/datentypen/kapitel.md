@@ -15,7 +15,7 @@ execute:
 
 ### Zahlen
 
-## Wahrheitswerte
+### Wahrheitswerte
 
 ### Zeichenketten
 
