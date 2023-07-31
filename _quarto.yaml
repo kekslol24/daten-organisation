@@ -12,35 +12,38 @@ book:
   - index.qmd
   # - vorwort.qmd
  
-  - kapitel/einleitung/kapitel.md
-  - kapitel/information/kapitel.md
-  - kapitel/tool-chain/kapitel.md
+  - kapitel/01-einleitung/kapitel.md
+  - kapitel/01-information/kapitel.md
+  - kapitel/01-tool-chain/kapitel.md
 
   - part: "Teil I: Datenquellen"
     chapters:
-    - kapitel/daten-sammeln/kapitel.md
-    - kapitel/daten-organisieren/kapitel.md
-    - kapitel/dateiformate/kapitel.md
-    - kapitel/datentypen/kapitel.md
-    - kapitel/zeichenketten/kapitel.md
-    - kapitel/datenstrukturen/kapitel.md
-    - kapitel/externe-datenquellen/kapitel.md
+    - kapitel/02-daten-sammeln/kapitel.md
+    - kapitel/03-daten-organisieren/kapitel.md
+    - kapitel/04-dateiformate/kapitel.md
+    - kapitel/05-datentypen/kapitel.md
+    - kapitel/05-zeichenketten/kapitel.md
+    - kapitel/06-datenstrukturen/kapitel.md
+    - kapitel/06-variablen/kapitel.md
+    - kapitel/15-externe-datenquellen/kapitel.md
  
   - part: "Teil II: Mathematik der Daten"
     chapters:
-    - kapitel/variablen/kapitel.md
-    - kapitel/neutrales-element/kapitel.md
-    - kapitel/funktionen/kapitel.md
-    - kapitel/vektor-operationen/kapitel.md
-    - kapitel/boolsche-operationen/kapitel.md
-    - kapitel/matrix-operationen/kapitel.md
-  
+    
+    - kapitel/07-neutrales-element/kapitel.md
+    - kapitel/07-funktionen/kapitel.md
+    - kapitel/08-boolsche-operationen/kapitel.md
+    - kapitel/09-vektor-operationen/kapitel.md
+    - kapitel/10-matrix-operationen/kapitel.md
+    - kapitel/10-lineare-modelle/kapitel.md
+    - kapitel/11-indizieren-gruppieren/kapitel.md
+    - kapitel/12-daten-formen/kapitel.md
+
   - part: "Teil III: Deskriptive Datenanalyse"
     chapters:
-    - kapitel/daten-formen/kapitel.md
-    - kapitel/daten-beschreiben/kapitel.md
-    - kapitel/daten-visualisieren/kapitel.md
-    - kapitel/lineare-modelle/kapitel.md
+    
+    - kapitel/13-daten-beschreiben/kapitel.md
+    - kapitel/14-daten-visualisieren/kapitel.md
 
 format:
   html:
