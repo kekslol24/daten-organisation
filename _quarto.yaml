@@ -2,7 +2,7 @@ project:
   type: book
 
 book:
-  title: Prinzipien der Datenorganisation
+  title: Daten und Information
   author: 
   - family: Glahn
     given: Christian  
@@ -13,25 +13,29 @@ book:
   # - vorwort.qmd
  
   - kapitel/01-einleitung/kapitel.md
-  - kapitel/01-information/kapitel.md
+  
   - kapitel/01-tool-chain/kapitel.md
+
+  - kapitel/01-information/kapitel.qmd
 
   - part: "Teil I: Datenquellen"
     chapters:
+
     - kapitel/02-daten-sammeln/kapitel.md
     - kapitel/03-daten-organisieren/kapitel.md
     - kapitel/04-dateiformate/kapitel.md
     - kapitel/05-datentypen/kapitel.md
     - kapitel/05-zeichenketten/kapitel.md
     - kapitel/06-datenstrukturen/kapitel.md
+    - kapitel/06-daten-kodieren/kapitel.md
     - kapitel/06-variablen/kapitel.md
     - kapitel/15-externe-datenquellen/kapitel.md
  
   - part: "Teil II: Mathematik der Daten"
     chapters:
-    
-    - kapitel/07-neutrales-element/kapitel.md
+
     - kapitel/07-funktionen/kapitel.md
+    - kapitel/07-neutrales-element/kapitel.md
     - kapitel/08-boolsche-operationen/kapitel.md
     - kapitel/09-vektor-operationen/kapitel.md
     - kapitel/10-matrix-operationen/kapitel.md
