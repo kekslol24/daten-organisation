@@ -249,7 +249,7 @@ Es gibt genau sechs (6) Vergleichsoperatoren für die atomaren Datentypen:
 
 Bei Zeichenketten werten Excel und R die alphabetische Reihenfolge der Symbole vom Beginn einer Zeichenkette aus, um grösser oder kleiner Vergleiche durchzuführen.
 
-Für die tägliche Arbeit ist ein weiterer Vergleichsoperator wichtig: Der $ \in $-Operator ist ein spezieller Vergleichsoperator, der die Existenz eines Wertes in einem Vektor bzw. einer Liste prüft.
+Für die tägliche Arbeit ist ein weiterer Vergleichsoperator wichtig: Der $\in$-Operator ist ein spezieller Vergleichsoperator, der die Existenz eines Wertes in einem Vektor bzw. einer Liste prüft.
 
 Der folgende Ausdruck zeigt die Anwendung des $\in$-Operators:
 

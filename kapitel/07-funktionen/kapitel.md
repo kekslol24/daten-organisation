@@ -15,7 +15,7 @@ execute:
 > **Definition:** Eine Funktion erzeugt aus Eingaben Ergebnisse. Eine mathematisch korrekte Funktion erzeugt für die gleichen Eingaben **immer** die gleichen Ergebnisse. 
 
 
-> **Definition:** Eine Funktion, die für jede Eingabe immer den gleichen Ergebniswert $ e $ erzeugt, wird als **konstante Funktion** bezeichnet.
+> **Definition:** Eine Funktion, die für jede Eingabe immer den gleichen Ergebniswert $e$ erzeugt, wird als **konstante Funktion** bezeichnet.
 
 
 Für konstante Funktionen gilt die folgende Eigenschaft: 
@@ -24,7 +24,7 @@ $$
 f(x) \to e
 $$
 
-Das bedeutet, dass unabhängig von der Eingabe immer der Wert von $ e $ als Ergebnis folgt. 
+Das bedeutet, dass unabhängig von der Eingabe immer der Wert von $e$ als Ergebnis folgt. 
 
 > **Definition:** Die Eingabe einer Funktion wird als **Parameter** bezeichnet. Eine Funktion kann mehrere Parameter haben. Eine Funktion **akzeptiert** diese Parameter als Eingabe. 
 
@@ -57,17 +57,17 @@ Steht der Operand auf der linken Seite des Operators, dann wird dieser Operand a
 
 #### Beispiele für unäre Operatoren
 
-Fakultätsoperator (`!`):  $ 5! $ 
+Fakultätsoperator (`!`):  $5!$ 
 
-Negationsoperator (`-`): $ -3 $
+Negationsoperator (`-`): $-3$
 
-Klammeroperator (`( ... )`):  $ 3 \cdot ( 1 + 2 ) $
+Klammeroperator (`( ... )`):  $3 \cdot ( 1 + 2 )$
 
 #### Beispiele für binäre Operatoren
 
-Additionsplus (`+`): $ 1 + 2 $
+Additionsplus (`+`): $1 + 2$
 
-Subtraktionsminus (`-`): $ 2 - 1 $
+Subtraktionsminus (`-`): $2 - 1$
 
 ### Kommutativität
 
@@ -192,18 +192,18 @@ Im Gegensatz zu Excel können in R auch neue Funktionen erstellt werden. Dadurch
 
 Wir können Funktionen aufrufen und das Ergebnis an eine andere Funktion übergeben. So können wir komplexe Funktionen als Kombination einfacherer Funktionen verstehen. Dieses Kombinieren kennen wir aus der Mathematik und haben es im Zusammenhang mit der KEPS-Regel bereits besprochen. Wir kombinieren zwei Funktionen, indem wir das Ergebnis der vorangehenden Funktion als Parameter der nachfolgenden Funktion übergeben. 
 
-Nehmen wir zum Beispiel eine fiktive ein-parametrische Funktion $ h(x) $ an, die wir aus der Kombination der Funktionen $ f(x) $ und $ g(x) $ erhalten, wobei zuerst die Funktion $ g $ ausgeführt werden soll. Wir können die Funktion $ h(x) $ dann wie folgt definieren: 
+Nehmen wir zum Beispiel eine fiktive ein-parametrische Funktion $h(x)$ an, die wir aus der Kombination der Funktionen $f(x)$ und $g(x)$ erhalten, wobei zuerst die Funktion $g$ ausgeführt werden soll. Wir können die Funktion $h(x)$ dann wie folgt definieren: 
 
 $$
 h(x) = f(g(x))
 $$
 
-Bei dieser Notation müssen wir beachten, dass die Funktion $ g(x) $ **vor** der Funktion $ f(x) $ ausgeführt werden muss. 
+Bei dieser Notation müssen wir beachten, dass die Funktion $g(x)$ **vor** der Funktion $f(x)$ ausgeführt werden muss. 
 
 
 > **Definition:** Eine Kombination von Funktionen, bei der Resultate vorangehender Funktionen als Parameter nachfolgender Funktionen verwendet werden, wird als **Funktionskette** bezeichnet. 
 
-In der *Mathematik* wird als *Verkettungsoperator* das Symbol $ \circ $ verwendet. Wir können also die Funktionskette aus dem Beispiel auch wie folgt schreiben: 
+In der *Mathematik* wird als *Verkettungsoperator* das Symbol $\circ$ verwendet. Wir können also die Funktionskette aus dem Beispiel auch wie folgt schreiben: 
 
 $$
 h(x) = (g \circ f)(x)

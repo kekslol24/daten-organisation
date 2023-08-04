@@ -9,7 +9,7 @@ execute:
   echo: false
 ---
 
-# Sequenzen und zwei besondere Vektoren
+## Sequenzen und zwei besondere Vektoren
 
 Eine besondere Gruppe von Vektoren sind Sequenzen. 
 
@@ -23,16 +23,16 @@ Implizit setzt diese Definition einen Anfangswert oder einen Endwert voraus. Per
 > **Begriffe:** Der **Anfangswert** einer Sequenz wird auch als **Startwert** oder **Initialwert** bezeichnet.
 
 
-> **Beispiel 1:** Eine Sequenz mit der Länge 5 entspricht dem Vektor `[1,2,3,4,5]`.
+> **Beispiel 1:** Eine Sequenz mit der Länge 5 entspricht dem Vektor `{1,2,3,4,5}`.
 
 
-> **Beispiel 2:** Eine Sequenz mit der Schrittweite 3 und der Länge 4 entspricht dem Vektor `[1,4,7,10]`.
+> **Beispiel 2:** Eine Sequenz mit der Schrittweite 3 und der Länge 4 entspricht dem Vektor `{1,4,7,10}`.
 
 
-> **Beispiel 3:** Eine Sequenz mit dem Startwert 3 und der Länge 6 entspricht dem Vektor `[3,4,5,6,7,8]`.
+> **Beispiel 3:** Eine Sequenz mit dem Startwert 3 und der Länge 6 entspricht dem Vektor `{3,4,5,6,7,8}`.
 
 
-> **Beispiel 4:** Eine Sequenz mit dem Startwert 3, der Schrittweite 3 und der Länge 10 entspricht dem Vektor `[3,6,9,12,15,18,21,24,27,30]`.
+> **Beispiel 4:** Eine Sequenz mit dem Startwert 3, der Schrittweite 3 und der Länge 10 entspricht dem Vektor `{3,6,9,12,15,18,21,24,27,30}`.
 
 
 Wir erkennen, dass eine Sequenz mit gleichem Anfangswert und Schrittweite der jeweiligen Multiplikationsreihe entspricht. Der Startwert und die Indizes der Sequenz entsprechen den Multiplikatoren. 
@@ -98,7 +98,7 @@ Ein zweiter Vektor mit der Schrittweite `0` ist der *Einsvektor*.
 
 In der mathematischen Literatur wird der *Einsvektor* oft nicht benannt. Wegen der besonderen Bedeutung dieses Vektors für verschiedene Operationen, benennen wir den Vektor hier.
 
-> **ACHTUNG** Der **Einsvektor** darf nicht mit dem **Einheitsvektor** verwechselt werden. Im Gegensatz zum Einsvektor hat der Einheitsvektor die geometrische Länge 1. Der Einsvektor der Länge 3 hat wegen dem Satz des Pythagoras die geometrische Länge von $ \sqrt{3} \approx 1.7321 $ 
+> **ACHTUNG** Der **Einsvektor** darf nicht mit dem **Einheitsvektor** verwechselt werden. Im Gegensatz zum Einsvektor hat der Einheitsvektor die geometrische Länge 1. Der Einsvektor der Länge 3 hat wegen dem Satz des Pythagoras die geometrische Länge von $\sqrt{3} \approx 1.7321$
 
 Der *Nullvektor* und der *Einsvektor* werden durch die Sequenzfunktion erzeugt, wenn die Schrittweite auf 0 festgelegt wird. 
 
@@ -158,9 +158,9 @@ $$
 \sum{zählbar(objekt)}
 $$ 
 
-Wobei die Funktion $ zählbar(objekt) $ das Ergebnis 1 (oder WAHR) für eine zählbare und 0 (oder FALSCH) für eine nicht zählbare Einheit liefert. 
+Wobei die Funktion $zählbar(objekt)$ das Ergebnis 1 (oder WAHR) für eine zählbare und 0 (oder FALSCH) für eine nicht zählbare Einheit liefert. 
 
-> In der Praxis werden wir selten die Funktion $ zählbar() $ explizit definieren, sondern mit einer alternativen Funktion oder einem *logischen Ausdruck* substituieren. 
+> In der Praxis werden wir selten die Funktion $zählbar()$ explizit definieren, sondern mit einer alternativen Funktion oder einem *logischen Ausdruck* substituieren. 
 
 > **Merke:** Wenn wir die zählbaren Einheiten durchnummerieren, dann entspricht der Umfang dieser Einheiten der grössten Nummerierung.
 
