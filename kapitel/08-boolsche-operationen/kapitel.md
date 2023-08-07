@@ -9,9 +9,11 @@ execute:
   echo: false
 ---
 
-Bool'sche Operationen sind für das Programmieren von zentraler Bedeutung, weil mit ihnen regelbasierte Entscheidungen möglich sind.
+Bool'sche Operationen sind für das Programmieren von zentraler Bedeutung, weil mit ihnen regelbasierte Entscheidungen umgesetzt werden. 
 
 > Als *Logischer Ausdruck* werden alle Funktionsketten bezeichnet, die einen Wahrheitswert als Ergebnis haben.
+
+> **Merke:** Die einfachsten logischen Ausdsrücke sind die Wahrheitswerte selbst. 
 
 Die klassische Aussagenlogik ist seit der Antike Teil der Rethorik und der Philosophie. Sie wurde von Aristoteles in seiner Schrift "Peri hermeneias" (Über die Interpretation) beschrieben. Das Ziel der Aussagenlogik ist es, die Struktur von Argumenten zu analysieren und zu bewerten. 
 
@@ -216,11 +218,9 @@ $$
 
 ## Logische Ausdrücke
 
-ogische Ausdrücke basieren auf der Verknüpfung von **Wahrheitswerten**.
+Logische Ausdrücke basieren auf der Verknüpfung von **Wahrheitswerten**.
 
 > **Definition:** Ein **logischer Ausdruck** ist eine Verknüpfung von Operationen, die einen Wahrheitswert als Ergebnis haben.
-
-> **Definition:** Als **Wahrheitswerte** werden die Werte `WAHR` (`TRUE`) und `FALSCH` (`FALSE`) bezeichnet. 
 
 Aus diesen Definitionen folgt direkt, dass die beiden einfachsten logischen Ausdrücke die Wahrheitswerte sind.
 
@@ -244,18 +244,30 @@ Es gibt genau sechs (6) Vergleichsoperatoren für die atomaren Datentypen:
 * Kleiner als (`<`)
 * Kleiner gleich (`<=`)
 
-> Bei Vergleichen müssen Sie sich sicher sein, dass Sie Werte vom gleichen Typ vergleichen.
+> Bei Vergleichen müssen Sie sich sicher sein, dass Sie Werte vom gleichen Typ vergleichen. 
 
-
-Bei Zeichenketten werten Excel und R die alphabetische Reihenfolge der Symbole vom Beginn einer Zeichenkette aus, um grösser oder kleiner Vergleiche durchzuführen.
-
-Für die tägliche Arbeit ist ein weiterer Vergleichsoperator wichtig: Der $\in$-Operator ist ein spezieller Vergleichsoperator, der die Existenz eines Wertes in einem Vektor bzw. einer Liste prüft.
+Für die tägliche Arbeit ist ein weiterer Vergleichsoperator wichtig: Der $\in$-Operator ist ein spezieller Vergleichsoperator, der die Existenz eines Wertes in einem Vektor bzw. einer Liste prüft. Dabei steht der linke Operand für den Suchwert und der rechte Operand für den Suchbereich. Der Suchbereich ist dabei immer eine Menge.
 
 Der folgende Ausdruck zeigt die Anwendung des $\in$-Operators:
 
 $$
-    7 \in \{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 \}
+    7 \in \{ 1; 2; 3; 4; 5; 6; 7; 8; 9; 10 \}
 $$
+
+Dieser Ausdruck ist in diesem Beispiel wahr. Den $\in$-Operator kann für Mengen verallgemeinert werden. In diesem Fall werden die linken Operanden 
+
+$$
+    \{ 7; 11 \} \in \{ 1; 2; 3; 4; 5; 6; 7; 8; 9; 10 \}
+$$
+
+Dieser Vergleich entspricht den folgenden beiden separaten Vergleichen.
+
+$$
+    7 \in \{ 1; 2; 3; 4; 5; 6; 7; 8; 9; 10 \} \\
+    11 \in \{ 1; 2; 3; 4; 5; 6; 7; 8; 9; 10 \}
+$$
+
+
 
 ### Sortieren
 
