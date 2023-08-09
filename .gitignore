@@ -58,3 +58,5 @@ _book
 /.quarto/
 
 **/kapitel_files/
+**/_book/
+**.tex
