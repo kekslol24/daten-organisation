@@ -1,0 +1,191 @@
+---
+# bibliography: references.bib
+
+title: Versionierung mit Git und GitHub
+
+abstract: ""
+
+execute: 
+  echo: false
+---
+
+> Versionierung ist ein Prozess, bei dem Änderungen an einem Dokument oder einer Datei nachverfolgt werden.
+
+Die meisten Cloud-Dienste  bieten inzwischen das Speichern von Dateiversionen an. Diese Funktionen sind in der Regel so gelöst, dass die Datei in regelmässigen Abständen gespeichert wird, so dass eine *zeitliche* Abfolge von geänderten Versionen entsteht. Für manche Dateiformate ist es möglich, einzelne Änderungen des Inhalts nachzuvollziehen.
+
+Das regelmässige Speichern von Dateien ist der Startpunkt für die eigentliche Versionierung, dem *Versionsmanagement* oder der *Versionskontrolle* (engl. Version Control).
+
+Bei der Versionierung werden die Änderungen an einer Datei festgehalten und mit einer Versions*nummer* gespeichert. Der entscheidende Unterschied zum regelmässigen Speichern auf Cloud-Diensten ist, dass einzelne Versionen für den späteren Gebrauch oder zur späteren Kontrolle markiert und wiederhergestellt werden können.
+
+## Git
+
+### Repositories und Forks
+
+### Versionierung
+
+- Add
+- Commit 
+- messages 
+- Exkurs: Leere Verzeichnisse 
+
+- remove
+
+#### Dateien und Verzeichnisse von der Versionierung ausschliessen
+
+`git` meldet "nicht verfolgte"-Dateien, um Datenverlusten vorzubeugen. Nicht alle Dateien in einem Projekt müssen oder sollten versioniert werden. Das gilt meist für die folgenden Kategorien.
+
+- Dateien des Betriebssystems
+- Konfigurationsdateien
+- Hilfsmodule und Komponenten von Dritten
+- Temporäre Dateien und Zwischenergebnisse
+ 
+Damit diese Dateien nicht versehentlich in der Versionierung erfasst werden, sollten sie aus dem Prozess ausgenommen werden. Dateien und Verzeichnisse können von der Versionierung ausgenommen werden, indem sie in der Datei `.gitignore` erwähnt werden. `.gitignore` kann gezielt einzelne Namen oder Namesmuster ausklammern. `.gitignore` ist Teil der versionierten Daten, so dass sauber nachvollziehbar ist, welche Dateien aus der Versionierung ausgenommenen werden sollten. 
+
+Eine Datei wird nur ignoriert, wenn sich noch nicht in der Versionierung erfasst wurde.
+
+> **Achtung!** Eine Datei wird von der Versionierung ausgeschlossen, wenn eine der folgenden Regeln zutrifft.
+
+- Der Datei- oder Verzeichnisname ist explizit in `.gitignore` gelistet. Für Namen in Unterverzeichnissen muss dazu der Gesamtepfad angegeben sein.
+- Eine Datei oder ein Verzeichnis liegt in einem Verzeichnis, dass ignoriert wird. 
+- Der Datei- oder Verzeichnisname wird durch ein Namesmuster erfasst.
+
+Die folgenden Namesmuster sind gebräuchlich:
+
+- `*/dateiname` - eine Datei oder ein Verzeichnis mit einem bestimmten Namen liegt in einem Verzeichnis im Projektverzeichnis. 
+- `**/dateiname` - eine Datei oder ein Verzeichnis liegt an beliebiger Stelle im Projekt
+- `*.tmp` - alle Dateien oder Verzeichnisse im Projektverzeichnis, die auf `.tmp` enden. 
+- `bild*` - alle Dateien oder Verzeichnisse im Projektverzeichnis, die mit `bild` beginnen. 
+
+> Gelegentlich kommt es vor, dass festgestellt wird, dass eine oder mehrere Dateien ignoriert werden soll, obwohl sie bereits in die Versionierung aufgenommen wurde. In diesem Fall erscheit es, als ob `.gitignore` nicht funktioniert. Das liegt daran, dass `git` eine Datei nur ignoriert, wenn diese nicht nachverfolgt 
+
+
+**Beispiel**
+
+Das folgende Beispiel zeigt typische `.gitignore`-Datei für ein R-Projekt. 
+
+```gitignore
+# Ignore MacOS Filesystem Metadata
+**/.DS_Store
+
+# R-specific Files
+.Rhistory
+.Rapp.history
+.RData
+.RDataTmp
+.Ruserdata
+.Renviron
+
+*-Ex.R
+
+/*.tar.gz
+/*.Rcheck/
+.Rproj.user/
+
+vignettes/*.html
+vignettes/*.pdf
+
+rsconnect/
+.httr-oauth
+
+*_cache/
+/cache/
+*.utf8.md
+*.knit.md
+po/*~
+_bookdown_files/
+_book
+.quarto/
+/.quarto/
+```
+
+### Tags
+
+Tags sind spezielle Markierungen von Verionen in einem git-Repository.
+
+### Pull, Push und Rebase
+
+### Branching und Merging
+
+Das nächste wichtige Konzept sind sog. *Branches*. Ein Branch ist ein vom `main`-Zweig abgeleiteter Versionspfad.  
+
+Es werden drei zentrale Branching-Strategien unterschieden. 
+
+- Git Flow
+- GitLab Flow 
+- GitHub Flow
+
+### Git Flow
+
+Der Git Flow ist der klassische Weg, um Coding-Projekte zu organisieren. 
+
+- main
+- release
+- hotfix
+- develop
+- feature
+
+### GitLab flow
+
+multiple release branches
+
+main is development branch 
+
+Jedes Release wird in einem eigenen Branch geführt. 
+
+### GitHub flow
+
+Kein unterschied zwischen Main, development und release branch.
+
+```{mermaid}
+%%{init: {'theme': 'base' } }%%
+gitGraph
+   commit
+   commit
+   branch issue_1
+   checkout issue_1
+   commit
+   checkout issue_1
+   commit
+   checkout main
+   merge issue_1
+   commit tag:"v1.0.0"
+```
+
+Aufgabenbasierte Branches 
+
+Sobald Aufgabe abgeschlossen ist wird ein Merge durchgeführt.
+
+### Desktop Tools
+
+#### Github Desktop
+
+#### GitKraken
+
+#### GitLens für Visual Studio Code
+
+### Forks und Pull Requests
+
+## GitHub
+
+> ***GitLab*** und ***Gittea*** sind Alternativen zu GitHub. Alle Plattformen haben einen ähnlichen Funktionsumfang und ähneln sich stark bei der Bedienung und im Funktionsumfang. Aus Sicht der Projektorganisation sind die Plattformen identisch. Es gibt viele emotionale und wirtschaftliche Gründe sich für die eine oder die andere Plattform zu entscheiden.
+
+### Issues
+
+### Pull Requests
+
+### Wiki
+
+Ein Wiki ist ein separates git-Repository für die Dokumentation.
+
+## Repository-Organisation
+
+Die Arbeit mit Git und den Plattformen erscheint oft mühsam und aufwändig. Das gilt insbesondere für grösseres Umorganisieren eines Repositories.
+
+In der Praxis finden sich drei Organisationsstrategien. 
+
+1. Monorepo
+2. Projektrepo
+3. Microrepo
+
+
+
