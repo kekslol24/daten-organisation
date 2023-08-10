@@ -14,7 +14,8 @@ book:
  
   - kapitel/01-einleitung/kapitel.md
   
-  - kapitel/01-tool-chain/kapitel.md
+  - kapitel/01-tool-chain/tastatur.md
+  - kapitel/01-tool-chain/git_github.md
 
   - kapitel/01-information/kapitel.qmd
 

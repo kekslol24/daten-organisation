@@ -1,29 +1,13 @@
 ---
 # bibliography: references.bib
 
-title: Tool Chain
+title: Tastatur und Tastaturkürzel
 
 abstract: ""
 
 execute: 
   echo: false
 ---
-
-Die wichtigsten Werkzeuge für die Arbeit mit Daten sind: 
-
-1. Ein Computer mit Tastatut über den Daten und Programme eingegeben werden.
-2. Eine Programmierumgebung.
-3. Programmiersprachen, um Daten zu verarbeiten.
-4. Versionierungssoftware, um Änderungen an Daten und Programmen zu verfolgen.
-
-
-Für das wissenschaftliche Arbeiten mit Daten müssen Sie sich mit den Werkzeugen Ihrer Arbeitsumgebung vertraut machen.
-
-In diesem Kapitel befassen wir uns nur mit den allgemeinen Werkzeugen, die Sie für die Arbeit mit Daten benötigen. 
-
-> Die Programmiersprachen werden im Begleitmaterial behandelt.
-
-## Die Computertastatur und Tastaturkürzel
 
 Es gibt verschiedene Tastaturlayouts bei denen wichtige Symbole unterschiedlichen Tasten zugeordnet sind. In diesem Abschnitt werden alle Tastenkombinationen mit Bezug auf die Schweizer Tastatur beschrieben. Auf diesen Tastaturen finden wir das Plus-Symbol (``+``) über der ``1s``. Einige der hier beschriebenen Funktionen sind bei anderen Tastaturlayouts über eine andere Tastenkombination oder auch direkt erreichbar.
 
@@ -141,16 +125,4 @@ Die am häufigsten auftauchenden Sonderzeichen sind:
 
 
 > Merken Sie sich die Bezeichnungen und Symbole, denn Sie werden sie regelmässig verwenden.
-
-## Versionierung mit Git und GitHub
-
-> **Definition:** Versionierung ist ein Prozess, bei dem Änderungen an einem Dokument oder einer Datei nachverfolgt werden.
-
-Die meisten Cloud-Dienste bieten inzwischen das Speichern von Dateiversionen an. Diese Funktionen sind in der Regel so gelöst, dass die Datei in regelmässigen Abständen gespeichert wird, so dass eine *zeitliche* Abfolge von geänderten Versionen entsteht. Für manche Dateiformate ist es möglich, einzelne Änderungen des Inhalts nachzuvollziehen.
-
-Das regelmässige Speichern von Dateien ist der Startpunkt für die eigentliche Versionierung, dem *Versionsmanagement* oder der *Versionskontrolle* (engl. Version Control).
-
-Bei der Versionierung werden die Änderungen an einer Datei festgehalten und mit einer Versions*nummer* gespeichert. Der entscheidende Unterschied zum regelmässigen Speichern auf Cloud-Diensten ist, dass einzelne Versionen für den späteren Gebrauch oder zur späteren Kontrolle markiert und wiederhergestellt werden können.
-
-
 
