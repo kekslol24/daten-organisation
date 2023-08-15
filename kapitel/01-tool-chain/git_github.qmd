@@ -13,24 +13,107 @@ execute:
 
 Die meisten Cloud-Dienste  bieten inzwischen das Speichern von Dateiversionen an. Diese Funktionen sind in der Regel so gelöst, dass die Datei in regelmässigen Abständen gespeichert wird, so dass eine *zeitliche* Abfolge von geänderten Versionen entsteht. Für manche Dateiformate ist es möglich, einzelne Änderungen des Inhalts nachzuvollziehen.
 
+> Für die Arbeit mit Daten ist das Versionsmanagement wichtig, damit das Datenmanagement durcgängig und nachvollziehbar ist. 
+
 Das regelmässige Speichern von Dateien ist der Startpunkt für die eigentliche Versionierung, dem *Versionsmanagement* oder der *Versionskontrolle* (engl. Version Control).
 
 Bei der Versionierung werden die Änderungen an einer Datei festgehalten und mit einer Versions*nummer* gespeichert. Der entscheidende Unterschied zum regelmässigen Speichern auf Cloud-Diensten ist, dass einzelne Versionen für den späteren Gebrauch oder zur späteren Kontrolle markiert und wiederhergestellt werden können.
 
-## Git
+Es gibt verschiedene Systeme für die Versionierung. Im Bereich der Software-Entwickung und den Datenwissenschaften hat sich `git` als Industriestandard etabliert.
 
-### Repositories und Forks
+`git` ist ein verteiltes Versionierungssystem. *Verteilt* bedeutet dabei, dass die Versionierung mit allen teilnehmenden Systemen vollständig geteilt wird und es keine zentrale Instanz für die Versionierung gibt. Es handelt sich daher um ein redundantes *Peer-to-Peer*-System. `git` unterteilt die Versionierung in Projekte, den sog. ***Repositories***, dass auf verschiedenen Computern repliziert bzw. ge-**cloned**  wird. Dadurch erhält jeder Computer mit einem Repository-Clone eine vollständige Kopie der Versionierung eines Projekts. 
 
-### Versionierung
+Diese Kurzeinführung stellt die zentralen `git`-Konzepte für die tägliche Arbeit vor:
+
+- `git` installieren
+- Repositories, Clone und Forks
+- Dateiversionen einem Repository hinzufügen (commit)
+- Pull und Push
+- Branches, Merges und Pull-Requests
+
+## `git` installieren
+
+`git` besteht im wesentlichen aus einem Kommandozeilen-Werkzeug, das alle Funktionen von `git` bereitstellt. Dieses Werkzeug wird oft auch als *CLI-Tool* bezeichnet. Es für die meisten GUI-Apps die Voraussetzung für die Arbeit. Ausserdem stellen nicht alle GUI-Apps alle `git`-Funktionen bereit und gelegentlich kann es in Spezialfällen notwendig sein, `git` direkt zu verwenden. Deshalb sollte `git` immer auf einem Computer installiert sein. 
+
+### `git` unter MacOS installieren
+
+Es wird dringend empfohlen die offiziell von Apple vertriebene Version von `git` zu verwenden.
+
+Unter MacOS ist `git` Teil der internen Entwicklungsumgebung. Dazu sollte [XCode](https://apps.apple.com/gb/app/xcode/id497799835) installiert sein. XCode muss mindestens einmal gestartet worden sein, damit die Lizenzbedingungen erstmalig akzeptiert werden. Anschliessend müssen die [XCode Command Line Tools](https://developer.apple.com/download/all/?q=command%20line%20tools) dem System hinzugefügt werden. Wählen Sie die Version dieser Tools immer so aus, dass sie zu der von Ihnen installierten Version von XCode passt. Für diesen Download benötigen Sie einen Entwicker-Account auf Apple's Entwicklerplattform. Dieser Account ist kostenlos. Nach der Installation der XCode Command Line Tools ist auch `git` auf Ihrem Rechner installiert. 
+
+### `git` unter Windows installieren
+
+Unter Windows stellt das Projekt [git for Windows](https://gitforwindows.org/) eine für Windows Systeme angepasste Version von `git` bereit. Diese Version bietet neben `git` zusätzliche Werkzeuge, mit denen sich Anleitungen leichter nachvollziehen lassen. 
+
+### Grafische Oberflächen für `git`
+
+GUI-Apps die Arbeit mit `git`. Für die Arbeit mit diesem Buch werden die folgenden Werkzeuge empfohlen. 
+
+- [Visual Studio Code](https://code.visualstudio.com/download) unterstützt `git` in der Basisinstallation. 
+- Die Erweiterung [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens) bindet zusätzliche Funktionen für das Versionsmangement direkt in Visual Studio Code ein.
+- [GitHub Desktop](https://desktop.github.com/) stellt eine einfache Benutzeroberfläche für die Basisaufgaben am Computer Desktop bereit. 
+- [GitKraken](https://www.gitkraken.com/) bietet unfangreiche Funktionen zum Versionsmanagement mit `git`. 
+
+### Online Plattformen für `git` Repositories
+
+`git` ist zuerst auf den eigenen Computer beschränkt. Für das Zusammenarbeiten mit anderen und die Sicherung der eigenen Versionierung empfielt sich die Verwendung einer sog. `git`-Hosting-Plattform. Eine `git`-Hosting-Plattform erlaubt es die Versionierung eines Projekts online zu sichern und mit anderen zu teilen, die bietet Projektmanagementfunktionen sowie Automatisierungsmöglichkeiten, die über die Kernfunktionen von `git` hinausgehen. 
+
+Die wichtigsten `git`-Hosting-Plattformen mit gleichwertigem Funktionsumfang sind:
+
+- [GitHub](https://github.com)
+- [GitLab](https://gitlab.com)
+- [Gitea](https://gitea.com)
+
+Jede dieser Plattformen benötigt ein eigenes Benutzerkonto.
+
+> Dieses Buch verwendet ***GitHub*** für Code-Beispiele, Diskussionen und andere Funktionen. ***GitLab*** und ***Gittea*** sind Alternativen zu GitHub, die einen gleichwertigen Funktionsumfang haben und sich  bei der Bedienung und im Funktionsumfang stark ähneln. Aus Sicht der Projektorganisation sind die Plattformen identisch. Es gibt viele emotionale und wirtschaftliche Gründe, sich für die eine oder die andere Plattform zu entscheiden.
+
+## Repositories, Clones und Forks
+
+## Versionierung durch Commits
 
 - Add
 - Commit 
 - messages 
-- Exkurs: Leere Verzeichnisse 
 
 - remove
 
-#### Dateien und Verzeichnisse von der Versionierung ausschliessen
+## Pull und Push 
+
+## Tags
+
+Tags sind spezielle Markierungen von Verionen in einem git-Repository.
+
+## Branching und Merging
+
+Das letzte wichtige Konzept sind sog. *Branches*. Ein Branch ist ein vom `main`-Zweig abgeleiteter Versionspfad.  
+
+### Rebase
+
+## GitHub
+
+
+### Issues
+
+### Pull Requests
+
+### Wiki
+
+Ein Wiki ist ein separates git-Repository für die Dokumentation.
+
+## Repository-Organisation
+
+Die Arbeit mit Git und den Plattformen erscheint oft mühsam und aufwändig. Das gilt insbesondere für grösseres Umorganisieren eines Repositories.
+
+In der Praxis finden sich drei Organisationsstrategien. 
+
+1. Monorepo
+2. Projektrepo
+3. Microrepo
+
+## Anwendungen und Praxistipps
+
+### Dateien und Verzeichnisse von der Versionierung ausschliessen
 
 `git` meldet "nicht verfolgte"-Dateien, um Datenverlusten vorzubeugen. Nicht alle Dateien in einem Projekt müssen oder sollten versioniert werden. Das gilt meist für die folgenden Kategorien.
 
@@ -56,8 +139,7 @@ Die folgenden Namesmuster sind gebräuchlich:
 - `*.tmp` - alle Dateien oder Verzeichnisse im Projektverzeichnis, die auf `.tmp` enden. 
 - `bild*` - alle Dateien oder Verzeichnisse im Projektverzeichnis, die mit `bild` beginnen. 
 
-> Gelegentlich kommt es vor, dass festgestellt wird, dass eine oder mehrere Dateien ignoriert werden soll, obwohl sie bereits in die Versionierung aufgenommen wurde. In diesem Fall erscheit es, als ob `.gitignore` nicht funktioniert. Das liegt daran, dass `git` eine Datei nur ignoriert, wenn diese nicht nachverfolgt 
-
+> Gelegentlich kommt es vor, dass festgestellt wird, dass eine oder mehrere Dateien ignoriert werden soll, obwohl sie bereits in die Versionierung aufgenommen wurde. In diesem Fall erscheit es, als ob `.gitignore` nicht funktioniert. Das liegt daran, dass `git` eine Datei nur ignoriert, wenn diese nicht in der Versionierung erfasst wurde.  Um eine bereits erfasste Datei zu irgnorieren, muss diese Datei aus dem Versionsdatenbank mit `git rm` entfernt werden.
 
 **Beispiel**
 
@@ -98,21 +180,15 @@ _book
 /.quarto/
 ```
 
-### Tags
-
-Tags sind spezielle Markierungen von Verionen in einem git-Repository.
-
-### Pull, Push und Rebase
-
-### Branching und Merging
-
-Das nächste wichtige Konzept sind sog. *Branches*. Ein Branch ist ein vom `main`-Zweig abgeleiteter Versionspfad.  
+## Branching Strategien
 
 Es werden drei zentrale Branching-Strategien unterschieden. 
 
 - Git Flow
 - GitLab Flow 
 - GitHub Flow
+
+Für datenzentrische Projekte ist der GitFlow am leichtesten zur handhaben und erfordert 
 
 ### Git Flow
 
@@ -154,38 +230,3 @@ gitGraph
 Aufgabenbasierte Branches 
 
 Sobald Aufgabe abgeschlossen ist wird ein Merge durchgeführt.
-
-### Desktop Tools
-
-#### Github Desktop
-
-#### GitKraken
-
-#### GitLens für Visual Studio Code
-
-### Forks und Pull Requests
-
-## GitHub
-
-> ***GitLab*** und ***Gittea*** sind Alternativen zu GitHub. Alle Plattformen haben einen ähnlichen Funktionsumfang und ähneln sich stark bei der Bedienung und im Funktionsumfang. Aus Sicht der Projektorganisation sind die Plattformen identisch. Es gibt viele emotionale und wirtschaftliche Gründe sich für die eine oder die andere Plattform zu entscheiden.
-
-### Issues
-
-### Pull Requests
-
-### Wiki
-
-Ein Wiki ist ein separates git-Repository für die Dokumentation.
-
-## Repository-Organisation
-
-Die Arbeit mit Git und den Plattformen erscheint oft mühsam und aufwändig. Das gilt insbesondere für grösseres Umorganisieren eines Repositories.
-
-In der Praxis finden sich drei Organisationsstrategien. 
-
-1. Monorepo
-2. Projektrepo
-3. Microrepo
-
-
-
