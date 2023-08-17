@@ -14,12 +14,15 @@ book:
  
   - kapitel/01-einleitung/kapitel.md
   
+  - part: Grundlagen
+
   - kapitel/01-tool-chain/tastatur.md
   - kapitel/01-tool-chain/git_github.qmd
+  - kapitel/01-tool-chain/project_doc.md
 
   - kapitel/01-information/kapitel.qmd
 
-  - part: "Teil I: Datenquellen"
+  - part: Datenquellen
     chapters:
 
     - kapitel/02-daten-sammeln/kapitel.md
@@ -32,7 +35,7 @@ book:
     - kapitel/06-variablen/kapitel.md
     - kapitel/15-externe-datenquellen/kapitel.md
  
-  - part: "Teil II: Mathematik der Daten"
+  - part: Mathematik der Daten
     chapters:
 
     - kapitel/07-funktionen/kapitel.md
@@ -40,15 +43,16 @@ book:
     - kapitel/08-boolsche-operationen/kapitel.md
     - kapitel/09-vektor-operationen/kapitel.md
     - kapitel/10-matrix-operationen/kapitel.md
-    - kapitel/10-lineare-modelle/kapitel.md
     - kapitel/11-indizieren-gruppieren/kapitel.md
     - kapitel/12-daten-formen/kapitel.md
 
-  - part: "Teil III: Deskriptive Datenanalyse"
+  - part: Deskriptive Datenanalyse
     chapters:
     
     - kapitel/13-daten-beschreiben/kapitel.md
     - kapitel/14-daten-visualisieren/kapitel.md
+    - kapitel/10-lineare-modelle/kapitel.md
+
 
 format:
   html:
