@@ -488,9 +488,11 @@ Das Kommando `git push` wird zum Synchronisieren des lokalen Repositories mit de
 
 ## Projektmanagement
 
-Die im folgenden beschrieben Funktionen sind kein Teil von `git`, sondern finden sich als Erweiterungen in `git`-Hosting-Plattformen.  
+Die im folgenden beschrieben Funktionen sind kein Teil von `git`, sondern finden sich als Erweiterungen in `git`-Hosting-Plattformen. Diese Funktionen wurden für den Einstieg in die Verwendung von `git`-Hosting-Plattformen ausgewählt und zeigen nur einen Bruchteil der Managementfunktionen moderner `git`-Hosting-Plattformen.
 
 ### Issues
+
+**Issues** bezeichnen traditionell ein *Problem* im oder mit dem Projekt. Solche Probleme reichen von noch nicht realisierte Projektziele über fehlende Dokumentation bis zu Sicherheitsproblemen durch Programmierfehler.  
 
 > `git`-Hosting-Plattformen unterstützen sog. *Action-Keywords* in Commit-Meldungen. Wird ein solches Keyword zusammen mit der Issue-Nummer verwendet, dann schliesst die Hosting-Plattform das genannte Issue automatisch. 
 
