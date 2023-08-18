@@ -430,7 +430,7 @@ Automatic merge failed; fix conflicts and then commit the result.
 Der Inhalt der Datei `README.md` zeigt nun den Merge-Konflikt.
 
 ```markdown
-# Test Project
+# Mein erstes Projekt
 
 <<<<<<< HEAD
 Eine Übung zur Versionierung mit git.
@@ -442,7 +442,7 @@ Alle Informationen zu den Autoren finden sich in der Datei [AUTHORS.md].
 Es bleibt den Entwickler:innen überlassen, sich für eine, beide oder keine der Änderungen zu entscheiden. In diesem Fall sollen beide Inhalte erhalten bleiben. Dazu werden die `git`-Markierungen aus der Datei entfernt und durch Zeilenumbrüche ersetzt. Der Dateiinhalt ist nun: 
 
 ```markdown
-# Test Project
+# Mein erstes Projekt
 
 Eine Übung zur Versionierung mit git.
 
@@ -464,7 +464,7 @@ Dadurch wird der gleiche Merge-Konflikt wie beim regulären Merge ausgelöst. Di
 
 Anschliessend können beide Branches konfliktfrei zusammengeführt werden. 
 
-> **Praxis:** Es hat sich als gute Praxis etabliert, Merge-Konflikte durch `git rebase` und nicht bei `git merge` zu lösen.
+> **Praxis:** Es hat sich als gute Praxis etabliert, Merge-Konflikte immer mit `git rebase` und nicht mit `git merge` zu lösen.
 
 ### Pull und Push 
 
