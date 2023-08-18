@@ -439,7 +439,9 @@ Alle Informationen zu den Autoren finden sich in der Datei [AUTHORS.md].
 >>>>>>> extras
 ```
 
-Es bleibt den Entwickler:innen überlassen, sich für eine, beide oder keine der Änderungen zu entscheiden. In diesem Fall sollen beide Inhalte erhalten bleiben. Dazu werden die `git`-Markierungen aus der Datei entfernt und durch Zeilenumbrüche ersetzt. Der Dateiinhalt ist nun: 
+Durch die Gleichheitszeichen sind der aktuelle Branch (oben) und der einzubindende Branch (unten) getrennt. Jeweils am Anfang und Ende des Konfliktbereichs stehen die Namen des betreffenden Branches. 
+
+Es bleibt den Entwickler:innen überlassen, sich für eine, beide oder keine der Änderungen zu entscheiden. In diesem Beispiel sollen beide Inhalte erhalten bleiben. Dazu werden die `git`-Markierungen aus der Datei entfernt und durch Zeilenumbrüche ersetzt. Der Dateiinhalt ist nun: 
 
 ```markdown
 # Mein erstes Projekt
@@ -466,7 +468,23 @@ Anschliessend können beide Branches konfliktfrei zusammengeführt werden.
 
 > **Praxis:** Es hat sich als gute Praxis etabliert, Merge-Konflikte immer mit `git rebase` und nicht mit `git merge` zu lösen.
 
-### Pull und Push 
+### Fetch, Pull und Push 
+
+`git` synchronisiert Repositories nicht automatisch. Damit Änderungen in einem Clone oder Fork im eigenen Repository übernommen werden, müssen die Repositories *synchronisiert* werden. 
+
+Das Kommando `git fetch` synchronisiert die Versionen der Remotes mit dem lokalem Repository. Falls ein Repository mehrere Remotes registriert hat, können alle Änderungen in allen Remotes mit `git fetch --all` auf einmal abgeglichen werden. 
+
+Nach `git fetch` enthält das lokale Repository alle Versionen der Remotes. Diese Versionen werden allerdings nicht automatich in die lokalen Versionszweige übernommen. Die so synchornisierten Änderungen existieren als eigene Branches im Repository. Im Gegensatz zum regulären Merge, werden diese "Remote-Branches" mit dem Kommando `git pull` in die lokalen Versionen übernommen. `git pull` löst alle Unterschiede für den aktuellen Branch im lokalen und remote Repository auf.
+
+Weil intern ein Merge durchgeführt wird, kann auch `git pull` zu Merge-Konflikten führen. Diese Konflikte müssen gelöst werden, bevor weitergearbeitet werden kann.
+
+> `git pull` führt automatisch ein `git fetch` aus, falls keine Änderungen für ein Remote-Repository lokal gefunden wurden.
+
+> **Praxis:** Sind für ein Repository mehrere Remotes konfiguriert, dann sollten die einzelnen Remotes einzeln synchronisiert werden. 
+
+Das Kommando `git push` wird zum Synchronisieren des lokalen Repositories mit den Remotes genutzt. Beim `git push` wird im Remote ein Merge durchgeführt. Führt dieser zu Konflikten, meldet `git push` einen Fehler, jedoch *keinen* Merge-Konflikt. Bei Fehlern von `git push` muss zuerst `git fetch` und anschliessend ein `git rebase` ausgeführt werden und eventuelle Merge-Konflikte lokal gelöst werden. 
+
+`git push` kann nur für *Clones* verwendet werden. *Forks* können normalerweise nicht direkt in das Upstream-Remote synchronisieren. Sollen Änderungen für ein Upstream Repository vorgeschlagen werden, dann muss ein sogenannter *Pull-Request* ausgelöst werden. In diesem Fall werden die Änderungen durch ein `git pull` im Upstream-Repository übernommen.
 
 ## Projektmanagement
 
@@ -476,7 +494,7 @@ Die im folgenden beschrieben Funktionen sind kein Teil von `git`, sondern finden
 
 > `git`-Hosting-Plattformen unterstützen sog. *Action-Keywords* in Commit-Meldungen. Wird ein solches Keyword zusammen mit der Issue-Nummer verwendet, dann schliesst die Hosting-Plattform das genannte Issue automatisch. 
 
-### Pull Requests
+### Pull-Requests
 
 Wenn Code in zwei Code-Zweigen zusammengeführt werden soll, werden sog. ***Pull-Requests*** bzw. ***Merge-Requests*** erstellt. Ein Pull-Request ist eine Anfrage zum Zusammenführen. Weil dieser Arbeitsschritt gelegentlich zu Problemen führt, 
 
