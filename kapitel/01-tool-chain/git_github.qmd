@@ -17,7 +17,15 @@ Die meisten Cloud-Dienste  bieten inzwischen das Speichern von Dateiversionen an
 
 Das regelmässige Speichern von Dateien ist der Startpunkt für die eigentliche Versionierung, dem *Versionsmanagement* oder der *Versionskontrolle* (engl. Version Control).
 
-Bei der Versionierung werden die Änderungen an einer Datei festgehalten und mit einer Versions*nummer* gespeichert. Der entscheidende Unterschied zum regelmässigen Speichern auf Cloud-Diensten ist, dass einzelne Versionen für den späteren Gebrauch oder zur späteren Kontrolle markiert und wiederhergestellt werden können.
+Bei der Versionierung werden die Änderungen an einer Datei festgehalten und mit einer Versions*nummer* gespeichert. Der entscheidende Unterschied zum regelmässigen Speichern auf Cloud-Diensten ist, dass einzelne Versionen für den späteren Gebrauch oder zur späteren Kontrolle markiert und wiederhergestellt werden können. Die Versionskontrolle stellt sicher, dass für jede Datei die jeweils aktuelle Version eindeutig definiert ist.
+
+Die Versionierung betrifft alle erzeugenden Projektdateien. Dazu gehören: 
+
+- Datendateien
+- Code-Dateien
+- Code-Konfiguration
+- Projektkonfiguration 
+- Dokumentation
 
 Es gibt verschiedene Systeme für die Versionierung. Im Bereich der Software-Entwickung und den Datenwissenschaften hat sich `git` als Industriestandard etabliert.
 
@@ -66,11 +74,13 @@ Die wichtigsten `git`-Hosting-Plattformen mit gleichwertigem Funktionsumfang sin
 
 Jede dieser Plattformen benötigt ein eigenes Benutzerkonto.
 
-> Dieses Buch verwendet ***GitHub*** für Code-Beispiele, Diskussionen und andere Funktionen. ***GitLab*** und ***Gittea*** sind Alternativen zu GitHub, die einen gleichwertigen Funktionsumfang haben und sich  bei der Bedienung und im Funktionsumfang stark ähneln. Aus Sicht der Projektorganisation sind die Plattformen identisch. Es gibt viele emotionale und wirtschaftliche Gründe, sich für die eine oder die andere Plattform zu entscheiden.
+> Dieses Buch verwendet ***GitHub*** für Code-Beispiele, Diskussionen und andere Funktionen. ***GitLab*** und ***Gittea*** sind Alternativen zu GitHub mit gleichwertigen Funktionsumfang  und ähneln sich  bei der Bedienung und im Funktionsumfang stark. Aus Sicht der Projektorganisation sind die Plattformen fast identisch. Es gibt vor Allem emotionale und wirtschaftliche Gründe, sich für die eine oder die andere Plattform zu entscheiden.
 
-## Repositories, Clones und Forks
+## `git`-Konzepte
 
-## Versionierung durch Commits
+### Repositories, Clones und Forks
+
+### Versionierung durch Commits
 
 - Add
 - Commit 
@@ -78,38 +88,41 @@ Jede dieser Plattformen benötigt ein eigenes Benutzerkonto.
 
 - remove
 
-## Pull und Push 
+### Pull und Push 
 
-## Tags
+### Tags
 
 Tags sind spezielle Markierungen von Verionen in einem git-Repository.
 
-## Branching und Merging
+### Branching und Merging
 
 Das letzte wichtige Konzept sind sog. *Branches*. Ein Branch ist ein vom `main`-Zweig abgeleiteter Versionspfad.  
 
-### Rebase
+#### Merge-Konflikte lösen
 
-## GitHub
+Gelegentlich entstehen beim Mergen Konflikte. Ein Merge-Konflikt sind widersprüchliche Inhalte an der gleichen Code-Position. `git` löst solche Widersprüche nicht selbst, sondern erfordert . 
 
+Solche Konflikte können auch entstehen, wenn mehrere Personen gleichgzeitig auf dem gleichen Branch arbeiten. 
+
+
+#### Rebase
+
+## Projektmanagement
 
 ### Issues
 
+> `git`-Hosting-Plattformen unterstützen sog. *Action-Keywords* in Commit-Meldungen. Wird ein solches Keyword zusammen mit der Issue-Nummer verwendet, dann schliesst die Hosting-Plattform das genannte Issue automatisch. 
+
 ### Pull Requests
+
+Wenn Code in zwei Code-Zweigen zusammengeführt werden soll, werden sog. ***Pull-Requests*** bzw. ***Merge-Requests*** erstellt. Ein Pull-Request ist eine Anfrage zum Zusammenführen. Weil dieser Arbeitsschritt gelegentlich zu Problemen führt, 
+
+> Ursprünglich wurden Pull-Requests in Form von E-Mails an die Projektkoordination geschickt und enthieleten einen Verweis auf den einzubindenen Fork. In `git`-Hosting-Plattformen sind Pull-Requests spezielle Issues, die einen Branch oder einen Fork mit dem Repository verknüpfen. 
+
 
 ### Wiki
 
 Ein Wiki ist ein separates git-Repository für die Dokumentation.
-
-## Repository-Organisation
-
-Die Arbeit mit Git und den Plattformen erscheint oft mühsam und aufwändig. Das gilt insbesondere für grösseres Umorganisieren eines Repositories.
-
-In der Praxis finden sich drei Organisationsstrategien. 
-
-1. Monorepo
-2. Projektrepo
-3. Microrepo
 
 ## Anwendungen und Praxistipps
 
@@ -180,7 +193,7 @@ _book
 /.quarto/
 ```
 
-## Branching Strategien
+### Branching Strategien
 
 Es werden drei zentrale Branching-Strategien unterschieden. 
 
@@ -190,7 +203,7 @@ Es werden drei zentrale Branching-Strategien unterschieden.
 
 Für datenzentrische Projekte ist der GitFlow am leichtesten zur handhaben und erfordert 
 
-### Git Flow
+#### Git Flow
 
 Der Git Flow ist der klassische Weg, um Coding-Projekte zu organisieren. 
 
@@ -200,7 +213,7 @@ Der Git Flow ist der klassische Weg, um Coding-Projekte zu organisieren.
 - develop
 - feature
 
-### GitLab flow
+#### GitLab flow
 
 multiple release branches
 
@@ -208,7 +221,7 @@ main is development branch
 
 Jedes Release wird in einem eigenen Branch geführt. 
 
-### GitHub flow
+#### GitHub flow
 
 Kein unterschied zwischen Main, development und release branch.
 
@@ -229,4 +242,34 @@ gitGraph
 
 Aufgabenbasierte Branches 
 
-Sobald Aufgabe abgeschlossen ist wird ein Merge durchgeführt.
+Sobald eine Aufgabe abgeschlossen ist, wird ein Merge durchgeführt und der zugehörige Aufgaben-Branch "entfernt". Technisch wird nur die Verzweigung vom `main`-Branch entfernt, weil die Versionierung beim Merge erhalten bleibt. Dadurch wird sichergestellt, dass an dieser Aufgabe nicht versehentlich weiter gearbeitet wird. 
+
+### Repository-Organisation
+
+Die Arbeit mit Git und den anderen Hosting-Plattformen erscheint oft mühsam und aufwändig. Das gilt speziell für grösseres Umorganisieren eines Repositories. Gerade bei komplexen Projekten sollte deshalb möglichst früh die Organisation des Versionsmanagements festgelegt werden.  
+
+In der Praxis finden sich drei Organisationsstrategien. 
+
+1. Monorepo
+2. Projektrepo
+3. Microrepo
+
+Die Wahl der Repository-Organisation hängt stark von den Projektanforderungen ab. 
+
+#### Monorepo
+
+Bei der Monorepo-Strategie werden alle Dateien in einem einzigen Repository organisiert. Diese Strategie ist besonders bei Projektbeginn oder bei einfachen Projekten mit geringer funktionaler Trennung geeignet. Der Vorteil dieser Strategie ist, dass alle Daten in einem Repository zusammengefasst vorliegen und als Ganzes verwaltet werden können. 
+
+Für komplexe Projekte wird diese Organisationsstrategie normalerweise mit dem Git-Flow als Branching-Strategie kombiniert. Dabei müssen alle Projektteile aufeinander abgestimmt werden und benötigen eine konsitente Qualitätskontrolle, weil alle Änderungen voneinander abhängig sind. Komplexe Änderungen beeinflussen wegen der linearen Abhängigkeit der Versionen deshalb alle anderen Bereich und sind deshalb wesentlich schwerer zu korrigieren.
+
+#### Projektrepo
+
+Die Projektrepo-Strategie ist eine Variante der Monorepo-Strategie für komplexe Projekte, mit klar getrennten aber voneinander abhängigen Projektteilen. Dazu werden einzelene Projektteile in eigene Repositories ausgegliedert und als *`git`-Submodule* in das Haupt-Repository eingebunden. Solche Submodule können unabhängig vom Haupt-Projekt entwickelt werden und auch in anderen Projekten wiederverwendet werden. Die Integration eines Submoduls erfolgt für einen bestimmten Commit oder ein bestimmtes Tag. Dadurch wird eine differenziertere Qualitätskontrolle möglich. 
+
+#### Microrepo
+
+Bei der Microrepo-Strategie werden alle Projektteile in eigenen Repositories unabhängig voneinander geführt, so dass nur der jeweilige Projektteil und die zugehörige Konfiguration in einem Repository vorliegen. 
+
+Bei der Microrepo-Strategie werden Daten, Code und Konfiguration grundsätzlich immer voneinander getrennt und werden in eigenen Repositories verwaltet. Damit ist diese Strategie die Antithese zum Monorepo. Die Integration der Komponenten erfolgt über das lokale Dateisystem oder über Packetmanager und `git`-Tags.
+
+Diese Strategie eignet sich für Datenprojekte, Projekte mit wenigen direkten Abhähngigkeiten oder Projekte mit verschiedenen Anwendungsgebieten (engl. Deployments). Durch klar getrennte Repositories lassen sich die einzelnen Komponenten in unterschiedlichen Kontexten problemlos unabhängig voneinander publizieren und anpassen. Deshalb ist diese Strategie besonders für Projekte mit sensitiven Daten, wie z.B. Patientendaten, oder Konfigurationen, wie beispielsweise Passwörtern, geeignet, bei denen die Datenverarbeitung keine sensitiven Teile hat.
