@@ -50,12 +50,13 @@ Die folgende Tabelle zeigt Paketmanager und die Datei für externe Abhängigkeit
 
 | Programmiersprache | Paketmanager | Datei für externe Abhängigkeiten |
 | ------------------ | ------------ | ----- |
-| Python             | pip          | requirements.txt |
-| R                  | pak | pkg.lock |
-| Julia              | Pkg | Project.toml |
-| JavaScript | npm | package.json |
-| Java | Maven | pom.xml |
-| PHP | composer | composer.json |
+| Python             | pip          | `requirements.txt` |
+| R                  | renv            | `renv.lock`, `renv/settings.json` |
+| R                  | pak | `pkg.lock` |
+| Julia              | Pkg | `Project.toml` |
+| JavaScript | npm | `package.json` |
+| Java | Maven | `pom.xml` |
+| PHP | composer | `composer.json` |
 
 ### Vertraulichkeit, Verwendung und Urheberschaft
 
