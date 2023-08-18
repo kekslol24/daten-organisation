@@ -3,6 +3,7 @@ project:
 
 book:
   title: Daten und Information
+  subtitle: Data Science Grundlagen für die Life Sciences
   author: 
   - family: Glahn
     given: Christian  
@@ -13,14 +14,13 @@ book:
   # - vorwort.qmd
  
   - kapitel/01-einleitung/kapitel.md
-  
-  - part: Grundlagen
-
-  - kapitel/01-tool-chain/tastatur.md
-  - kapitel/01-tool-chain/git_github.qmd
-  - kapitel/01-tool-chain/project_doc.md
-
   - kapitel/01-information/kapitel.qmd
+  
+  - part: Technische Voraussetzungen
+    chapters:
+    - kapitel/01-tool-chain/tastatur.md
+    - kapitel/01-tool-chain/git_github.qmd
+    - kapitel/01-tool-chain/project_doc.md
 
   - part: Datenquellen
     chapters:

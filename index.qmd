@@ -1,1 +1,15 @@
+---
+# bibliography: references.bib
+
+title: Daten und Information
+
+authors:
+  - Christian Glahn
+
+abstract: ""
+
+execute: 
+  echo: false
+---
+
 Kurze Information zum Copyleft und Verwendung
