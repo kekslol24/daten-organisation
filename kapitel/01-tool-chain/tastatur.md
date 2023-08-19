@@ -27,13 +27,13 @@ Die wichtigsten Standardtasten sind:
 - Kommando: ``command`` (Mac) / ``Windows`` (Windows)
 - Cursor-Tasten
 
-### Mac Tastatur
+## Mac Tastatur
 
 ![Mac-Tastatur beschriftet](figures/mac_tastatur_beschriftet.png)
 
 > Einige **MacBookPro** Modelle verfügen über einen sog. *Touchbar* an der Position, an welcher sich normalerweise die Funktionstasten befinden. Das Drücken der ``Fn``-Taste wechselt die Darstellung aus dem jeweiligen App-Kontext zu virtuellen Funktionstasten. Bei Modellen mit Touchbar aus den Reihen vor 2020 fehlt eine ``Esc``-Taste. Auch diese Taste können Sie mit der ``Fn``-Taste im Touchbar aktivieren.
 
-### Windows Tastatur
+## Windows Tastatur
 
 ![Windows-Tastatur beschriftet](figures/windows_tastatur_beschriftet.png)
 
@@ -43,7 +43,7 @@ Die wichtigsten Standardtasten sind:
 Der Grund dafür ist, dass europäische Computertastaturen einen grösseren Zeichenumfang als eine US-Tastatur (die sog. ANSI Tastatur) haben. Weil alle Programmiersprachen die Symbole der US-Tastatur verwenden, müssen die europäischen Tastaturen diese
 Symbole zusätzlich bereitstellen. Unter MacOS sind diese Symbole über beide ``Alt``-Tasten erreichbar.
 
-### Modifikatoren und Abkürzungen
+## Modifikatoren und Abkürzungen
 
 Gelegentlich benötigen wir Tastenkombinationen, bei denen wir mehrere Tasten gleichzeitig drücken. Dabei kommen die Tasten ``Hochstellen``, ``Alt`` und ``Steuerung`` entweder einzeln oder kombiniert als *Modifikatoren* zum Einsatz.
 
@@ -73,14 +73,14 @@ Um eine Tastaturkombination anzuzeigen, werden die zu drückenden Tasten mit ``+
 > Tasten die nacheinander gedrückt werden sollen, werden durch Leerzeichen getrennt. Z.B. ``C + q a`` bedeutet, dass Sie zuerst die Tasten ``Steuerung`` und ``Q`` **gleichzeitig** tippen und **danach** die
 Taste ``A`` drücken müssen.
 
-### Funktionstasten
+## Funktionstasten
 
 Als Funktionstasten werden normalerweise die Tasten rechts neben der ``Esc``-Taste bezeichnet. Diese Tasten sind oft mit ``F1``-``F12`` beschriftet. Viele Anwendungen haben diese Tasten mit speziellen Funktionen belegt. Das gilt besonders für Excel.
 
 Auf modernen Laptops und vielen Desktoptastaturen sind diese Tasten standardmässig mit Gerätefunktionen wie z.B. Bildschirmhelligkeit oder Lautstärke belegt. Damit wir die eigentlichen Funktionstasten erreichen können, müssen wir deshalb mit der ``Fn``-Taste die Standardfunktion auf die Anwendungsfunktion zurückstellen. Wenn in einer Anleitung steht, dass eine Funktion über eine Funktionstaste erreicht werden kann, dann ist implizit gemeint, dass gleichzeitig die ``Fn``-Taste gedrückt werden muss.
 
 
-### Kontrollsequenzen
+## Kontrollsequenzen
 
 Kontrollsequenzen sind Tastaturkürzel, mit denen wir häufig verwendete Funktionen direkt über die Tastatur aktivieren können. Excel hat für fast jede Funktion im Menüband eine Kontrollsequenz festgelegt. Wir können also Excel auch ohne Maus, sondern ausschliesslich mit der Tastatur bedienen.
 
@@ -98,7 +98,7 @@ Die wichtigsten systemweiten Kontrollsequenzen funktionieren praktisch mit jeder
 
 Für häufig verwendete Funktionen merken Sie sich die Kontrollsequenz. Dadurch können Sie Ihr Arbeitstempo steigern.
 
-### Sonderzeichen
+## Sonderzeichen
 
 In der Programmierung werden regelmässig Sonderzeichen verwendet, um bestimmte Funktionen auszulösen. Es hilft die Namen und Tastaturkürzel für diese Symbole zu kennen.
 
