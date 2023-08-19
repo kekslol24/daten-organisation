@@ -486,28 +486,84 @@ Das Kommando `git push` wird zum Synchronisieren des lokalen Repositories mit de
 
 `git push` kann nur für *Clones* verwendet werden. *Forks* können normalerweise nicht direkt in das Upstream-Remote synchronisieren. Sollen Änderungen für ein Upstream Repository vorgeschlagen werden, dann muss ein sogenannter *Pull-Request* ausgelöst werden. In diesem Fall werden die Änderungen durch ein `git pull` im Upstream-Repository übernommen.
 
-## Projektmanagement
+## `git`-Projektmanagement
 
 Die im folgenden beschrieben Funktionen sind kein Teil von `git`, sondern finden sich als Erweiterungen in `git`-Hosting-Plattformen. Diese Funktionen wurden für den Einstieg in die Verwendung von `git`-Hosting-Plattformen ausgewählt und zeigen nur einen Bruchteil der Managementfunktionen moderner `git`-Hosting-Plattformen.
 
 ### Issues
 
-**Issues** bezeichnen traditionell ein *Problem* im oder mit dem Projekt. Solche Probleme reichen von noch nicht realisierte Projektziele über fehlende Dokumentation bis zu Sicherheitsproblemen durch Programmierfehler.  
+`git`-Hosting-Plattformen führen neben dem eigentlichen Repository eine Liste mit *Issues*. **Issues** bezeichnen traditionell ein *Problem*, *Fragestellung* oder *Angelegenheit* im oder mit dem Projekt. Das können z.B. noch nicht realisierte Projektziele, fehlende Dokumentation oder auch Sicherheitsproblemen durch Programmierfehler sein. Damit *Issues* nicht verloren und vergessen werden, sollten sie dokumentiert werden. Dazu dient der Issues-Bereich in `git`-Hosting-Plattformen.
 
-> `git`-Hosting-Plattformen unterstützen sog. *Action-Keywords* in Commit-Meldungen. Wird ein solches Keyword zusammen mit der Issue-Nummer verwendet, dann schliesst die Hosting-Plattform das genannte Issue automatisch. 
+Die Issues eines Projekts sind nummeriert, so dass über diese Nummer auf das jeweilige Issue referenziert werden kann. Ein Issue besteht immer aus einem Titel, welcher die notwendige Änderung kurz beschreibt. Zusätzlich verfügen Issues über eine Beschreibung, in der detailliert beschrieben werden kann, was das Problem ist und welche Anforderungen erfüllt sein müssen, damit ein Issue erfüllt ist. 
+
+Die *Issues* von `git`-Hosting-Plattformen haben zwei Zustände: *Offen* (engl. open) und *geschlossen* (engl. closed). Offene Issues sind noch nicht bearbeitet. Geschlossene Issues sind bearbeitet und erledigt. Issues können deshalb als To-Do-Liste für ein Projekt verwendet  werden: Jedes Issue lässt sich mit Änderungen im Repository verbinden. Weil jede Änderung mit einer Version gleichzusetzen ist, kann ein Issue geschlossen werden, wenn im Repository ein Commit existiert, das die notwendige Änderung enthält. 
+
+> `git`-Hosting-Plattformen unterstützen sog. *Action-Keywords* in Commit-Meldungen. Wird ein solches Keyword zusammen mit der Issue-Nummer verwendet, dann schliesst die Hosting-Plattform das genannte Issue automatisch. Gleichzeitig wird dokumentiert, mit welchem Commit das Issue geschlossen wurde. 
+
+Die Möglichkeit ein Issue zu kommentieren ist weitere sehr praktische Funktion. So können Notizen, Gedanken und Recherchen einem Issue zugeordnet werden. Diese Dokumentation wird automatisch mit einem Datum und dem Account-Namen versehen, so dass sich die Arbeit an einem Issue leicht reproduzieren lässt. Der Vorteil dieser Funktion ist, dass so Konzepte und Ideen einem Issue zugeordnet werden können, selbst wenn sich diese nicht im eigentlichen Repository wiederfinden. So kann die Entscheidungsfindung in einem Projekt nachvollziehbar dokumentiert werden.
 
 ### Pull-Requests
 
-Wenn Code in zwei Code-Zweigen zusammengeführt werden soll, werden sog. ***Pull-Requests*** bzw. ***Merge-Requests*** erstellt. Ein Pull-Request ist eine Anfrage zum Zusammenführen. Weil dieser Arbeitsschritt gelegentlich zu Problemen führt, 
+Wenn Code in zwei Code-Zweigen zusammengeführt werden soll, werden sog. ***Pull-Requests*** bzw. ***Merge-Requests*** erstellt. Ein Pull-Request ist eine Anfrage zum Zusammenführen eines Branches oder eines Forks mit einem anderen Branch.
 
-> Ursprünglich wurden Pull-Requests in Form von E-Mails an die Projektkoordination geschickt und enthieleten einen Verweis auf den einzubindenen Fork. In `git`-Hosting-Plattformen sind Pull-Requests spezielle Issues, die einen Branch oder einen Fork mit dem Repository verknüpfen. 
+> Ursprünglich wurden Pull-Requests in Form von E-Mails an die Projektkoordination geschickt und enthieleten einen Verweis auf den einzubindenen Fork. In `git`-Hosting-Plattformen sind Pull-Requests spezielle Issues, die einen Branch oder einen Fork mit dem Repository verknüpfen.
 
+> **Praxis:** Sobald ein Commit in einem Branch vorliegt, kann ein Pull-Request erstellt werden. Es ist eine gute Vorgehensweise, möglichst früh einen Pull-Request zu öffnen.  
 
-### Wiki
+Wie Issues können Pull-Requests kommentiert werden, so dass notwendige Anpassungen angeregt werden können. Es kann auch die Qualität der Versionen in einem Branch überprüft werden. Entspricht ein Pull-Request nicht den Qualitätsanforderungen eines Projekts, können vor einem Merge die notwendigen Änderungen vorgenommen werden. Alle `git`-Hosting-Plattformen bieten die Möglichkeit für jeden Pull-Request Projektstandards automatisch zu überprüfen und verhindern das Zusammenführen bei Problemen.
 
-Ein Wiki ist ein separates git-Repository für die Dokumentation.
+Pull-Requests habe wie Issues den Zustand offen und geschlossen. Sobald ein Merge mit dem Ziel-Branch erfolgt durchfegührt wurde, schliesst die `git`-Hosting-Plattform den Pull-Request automatisch. Pull-Requests können auch Issues zugeordent werden, so dass ein oder mehrere zugeordnete Issues automatisch geschlossen werden, sobald ein Pull-Request gemerged wurde. 
 
 ## Anwendungen und Praxistipps
+
+### GitHub-Flow
+
+Es hat sich bewährt, **jede** Aktvität am Repository in einem eigenen **Branch** durchzuführen. Dabei wird jeder Branch immer mit einem **Issue** verknüpft. Ist die Arbeit abgeschlossen, dann wird ein Pull-request zur Qualitätskontrolle erstellt. Sind die Änderungen in Ordnung, dann kann dieser Pull-Request mit einem **Merge** abgeschlossen werden.  Der `main`-Branch enthält bei dieser Vorgehensweise immer eine korrekte und funktionierende Version des Projekts. Diese Vorgehensweise wird als ***GitHub-Flow*** bezeichnet. 
+
+@fig-githubflow zeigt ein einfaches Beispiel für den Ablauf des GitHub-Flows.
+
+```{mermaid}
+%%| label: fig-githubflow
+%%| fig-cap: Vereinfachter GitHub-Flow
+
+%%{init: {'theme': 'base' } }%%
+gitGraph
+   commit id: "1"
+   commit id: "2"
+   branch issue_1
+   checkout issue_1
+   commit id: "3" tag: "Pull-Request"
+   checkout issue_1
+   commit  id: "4"
+   checkout main
+   merge issue_1
+   branch issue_2
+   commit id: "5"
+```
+
+Der GitHub-Flow arbeitet immer nach dem gleichem Grundschema:
+
+1. Es wird ein *Issue* mit den Anforderungen für die Aufgabe erstellt. 
+2. Es wird ein *Issue-Branch* erstellt. 
+3. Es werden die Änderungen im *Issue-Branch* festgehalten.
+4. Es wird ein *Pull-Request* für den *Issue-Branch* erstellt.
+5. Sind alle Anforderungen erfüllt und existieren keine Merge-Konflikte, wird ein Merge des Issue-Branch mit dem `main`-Branch durchgeführt. 
+6. Der *Issue-Branch* wird aus dem Repository gelöscht. 
+
+Im GitHub-Flow gelten die folgenden Regeln für die Projektarbeit: 
+
+- Branches werden *ausschliesslich* über Pull-Requests mit dem `main`-Branch zusammengeführt.
+- *Alle* Pull-Requests beziehen sich auf mindestens ein Issue. 
+- Es erfolgen *keine* Commits in den `main`-Branch.
+- Es werden ausschliesslich konfliktfreie Merges durchgeführt. Alle Merge-Konflikte müssen im zugehörigen Issue-Branch gelöst werden.
+
+Ein *Issue-Branch* ist ein normaler `git`-Branch mit dem Namen oder der Nummer des Issues. Am einfachsten sind Branchnamen die mit `issue_` beginnen und mit der jeweiligen Issue-Nummer enden. Z.B. für das erste Issue eines Projekts würde der zugehörige Issue-Branch `issue_1` heissen. Der Vorteil dieser Benennung ist, dass ein Branch einem Issue zugeordnet werden kann, selbst wenn noch kein Pull-Request erstellt wurde.
+
+Es wird empfohlen, einen Pull-Request zu öffnen, sobald eine Version in den Branch committed wurde. Dadurch können automatische Qualitätssicherungsschritte die Arbeit unterstützen. Ein Pull-Request muss spätestens nach vollendeter Arbeit an einem Issue erstellt werden.
+
+Pull-Requests sollten mit *Action-Keywords* konfiguriert werden, so dass mit dem schliessen des Pull-Requests durch einen Merge das zugehörige Issue automatisch geschlossen wird. 
+
+Abschliessend wird der Issue-Branch gelöscht. Technisch wird nur die Verzweigung aus dem Repository entfernt, weil die Versionierung beim Merge erhalten bleibt. Dadurch wird sichergestellt, dass an dieser Aufgabe nicht versehentlich weiter gearbeitet wird. 
 
 ### Dateien und Verzeichnisse von der Versionierung ausschliessen
 
@@ -575,57 +631,6 @@ _book
 .quarto/
 /.quarto/
 ```
-
-### Branching Strategien
-
-Es werden drei zentrale Branching-Strategien unterschieden. 
-
-- Git Flow
-- GitLab Flow 
-- GitHub Flow
-
-Für datenzentrische Projekte ist der GitFlow am leichtesten zur handhaben und erfordert 
-
-#### Git Flow
-
-Der Git Flow ist der klassische Weg, um Coding-Projekte zu organisieren. 
-
-- main
-- release
-- hotfix
-- develop
-- feature
-
-#### GitLab flow
-
-multiple release branches
-
-main is development branch 
-
-Jedes Release wird in einem eigenen Branch geführt. 
-
-#### GitHub flow
-
-Kein unterschied zwischen Main, development und release branch.
-
-```{mermaid}
-%%{init: {'theme': 'base' } }%%
-gitGraph
-   commit
-   commit
-   branch issue_1
-   checkout issue_1
-   commit
-   checkout issue_1
-   commit
-   checkout main
-   merge issue_1
-   commit tag:"v1.0.0"
-```
-
-Aufgabenbasierte Branches 
-
-Sobald eine Aufgabe abgeschlossen ist, wird ein Merge durchgeführt und der zugehörige Aufgaben-Branch "entfernt". Technisch wird nur die Verzweigung vom `main`-Branch entfernt, weil die Versionierung beim Merge erhalten bleibt. Dadurch wird sichergestellt, dass an dieser Aufgabe nicht versehentlich weiter gearbeitet wird. 
 
 ### Repository-Organisation
 
