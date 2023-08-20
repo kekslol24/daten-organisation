@@ -1,0 +1,334 @@
+---
+# bibliography: references.bib
+
+title: Boole'sche Operationen
+
+abstract: ""
+
+execute: 
+  echo: false
+---
+
+Bool'sche Operationen sind für das Programmieren von zentraler Bedeutung, weil mit ihnen regelbasierte Entscheidungen umgesetzt werden. 
+
+> Als *Logischer Ausdruck* werden alle Funktionsketten bezeichnet, die einen Wahrheitswert als Ergebnis haben.
+
+> **Merke:** Die einfachsten logischen Ausdsrücke sind die Wahrheitswerte selbst. 
+
+Die klassische Aussagenlogik ist seit der Antike Teil der Rethorik und der Philosophie. Sie wurde von Aristoteles in seiner Schrift "Peri hermeneias" (Über die Interpretation) beschrieben. Das Ziel der Aussagenlogik ist es, die Struktur von Argumenten zu analysieren und zu bewerten. 
+
+Ein wesentliche Aufgabe der Aussagenlogik ist die Analyse von Argumenten, um sinnvolle und nicht-sinnvolle Aussagen zu unterscheiden. Dazu werden die Argumente in Voraussetzungen (*Prämissen*) und Schlussfolgerungen (*Konklusionen*) unterteilt. Die Prämissen sind die Voraussetzungen, die für die Konklusion erfüllt sein müssen. 
+
+Die klassische Aussagenlogik ist eine *zweiwertige* Logik. Das bedeutet, dass die Aussagen entweder *wahr* oder *falsch* sein können. Es gibt keine Zwischenwerte.
+
+Die klassische Aussagenlogik beschäftigte sich mit der Verknüpfung von Argumenten zu *Aussagen*. Dabei werden drei Arten von Aussagen unterschieden: 
+
+- Die Tautologie bezeichnet Aussagen, die immer wahr sind.
+- Die Kontradiktion bezeichnet Aussagen, die immer falsch sind.
+- Die Kontingenz ist eine Aussage, die weder eine Tautologie noch eine Kontradiktion ist.
+
+Aussagen sind also *Konklusionen*, die sich aus der Verknüpfung von Argumenten (*Prämissen*) ergeben. Die klassische Aussagenlogik untersucht, wie sich die Wahrheitswerte der Prämissen auf die Wahrheitswerte der Konklusion auswirken. Es handelt sich dabei also um die
+Analyse der Verknüpfung von Argumenten zu Aussagen in Form von Wenn-Dann-Beziehungen.
+
+Klassisch werden die folgenden Beziehungen unterschieden:
+
+- Die Negation (NICHT) kehrt den Wahrheitswert einer Aussage um. Eine wahre Aussage wird falsch und eine falsche Aussage wird wahr.
+- Die Konjunktion (UND) ist nur dann wahr, wenn beide Aussagen wahr sind.
+- Die Nihilition ist nur dann wahr, wenn beide Aussagen falsch sind.
+- Die Inversion ist wahr, wenn die erste Aussage wahr ist oder die zweite Aussage falsch ist.
+- Die Äquivalenz ist wahr, wenn beide Aussagen den gleichen Wahrheitswert haben.
+- Die Antivalenz (entweder-oder) ist wahr, wenn die beiden Aussagen unterschiedliche Wahrheitswerte haben.
+- Die Disjunktion (ODER) ist wahr, wenn mindestens eine der beiden Aussagen wahr ist.
+- Die Unverträglichkeit ist wahr, wenn mindestens eine der beiden Aussagen falsch ist.
+- Die Implikation ist wahr, wenn die erste Aussage falsch ist oder die zweite Aussage wahr ist.
+
+Bereits den antiken Philosophen war bekannt, dass die Negation, die Konjunktion und die Disjunktion die Grundlage für die Aussagenlogik bilden. Die anderen Beziehungen lassen sich aus diesen drei Beziehungen ableiten.
+
+## Mathematische Operationalisierung der Aussagenlogik
+
+George Boole hat mit seiner Arbeit "The Mathematical Analysis of Logic" (1847) die Grundlagen für die moderne Informatik gelegt. Er hat die Grundlagen für die Boole'sche Algebra gelegt, die die Grundlage sowohl für die moderne Kommunikationstechnologie als auch für die Informatik ist. Seine Überlegungen standen im Kontext der industriellen Revolution und der damit verbundenen Entwicklung von Maschinen, die mit Hilfe von mathematischen Gleichungen gesteuert werden. Er erkannte, dass die Sprache und damit die Philosophie der Logik genau wie die Mathematik auf Grundlage von Symbolen basierte. Er fragte sich, ob Sprache und Logik einer mathematischen Analyse unterzogen werden können. Speziell interessierte ihn für seine Analyse der Zweig des *Syllogismus* in der Logik, der sich mit dem deduktiven Schlussfolgern aus Argumenten beschäftigt. 
+
+Boole wurde durch die Arbeiten von Leibniz beeinflusst, die sich mit der Formalisierung von Argumenten beschäftigten. Leibniz hatte die Idee, dass Argumente in Form von mathematischen Gleichungen dargestellt werden können. Boole hat diese Idee aufgegriffen und weiterentwickelt. 
+
+Boole versuchte, die klassische Aussagenlogik mathematisch zu formalisieren, indem er jeder Aussage einen Wahrheitswert in Form von `0` für falsch und `1` für wahr zuordnete. Auf dieser Grundlage untersuchte er, welche mathematischen Operationen zu den bekannten Ergebnissen der klassischen Aussagenlogik führen. 
+
+Ausgehend von den Beziehungsarten der klassischen Aussagenlogik stellte er die *Belegungen* für die möglichen Kombinationen von Wahrheitswerten in der jeweiligen Beziehung auf. D.h. er stellte die möglichen Kombinationen von Wahrheitswerten der Prämissen den Wahrheitswerten der Konklusion gegenüber. Für jede dieser Belegungen suchte Boole anschliessend nach einer arithmetischen Operation, die alle Belegungen einer Beziheung erzeugt.
+
+### Belegungstafeln oder Wahrheitstafeln
+
+Eine Wahrheitstafel oder Wahrheitstabelle ist eine Tabelle, die alle möglichen Kombinationen von Wahrheitswerten für einen logischen Ausdruck enthält. Weil die klassische Aussagenlogik nur zwei Wahrheitswerte kennt, müssen nur alle Kombinationen dieser beiden Werte für einen logischen Ausdruck gefunden werden.
+
+Die Wahrheitstafel für die Negation `NICHT` sieht wie folgt aus:
+
+| a | NICHT a |
+|---|:---:|
+| 0 | 1       |
+| 1 | 0       |
+
+Die in den Wahrheitstafeln aufgeführten Ergebniswerte werden auch als *Belegungen* bezeichnet. Für die logischen Basisoperationen werden diese Belegungen als *Grundbelegung* bezeichnet.
+
+Die Grundbelegungen sind die Basis für die Bool'sche Algebra und Arithmetik. 
+
+Die Wahrheitstafel für die Konjunktion `UND` sieht wie folgt aus:
+
+| a | b | a UND b |
+|---|---|:---:|
+| 0 | 0 | 0       |
+| 0 | 1 | 0       |
+| 1 | 0 | 0       |
+| 1 | 1 | 1       |
+
+Für Wahrheitstafeln ist auch die Matrix-Schreibweise üblich. Dabei werden die Wahrheitswerte als Spaltenvektoren geschrieben. Die Wahrheitstafel für die Konjunktion `UND` sieht wie folgt aus:
+
+| b \| a -> | 0 | 1 |
+|---|---|---|
+| 0 | 0 | 0 |
+| 1 | 0 | 1 |
+
+Verkürzt werden die Spalten und Zeilenüberschriften weggelassen und können die Belegung als Matrix schreiben:
+
+$$
+\begin{matrix}
+0 & 0 \\
+0 & 1
+\end{matrix}
+$$
+
+Die Wahrheitstafel für die Disjunktion `ODER` sieht wie folgt aus:
+
+| a | b | a ODER b |
+|---|---|:---:|
+| 0 | 0 | 0        |
+| 0 | 1 | 1        |
+| 1 | 0 | 1        |
+| 1 | 1 | 1        |
+
+Oder in der Matrix-Schreibweise:
+
+$$
+\begin{matrix}
+0 & 1 \\
+1 & 1
+\end{matrix}
+$$
+
+
+Die Wahrheitstafel für die Exklusiv-Oder `XODER` sieht wie folgt aus:
+
+| a | b | a XODER b |
+|---|---|:---:|
+| 0 | 0 | 0         |
+| 0 | 1 | 1         |
+| 1 | 0 | 1         |
+| 1 | 1 | 0         |
+
+Die entsprechende Belegung sieht als Matrix wie folgt aus:
+
+$$
+\begin{matrix}
+0 & 1 \\
+1 & 0
+\end{matrix}
+$$
+
+
+### Boole'sche Arithmetik
+
+Obwohl die Arbeit von Geoge Boole wegweisend für die Logik als mathematische Disziplin war, konzentrierte sich seine Arbeit auf der Übersetzung von logischen Aussagen in *arithmetische* Ausdrücke. Die Boole'sche Arithmetik ist eine Erweiterung der Arithmetik. Dabei werden logische Ausdrücke mithilfe der Grundrechenarten in berechenbare Ausdrücke übersetzt. 
+
+Die Boole'schen Arithmetik im engeren Sinn basiert auf der Übersetzung von Wahrheitswerten in Zahlen. Dabei wird `WAHR` als `1` und `FALSCH` als `0`. 
+
+Logische Operation | Arithmetische Operation
+:---: | :---:
+`NICHT` | $1 - a$
+`UND` | $a \cdot b$
+`ODER` | $a + b - ab$
+`Entweder-Oder` (`XODER`)| $a + b - 2ab$ oder $(a-b)^2$
+
+Weil Wahrheitswerte immer `0` oder `1` sein müssen, stellen diese Operationen sicher, dass die  Ergebnisse logischer Ausdrücke ebenfalls immer `0` oder `1` sind. Das ist vor allem für die beiden Oder-Operationen wichtig, weil die arithmetische Addition einen Wert ausserhalb der erlaubten Werte liefert, wenn beide Operanden `Wahr` bzw. `1` sind.
+
+Boole konnte zeigen, dass die arithmetischen Operationen die gleichen Ergebnisse liefern wie die logischen Operationen der klassischen Aussagenlogik. Ausgehend von den Wahrheitstafeln zeigte Boole auch, dass die Begrenzung aus Wahrheitswerte `0` und `1` bei Additionen eine Ausgleichsoperation erfordert, damit das Ergebnis in den gleichen Wertebereich fällt.
+
+
+
+## Boole'sche Algebra
+
+Die Bool'sche Arithmetik ist für regelmässige Aufgaben etwas unhantlich, weil die beiden Operationen `ODER` und `Entweder-Oder` sich nicht mit einer arithmetischen Operation ausdrücken lassen. Weil die logischen Operationen einen besonderen Fall der Mengenlehre darstellen, wurden die Symbole für die Konjunktion und Disjunktion der Symbolik der Mengenlehre entlehnt.
+
+| Logische Operation | logischer Operator | Mengenoperator | Mengenoperation |
+| --- | :---: | :---: | --- |
+| Negation | $\neg$ | $\notin$ | Negation |
+| Konjunktion (UND) | $\land$ | $\cap$ | Schnittmenge |
+| Disjunktion (ODER) | $\lor$ | $\cup$ | Vereinigung |
+| Antivalenz (XODER) | $\oplus$ | $\triangle$ | Symmetrische Differenz |
+
+Die Antivalenz kann durch die anderen drei Operationen ausgedrückt werden, weshalb sie seltener in logischen Ausdrücken verwendet wird.
+
+### Grundregeln der Boole'sche Algebra   
+
+Grundsätzlich gelten für die Boole'sche Algebra die gleichen Regeln wie für die Arithmetik. D.h. zuerst wird die Negation berechnet, dann `UND` abschliessend `ODER`. Diese Reihenfolge ist damit begründet, dass die `UND`-Operation der Multiplikation und die `ODER`-Operation der Addition entsprecht. Um die Reihenfolge zu ändern, werden wie üblich Klammern verwendet.
+
+Logische Ausdrücke werden schnell komplex und unübersichtlich. Die Boole'sche Algebra definiert Regeln, die die Umformung von logischen Ausdrücken vereinfachen. Die wichtigsten Regeln sind in der folgenden Tabelle aufgelistet.
+
+| Name | Gleichung |
+| --- | :---: |
+| Idempotenzgesetz | $a \land a = a$ |
+| | $a \lor a = a$ |
+| Tautologie | $a \lor \neg a$ = 1 | 
+| Kontradiktion | $a \land \neg a$ = 0 |
+| Kommutativgesetz | $a \land b = b \land a$ | 
+| | $a \lor b =b \lor a$ |
+| Assoziativgesetz | $(a \land b) \land c = a \land (b \land c)$ | 
+| | $(a \lor b) \lor c = a \lor (b \lor c)$ |
+| Distributivgesetz | $a \land (b \lor c) = a \land b \lor a \land c$ |
+| |  $a \lor b \land c = (a \lor b) \land (a \lor c)$ |
+| Absorptionsgesetz | $a \land (a \lor b) = a$ |
+| | $a \lor a \land b = a$ |
+| De Morgan'sche Regeln | $\neg (a \land b) = \neg a \lor \neg b$ |
+||  $\neg (a \lor b) = \neg a \land \neg b$ |
+
+Viele Programmiersprachen werten logische Ausdrücke von links nach rechts aus und brechen die Auswertung ab, sobald das Ergebnis feststeht. Das ist bei der Boole'schen Algebra eigentlich nicht möglich, weil die Reihenfolge der Auswertung nicht festgelegt ist. Um die Auswertung logischer Ausdrücke in Programmiersprachen zu unterstützen, sollten die Teilaussagen in ihrer Wichtigkeit und Komplexität absteigend angeordnet werden.
+
+> Logische Ausdrücke haben in der Programmierpraxis eine grosse Bedeutung. Aus diesem Grund verfügen alle Programmiersprachen die Möglichkeit, *beliebige* Zahlen als Wahrheitswerte zu behandeln. Dabei gilt die Konvention, dass die Zahl `0` als `FALSCH` und alle anderen Zahlen als `WAHR` interpretiert werden.
+
+## Vergleiche
+
+Die Vergleichsoperatoren sind in der Programmierung sehr wichtig, weil sie die Grundlage für die Kontrollstrukturen bilden. 
+
+> **Definition:** Vergleichsoperatoren sind binäre Operatoren, die zwei Operanden miteinander vergleichen. Das Ergebnis ist immer ein Wahrheitswert.
+
+Der zentrale Vergleich ist die Gleichheit (`=`). Die Gleichheit ist gegeben, wenn beide Operanden des Vergleichs gleich sind. In diesem Fall gibt dieser Vergleich `WAHR` zurück. 
+
+Für Zahlenwerte und andere sortierbare Werte sind die Vergleiche kleiner als (`<`) und grösser als (`>`) definiert. Dabei wird der Vergleich `WAHR` zurückgegeben, wenn der linke Operand kleiner bzw. grösser als der rechte Operand ist.
+
+Zusätzlich sind die kombinierten Vergleiche wichtig: 
+
+
+|Operation|  Symbol | Alternative Schreibweise |
+|---|:---:|:---:|
+| ungleich| $a \neq b$ 	| $\neg(a = b)$ | 
+| kleiner oder gleich | $a \leq b$ | $(a < b) \lor (a = b)$| 
+| grösser oder gleich | $a \geq b$ | $(a > b) \lor (a = b)$ |
+
+Bei Vergleichsoperatoren muss darauf geachtet werden, dass die Operanden vom gleichen Typ sind. Eine Zahl kann nicht mit einer Zeichenkette verglichen werden.
+
+Für logische Ausdrücke sind direkte Vergleiche zwischen zwei Werten nicht immer geeignet. Immer wenn der gleiche Wert mit mehreren anderen verglichen werden muss werden logische Ausdrücke mit direkten Vergleichen schnell komplex. Für solche Vergleiche ist der *Existenz*-Vergleich wichtig. Dabei wird der Wert `WAHR` zurückgegeben, wenn der linke Operand ein Element des rechten Operanden ist. 
+
+Die *Existenz* wird mithilfe des $\in$-Operators überprüft. Der $\in$-Operator ist ein spezieller Vergleichsoperator, der `Wahr` zurückgibt, wenn der linke Operand im rechten Operand vorkommt. Dabei steht der linke Operand für den *Suchwert* und der rechte Operand für den *Suchbereich*. Der Suchbereich ist dabei immer eine Menge bzw. ein Vektor. Der Vergleich der beiden Operanden wird formal als $a \in B$ geschrieben, wobei $B$ eine Menge bzw. ein Vektor von Werten ist. Dieser Vergleich entspricht einer `ODER`-Operation, mit der die Elemente des Vektors $B$ einzeln mit dem Wert $a$ auf Gleichheit geprüft werden, wie im folgenden Beispiel gezeigt wird.
+
+$$
+a \in \{ 1, 2, 3, 4, 5 \} \Leftrightarrow (a = 1) \lor (a = 2) \lor (a = 3) \lor (a = 4) \lor (a = 5)
+$$
+
+In vielen Fällen sind die zu prüfenden Elemente in $B$ nicht vorab bekannt oder die Anzahl der Elemente variiert. In diesem Fall ist eine explizite `ODER`-Operation nicht möglich. Auch in weniger komplexen Fällen, empfielt es sich, die `ODER`-Operation zu vermeiden und die Existenzprüfung vorzuziehen, weil sie die Lesbarkeit eines logischen Ausdrucks erhöht. 
+
+
+Der folgende Ausdruck zeigt die Anwendung des $\in$-Operators:
+
+$$
+    7 \in \{ 1; 2; 3; 4; 5; 6; 7; 8; 9; 10 \}
+$$
+
+Dieser Ausdruck ist in diesem Beispiel `Wahr`. 
+
+Der $\in$-Operator kann für Vekrtoren als linker Operator verallgemeinert werden. In diesem Fall werden die linken Operanden ebenfalls als Vektor dargestellt. Nun wird für jeden Wert des linken Operators der Vergleich mit der rechten Seite durchgeführt.
+
+$$
+    \{ 7; 11 \} \in \{ 1; 2; 3; 4; 5; 6; 7; 8; 9; 10 \}
+$$
+
+Dieser Vergleich entspricht also den beiden separaten Vergleichen:
+
+$$
+    7 \in \{ 1; 2; 3; 4; 5; 6; 7; 8; 9; 10 \} \\
+    11 \in \{ 1; 2; 3; 4; 5; 6; 7; 8; 9; 10 \}
+$$
+
+In diesem Beispiel ist das Ergebnis des Vergleichs: `{WAHR; FALSCH}`.
+
+## Entscheidungen
+
+> **Definition:** Eine **Entscheidung** beschreibt eine Funktion, die mit Hilfe eines *logischen Ausdrucks* aus eines von zwei alternativen Ergebnissen *auswählt*.
+
+Bei Entscheidungen werden in der Regel die beiden Fälle des logischen Ausdrucks unterschieden. Dabei wird der Fall, der `WAHR` ergibt als *positiver Fall* und der Fall, der `FALSCH` ergibt als *negativer Fall* bezeichnet.
+
+Entscheidungen können nacheinander ausgeführt werden. Dabei führen die beiden Fälle der ersten Entscheidung in jeweils eine weitere Entscheidung. Solche verschachtelten Entscheidungen werden als **Entscheidungsbäume** bezeichnet.
+
+> **Definition:** Eine Verkettung von Entscheidungen wird als **Entscheidungsbaum** bezeichnet.
+
+Die logischen Ausdrücke eines Entscheidungsbaums sind grundsätzlich *unabhängig* voneinander. Die einzige Beziehung zwischen den logischen Ausdrücken ist die *Reihenfolge*, in der sie geprüft werden. @fig-entscheidungsbaum zeigt das Schema eines einfachen Entscheidungsbaum mit zwei aufeinanderfolgenden Entscheidungen. 
+
+```{mermaid}
+%%| label: fig-entscheidungsbaum
+%%| fig-cap: Schema eines Entscheidungsbaums mit zwei Entscheidungen
+
+graph TB
+  a([erster logischer Ausdruck]) --->|Wahr| b
+  a --->|Falsch| c
+  b([zweiter logischer Ausdruck]) --->|Wahr| d([Ergebnis Wahr-Wahr])
+  b --->|Falsch| e([Ergebnis Wahr-Falsch])
+  c([dritter logischer Ausdruck]) --->|Wahr| f([Ergebnis Falsch-Wahr])
+  c --->|Falsch| g([Ergebnis Falsch-Falsch])
+```
+
+Ein oft vorkommender Speziallfall von Entscheidungsbäumen sind verschachtelte Entscheidungen, die so arrangiert sind, dass jeder logische Ausdruck genau ein Ergebnis auswählt. 
+
+> **Definition:** Ein *Entscheidungsbaum*, der für einen logischen Ausdruck mindestens ein Ergebnis und höchstens einen nachfolgende Entscheidung, heisst **linearer Entscheidungsbaum**.
+
+*Lineare Entscheidungsbäume* können das Ergebnis sowohl für den `Wahr` oder den `Falsch`-Fall festlegen. Per Konvention werden die logischen Ausdrücke linearer Entscheidungsbäume so formuliert, dass die Ergebnisse immer für den Fall `Wahr` und die nachfolgende Entscheidung immer für den Fall `Falsch` folgen. @fig-lin-entscheidungsbaum zeigt das Schema eines linearen Entscheidungsbaums mit zwei Entscheidungen.
+
+```{mermaid}
+%%| label: fig-lin-entscheidungsbaum
+%%| fig-cap: Schema eines linearen Entscheidungsbaum mit zwei Entscheidungen
+
+graph TB
+  a([erster logischer Ausdruck]) --->|Wahr| b([Ergebnis Wahr])
+  a --->|Falsch| c
+  c([zweiter logischer Ausdruck]) --->|Wahr| f([Ergebnis Falsch-Wahr])
+  c --->|Falsch| g([Ergebnis Falsch-Falsch])
+  
+```
+
+
+## Filtern
+
+> **Definition:** Als **Filter** werden Funktionen bezeichnet, die Werte eines Vektors mithilfe eines logischen Ausdrucks auswählen. 
+
+Ein Vektor ist gefiltert, wenn der logische Ausdruck für alle Werte `Wahr` ergibt. Als Konsequenz werden alle Werte aus einem Vektor entfernt, für die der logische Ausdruck `Falsch` ergibt. 
+
+> **Merke:** Durch das Filtern wird die Länge von Vektoren verändert. Das Ergebnis ist immer höchstens so lang wie der ursprüngliche ungefilterte Vektor.
+
+Der logische Ausdruck muss sich nicht auf die Werte des Vektors beziehen. Damit Werte mit einem solchen logischen Ausdruck ausgewählt werden können, bedarf es einen Referenzvektor mit gleicher Länge. Ein Wert wird mit dieser Technik ausgewählt, wenn der logische Ausdruck für den Wert an der gleichen Position im Referenzvektor `Wahr` ergibt.
+
+Weil die Vektoren von Stichprobenobjekten immer die gleiche Länge haben, lassen sich Filter zum Auswählen von Datensätzen verwenden.
+
+## Sortieren
+
+> **Definition:** Als **Sortieren** werden Funktionen bezeichnet, die Reihenfolge von Werten mittels eines logischen Ausdrucks bestimmen. 
+
+> **Merke:** Durch Sortieren wird die Länge von Vektoren *nicht* verändert.
+
+Die Basis für das Sortieren sind Vektoren. Ein Vektor ist sortiert, wenn der logische Ausdruck für alle Werte paarweise `Wahr` ergibt. Die einfachsten logischen Ausdrücke zum Sortieren sind die Vergleiche *grösser als* und *kleiner als*. 
+
+> **Merke:** Der Vergleich auf *Gleichheit* ist zum Sortieren ungeeignet, weil es keine Reihenfolge gibt, so dass die Gleichheit für alle Wertepaar `Wahr` ergibt. 
+
+Grundsätzlich werden 2 Sortierreihenfolgen unterschieden. Diese sind für Zahlen, Zeichenketten und Wahrheitswerte definiert: 
+
+1. Aufsteigende Sortierung (engl. ascending)
+2. Absteigende Sortierung (engl. descending)
+
+Die Sortierrichtung basiert auf zwei paarweisen Vergleichen zwischen den Elementen. Um die Sortierung zu ändern, muss nur der logische Vergleichsoperator umgekehrt werden.
+
+- Die aufsteigende Sortierung beginnt mit dem kleinsten Wert des Sortierkriteriums und endet mit dem grössten Wert der Sortierung. Dabei gilt für alle Werte des sortierten Vektors  die folgende Ungleichung: 
+
+$$
+v_{Vorgänger} \le v_{Nachfolger}
+$$
+
+- Die absteigende Sortierung arbeitet genau entgegengesetzt vom grössten Wert des Sortierkriteriums zum kleinsten Wert. Entsprechend gilt für diese Reihenfolge die Ungleichung: 
+
+$$
+v_{Vorgänger} \ge v_{Nachfolger}
+$$
+
+Wie beim Filtern können sich die logischen Ausdrücke beim Sortieren auf andere Vektoren beziehen. Dafür wird ein Referenzvektor benötigt. Die Sortierung des Vektors erfolgt entsprechend der Positionen im Referenzvektor. Deshalb müssen Referenzvektoren immer die gleiche Länge wie die Sortiervektoren haben.

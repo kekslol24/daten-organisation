@@ -40,7 +40,7 @@ book:
 
     - kapitel/07-funktionen/kapitel.md
     - kapitel/07-neutrales-element/kapitel.md
-    - kapitel/08-boolsche-operationen/kapitel.md
+    - kapitel/08-boolsche-operationen/kapitel.qmd
     - kapitel/09-vektor-operationen/kapitel.md
     - kapitel/10-matrix-operationen/kapitel.md
     - kapitel/11-indizieren-gruppieren/kapitel.md
