@@ -30,7 +30,7 @@ Die klassische Aussagenlogik beschäftigte sich mit der Verknüpfung von Argumen
 Aussagen sind also *Konklusionen*, die sich aus der Verknüpfung von Argumenten (*Prämissen*) ergeben. Die klassische Aussagenlogik untersucht, wie sich die Wahrheitswerte der Prämissen auf die Wahrheitswerte der Konklusion auswirken. Es handelt sich dabei also um die
 Analyse der Verknüpfung von Argumenten zu Aussagen in Form von Wenn-Dann-Beziehungen.
 
-Klassisch werden die folgenden Beziehungen unterschieden:
+Klassisch, d.h. seit der Antike, werden die folgenden Beziehungen zwischen zwei Aussagen unterschieden:
 
 - Die Negation (NICHT) kehrt den Wahrheitswert einer Aussage um. Eine wahre Aussage wird falsch und eine falsche Aussage wird wahr.
 - Die Konjunktion (UND) ist nur dann wahr, wenn beide Aussagen wahr sind.
@@ -80,7 +80,7 @@ Die Wahrheitstafel für die Konjunktion `UND` sieht wie folgt aus:
 
 Für Wahrheitstafeln ist auch die Matrix-Schreibweise üblich. Dabei werden die Wahrheitswerte als Spaltenvektoren geschrieben. Die Wahrheitstafel für die Konjunktion `UND` sieht wie folgt aus:
 
-| b \| a -> | 0 | 1 |
+| $\downarrow$ b \| a $\to$ | 0 | 1 |
 |---|---|---|
 | 0 | 0 | 0 |
 | 1 | 0 | 1 |
@@ -164,7 +164,7 @@ Die Bool'sche Arithmetik ist für regelmässige Aufgaben etwas unhantlich, weil 
 
 Die Antivalenz kann durch die anderen drei Operationen ausgedrückt werden, weshalb sie seltener in logischen Ausdrücken verwendet wird.
 
-### Grundregeln der Boole'sche Algebra   
+### Grundregeln der Boole'schen Algebra   
 
 Grundsätzlich gelten für die Boole'sche Algebra die gleichen Regeln wie für die Arithmetik. D.h. zuerst wird die Negation berechnet, dann `UND` abschliessend `ODER`. Diese Reihenfolge ist damit begründet, dass die `UND`-Operation der Multiplikation und die `ODER`-Operation der Addition entsprecht. Um die Reihenfolge zu ändern, werden wie üblich Klammern verwendet.
 
