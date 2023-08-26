@@ -1,6 +1,12 @@
 project:
   type: book
 
+crossref:
+  fig-prefix: Abbildung   # (default is "Figure")
+  tbl-prefix: Tabelle    # (default is "Table")
+  eq-prefix: Formel # (default is "Equation")
+  sec-prefix: Abschnitt # (default is "Section")
+
 book:
   title: Daten und Information
   subtitle: Data Science Grundlagen für die Life Sciences
@@ -8,7 +14,7 @@ book:
   - family: Glahn
     given: Christian  
   page-navigation: true
-
+  
   chapters:
   - index.qmd
   # - vorwort.qmd
@@ -32,14 +38,13 @@ book:
     - kapitel/05-zeichenketten/kapitel.md
     - kapitel/06-datenstrukturen/kapitel.md
     - kapitel/06-daten-kodieren/kapitel.md
-    - kapitel/06-variablen/kapitel.md
     - kapitel/15-externe-datenquellen/kapitel.md
  
   - part: Mathematik der Daten
     chapters:
-
-    - kapitel/07-funktionen/kapitel.md
-    - kapitel/07-neutrales-element/kapitel.md
+    - kapitel/06-variablen/kapitel.qmd
+    # - kapitel/07-funktionen/kapitel.md
+    # - kapitel/07-neutrales-element/kapitel.md
     - kapitel/08-boolsche-operationen/kapitel.qmd
     - kapitel/09-vektor-operationen/kapitel.md
     - kapitel/10-matrix-operationen/kapitel.md
