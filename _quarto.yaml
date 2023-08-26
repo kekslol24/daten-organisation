@@ -2,11 +2,12 @@ project:
   type: book
 
 crossref:
-  fig-prefix: Abbildung   # (default is "Figure")
-  tbl-prefix: Tabelle    # (default is "Table")
+#   fig-prefix: Abbildung   # (default is "Figure")
+#   tbl-prefix: Tabelle    # (default is "Table")
   eq-prefix: Formel # (default is "Equation")
-  sec-prefix: Abschnitt # (default is "Section")
+#   sec-prefix: Abschnitt # (default is "Section")
 
+lang: de
 book:
   title: Daten und Information
   subtitle: Data Science Grundlagen für die Life Sciences
