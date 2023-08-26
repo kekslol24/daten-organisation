@@ -40,7 +40,15 @@ Weil Die Commit-Meldungen nicht viel Platz zu dokumentation bieten, werden *Ents
 
 ### Projektübersicht
 
-Per Konvention werden in der Datei `README.md` bzw. `README` die Ausgangslage und Motivation, technische Informationen sowie die Repository-Organisation dokumentiert. Diese Dokumentation ist notwendig, um mit dem Projekt arbeiten zu können. Zu den technischen Informationen gehören alle Informationen, die benötigt werden, um mit den Daten oder dem Code zu arbeiten. Für Daten ist die Struktur der Daten, die Namen und die Datentypen der Vektoren anzugeben. Für Code ist die Programmiersprache, eine Anleitung, um den Code laufen zu lassen, sowie ein Beispielaufruf anzugeben. 
+Per Konvention werden in der Datei `README.md` bzw. `README` die Ausgangslage und Motivation, technische Informationen sowie die Repository-Organisation dokumentiert. Diese Dokumentation ist notwendig, um mit dem Projekt arbeiten zu können. Zu den technischen Informationen gehören alle Informationen, die benötigt werden, um mit den Daten oder dem Code zu arbeiten. 
+
+Strukturierte Daten müssen in der Projektübersicht dokumentiert werden. Die folgenden Informationen über die Daten sollten angegeben werden.
+
+- die Namen von Variablen
+- die Datentypen der Variablen
+- die Bedeutung der Variablen
+
+Für Code ist die Programmiersprache, eine Anleitung, um den Code laufen zu lassen, sowie ein Beispielaufruf anzugeben. Dieser Teil der Dokumentation hilft beim Aufsetzen des Projekts in einer neuen Arbeitsumgebung.
 
 ### Externe Abhängigkeiten
 
