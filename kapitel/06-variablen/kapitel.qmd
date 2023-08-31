@@ -1,13 +1,11 @@
 ---
-title: Variablen, Funktionen und Operatoren
-
-abstract: ""
-
 execute: 
   echo: false
 ---
 
-## Variablen
+# Variablen, Funktionen und Operatoren {#sec-variablen-fkts-ops}
+
+## Variablen 
 
 Bei der Datenverarbeitung müssen Daten auch gespeichert werden, um sie wiederzufinden. Dazu werden die Daten mit einem Bezeichner versehen, über den auf die Daten zugegriffen werden kann. Diese Bezeichner sind in der Folge mit dem zugewiesenen Wert gleichwertig.
 
@@ -647,5 +645,3 @@ Nun ist $f_{id}$ auch das neutrale Element der Funktionsverkettung. Deshalb gilt
 ## Merke
 Jede (Teil-)Funktionskette, die mit der Identitätsfunktion funktional gleich ist, ist ***redundant*** und kann weggelassen werden.
 :::
-
-## Referenzen
