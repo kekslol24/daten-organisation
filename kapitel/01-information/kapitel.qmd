@@ -1,13 +1,11 @@
 ---
-# bibliography: references.bib
-
-title: Information
-
-abstract: ""
+# bibliography: ../../dxi-skript.bib
 
 execute: 
   echo: false
 ---
+
+# Informationstheorie {#sec-chapter-informationstheorie}
 
 Die Arbeit mit Daten schliesst immer die Frage ein, ob diese Daten relevante Information verbergen. Dazu müssen wir zwei Konzepte erfassen:  
 
@@ -137,4 +135,3 @@ Shannon hat nachgewiesen, dass jeder Kanal eine Grenze hat, ab der keine Datenü
 
 Claude Shannon hat sich mit der technischen Kommunikation beschäftigt. Die Datenwissenschaften befassen sich mit dem Kodieren, dem Organisieren und dem Auswerten von Daten mit dem Ziel der Informationsgewinnung. Diese Schritte sind im Kern ein Kommunikationsprozess: Durch das Messen bestimmter Eigenschaften wird die Information der Realität als Daten erfasst. Anschliessend werden die gemessenen Daten zusammengefasst und strukturiert, damit sie abschliessend ausgewertet werden können. Das Messen entspricht dem Kodiere beim Senden, das Organisieren entspricht dem Daten*medium* und die Auswertung entspricht dem Dekodieren.
 
-## Referenzen
