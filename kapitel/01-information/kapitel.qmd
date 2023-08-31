@@ -7,25 +7,25 @@ execute:
 
 # Informationstheorie {#sec-chapter-informationstheorie}
 
-Die Arbeit mit Daten schliesst immer die Frage ein, ob diese Daten relevante Information verbergen. Dazu müssen wir zwei Konzepte erfassen:  
+Die Arbeit mit Daten schliesst immer die Frage ein, ob diese Daten relevante Information verbergen. Dazu müssen zwei Konzepte erfasst werden:  
 
 1. Daten 
 2. Information
 
-Beide Konzepte sind für unseren Alltag fast durchgehend von Bedeutung und ein intuitives Verständnis der beiden Konzepte sollte jedem vertraut sein. Beim intuitiven Umgang mit Daten und Information fällt auf, dass die beiden Begriffe häufig synonym gebraucht werden. Hier stellt sich ein erstes Problem: 
+Beide Konzepte sind für den Alltag fast überall von Bedeutung und ein intuitives Verständnis der beiden Konzepte sollte jedem vertraut sein. Beim intuitiven Umgang mit Daten und Information fällt auf, dass die beiden Begriffe häufig synonym gebraucht werden. Hier stellt sich ein erstes Problem: 
 
 ::: {.callout-warning}
 ## Problem
 
-Wenn Daten und Information im Kern identisch sind, warum verwenden wir zwei Begriffe?
+Wenn die Begriffe *Daten* und *Information* im Kern identisch sind, warum werden dann zwei Begriffe verwendet?
 :::
 
-Führen wir die beiden Begriffe auf ihren wörtlichen Ursprung zurück: 
+Um dieses Problem zu verstehen, werden die beiden Begriffe auf ihren wörtlichen Ursprung zurückgeführt: 
 
-- *Daten*: Pluralform von Datum, das sich auf das lateinische Verb *dare* zurückgeführt werden kann. *Dare* bedeutet *gegeben* und das von uns verwendete Substantiv bedeutet *das Gegebene* oder *die Gabe*. 
-- *Information*: lässt sich ebenfalls auf das Lateinische zurückführen, wobei dieses Wort unverändert in unseren Wortschatz eingegangen ist. Die Bedeutung dieses Begriffs steht für *Auskunft* oder *Benachrichtigung*. 
+- *Daten*: Pluralform von Datum, das sich auf das lateinische Verb *dare* zurückgeführt werden kann. *Dare* bedeutet *gegeben* und das zugehörige Substantiv bedeutet *das Gegebene* oder *die Gabe*. 
+- *Information*: lässt sich ebenfalls auf das Lateinische zurückführen, wobei dieses Wort unverändert in den deutschen Wortschatz eingegangen ist. Die Bedeutung dieses Begriffs steht für *Auskunft* oder *Benachrichtigung*. 
 
-Mit diesen beiden Ursprüngen können wir die Begriffe für Anwendungen vorläufig unterscheiden:
+Mit diesen beiden Ursprüngen können die beiden Begriffe für Anwendungen vorläufig unterscheiden werden:
 
 - *Daten* bezeichnen konkrete Werte.
 - *Information* bezeichnet die *Bedeutung* der Daten. 
