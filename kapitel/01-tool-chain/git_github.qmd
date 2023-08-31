@@ -599,7 +599,7 @@ Damit diese Dateien nicht versehentlich in der Versionierung erfasst werden, sol
 
 Eine Datei wird nur ignoriert, wenn sich noch nicht in der Versionierung erfasst wurde.
 
-::: {#callout-caution} 
+::: {.callout-caution} 
 ## Achtung
 Eine Datei wird von der Versionierung ausgeschlossen, wenn eine der folgenden Regeln zutrifft.
 :::
