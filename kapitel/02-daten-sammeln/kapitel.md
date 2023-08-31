@@ -174,4 +174,3 @@ Durch die Wahl der Fragetypen wird die Information *kodiert*.
 - Sensoren
 - Logs
 
-## Referenzen

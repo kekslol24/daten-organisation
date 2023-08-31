@@ -428,4 +428,3 @@ Daraus ergibt sich der folgende Merksatz.
 Das die einfachste Bit-Kodierung für eine Nachricht ist die Unterscheidung zwischen `0` und `1`.
 :::
 
-## Referenzen

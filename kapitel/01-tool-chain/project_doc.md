@@ -287,4 +287,3 @@ Eine gute Managementzusammenfassung kann direkt in einer Präsentation verwendet
 - Welche Schlussfolgerungen können gezogen werden?
 - Welche Massnahmen werden empfohlen? (optional)
 
-## Referenzen
