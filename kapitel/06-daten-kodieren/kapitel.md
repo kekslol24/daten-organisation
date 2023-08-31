@@ -47,6 +47,8 @@ Beim in der Schulmathematik üblichen Dezimalsystem ist die Basis `10`.
 | Hexadezimalsystem | `16` |  `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `A`, `B`, `C`, `D`, `E`, `F` |
 | Sexagesimalsystem | `60` | - |
 
+: Namen und Beispiele von Zahlensystemen
+
 Das Duodezimalsystem und das Sexagesimalsystem treffen wir im Alltag bei Datums- und Zeitwerten, bei Winkeln sowie in der Musik an. Im Deutschen lässt sich das Duodezimalsystem noch an den Zahlworten elf (`11`) und zwölf (`12`) erkennen.
 
 Das binäre Zahlensystem stellt die Grundlage für digitale Computer dar, weil es nur zwei Werte für die Darstellung von Zahlen benötigt. D.h. alle Werte lassen sich als Vielfache von zweier-Potenzen abbilden. Claude Shannon hat bereits 1938 erkannt, dass diese Darstellung sich direkt die Zustände "ein" und "aus" von Schaltern übersetzen lässt, sodass sich alle Berechnungen mit Hilfe der [*Boolschen Algebra*](@08-boolsche-algebra) mit einfachen Schaltungen realisieren lassen. Daraus ergibt sich, dass das kleinste Bit der Informationstheorie sich im Binären-Zahlensystem abbilden lässt. 
@@ -58,6 +60,8 @@ Die Zahlensysteme Oktal und Hexadezimal sind für die Abbildung von Werten in Di
 | Binär | `2` |$2^1$|
 | Oktal | `8` |$2^3$|
 | Hexadezimal | `16` |$2^4=2^{2^2}$|
+
+: 2er-Potenzen der wichtigsten Zahlensysteme digitaler Systeme
 
 Der Exponent der 2er-Potenz der Basis zeigt an, wie viele Stellen im Binärsystem (Bits) mit dem jeweiligen System abgebildet werden können. Ein Byte bildet per Konvention zwei Stellen im Hexadezimalsystem oder 8 Bit ab. 
 
@@ -80,6 +84,8 @@ Hexadezimal-Werte werden recht häufig beim Programmieren verwendet, wie z.B. f�
 | `10` | `0xA` | 
 | `15` | `0xF` | 
 | `16` | `0x10` |
+
+: Darstellung von Zahlenwerten im Dezimal- und Hexadezimalsystem
 
 ### Binärzahlen
 
@@ -113,6 +119,8 @@ Die Besonderheit des Binärsystems ist, dass alle Werte als Summe von 2er-Potenz
 | `14` | `1110` | $2^3 + 2^2 + 2^1$ | `E` |
 | `15` | `1111` | $2^3 + 2^2 + 2^1 + 2^0$ | `F` |
 
+: Binärzahlen und ihre additive Darstellung
+
 Aus dieser Tabelle kann man ablesen, dass die Ziffer `1` im Binärsystem bedeutet, dass die 2er-Potenz an der entsprechenden Stelle aktiv ist. 
 
 Jede Ziffer im Binärsystem kann ausserdem als eigenständiges Symbol einer Nachricht verstanden werden. Weil im Binärsystem nur die beiden Ziffern `0` und `1` möglich sind, müssen beim Dekodieren nur diese Beiden Werte unterschieden werden. Jedes andere Zahlensystem kodiert Zahlen mit mehr als zwei Ziffern.
@@ -129,6 +137,7 @@ Nach diesem Prinzip werden auch die Kapazitäten von Datenspeichern als 2er-Pote
 | Gigabyte | GB |$2^{30} = 1024^3 = 1073741824$|
 | Terabyte | TB |$2^{40} = 1024^4 = 1099511627776$|
 
+: Speichergrössen in 2er-Potenzen
 
 ::: {.callout-warning}
 Die *wissenschaftliche Schreibweise* ist **kein eigenes Zahlensystem**.  Sie ist nur eine *Vereinheitlichung* der Schreibweise im Dezimalsystem, um sehr grosse und/oder sehr kleine Zahlen kompakt darstellen zu können. 
@@ -175,6 +184,8 @@ Das Zählen funktioniert dabei wie folgt:
 | `255` | `11111111` | `377` | `0xFF` |
 | `256` | `100000000` | `400` | `0x100` |
 
+: Darstellung von Zahlenwerten in verschiedenen Zahlensystemen
+
 ## Wissenschaftliche Schreibweise von Zahlen
 
 
@@ -198,6 +209,8 @@ Neben der ausführlichen wissenschaftlichen Schreibweise wird regelmässig eine 
 | 523140000 | $5.2314 \cdot 10^8$ | 5.2314e8 |
 | 0.00000000007234 | $7.234 \cdot 10^-11$ | 7.234e-11 |
 
+: Beispiele für die wissenschaftliche Notation verschiedener Zahlenwerte
+
 Die Stärke der wissenschaftlichen Notation ist die Darstellung sehr grosser oder sehr kleiner Zahlen
 
 Mit dieser Schreibweise lassen sich auch schnell Grössenunterschiede zwischen Werten abschätzen: Dazu wird die Differenz der 10er-Potenzen zweier Zahlen gebildet. Dazu wird die kleinere 10er-Potenz von der grösseren subtrahiert. Das Ergebnis ist wieder eine 10er-Potenz. 
@@ -206,6 +219,23 @@ Mit dieser Schreibweise lassen sich auch schnell Grössenunterschiede zwischen W
 
 - Eine Differenz von 1 entspricht einem ungefähr 10-fachen Grössenunterschied. 
 - Eine Differenz von 5 entspricht einem ungefähr 100000-fachen Grössenunterschied.
+
+
+### Serialisierung
+
+::: {#def-serialisierung}
+Ein Zahlenwert kann bei einer Darstellung zu einer Basis in mehreren Ziffern erfolgen. Diese Zifferndarstellung wird als **Serialisierung** bezeichnet. 
+:::
+
+*Serialisierung* bedeutet, dass die Ziffern eines Werts *in einer bestimmten Reihenfolge* dargestellt werden. Jede Ziffer einer solchen Darstellung können wir uns als ein *Symbol* einer Nachricht vorstellen. 
+
+Weil ein Zahlenwert in verschiedenen Zahlensystemen dargestellt werden kann, ergibt sich daraus der folgende Merksatz:
+
+
+::: {.callout-note}
+## Merke
+Ein Zahlenwert kann *mehrere* zulässige Serialisierungen haben. 
+:::
 
 ## Zeichenkodierung
 
@@ -223,27 +253,35 @@ Bei den meisten Zeichenkodierungen werden die einzelnen Zeichen so aufgereiht, d
 
 Historisch sind vier Kodierungen für die Praxis im deutschsprachigen Raum von Bedeutung. 
 
-- ASCII - kodiert das Anglo-amerikanische Alphabet mit Ziffern und Satzzeichen in 7 Bit (Zahlen mit max. 7 Stellen binär).
+- ASCII - kodiert das Anglo-amerikanische Alphabet mit Ziffern und Satzzeichen in 7 Bit (Zahlen mit max. 7 Stellen binär), [@american_national_standards_institute_code_1977].
 - ANSI - kodiert das Anglo-amerikanische Alphabet mit Ziffern und Satzzeichen in 8 Bit (Zahlen mit max. 8 Stellen binär).
 - ISO-8859 - kodiert verschiedene Schriftsysteme in 8 Bit (Zahlen mit max. 8 Stellen binär).
-  - ISO-8859-1 (oder ISO Latin 1) - kodiert das westeuropäische Alphabet mit deutschen und französischen Umlauten.
-  - ISO-8859-15 (oder ISO Latin 9) - Kodiert das westeuropäische Alphabet wie ISO-8859-1 aber mit dem Euro Symbol (€)
-- UTF-8 - kodiert alle gängigen und viele historische Schriftsysteme inkl. Emojis dynamisch mit 8 bis zu 32 Bit. 
+  - ISO-8859-1 (oder ISO Latin 1) - kodiert das westeuropäische Alphabet mit deutschen und französischen Umlauten [@isoiec_jtc_1sc_2wg_3_dis_1998].
+  - ISO-8859-15 (oder ISO Latin 9) - Kodiert das westeuropäische Alphabet wie ISO-8859-1 aber mit dem Euro Symbol (€) [@isoiec_jtc_1sc_2wg_3_isoiec_1998]
+- UTF-8 - kodiert alle gängigen und viele historische Schriftsysteme inkl. Emojis dynamisch mit 8 bis zu 32 Bit [@isoiec_jtc_1sc_2_information_2020; @the_unicode_consortium_unicode_2022, Section 3.9]. 
 
 Diese Kodierungen sind bis zum Code 01111111 (oder 0x7F) identisch. Die Symbole in diesem Bereich werden deshalb als *ASCII-Codes* bezeichnet.
 
-**Vollständige ASCII-Kodierungstabelle** 
+| | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 |  
+| :--- |  :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| 0	| ***NUL*** | ***DEL*** | ***SPC*** | 0 | @ | P | ` | p |
+| 1 | SOH | DC1 | ! | 1 | A | Q | a | q |
+| 2 | STX | DC2 | " | 2 | B | R | b | r |
+| 3 | ETX | DC3 | # | 3 | C | S | c | s |
+| 4 | EOT | DC4 | $ | 4 | D | T | d | t |
+| 5 | ENQ | NAK | % | 5 | E | U | e | u |
+| 6 | ACK | SYN | & | 6 | F | V | f | v |
+| 7 | BEL | ETB | ' | 7 | G | W | g | w |
+| 8 | ***BS*** | CAN | ( | 8 | H | X | h | x |
+| 9 | ***HT*** | EM | ) | 9 | I | Y | i | y |
+| A | ***LF*** | SUB | * | : | J | Z | j | z |
+| B | VT | ***ESC*** | + | ; | K | [ | k | { |
+| C | FF | FS | , | < | L | \ | l | \| |
+| D | ***CR*** | GS | - | = | M | ] | m | } |
+| E | SO | RS | . | > | N | ^ | n | ~ |
+| F | SI | US | / | ? | O | _ | o | ***DEL*** |
 
-| | 0	| 1	| 2	| 3	| 4	| 5	| 6	| 7	| 8	| 9	| A	| B	| C	| D	| E	| F |
-| :--- |  :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | 
-| 0x	| ***NUL***	| SOH	| STX	| ETX	| EOT	|	ENQ	|	ACK	|	BEL	|	***BS***	|	***HT***	|	***LF***	|	VT	|	FF	|	***CR***	|	SO	|	SI	|
-|1x	|	DLE	|	DC1	|	DC2	|	DC3	|	DC4	|	NAK	|	SYN	|	ETB	|	CAN	|	EM	|	SUB	|	***ESC***	|	FS	|	GS	|	RS	|	US	|
-| 2x	|	 ***SPC***	| 	!	|	"	|	#	|	$	|	%	|	&	|	'	|	(	|	)	|	*		| +	|	,	|	-	|	.	|	/ |
-| 3x	|	0	|	1	|	2	|	3	|	4	|	5	|	6	|	7	|	8	|	9	|	:	|	;	|	<	|	=	|	>	|	?	|
-| 4x	|	@	|	A	|	B	|	C	|	D	|	E	|	F	|	G	|	H	|	I	|	J	|	K	|	L	|	M	|	N	|	O	|
-| 5x	|	P	|	Q	|	R	|	S	|	T	|	U	|	V	|	W	|	X	|	Y	|	Z	|	[	|	\	|	]	|	^	|	_	|
-| 6x	|	`	| a	|	b	|	c	|	d	|	e	|	f	|	g	|	h	|	i	|	j	|	k	|	l	|	m	|	n	|	o	|
-| 7x	|	p	|	q	|	r	|	s	|	t	|	u	|	v	|	w	|	x	|	y	|	z	|	{	|	\|	|	}	| ~	| ***DEL*** |
+: Vollständige ASCII-Kodierungstabelle [@american_national_standards_institute_code_1977, S. 8] {#tbl-ascii-codes}
 
 Neben Buchstaben werden auch sog. *nicht-druckbare Zeichen* wie Buchstaben, Satzzeichen und Ziffern kodiert. Dazu gehören u.a. Leerzeichen, Tabulatoren und Zeilenumbrüche. Viele dieser besonderen Buchstaben haben heute keine Bedeutung mehr. In der folgenden Tabelle sind die aktuell verwendeten nicht-druckbaren Zeichen mit `*` markiert.
 
@@ -284,6 +322,8 @@ Neben Buchstaben werden auch sog. *nicht-druckbare Zeichen* wie Buchstaben, Satz
 | `SPC*` | `0x20` | Space (Leerzeichen, Leerschlag) |
 | `DEL` | `0x7F` | Delete (Vorwärtslöschen) |
 
+: ASCII-Sonderzeichen [@american_national_standards_institute_code_1977, S. 9] {#tbl-ascii-sonderzeichen}
+
 Die Zeichen für Löschen (`BS` und `DEL`) und Funktionsumstellung (`ESC`) finden sich nicht mehr in Zeichenketten und Dateien. Sie dienen inzwischen nur als Steuerzeichen für die Eingabe mit der Tastatur.
 
 Das Zeichen für das Dateiende (`EOF` bzw.  unter Windows `SUB`) ist kein kodiertes Zeichen in einer Zeichenkette, sondern wird vom Betriebssystem gesetzt. Dieses Symbol findet sich nicht in einer Datei und sollte nicht eingefügt werden.
@@ -307,22 +347,6 @@ Eine Zahl wird als eine Abfolge von Ziffern dargestellt. Wird ein Wert als Zahl 
 **Excel**, *R* und *Python* konvertieren Ziffern in Zeichenketten *oft* automatisch in die richtigen Zahlenwerte, **solange** keine anderen Zeichen in der jeweiligen Zeichenketten kodiert wurden.
 
 Nicht alle Programmiersprachen konvertieren Ziffern in Zeichenketten automatisch in Zahlenwerte.
-:::
-
-### Serialisierung
-
-::: {#def-serialisierung}
-Ein Zahlenwert kann bei einer Darstellung zu einer Basis in mehreren Ziffern erfolgen. Diese Zifferndarstellung wird als **Serialisierung** bezeichnet. 
-:::
-
-*Serialisierung* bedeutet, dass die Ziffern eines Werts *in einer bestimmten Reihenfolge* dargestellt werden. Jede Ziffer einer solchen Darstellung können wir uns als ein *Symbol* einer Nachricht vorstellen. 
-
-Weil ein Zahlenwert in verschiedenen Zahlensystemen dargestellt werden kann, ergibt sich daraus der folgende Merksatz:
-
-
-::: {.callout-note}
-## Merke
-Ein Zahlenwert hat *mehrere* zulässige Serialisierungen. 
 :::
 
 ## Symbole und Kompression
@@ -357,7 +381,7 @@ $$
 
 Im Beispiel haben alle Nachrichten die Länge `10`. 
 
-Daraus ergeben sich die folgenden Kompressionsgrade: 
+Daraus ergeben sich die Kompressionsgrade für unterschiedliche, gleich lange Zeichenketten in @tbl-kompressionsgrade. 
 
 | Nachricht | Kompressionsgrad |
 | :--- | :--- |
@@ -365,6 +389,8 @@ Daraus ergeben sich die folgenden Kompressionsgrade:
 | `"ababababab"` | .5 |
 | `"aber aber "` | .2 |
 | `"aber hallo"` | .1 |
+
+: Kompressionsgrade verschiedener Zeichenketten {#tbl-kompressionsgrade}
 
 Die Kompressionsgrade stehen im umgekehrten Verhältnis zum Informationsgehalt ($I_g$) einer Nachricht. Es gilt also: 
 
@@ -380,12 +406,12 @@ Je stärker eine Nachricht komprimiert werden kann, desto weniger Information en
 Eine Nachricht mit dem Kompressionsgrad `1` wird als *informationslos* bezeichnet. Sie enthält also *keine* Information.
 :::
 
-## Zusammenfassung: Symbole und Bits
+## Symbole und Bits
 
 Ausgehend von der Informationstheorie bestehen Nachrichten aus Symbolen. Symbole können Sätze, Worte, Wortkombinationen, Buchstaben oder Buchstabenfolgen sein. Ein Symbol repräsentiert einen Teil einer Nachricht.
 
 ::: {#def-bit}
-Ein Symbol einer Nachricht wird als **Bit** (engl. Teil) bezeichnet. 
+Ein Symbol einer Nachricht wird als **Bit** (dt. *Teil*) bezeichnet. 
 :::
 
 In den vorherigen Abschnitten haben wir wichtige Erkenntnisse abgeleitet: 
@@ -404,3 +430,5 @@ Daraus ergibt sich der folgende Merksatz.
 ## Merke
 Das die einfachste Bit-Kodierung für eine Nachricht ist die Unterscheidung zwischen `0` und `1`.
 :::
+
+## Referenzen
