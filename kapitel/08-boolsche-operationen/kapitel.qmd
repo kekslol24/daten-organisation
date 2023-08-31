@@ -1,4 +1,5 @@
 ---
+# bibliography: ../../dxi-skript.bib
 execute: 
   echo: false
 ---
@@ -221,37 +222,38 @@ Bei Vergleichsoperatoren muss darauf geachtet werden, dass die Operanden vom gle
 
 Für logische Ausdrücke sind direkte Vergleiche zwischen zwei Werten nicht immer geeignet. Immer wenn der gleiche Wert mit mehreren anderen verglichen werden muss werden logische Ausdrücke mit direkten Vergleichen schnell komplex. Für solche Vergleiche ist der *Existenz*-Vergleich wichtig. Dabei wird der Wert `WAHR` zurückgegeben, wenn der linke Operand ein Element des rechten Operanden ist. 
 
-Die *Existenz* wird mithilfe des $\in$-Operators überprüft. Der $\in$-Operator ist ein spezieller Vergleichsoperator, der `Wahr` zurückgibt, wenn der linke Operand im rechten Operand vorkommt. Dabei steht der linke Operand für den *Suchwert* und der rechte Operand für den *Suchbereich*. Der Suchbereich ist dabei immer eine Menge bzw. ein Vektor. Der Vergleich der beiden Operanden wird formal als $a \in B$ geschrieben, wobei $B$ eine Menge bzw. ein Vektor von Werten ist. Dieser Vergleich entspricht einer `ODER`-Operation, mit der die Elemente des Vektors $B$ einzeln mit dem Wert $a$ auf Gleichheit geprüft werden, wie im folgenden Beispiel gezeigt wird.
+Die *Existenz* wird mithilfe des $\in$-Operators überprüft. Der $\in$-Operator ist ein spezieller Vergleichsoperator, der `Wahr` zurückgibt, wenn der linke Operand im rechten Operand vorkommt. Dabei steht der linke Operand für den *Suchwert* und der rechte Operand für den *Suchbereich*. Der Suchbereich ist dabei immer eine Menge bzw. ein Vektor. Der Vergleich der beiden Operanden wird formal als $a \in B$ geschrieben, wobei $B$ eine Menge bzw. ein Vektor von Werten ist. Dieser Vergleich entspricht einer `ODER`-Operation, mit der die Elemente des Vektors $B$ einzeln mit dem Wert $a$ auf Gleichheit geprüft werden, wie @eq-in-operator-log-comb zeigt.
 
 $$
-a \in \{ 1, 2, 3, 4, 5 \} \Leftrightarrow (a = 1) \lor (a = 2) \lor (a = 3) \lor (a = 4) \lor (a = 5)
-$$
+a \in \{ 1, 2, 3, 4, 5 \} \\
+\Leftrightarrow (a = 1) \lor (a = 2) \lor (a = 3) \lor (a = 4) \lor (a = 5)
+$$ {#eq-in-operator-log-comb}
 
 In vielen Fällen sind die zu prüfenden Elemente in $B$ nicht vorab bekannt oder die Anzahl der Elemente variiert. In diesem Fall ist eine explizite `ODER`-Operation nicht möglich. Auch in weniger komplexen Fällen, empfielt es sich, die `ODER`-Operation zu vermeiden und die Existenzprüfung vorzuziehen, weil sie die Lesbarkeit eines logischen Ausdrucks erhöht. 
 
 
-Der folgende Ausdruck zeigt die Anwendung des $\in$-Operators:
+@eq-in-operator-ex1 zeigt die Anwendung des $\in$-Operators.
 
 $$
     7 \in \{ 1; 2; 3; 4; 5; 6; 7; 8; 9; 10 \}
-$$
+$$ {#eq-in-operator-ex1}
 
 Dieser Ausdruck ist in diesem Beispiel `Wahr`. 
 
-Der $\in$-Operator kann für Vekrtoren als linker Operator verallgemeinert werden. In diesem Fall werden die linken Operanden ebenfalls als Vektor dargestellt. Nun wird für jeden Wert des linken Operators der Vergleich mit der rechten Seite durchgeführt.
+Der $\in$-Operator kann für Vektoren als linker Operator verallgemeinert werden. In diesem Fall werden die linken Operanden ebenfalls als Vektor dargestellt. Nun wird für jeden Wert des linken Operators der Vergleich mit der rechten Seite durchgeführt.
 
 $$
     \{ 7; 11 \} \in \{ 1; 2; 3; 4; 5; 6; 7; 8; 9; 10 \}
-$$
+$$ {#eq-in-op-w-vektor}
 
-Dieser Vergleich entspricht also den beiden separaten Vergleichen:
+Der Vergleich in @eq-in-op-w-vektor entspricht also den beiden separaten Vergleichen in @eq-in-op-vektor-separat.
 
 $$
     7 \in \{ 1; 2; 3; 4; 5; 6; 7; 8; 9; 10 \} \\
     11 \in \{ 1; 2; 3; 4; 5; 6; 7; 8; 9; 10 \}
-$$
+$$ {#eq-in-op-vektor-separat}
 
-In diesem Beispiel ist das Ergebnis des Vergleichs: `{WAHR; FALSCH}`.
+Im Beispiel von @eq-in-op-w-vektor ist das Ergebnis des Vergleichs: `{WAHR; FALSCH}`.
 
 ## Entscheidungen
 
@@ -345,18 +347,19 @@ Grundsätzlich werden 2 Sortierreihenfolgen unterschieden. Diese sind für Zahle
 
 Die Sortierrichtung basiert auf zwei paarweisen Vergleichen zwischen den Elementen. Um die Sortierung zu ändern, muss nur der logische Vergleichsoperator umgekehrt werden.
 
-- Die aufsteigende Sortierung beginnt mit dem kleinsten Wert des Sortierkriteriums und endet mit dem grössten Wert der Sortierung. Dabei gilt für alle Werte des sortierten Vektors  die folgende Ungleichung: 
+- Die aufsteigende Sortierung beginnt mit dem kleinsten Wert des Sortierkriteriums und endet mit dem grössten Wert der Sortierung. Dabei gilt für alle Werte des sortierten Vektors die [Ungleichung @eq-sort-asc]. 
 
 $$
 v_{Vorgänger} \le v_{Nachfolger}
-$$
+$$  {#eq-sort-asc}
 
-- Die absteigende Sortierung arbeitet genau entgegengesetzt vom grössten Wert des Sortierkriteriums zum kleinsten Wert. Entsprechend gilt für diese Reihenfolge die Ungleichung: 
+- Die absteigende Sortierung arbeitet genau entgegengesetzt vom grössten Wert des Sortierkriteriums zum kleinsten Wert. Entsprechend gilt für diese Reihenfolge die [Ungleichung @eq-sort-desc]. 
 
 $$
 v_{Vorgänger} \ge v_{Nachfolger}
-$$
+$$ {#eq-sort-desc}
 
 Wie beim Filtern können sich die logischen Ausdrücke beim Sortieren auf andere Vektoren beziehen. Dafür wird ein Referenzvektor benötigt. Die Sortierung des Vektors erfolgt entsprechend der Positionen im Referenzvektor. Deshalb müssen Referenzvektoren immer die gleiche Länge wie die Sortiervektoren haben.
 
-## Referenzen
+Beim Sortieren können komplexe logische Ausdrücke für spezielle Sortiuerungen eingesetzt werden. Dabei muss beachtet werden, dass diese Ausdrücke eine eindeutige Reihenfolge zulassen. 
+
