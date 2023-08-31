@@ -1,13 +1,9 @@
 ---
-# bibliography: references.bib
-
-title: Boole'sche Operationen
-
-abstract: ""
-
 execute: 
   echo: false
 ---
+
+# Boole'sche Operationen {#sec-boolesche-operationen}
 
 Boole'sche Operationen sind für das Programmieren von zentraler Bedeutung, weil mit ihnen regelbasierte Entscheidungen umgesetzt werden. 
 

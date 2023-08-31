@@ -1,13 +1,11 @@
 ---
 # bibliography: references.bib
 
-title: Daten kodieren
-
-abstract: ""
-
 execute: 
   echo: false
 ---
+
+# Daten kodieren {#sec-daten-kodieren}
 
 ## Zahlensysteme
 
@@ -186,8 +184,7 @@ Das Zählen funktioniert dabei wie folgt:
 
 : Darstellung von Zahlenwerten in verschiedenen Zahlensystemen
 
-## Wissenschaftliche Schreibweise von Zahlen
-
+## Wissenschaftliche Schreibweise von Zahlen {#sec-wissenschaftliche-schreibweise}
 
 ::: {.callout-note}
 Als **wissenschaftliche Notation** wird die Schreibweise von Zahlen mit Hilfe von Potenzen zur Basis 10 bezeichnet. 
