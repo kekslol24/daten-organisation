@@ -31,7 +31,9 @@ Die wichtigsten Standardtasten sind:
 
 ![Mac-Tastatur beschriftet](figures/mac_tastatur_beschriftet.png)
 
-> Einige **MacBookPro** Modelle verfügen über einen sog. *Touchbar* an der Position, an welcher sich normalerweise die Funktionstasten befinden. Das Drücken der ``Fn``-Taste wechselt die Darstellung aus dem jeweiligen App-Kontext zu virtuellen Funktionstasten. Bei Modellen mit Touchbar aus den Reihen vor 2020 fehlt eine ``Esc``-Taste. Auch diese Taste können Sie mit der ``Fn``-Taste im Touchbar aktivieren.
+::: {.callout-note}
+Einige **MacBookPro** Modelle verfügen über einen sog. *Touchbar* an der Position, an welcher sich normalerweise die Funktionstasten befinden. Das Drücken der ``Fn``-Taste wechselt die Darstellung aus dem jeweiligen App-Kontext zu virtuellen Funktionstasten. Bei Modellen mit Touchbar aus den Reihen vor 2020 fehlt eine ``Esc``-Taste. Auch diese Taste können Sie mit der ``Fn``-Taste im Touchbar aktivieren.
+:::
 
 ## Windows Tastatur
 
@@ -47,7 +49,9 @@ Symbole zusätzlich bereitstellen. Unter MacOS sind diese Symbole über beide ``
 
 Gelegentlich benötigen wir Tastenkombinationen, bei denen wir mehrere Tasten gleichzeitig drücken. Dabei kommen die Tasten ``Hochstellen``, ``Alt`` und ``Steuerung`` entweder einzeln oder kombiniert als *Modifikatoren* zum Einsatz.
 
-> **Definition**: Modifikatoren-Tasten haben keine eigene Bedeutung, sondern **modifizieren** die Bedeutung einer anderen Taste.
+::: {.callout-note} 
+Modifikatoren-Tasten haben keine eigene Bedeutung, sondern **modifizieren** die Bedeutung einer anderen Taste.
+:::
 
 Die folgenden Tasten sind immer Modifikatoren:
 
@@ -70,8 +74,9 @@ Alle anderen Tasten werden mit ihrem Namen angegeben.
 
 Um eine Tastaturkombination anzuzeigen, werden die zu drückenden Tasten mit ``+`` verknüpft. Z.B. ``M + C + q`` bedeutet, dass Sie die Tasten ``Alt``, ``Steuerung`` und ``Q`` **gleichzeitig** drücken müssen.
 
-> Tasten die nacheinander gedrückt werden sollen, werden durch Leerzeichen getrennt. Z.B. ``C + q a`` bedeutet, dass Sie zuerst die Tasten ``Steuerung`` und ``Q`` **gleichzeitig** tippen und **danach** die
-Taste ``A`` drücken müssen.
+::: {.callout-note}
+Tasten die nacheinander gedrückt werden sollen, werden durch Leerzeichen getrennt. Z.B. ``C + q a`` bedeutet, dass Sie zuerst die Tasten ``Steuerung`` und ``Q`` **gleichzeitig** tippen und **danach** die Taste ``A`` drücken müssen.
+:::
 
 ## Funktionstasten
 
@@ -124,5 +129,6 @@ Die am häufigsten auftauchenden Sonderzeichen sind:
 | Unterstrich (low dash) | ``_`` | ``S + -`` | ``S + -`` | 
 
 
-> Merken Sie sich die Bezeichnungen und Symbole, denn Sie werden sie regelmässig verwenden.
-
+::: {.callout-note} 
+Merken Sie sich die Bezeichnungen und Symbole, denn Sie werden sie regelmässig verwenden.
+:::

@@ -9,11 +9,15 @@ execute:
   echo: false
 ---
 
-> Versionierung ist ein Prozess, bei dem Änderungen an einem Dokument oder einer Datei nachverfolgt werden.
+::: {#def-versionierung}
+Versionierung ist ein Prozess, bei dem Änderungen an einem Dokument oder einer Datei nachverfolgt werden.
+:::
 
 Die meisten Cloud-Dienste  bieten inzwischen das Speichern von Dateiversionen an. Diese Funktionen sind in der Regel so gelöst, dass die Datei in regelmässigen Abständen gespeichert wird, so dass eine *zeitliche* Abfolge von geänderten Versionen entsteht. Für manche Dateiformate ist es möglich, einzelne Änderungen des Inhalts nachzuvollziehen.
 
-> Für die Arbeit mit Daten ist das Versionsmanagement wichtig, damit das Datenmanagement durcgängig und nachvollziehbar ist. 
+::: {.callout-note}
+Für die Arbeit mit Daten ist das Versionsmanagement wichtig, damit das Datenmanagement durchgängig und nachvollziehbar ist. 
+:::
 
 Das regelmässige Speichern von Dateien ist der Startpunkt für die eigentliche Versionierung, dem *Versionsmanagement* oder der *Versionskontrolle* (engl. Version Control).
 
@@ -74,7 +78,9 @@ Die wichtigsten `git`-Hosting-Plattformen mit gleichwertigem Funktionsumfang sin
 
 Jede dieser Plattformen benötigt ein eigenes Benutzerkonto.
 
-> Dieses Buch verwendet ***GitHub*** für Code-Beispiele, Diskussionen und andere Funktionen. ***GitLab*** und ***Gittea*** sind Alternativen zu GitHub mit gleichwertigen Funktionsumfang  und ähneln sich  bei der Bedienung und im Funktionsumfang stark. Aus Sicht der Projektorganisation sind die Plattformen fast identisch. Es gibt vor Allem emotionale und wirtschaftliche Gründe, sich für die eine oder die andere Plattform zu entscheiden.
+::: {.callout-note}
+Dieses Buch verwendet ***GitHub*** für Code-Beispiele, Diskussionen und andere Funktionen. ***GitLab*** und ***Gittea*** sind Alternativen zu GitHub mit gleichwertigen Funktionsumfang  und ähneln sich  bei der Bedienung und im Funktionsumfang stark. Aus Sicht der Projektorganisation sind die Plattformen fast identisch. Es gibt vor Allem emotionale und wirtschaftliche Gründe, sich für die eine oder die andere Plattform zu entscheiden.
+:::
 
 ## `git`-Konzepte
 
@@ -108,7 +114,7 @@ No commits yet
 nothing to commit (create/copy files and use "git add" to track)
 ```
 
-Wird einem leerem Repository eine neue Datei hinzugefügt, zeigt `git status` an, dass die neue Datei noch nicht versioniert wird. Als Beispiel wird die Datei `README.md` mit dem folgenden Inhalt erstellt. 
+Wird einem leeren Repository eine neue Datei hinzugefügt, zeigt `git status` an, dass die neue Datei noch nicht versioniert wird. Als Beispiel wird die Datei `README.md` mit dem folgenden Inhalt erstellt. 
 
 ```markdown
 # Mein erstes Projekt
@@ -466,7 +472,10 @@ Dadurch wird der gleiche Merge-Konflikt wie beim regulären Merge ausgelöst. Di
 
 Anschliessend können beide Branches konfliktfrei zusammengeführt werden. 
 
-> **Praxis:** Es hat sich als gute Praxis etabliert, Merge-Konflikte immer mit `git rebase` und nicht mit `git merge` zu lösen.
+::: {#callout-tip} 
+## Praxis
+Es hat sich als gute Praxis etabliert, Merge-Konflikte immer mit `git rebase` und nicht mit `git merge` zu lösen.
+:::
 
 ### Fetch, Pull und Push 
 
@@ -478,9 +487,14 @@ Nach `git fetch` enthält das lokale Repository alle Versionen der Remotes. Dies
 
 Weil intern ein Merge durchgeführt wird, kann auch `git pull` zu Merge-Konflikten führen. Diese Konflikte müssen gelöst werden, bevor weitergearbeitet werden kann.
 
-> `git pull` führt automatisch ein `git fetch` aus, falls keine Änderungen für ein Remote-Repository lokal gefunden wurden.
+::: {.callout-note} 
+`git pull` führt automatisch ein `git fetch` aus, falls keine Änderungen für ein Remote-Repository lokal gefunden wurden.
+:::
 
-> **Praxis:** Sind für ein Repository mehrere Remotes konfiguriert, dann sollten die einzelnen Remotes einzeln synchronisiert werden. 
+::: {#callout-tip} 
+## Praxis
+Sind für ein Repository mehrere Remotes konfiguriert, dann sollten die einzelnen Remotes einzeln synchronisiert werden. 
+:::
 
 Das Kommando `git push` wird zum Synchronisieren des lokalen Repositories mit den Remotes genutzt. Beim `git push` wird im Remote ein Merge durchgeführt. Führt dieser zu Konflikten, meldet `git push` einen Fehler, jedoch *keinen* Merge-Konflikt. Bei Fehlern von `git push` muss zuerst `git fetch` und anschliessend ein `git rebase` ausgeführt werden und eventuelle Merge-Konflikte lokal gelöst werden. 
 
@@ -498,7 +512,9 @@ Die Issues eines Projekts sind nummeriert, so dass über diese Nummer auf das je
 
 Die *Issues* von `git`-Hosting-Plattformen haben zwei Zustände: *Offen* (engl. open) und *geschlossen* (engl. closed). Offene Issues sind noch nicht bearbeitet. Geschlossene Issues sind bearbeitet und erledigt. Issues können deshalb als To-Do-Liste für ein Projekt verwendet  werden: Jedes Issue lässt sich mit Änderungen im Repository verbinden. Weil jede Änderung mit einer Version gleichzusetzen ist, kann ein Issue geschlossen werden, wenn im Repository ein Commit existiert, das die notwendige Änderung enthält. 
 
-> `git`-Hosting-Plattformen unterstützen sog. *Action-Keywords* in Commit-Meldungen. Wird ein solches Keyword zusammen mit der Issue-Nummer verwendet, dann schliesst die Hosting-Plattform das genannte Issue automatisch. Gleichzeitig wird dokumentiert, mit welchem Commit das Issue geschlossen wurde. 
+::: {#callout-note} 
+`git`-Hosting-Plattformen unterstützen sog. *Action-Keywords* in Commit-Meldungen. Wird ein solches Keyword zusammen mit der Issue-Nummer verwendet, dann schliesst die Hosting-Plattform das genannte Issue automatisch. Gleichzeitig wird dokumentiert, mit welchem Commit das Issue geschlossen wurde.
+::: 
 
 Die Möglichkeit ein Issue zu kommentieren ist weitere sehr praktische Funktion. So können Notizen, Gedanken und Recherchen einem Issue zugeordnet werden. Diese Dokumentation wird automatisch mit einem Datum und dem Account-Namen versehen, so dass sich die Arbeit an einem Issue leicht reproduzieren lässt. Der Vorteil dieser Funktion ist, dass so Konzepte und Ideen einem Issue zugeordnet werden können, selbst wenn sich diese nicht im eigentlichen Repository wiederfinden. So kann die Entscheidungsfindung in einem Projekt nachvollziehbar dokumentiert werden.
 
@@ -506,9 +522,14 @@ Die Möglichkeit ein Issue zu kommentieren ist weitere sehr praktische Funktion.
 
 Wenn Code in zwei Code-Zweigen zusammengeführt werden soll, werden sog. ***Pull-Requests*** bzw. ***Merge-Requests*** erstellt. Ein Pull-Request ist eine Anfrage zum Zusammenführen eines Branches oder eines Forks mit einem anderen Branch.
 
-> Ursprünglich wurden Pull-Requests in Form von E-Mails an die Projektkoordination geschickt und enthieleten einen Verweis auf den einzubindenen Fork. In `git`-Hosting-Plattformen sind Pull-Requests spezielle Issues, die einen Branch oder einen Fork mit dem Repository verknüpfen.
+::: {.callout-note}
+Ursprünglich wurden Pull-Requests in Form von E-Mails an die Projektkoordination geschickt und enthieleten einen Verweis auf den einzubindenen Fork. In `git`-Hosting-Plattformen sind Pull-Requests spezielle Issues, die einen Branch oder einen Fork mit dem Repository verknüpfen.
+:::
 
-> **Praxis:** Sobald ein Commit in einem Branch vorliegt, kann ein Pull-Request erstellt werden. Es ist eine gute Vorgehensweise, möglichst früh einen Pull-Request zu öffnen.  
+::: {#callout-tip} 
+## Praxis
+Sobald ein Commit in einem Branch vorliegt, kann ein Pull-Request erstellt werden. Es ist eine gute Vorgehensweise, möglichst früh einen Pull-Request zu öffnen.  
+:::
 
 Wie Issues können Pull-Requests kommentiert werden, so dass notwendige Anpassungen angeregt werden können. Es kann auch die Qualität der Versionen in einem Branch überprüft werden. Entspricht ein Pull-Request nicht den Qualitätsanforderungen eines Projekts, können vor einem Merge die notwendigen Änderungen vorgenommen werden. Alle `git`-Hosting-Plattformen bieten die Möglichkeit für jeden Pull-Request Projektstandards automatisch zu überprüfen und verhindern das Zusammenführen bei Problemen.
 
@@ -578,7 +599,10 @@ Damit diese Dateien nicht versehentlich in der Versionierung erfasst werden, sol
 
 Eine Datei wird nur ignoriert, wenn sich noch nicht in der Versionierung erfasst wurde.
 
-> **Achtung!** Eine Datei wird von der Versionierung ausgeschlossen, wenn eine der folgenden Regeln zutrifft.
+::: {#callout-caution} 
+## Achtung
+Eine Datei wird von der Versionierung ausgeschlossen, wenn eine der folgenden Regeln zutrifft.
+:::
 
 - Der Datei- oder Verzeichnisname ist explizit in `.gitignore` gelistet. Für Namen in Unterverzeichnissen muss dazu der Gesamtepfad angegeben sein.
 - Eine Datei oder ein Verzeichnis liegt in einem Verzeichnis, dass ignoriert wird. 
@@ -591,7 +615,9 @@ Die folgenden Namesmuster sind gebräuchlich:
 - `*.tmp` - alle Dateien oder Verzeichnisse im Projektverzeichnis, die auf `.tmp` enden. 
 - `bild*` - alle Dateien oder Verzeichnisse im Projektverzeichnis, die mit `bild` beginnen. 
 
-> Gelegentlich kommt es vor, dass festgestellt wird, dass eine oder mehrere Dateien ignoriert werden soll, obwohl sie bereits in die Versionierung aufgenommen wurde. In diesem Fall erscheit es, als ob `.gitignore` nicht funktioniert. Das liegt daran, dass `git` eine Datei nur ignoriert, wenn diese nicht in der Versionierung erfasst wurde.  Um eine bereits erfasste Datei zu irgnorieren, muss diese Datei aus dem Versionsdatenbank mit `git rm` entfernt werden.
+::: {#callout-note} 
+Gelegentlich kommt es vor, dass festgestellt wird, dass eine oder mehrere Dateien ignoriert werden soll, obwohl sie bereits in die Versionierung aufgenommen wurde. In diesem Fall erscheit es, als ob `.gitignore` nicht funktioniert. Das liegt daran, dass `git` eine Datei nur ignoriert, wenn diese nicht in der Versionierung erfasst wurde.  Um eine bereits erfasste Datei zu irgnorieren, muss diese Datei aus dem Versionsdatenbank mit `git rm` entfernt werden.
+:::
 
 **Beispiel**
 

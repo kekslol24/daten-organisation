@@ -9,25 +9,32 @@ execute:
   echo: false
 ---
 
-
-
-
-
 ## Zahlensysteme
 
-> Als **Zahlensystem** wird die Schreibweise für Zahlenwerte bezeichnet. 
+
+::: {.callout-note}
+Als **Zahlensystem** wird die Schreibweise für Zahlenwerte bezeichnet. 
+:::
 
 In der Regel verwenden wir das sog. Dezimalsystem, um Zahlen darzustellen. Das Dezimalsystem hat 10 mögliche Symbole, um Zahlenwerte abzubilden. Diese Symbole sind `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9` und `0`. Damit können wir mit einem Symbol Zahlenwerte zwischen `0` und `9` abbilden. 
 
 Gelegentlich lassen sich bestimmte Phänomene nicht gut im Dezimalsystem abbilden. Dadurch lassen sich Werte nur schwer interpretieren. In solchen Fällen hilft der Wechsel in ein anderes Zahlensystem.
 
-> **Merke:**  Durch den Wechsel des Zahlensystems ändert sich nur die Darstellung, aber nicht der Wert einer Zahl! 
 
-> **Definition:** Die Zahl, die als Grundlage für ein Zahlensystem dient,  wird als **Basis** des Zahlensystems bezeichnet. 
+::: {.callout-note}
+## Merke
+Durch den Wechsel des Zahlensystems ändert sich nur die Darstellung, aber nicht der Wert einer Zahl! 
+:::
+
+::: {#def-basis-zahlensystem}
+Die Zahl, die als Grundlage für ein Zahlensystem dient,  wird als **Basis** des Zahlensystems bezeichnet. 
+:::
 
 Beim in der Schulmathematik üblichen Dezimalsystem ist die Basis `10`.
 
-> **Definition:** **Zahlensysteme** kodieren Zahlenwerte zu einer gegebenen Basis. 
+::: {#def-zahlensystem}
+**Zahlensysteme** kodieren Zahlenwerte zu einer gegebenen Basis. 
+:::
 
 ### Die wichtigsten Zahlensysteme 
 
@@ -54,7 +61,10 @@ Die Zahlensysteme Oktal und Hexadezimal sind für die Abbildung von Werten in Di
 
 Der Exponent der 2er-Potenz der Basis zeigt an, wie viele Stellen im Binärsystem (Bits) mit dem jeweiligen System abgebildet werden können. Ein Byte bildet per Konvention zwei Stellen im Hexadezimalsystem oder 8 Bit ab. 
 
-> Hexadezimal-Werte werden recht häufig beim Programmieren verwendet, wie z.B. für das Kodieren von Buchstaben und Satzzeichen. Damit diese Werte leichter von Werten im Dezimalsystem unterschieden werden können, werden Werten im Hexadezimalsystem per Konvention die beiden Symbole `0x` vorangestellt.
+
+::: {.callout-note}
+Hexadezimal-Werte werden recht häufig beim Programmieren verwendet, wie z.B. für das Kodieren von Buchstaben und Satzzeichen. Damit diese Werte leichter von Werten im Dezimalsystem unterschieden werden können, werden Werten im Hexadezimalsystem per Konvention die beiden Symbole `0x` vorangestellt.
+:::
 
 **Beispiele**
 
@@ -73,7 +83,10 @@ Der Exponent der 2er-Potenz der Basis zeigt an, wie viele Stellen im Binärsyste
 
 ### Binärzahlen
 
-> Binärzahlen kodieren Zahlenwerte zur Basis 2.
+
+::: {.callout-note}
+Binärzahlen kodieren Zahlenwerte zur Basis 2.
+:::
 
 Daraus folgt, dass für jede Ziffer genau zwei Symbole (Ziffern) zur Verfügung stehen: `0` und `1`. 
 
@@ -117,9 +130,9 @@ Nach diesem Prinzip werden auch die Kapazitäten von Datenspeichern als 2er-Pote
 | Terabyte | TB |$2^{40} = 1024^4 = 1099511627776$|
 
 
-<p class="alert alert-warning" markdown="1">
+::: {.callout-warning}
 Die *wissenschaftliche Schreibweise* ist **kein eigenes Zahlensystem**.  Sie ist nur eine *Vereinheitlichung* der Schreibweise im Dezimalsystem, um sehr grosse und/oder sehr kleine Zahlen kompakt darstellen zu können. 
-</p>
+:::
 
 ### Winkelangaben als irrationales Zahlensystem
 
@@ -164,7 +177,10 @@ Das Zählen funktioniert dabei wie folgt:
 
 ## Wissenschaftliche Schreibweise von Zahlen
 
-> Als **wissenschaftliche Notation** wird die Schreibweise von Zahlen mit Hilfe von Potenzen zur Basis 10 bezeichnet. 
+
+::: {.callout-note}
+Als **wissenschaftliche Notation** wird die Schreibweise von Zahlen mit Hilfe von Potenzen zur Basis 10 bezeichnet. 
+:::
 
 Bei der wissenschaftlichen Notation wird die erste Ziffer einer Zahl vor ein Komma gesetzt und alle restlichen Ziffern nach dem Komma. Anschliessend werden die restlichen Ziffern gezählt und als 10er-Potenz angegeben. 
 
@@ -197,7 +213,11 @@ Wir schreiben Texte nicht mit Zahlen, sondern mit Buchstaben, Satz- und Steuerze
 
 Weil sich Buchstaben und andere Zeichen nicht direkt als Zahlen übersetzen lassen, bedarf es eines Tricks. Dazu werden alle zu kodierenden Zeichen in einer Liste aufgeschrieben und anschliessend werden alle Zeichen durchnummeriert. Die Nummer des Zeichens wird als Zahlenwert stellvertretend für das jeweilige Zeichen. 
 
-> **Merke:** Mit dem Nummerieren von Symbolen lassen sich beliebige Symbole als Zahlenwerte kodieren.
+
+::: {.callout-note}
+## Merke
+Mit dem Nummerieren von Symbolen lassen sich beliebige Symbole als Zahlenwerte kodieren.
+:::
 
 Bei den meisten Zeichenkodierungen werden die einzelnen Zeichen so aufgereiht, dass die alphabetische und nummerische Reihenfolge in der Regel erhalten bleibt. Zeichenkodierungen sind standardisiert und müssen nicht mehr selbst entwickelt werden. Es gibt allerdings mehrere Standards, die sich in der Kodierung unterscheiden. Deshalb ist es notwendig, die verwendete Zeichenkodierung zu dokumentieren.
 
@@ -274,34 +294,52 @@ Normalerweise werden nicht-druckbare Zeichen nicht in Zeichenketten dargestellt,
 
 Arabische Ziffern werden mit den Werten `0x30` (Ziffer `0`) bis `0x39` (Ziffer `9`) kodiert.
 
-> **Merke:** Ziffern in Zeichenketten sind nicht gleichwertig mit den Ziffern in Zahlen. 
+
+::: {.callout-note}
+## Merke
+Ziffern in Zeichenketten sind nicht gleichwertig mit den Ziffern in Zahlen. 
+:::
 
 Eine Zahl wird als eine Abfolge von Ziffern dargestellt. Wird ein Wert als Zahl dargestellt, dann werden die Ziffern entsprechend der gewählten Basis interpretiert. Werden Ziffern als Zeichenkette kodiert, dann entspricht der *Wert* der Ziffer der entsprechenden Kodierung. D.h.z.B. die Ziffer `"1"` in einer Zeichenkette hat nicht den Wert `1`, sondern den Wert `49` (`0x31`). Folgen mehrere Ziffern aufeinander in einer Zeichenkette, dann werden die kodierten Zahlen aneinandergereiht. Die Ziffern `"123"` entsprechen deshalb nicht dem Wert `123`, sondern dem Wert `3224115` (`0x313233`). 
 
-> **Excel**, *R* und *Python* konvertieren Ziffern in Zeichenketten *oft* automatisch in die richtigen Zahlenwerte, **solange** keine anderen Zeichen in der jeweiligen Zeichenketten kodiert wurden.
 
-> Nicht alle Programmiersprachen konvertieren Ziffern in Zeichenketten automatisch in Zahlenwerte.
+::: {.callout-note}
+**Excel**, *R* und *Python* konvertieren Ziffern in Zeichenketten *oft* automatisch in die richtigen Zahlenwerte, **solange** keine anderen Zeichen in der jeweiligen Zeichenketten kodiert wurden.
+
+Nicht alle Programmiersprachen konvertieren Ziffern in Zeichenketten automatisch in Zahlenwerte.
+:::
 
 ### Serialisierung
 
-> **Definition:** Ein Zahlenwert kann bei einer Darstellung zu einer Basis in mehreren Ziffern erfolgen. Diese Zifferndarstellung wird als **Serialisierung** bezeichnet. 
+::: {#def-serialisierung}
+Ein Zahlenwert kann bei einer Darstellung zu einer Basis in mehreren Ziffern erfolgen. Diese Zifferndarstellung wird als **Serialisierung** bezeichnet. 
+:::
 
 *Serialisierung* bedeutet, dass die Ziffern eines Werts *in einer bestimmten Reihenfolge* dargestellt werden. Jede Ziffer einer solchen Darstellung können wir uns als ein *Symbol* einer Nachricht vorstellen. 
 
 Weil ein Zahlenwert in verschiedenen Zahlensystemen dargestellt werden kann, ergibt sich daraus der folgende Merksatz:
 
-> **Merke:** Ein Zahlenwert hat *mehrere* zulässige Serialisierungen. 
 
+::: {.callout-note}
+## Merke
+Ein Zahlenwert hat *mehrere* zulässige Serialisierungen. 
+:::
 
 ## Symbole und Kompression
 
 Das zentrale Element von Shannon's Informationstheorie sind *Nachrichten*, die aus Symbolen bestehen. Entsprechend trägt jedes Symbol zur Information einer Nachricht (`N`) bei. Shannon versteht unter dem Begriff *Symbol* sowohl Zahlen, Buchstaben, Worte als auch Wortfolgen. Dabei lassen sich Wortfolgen in mehrere Worte und Worte in Buchstaben aufteilen. 
 
-> Ein Symbol, das nicht in einfachere Symbole unterteilt werden kann, wird als (Informations-) *Bit* bezeichnet.
+
+::: {.callout-note}
+Ein Symbol, das nicht in einfachere Symbole unterteilt werden kann, wird als (Informations-) *Bit* bezeichnet.
+:::
 
 Sich wiederholende Bits oder Bitfolgen können abgekürzt werden, indem die Bitfolge nur einmal zusammen mit Anzahl der Wiederholungen angegeben wird. 
 
-> Das Abkürzen einer Bitfolge wird als **Kompression** bezeichnet.
+
+::: {.callout-note}
+Das Abkürzen einer Bitfolge wird als **Kompression** bezeichnet.
+:::
 
 Veranschaulichen wir uns das mit Hilfe der Nachricht `"aaaaaaaaaa"`. Diese Bitfolge kann als `[a]`$^{10}$ abgekürzt werden. 
 
@@ -317,7 +355,7 @@ $$
 K = \frac{k}{l(N)}
 $$
 
-In unserem Beispiel haben alle Nachrichten die Länge `10`. 
+Im Beispiel haben alle Nachrichten die Länge `10`. 
 
 Daraus ergeben sich die folgenden Kompressionsgrade: 
 
@@ -334,16 +372,21 @@ $$
 I_g = \frac{1}{K} = \frac{l(N)}{k}
 $$
 
-> **Merke:** Je stärker eine Nachricht komprimiert werden kann, desto weniger Information enthält sie. 
 
-> Eine Nachricht mit dem Kompressionsgrad `1` wird als *informationslos* bezeichnet. Sie enthält also *keine* Information.
+::: {.callout-note}
+## Merke
+Je stärker eine Nachricht komprimiert werden kann, desto weniger Information enthält sie. 
 
+Eine Nachricht mit dem Kompressionsgrad `1` wird als *informationslos* bezeichnet. Sie enthält also *keine* Information.
+:::
 
 ## Zusammenfassung: Symbole und Bits
 
 Ausgehend von der Informationstheorie bestehen Nachrichten aus Symbolen. Symbole können Sätze, Worte, Wortkombinationen, Buchstaben oder Buchstabenfolgen sein. Ein Symbol repräsentiert einen Teil einer Nachricht.
 
-> **Definition:** Ein Symbol einer Nachricht wird als **Bit** (engl. Teil) bezeichnet. 
+::: {#def-bit}
+Ein Symbol einer Nachricht wird als **Bit** (engl. Teil) bezeichnet. 
+:::
 
 In den vorherigen Abschnitten haben wir wichtige Erkenntnisse abgeleitet: 
 
@@ -356,4 +399,8 @@ In den vorherigen Abschnitten haben wir wichtige Erkenntnisse abgeleitet:
 
 Daraus ergibt sich der folgende Merksatz. 
 
-> **Merke:** Das die einfachste Bit-Kodierung für eine Nachricht ist die Unterscheidung zwischen `0` und `1`.
+
+::: {.callout-note}
+## Merke
+Das die einfachste Bit-Kodierung für eine Nachricht ist die Unterscheidung zwischen `0` und `1`.
+:::

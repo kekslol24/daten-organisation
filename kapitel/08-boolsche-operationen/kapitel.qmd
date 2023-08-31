@@ -9,11 +9,16 @@ execute:
   echo: false
 ---
 
-Bool'sche Operationen sind für das Programmieren von zentraler Bedeutung, weil mit ihnen regelbasierte Entscheidungen umgesetzt werden. 
+Boole'sche Operationen sind für das Programmieren von zentraler Bedeutung, weil mit ihnen regelbasierte Entscheidungen umgesetzt werden. 
 
-> Als *Logischer Ausdruck* werden alle Funktionsketten bezeichnet, die einen Wahrheitswert als Ergebnis haben.
+::: {.callout-note} 
+Als *Logischer Ausdruck* werden alle Funktionsketten bezeichnet, die einen Wahrheitswert als Ergebnis haben.
+::: 
 
-> **Merke:** Die einfachsten logischen Ausdsrücke sind die Wahrheitswerte selbst. 
+::: {.callout-note}
+## Merke 
+Die einfachsten logischen Ausdsrücke sind die Wahrheitswerte selbst. 
+:::
 
 Die klassische Aussagenlogik ist seit der Antike Teil der Rethorik und der Philosophie. Sie wurde von Aristoteles in seiner Schrift "Peri hermeneias" (Über die Interpretation) beschrieben. Das Ziel der Aussagenlogik ist es, die Struktur von Argumenten zu analysieren und zu bewerten. 
 
@@ -30,7 +35,7 @@ Die klassische Aussagenlogik beschäftigte sich mit der Verknüpfung von Argumen
 Aussagen sind also *Konklusionen*, die sich aus der Verknüpfung von Argumenten (*Prämissen*) ergeben. Die klassische Aussagenlogik untersucht, wie sich die Wahrheitswerte der Prämissen auf die Wahrheitswerte der Konklusion auswirken. Es handelt sich dabei also um die
 Analyse der Verknüpfung von Argumenten zu Aussagen in Form von Wenn-Dann-Beziehungen.
 
-Klassisch, d.h. seit der Antike, werden die folgenden Beziehungen zwischen zwei Aussagen unterschieden:
+Klassisch, d.h. seit der Antike, werden die folgenden Beziehungen zwischen zwei Aussagen unterschieden [@rautenberg_einfuhrung_2008].
 
 - Die Negation (NICHT) kehrt den Wahrheitswert einer Aussage um. Eine wahre Aussage wird falsch und eine falsche Aussage wird wahr.
 - Die Konjunktion (UND) ist nur dann wahr, wenn beide Aussagen wahr sind.
@@ -46,7 +51,7 @@ Bereits den antiken Philosophen war bekannt, dass die Negation, die Konjunktion 
 
 ## Mathematische Operationalisierung der Aussagenlogik
 
-George Boole hat mit seiner Arbeit "The Mathematical Analysis of Logic" (1847) die Grundlagen für die moderne Informatik gelegt. Er hat die Grundlagen für die Boole'sche Algebra gelegt, die die Grundlage sowohl für die moderne Kommunikationstechnologie als auch für die Informatik ist. Seine Überlegungen standen im Kontext der industriellen Revolution und der damit verbundenen Entwicklung von Maschinen, die mit Hilfe von mathematischen Gleichungen gesteuert werden. Er erkannte, dass die Sprache und damit die Philosophie der Logik genau wie die Mathematik auf Grundlage von Symbolen basierte. Er fragte sich, ob Sprache und Logik einer mathematischen Analyse unterzogen werden können. Speziell interessierte ihn für seine Analyse der Zweig des *Syllogismus* in der Logik, der sich mit dem deduktiven Schlussfolgern aus Argumenten beschäftigt. 
+George Boole hat mit seiner Arbeit "The Mathematical Analysis of Logic" [@boole_mathematical_1847] die Grundlagen für die moderne Informatik gelegt. Er hat die Grundlagen für die Boole'sche Algebra gelegt, die die Grundlage sowohl für die moderne Kommunikationstechnologie als auch für die Informatik ist. Seine Überlegungen standen im Kontext der industriellen Revolution und der damit verbundenen Entwicklung von Maschinen, die mit Hilfe von mathematischen Gleichungen gesteuert werden. Er erkannte, dass die Sprache und damit die Philosophie der Logik genau wie die Mathematik auf Grundlage von Symbolen basierte. Er fragte sich, ob Sprache und Logik einer mathematischen Analyse unterzogen werden können. Speziell interessierte ihn für seine Analyse der Zweig des *Syllogismus* in der Logik, der sich mit dem deduktiven Schlussfolgern aus Argumenten beschäftigt. 
 
 Boole wurde durch die Arbeiten von Leibniz beeinflusst, die sich mit der Formalisierung von Argumenten beschäftigten. Leibniz hatte die Idee, dass Argumente in Form von mathematischen Gleichungen dargestellt werden können. Boole hat diese Idee aufgegriffen und weiterentwickelt. 
 
@@ -67,7 +72,7 @@ Die Wahrheitstafel für die Negation `NICHT` sieht wie folgt aus:
 
 Die in den Wahrheitstafeln aufgeführten Ergebniswerte werden auch als *Belegungen* bezeichnet. Für die logischen Basisoperationen werden diese Belegungen als *Grundbelegung* bezeichnet.
 
-Die Grundbelegungen sind die Basis für die Bool'sche Algebra und Arithmetik. 
+Die Grundbelegungen sind die Basis für die Boole'sche Algebra und Arithmetik. 
 
 Die Wahrheitstafel für die Konjunktion `UND` sieht wie folgt aus:
 
@@ -189,13 +194,19 @@ Logische Ausdrücke werden schnell komplex und unübersichtlich. Die Boole'sche 
 
 Viele Programmiersprachen werten logische Ausdrücke von links nach rechts aus und brechen die Auswertung ab, sobald das Ergebnis feststeht. Das ist bei der Boole'schen Algebra eigentlich nicht möglich, weil die Reihenfolge der Auswertung nicht festgelegt ist. Um die Auswertung logischer Ausdrücke in Programmiersprachen zu unterstützen, sollten die Teilaussagen in ihrer Wichtigkeit und Komplexität absteigend angeordnet werden.
 
-> Logische Ausdrücke haben in der Programmierpraxis eine grosse Bedeutung. Aus diesem Grund verfügen alle Programmiersprachen die Möglichkeit, *beliebige* Zahlen als Wahrheitswerte zu behandeln. Dabei gilt die Konvention, dass die Zahl `0` als `FALSCH` und alle anderen Zahlen als `WAHR` interpretiert werden.
+::: {.callout-tip}
+## Praxis
+
+Logische Ausdrücke haben in der Programmierpraxis eine grosse Bedeutung. Aus diesem Grund verfügen alle Programmiersprachen die Möglichkeit, *beliebige* Zahlen als Wahrheitswerte zu behandeln. Dabei gilt die Konvention, dass die Zahl `0` als `FALSCH` und alle anderen Zahlen als `WAHR` interpretiert werden.
+:::
 
 ## Vergleiche
 
 Die Vergleichsoperatoren sind in der Programmierung sehr wichtig, weil sie die Grundlage für die Kontrollstrukturen bilden. 
 
-> **Definition:** Vergleichsoperatoren sind binäre Operatoren, die zwei Operanden miteinander vergleichen. Das Ergebnis ist immer ein Wahrheitswert.
+::: {#def-vergleichsoperatoren} 
+Vergleichsoperatoren sind binäre Operatoren, die zwei Operanden miteinander vergleichen. Das Ergebnis ist immer ein Wahrheitswert.
+:::
 
 Der zentrale Vergleich ist die Gleichheit (`=`). Die Gleichheit ist gegeben, wenn beide Operanden des Vergleichs gleich sind. In diesem Fall gibt dieser Vergleich `WAHR` zurück. 
 
@@ -248,13 +259,17 @@ In diesem Beispiel ist das Ergebnis des Vergleichs: `{WAHR; FALSCH}`.
 
 ## Entscheidungen
 
-> **Definition:** Eine **Entscheidung** beschreibt eine Funktion, die mit Hilfe eines *logischen Ausdrucks* aus eines von zwei alternativen Ergebnissen *auswählt*.
+::: {#def-entscheidung} 
+Eine **Entscheidung** beschreibt eine Funktion, die mit Hilfe eines *logischen Ausdrucks* aus eines von zwei alternativen Ergebnissen *auswählt*.
+:::
 
 Bei Entscheidungen werden in der Regel die beiden Fälle des logischen Ausdrucks unterschieden. Dabei wird der Fall, der `WAHR` ergibt als *positiver Fall* und der Fall, der `FALSCH` ergibt als *negativer Fall* bezeichnet.
 
 Entscheidungen können nacheinander ausgeführt werden. Dabei führen die beiden Fälle der ersten Entscheidung in jeweils eine weitere Entscheidung. Solche verschachtelten Entscheidungen werden als **Entscheidungsbäume** bezeichnet.
 
-> **Definition:** Eine Verkettung von Entscheidungen wird als **Entscheidungsbaum** bezeichnet.
+::: {#def-entscheidungsbaum} 
+Eine Verkettung von Entscheidungen wird als **Entscheidungsbaum** bezeichnet.
+:::
 
 Die logischen Ausdrücke eines Entscheidungsbaums sind grundsätzlich *unabhängig* voneinander. Die einzige Beziehung zwischen den logischen Ausdrücken ist die *Reihenfolge*, in der sie geprüft werden. @fig-entscheidungsbaum zeigt das Schema eines einfachen Entscheidungsbaum mit zwei aufeinanderfolgenden Entscheidungen. 
 
@@ -273,7 +288,9 @@ graph TB
 
 Ein oft vorkommender Speziallfall von Entscheidungsbäumen sind verschachtelte Entscheidungen, die so arrangiert sind, dass jeder logische Ausdruck genau ein Ergebnis auswählt. 
 
-> **Definition:** Ein *Entscheidungsbaum*, der für einen logischen Ausdruck mindestens ein Ergebnis und höchstens einen nachfolgende Entscheidung, heisst **linearer Entscheidungsbaum**.
+::: {#def-linearer-entscheidungsbaum} 
+Ein *Entscheidungsbaum*, der für einen logischen Ausdruck mindestens ein Ergebnis und höchstens einen nachfolgende Entscheidung, heisst **linearer Entscheidungsbaum**.
+:::
 
 *Lineare Entscheidungsbäume* können das Ergebnis sowohl für den `Wahr` oder den `Falsch`-Fall festlegen. Per Konvention werden die logischen Ausdrücke linearer Entscheidungsbäume so formuliert, dass die Ergebnisse immer für den Fall `Wahr` und die nachfolgende Entscheidung immer für den Fall `Falsch` folgen. @fig-lin-entscheidungsbaum zeigt das Schema eines linearen Entscheidungsbaums mit zwei Entscheidungen.
 
@@ -292,11 +309,16 @@ graph TB
 
 ## Filtern
 
-> **Definition:** Als **Filter** werden Funktionen bezeichnet, die Werte eines Vektors mithilfe eines logischen Ausdrucks auswählen. 
+::: {#def-filters} 
+Als **Filter** werden Funktionen bezeichnet, die Werte eines Vektors mithilfe eines logischen Ausdrucks auswählen. 
+:::
 
 Ein Vektor ist gefiltert, wenn der logische Ausdruck für alle Werte `Wahr` ergibt. Als Konsequenz werden alle Werte aus einem Vektor entfernt, für die der logische Ausdruck `Falsch` ergibt. 
 
-> **Merke:** Durch das Filtern wird die Länge von Vektoren verändert. Das Ergebnis ist immer höchstens so lang wie der ursprüngliche ungefilterte Vektor.
+::: {.callout-note}
+## Merke
+Durch das Filtern wird die Länge von Vektoren verändert. Das Ergebnis ist immer höchstens so lang wie der ursprüngliche ungefilterte Vektor.
+:::
 
 Der logische Ausdruck muss sich nicht auf die Werte des Vektors beziehen. Damit Werte mit einem solchen logischen Ausdruck ausgewählt werden können, bedarf es einen Referenzvektor mit gleicher Länge. Ein Wert wird mit dieser Technik ausgewählt, wenn der logische Ausdruck für den Wert an der gleichen Position im Referenzvektor `Wahr` ergibt.
 
@@ -304,13 +326,21 @@ Weil die Vektoren von Stichprobenobjekten immer die gleiche Länge haben, lassen
 
 ## Sortieren
 
-> **Definition:** Als **Sortieren** werden Funktionen bezeichnet, die Reihenfolge von Werten mittels eines logischen Ausdrucks bestimmen. 
+::: {#def-sorting} 
+Als **Sortieren** werden Funktionen bezeichnet, die Reihenfolge von Werten mittels eines logischen Ausdrucks bestimmen. 
+:::
 
-> **Merke:** Durch Sortieren wird die Länge von Vektoren *nicht* verändert.
+::: {.callout-note}
+## Merke
+Durch Sortieren wird die Länge von Vektoren *nicht* verändert.
+:::
 
 Die Basis für das Sortieren sind Vektoren. Ein Vektor ist sortiert, wenn der logische Ausdruck für alle Werte paarweise `Wahr` ergibt. Die einfachsten logischen Ausdrücke zum Sortieren sind die Vergleiche *grösser als* und *kleiner als*. 
 
-> **Merke:** Der Vergleich auf *Gleichheit* ist zum Sortieren ungeeignet, weil es keine Reihenfolge gibt, so dass die Gleichheit für alle Wertepaar `Wahr` ergibt. 
+::: {.callout-note}
+## Merke
+Der Vergleich auf *Gleichheit* ist zum Sortieren ungeeignet, weil es keine Reihenfolge gibt, so dass die Gleichheit für alle Wertepaar `Wahr` ergibt. 
+:::
 
 Grundsätzlich werden 2 Sortierreihenfolgen unterschieden. Diese sind für Zahlen, Zeichenketten und Wahrheitswerte definiert: 
 
@@ -332,3 +362,5 @@ v_{Vorgänger} \ge v_{Nachfolger}
 $$
 
 Wie beim Filtern können sich die logischen Ausdrücke beim Sortieren auf andere Vektoren beziehen. Dafür wird ein Referenzvektor benötigt. Die Sortierung des Vektors erfolgt entsprechend der Positionen im Referenzvektor. Deshalb müssen Referenzvektoren immer die gleiche Länge wie die Sortiervektoren haben.
+
+## Referenzen

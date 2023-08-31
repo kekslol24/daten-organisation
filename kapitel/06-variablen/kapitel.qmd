@@ -1,6 +1,4 @@
 ---
-# bibliography: references.bib
-
 title: Variablen, Funktionen und Operatoren
 
 abstract: ""
@@ -13,13 +11,17 @@ execute:
 
 Bei der Datenverarbeitung müssen Daten auch gespeichert werden, um sie wiederzufinden. Dazu werden die Daten mit einem Bezeichner versehen, über den auf die Daten zugegriffen werden kann. Diese Bezeichner sind in der Folge mit dem zugewiesenen Wert gleichwertig.
 
-> **Definition:** Ein Bezeichner ist ein Platzhalter für Werte. Ein Bezeichner hat immer einen *eindeutigen Namen* in einem Geltungsbereich.
+::: {#def-bezeichner}
+Ein Bezeichner ist ein Platzhalter für Werte. Ein Bezeichner hat immer einen *eindeutigen Namen* in einem Geltungsbereich.
+:::
 
 Der Begriff *Wert* ist hier *möglichst allgemein* zu denken. Ein Wert kann ein fundamentaler Datentyp oder eine Datenstruktur sein. Dateien oder `git`-Versionen können ebenfalls als Werte behandelt werden.
 
 Bezeichner sind in einem Geltungsbereich immer *eindeutig*. Das bedeutet, dass Bezeichner mit dem gleichen Namen auf den gleichen Wert verweisen. Ein Bezeichner kann nicht gleichzeitig auf zwei Werte verweisen. Das Wort *Geltungsbereich* bezieht sich auf dem Zusammenhang, in dem ein Bezeichner verwendet wird. Die Definition besagt daher, dass ein Bezeichner genau einmal im gleichen Zusammenhang verwendet werden darf. Deshalb ist es wichtig, den Geltungsbereich von Bezeichnern genau zu definieren.
 
-> Die Definition eines Geltungsbereichs ist in den meisten Programmiersprachen und -Umgebungen genau definiert.
+::: {.callout-note}
+Die Definition eines Geltungsbereichs ist in den meisten Programmiersprachen und -Umgebungen genau festgelegt.
+:::
 
 Mit Bezeichnern kann wie mit Werten gearbeitet werden, weil ein Bezeichner für einen Wert steht. Ein Bezeichner kann einen einzelnen Wert oder eine beliebige komplexe Datenstruktur aufnehmen. Ein Bezeichner kann auf einen einzelne Zahl oder Zeichenkette genauso verweisen, wie auf einen Vektor, eine Liste oder eine Matrix. Bezeichner sind nicht auf die fundamentalen Datentypen beschränkt. Z.B. ist ein *Dateiname* ein Bezeichner für die Daten in einer Datei oder ein `git`-Tag ist ein Bezeichner für eine bestimmte Version eines Projektes. Durch den Bezeichner wird vom eigentlichen Wert *abstrahiert*.
 
@@ -34,11 +36,15 @@ Es werden zwei Arten von Bezeichnern unterschieden:
 - unveränderliche Bezeichner
 - veränderliche Bezeichner
 
-> **Definition:** Eine **Konstante** ist ein *unveränderlicher* Bezeichner. 
+::: {#def-konstante} 
+Eine **Konstante** ist ein *unveränderlicher* Bezeichner. 
+:::
 
 Konstanten verweisen in ihrem Geltungsbereich immer auf den gleichen Wert. Einer Konstante kann nur einmal ein Wert zugewiesen werden. 
 
-> **Definition:** Eine **Variable** ist ein veränderlicher Bezeichner. 
+::: {#def-variable} 
+Eine **Variable** ist ein veränderlicher Bezeichner. 
+:::
 
 Variablen kann im gleichen Geltungsbereich mehrmals ein Wert zugewiesen werden. Welcher Wert gerade für eine Variable gültig ist, hängt vom Zeitpunkt einer Verarbeitung ab.
 
@@ -56,7 +62,9 @@ Wie eine Funktion die Effekte erzeugt, wird im **Funktionskörper** festgelegt.
 
 Manche Funktionen benötigen Eingaben, um daraus die Ergebnisse zu erzeugen.
 
-> **Definition:** Die Eingaben einer Funktion heissen **Parameter** oder **Funktionsargumente**. Eine Funktion **akzeptiert** diese Parameter als Eingabe.
+::: {#def-parameter} 
+Die Eingaben einer Funktion heissen **Parameter** oder **Funktionsargumente**. Eine Funktion **akzeptiert** diese Parameter als Eingabe.
+:::
 
 *Parameter* sind spezielle *Variablen* mit dem Geltungsbereich des Funktionskörpers.
 
@@ -68,7 +76,9 @@ Eine Funktion, die keine Parameter akzeptiert, wird ist eine **parameterlose Fun
 
 So lässt sich die Funktionsdefinition erweitern und präzisieren: 
 
-> **Definition:** Eine Funktion erzeugt Effekte im Zielbereich mithilfe einer Parameterliste mit Werten im Definitionsbereich.
+::: {#def-funktion}
+Eine Funktion erzeugt Effekte im Zielbereich mithilfe einer Parameterliste mit Werten im Definitionsbereich.
+:::
 
 Formal lässt sich diese Defition wird der durch die Rückgabeliste definierte Zielbereich dem Bezeichner $E$ zugewiesen und den Defitionsbereich der Parameterliste mit $P$ gekennzeichnet, dann ist entsprechend dieser Definition **jede** Funktion entsprechend @eq-fkt-def definiert. 
 
@@ -80,13 +90,17 @@ Diese Formel wird wie folgt gelesen: *Die Funktion $f$ bildet den Definitionsber
 
 Diese Funktionsdefinition benötigt **keinen** *Funktionskörper*. Tatsächlich können die gleichen Ergebnisse auf unterschiedlichen Wegen aus den gleichen Parametern erzeugt werden. Das kann bspw. durch die Verwendung unterschiedlicher Programmiersprachen sein.
 
-> **Definition:** Wenn zwei Funktionen für die gleichen Parameter das gleiche Ergebnis erzeugen, dann sind diese Funktionen **funktional gleich**.
+::: {#def-functional-equal} 
+Wenn zwei Funktionen für die gleichen Parameter das gleiche Ergebnis erzeugen, dann sind diese Funktionen **funktional gleich**.
+:::
 
 Um eine Funktion zu verwenden, muss diese *aufgerufen* werden. Ein *Funktionsaufruf* wird meistens durch eine rundes Klammerpaar dargestellt. Wird eine Funktion aufgerufen, wird der Funktionskörper mit den Werten in den Parametern ausgeführt. Der Funktionsaufruf $f(x)$ wählt für einen Wert $x$ aus dem Definitionsbereich $P$ den entsprechenden Wert $y$ aus dem Zielbereich $E$ aus.
 
 Manche Programmiersprachen ermöglichen die Verwendung des gleichen Bezeichners für unterschiedliche Definitions- und Zielbereiche.
 
-> **Merke:** Hat ein Funktionsbezeichner mehrere Definitionsbereiche, dann heisst diese Funktion **polimorph** (gr. *poli*: viel, gr. *morphos*: Gestalt).
+::: {#def-polymorph} 
+Hat ein Funktionsbezeichner mehrere Definitionsbereiche, dann heisst diese Funktion **polimorph** (gr. *poli*: viel, gr. *morphos*: Gestalt).
+:::
 
 Bei polimorphen Funktionen muss der Funktionsbezeichner und die Parameterliste gemeinsam eindeutig sein. 
 
@@ -100,7 +114,9 @@ In den Datenwissenschaften kommen im Wesentlichen drei Arten von Funktionen zum 
 
 #### Konstante Funktionen
 
-> **Definition:** Eine **konstante Funktion** erzeugt für jede Eingabe immer den gleichen Ergebniswert $w$.
+::: {#def-konstante-fkt}
+Eine **konstante Funktion** erzeugt für jede Eingabe immer den gleichen Ergebniswert $w$.
+::: 
 
 Konstante Funktionen sind formal wie in @eq-konstante-fkt definiert: 
 
@@ -113,7 +129,9 @@ Das bedeutet, dass unabhängig von der Eingabe immer der Wert von $W$ als Ergebn
 #### Die Identitätsfunktion
 Die nächste Funktion ähnelt in ihrer Definition konstanten Funktionen. 
 
-> **Definition:** Die **Identitätsfunktion** gibt für eine Eingabe diese Eingabe als Ergebnis zurück.
+::: {#def-id-fkt}
+Die **Identitätsfunktion** gibt für eine Eingabe diese Eingabe als Ergebnis zurück.
+:::
 
 Die formale Definition der Identitätsfunktion zeigt @eq-id-fkt.
 
@@ -127,9 +145,13 @@ Die Identitätsfunktion ist umkehrbar. Die Umkehrfunktion der Identitätsfunktio
 
 #### Projektionen 
 
-> **Definition:** Eine **Projektion** bezeichnet eine Funktion, die den gleichen Eingaben **immer** die *gleichen Ergebnisse* zuweist.
+::: {#def-projektion}
+Eine **Projektion** bezeichnet eine Funktion, die den gleichen Eingaben **immer** die *gleichen Ergebnisse* zuweist.
+:::
 
-> **Definition:** Eine *Projektion* heisst **umkehrbar**, wenn eine zweite Funktion existiert, welche die Rückgabeliste der ersten Funktion als Parameterliste hat und aus dieser die Parameterliste der ersten Funktion als Rückgabeliste erzeugt. Diese zweite Funktion ist die **Umkehrfunktion** der ersten Funktion.
+::: {#def-umkehrbar}
+Eine *Projektion* heisst **umkehrbar**, wenn eine zweite Funktion existiert, welche die Rückgabeliste der ersten Funktion als Parameterliste hat und aus dieser die Parameterliste der ersten Funktion als Rückgabeliste erzeugt. Diese zweite Funktion ist die **Umkehrfunktion** der ersten Funktion.
+:::
 
 Die Umkehrfunktion einer Funktion $f$ wird als $f^{-1}$ geschrieben.
 
@@ -139,9 +161,11 @@ Aus diesen beiden Definitionen folgt im Umkehrschluss, dass nicht jede Funktion 
 
 Aus den Grundrechenarten sind Operatoren bekannt. Diese Operatoren sind z.B. `+`, `-`, `*` und `/`. Diese Operatoren sind in der Mathematik und den Datenwissenschaften *Funktionen*.
 
-> **Definition:** Eine **Operation** bezeichnet die Anwendung eines Operators. Eine Operation besteht aus einem Operator und den Operanden.
+::: {#def-operation}
+Eine **Operation** bezeichnet die Anwendung eines Operators. Eine Operation besteht aus einem Operator und den Operanden.
+:::
 
-> **Definition:** Ein **Operator** ist eine alternative Schreibweise für häufig verwendete *Funktionen*. 
+Ein **Operator** ist eine alternative Schreibweise für häufig verwendete *Funktionen*. 
 
 Die *meisten* Operatoren sind unär oder binär. Unäre Operatoren haben nur einen Parameter. Ein unärer Operator ist das Vorzeichen `-` oder das `%`-Zeichen. Binäre Operatoren haben zwei Parameter. Alle Grundrechenarten sind binäre Operatoren.
 
@@ -164,11 +188,17 @@ Diese Abkürzung dient als Eselsbrücke für die Prioritäten der Grundrechenart
 
 Exponenten werden in der Mathematik in der Regel hochgestellt dargestellt. Die meisten Programmiersprachen unterstützen keine Formatierung von Formeln als Kennzeichnung von Operatoren. Deshalb wird der Potenz-Operator mit einem expliziten Operator dargestellt. Meist ist dies der `^`-Operator.
 
-> **ACHTUNG:** Die Programmiersprache Python weicht von dieser Konvention ab und verwendet den `**`-Operator für Exponenten. Der `^`-Operator ist in Python der sog. *bitweise XOR-Operator*. REFERENCE
+::: {.callout-caution}
+## Achtung
+
+Die Programmiersprache Python weicht von dieser Konvention ab und verwendet den `**`-Operator für Exponenten. Der `^`-Operator ist in Python der sog. *bitweise XOR-Operator*. [@python_software_foundation_bitwise_2013]
+:::
 
 ### Substitution {#sec-substitution}
 
-> Wird ein Teil einer komplexen Operation in eine einfachere Funktion ausgelagert, dann spricht man von **Substitution**. 
+::: {.callout-note}
+Wird ein Teil einer komplexen Operation in eine einfachere Funktion ausgelagert, dann spricht man von **Substitution**. 
+:::
 
 In der Mathematik wird beim Substituieren die Teiloperation in der Regel nur durch Bezeichner der ersetzenden Funktion angegeben. In der Praxis müssen solche Ersetzungsfunktionen explizit parametrisiert und ausgeführt werden.
 
@@ -222,13 +252,17 @@ Manche Programmiersprachen unterstützen gerichtete Zuweisungsoperatoren, bei de
 
 Der Zuweisungsoperator ist zu allen anderen Operatoren nachrangig. Das bedeutet, dass der Zuweisungsoperator immer als letzter Operator einer Operation ausgeführt wird.
 
-> **Merke:** Der Zuweisungsoperator ist beim Programmieren wichtig, deshalb sollte man sich beim Erlernen einer Programmiersprache unbedingt mit allen Formen dieses Operators vertraut machen.
+::: {.callout-tip}
+Der Zuweisungsoperator ist beim Programmieren wichtig, deshalb sollte man sich beim Erlernen einer Programmiersprache unbedingt mit allen Formen dieses Operators vertraut machen.
+:::
 
 #### Der Anwendungsoperator
 
 Werden Klammern unmittelbar nach einem Funktionsbezeicher angegeben, dann ändern diese Klammern ihre Bedeutung, indem sie die *Anwendung* der bezeichneten Funktion erfordern. Mithilfe des Anwendungsoperators kann zwischen der Anwendung einer Funktion und ihrem Bezeichner unterschieden werden.
 
-> Der Anwendungsoperator kann ausschliesslich mit Bezeichnern verwendet werden, die auf eine Funktion verweisen.
+::: {.callout-warning}
+Der Anwendungsoperator kann ausschliesslich mit Bezeichnern verwendet werden, die auf eine Funktion verweisen.
+:::
 
 Die Funktion $addieren(a, b)$ hat den Bezeichner $addieren$ und die Parameter $a$ und $b$. Der Bezeichner $addieren$ ohne den Anwendungsoperator (`()`), verweist auf die Funktion selbst. So kann die gleiche Funktion einem anderen Bezeichner zugewiesen werden, bspw. dem Bezeichner $zusammenzählen$.  Es gilt dann @eq-anwendungsop-bez.
 
@@ -259,7 +293,9 @@ Das Symbol $\Sigma$ ist der Summe-Operator. Dieser Operator addiert alle Werte i
 
 Manche Funktionen haben die besondere Eigenschaft, dass es einen Wert im Definitionsbereich gibt, der für alle Werte im Definitionsbereich das gleiche Ergebnis *unabhängig* davon erzeugt, als welcher Operand dieser Wert verwendet wird. Dieser Wert wird als das **neutrales Element** des Operators bezeichnet. Für die Addition ist das die Zahl `0` und für die Multiplikation ist das die Zahl `1`.
 
-> **Definition:** Das **neutrale Element** eines Operators ist ein Wert im Definitionsbereich, der für **alle** Werte im Definitionsbereich des jeweils anderen Operanden diesen Wert als Ergebnis erzeugt.
+::: {#def-neutrales-element}
+Das **neutrale Element** eines Operators ist ein Wert im Definitionsbereich, der für **alle** Werte im Definitionsbereich des jeweils anderen Operanden diesen Wert als Ergebnis erzeugt.
+:::
 
 Ist der Definitionsbereich durch den Datentyp Zahl festgelegt, dann muss das neutrale Element genau eine Zahl sein.
 
@@ -324,17 +360,30 @@ Auch dieser Weg führt zu keinem Ergebnis für das neutrale Element, weil e_n *e
 
 Aus diesen Betrachtungen folgt, dass die Division kein neutrales Element hat, weil über beide Definitionen des neutralen Elements kein eindeutiges Ergebnis für die Division gefunden wurde.
 
-> **Merke:** Nicht jede Operation hat ein neutrales Element. 
+::: {.callout-note}
+## Merke
+
+Nicht jede Operation hat ein neutrales Element. 
+:::
 
 ### Redundanz
 
 Für das *neutrale Element* eines Operators ist die Operation mit der Identitätsfunktion funktional gleich. 
 
-> **Definition:** Ergeben mehrere Teiloperationen **immer** das neutrale Element für die nächste Operation, dann sind diese Operationen **redundant**.
+::: {#def-redundant}
+Ergeben mehrere Teiloperationen **immer** das neutrale Element für die nächste Operation, dann sind diese Operationen **redundant**.
+:::
 
+::: {.callout-note}
+## Merke
 *Redundante* Operationen können aus einer Operation entfernt werden, ohne dass sich das Ergebnis ändert.
+:::
 
-> **Praxis:** Redundante Operationen sollten in der Praxis möglichst *immer* vermieden werden, weil sie keinen Einfluss auf das Ergebnis haben, aber trotzdem Kapazitäten beanspruchen. Das verlangsamt den Arbeitsprozess unnötig. Leider sind redundante Operationen nicht immer als solche erkennbar. 
+::: {.callout-tip}
+## Praxis
+
+Redundante Operationen sollten in der Praxis möglichst *immer* vermieden werden, weil sie keinen Einfluss auf das Ergebnis haben, aber trotzdem Kapazitäten beanspruchen. Das verlangsamt den Arbeitsprozess unnötig. Leider sind redundante Operationen nicht immer als solche erkennbar. 
+:::
 
 ## Funktionen als Werte {#sec-funktionen-als-werte}
 
@@ -344,15 +393,21 @@ Der Datentyp *Funktion* gibt einen gültigen Wertebereich vor. Die Symbole diese
 
 Eine Funktion ohne Bezeichner wird eine **anonyme Funktion** genannt. 
 
-> Im Internet und (seltener) in der Literatur werden anonyme Funktionen auch als **Lambda-Funktionen** bezeichnet. Dieser Name ist dem sog. $\lambda$-Kalkül REFERENCE CURRY aus der Berechenbarkeitstheorie entlehnt, weil das $\lambda$-Kalkül keine Bezeichner und Operatoren benötigt. Deshalb können Operationen im $\lambda$-Kalkül ausschliesslich durch anonyme Funktionen realisiert werden. 
->
-> *Eine Lambda-Funktion unterscheidet sich nicht von anderen Funktionen!*
+::: {.callout-note}
+## Exkurs
+
+Im Internet und (seltener) in der Literatur werden anonyme Funktionen auch als **Lambda-Funktionen** bezeichnet. Dieser Name ist dem sog. $\lambda$-Kalkül [@church_formulation_1940] aus der Berechenbarkeitstheorie entlehnt, weil das $\lambda$-Kalkül keine Bezeichner und Operatoren benötigt. Deshalb können Operationen im $\lambda$-Kalkül ausschliesslich durch anonyme Funktionen realisiert werden. 
+
+*Eine Lambda-Funktion unterscheidet sich nicht von anderen Funktionen!*
+:::
 
 Dieser besondere Datentyp kann wie jeder andere Datentyp für Parameter und Ergebnisse von Funktionen verwendet werden.
 
 ### Callback-Funktionen
 
-> **Definition:** Eine **Callback-Funktion** ist eine Funktion, die als Parameter an eine andere Funktion übergeben wurde.
+::: {#def-callback-fkt}
+Eine **Callback-Funktion** ist eine Funktion, die als Parameter an eine andere Funktion übergeben wurde.
+:::
 
 Bei der Übergabe einer Callback-Funktion wird die Funktion als Parameter übergeben. Das entspricht der Zuweisung einer Funktion an einen neuen Bezeichner. Dadurch muss die aufgerufene Funktion den Bezeichner der Callback-Funktion zum Zeitpunkt ihrer Definition nicht kennen, sondern kann über den Parameternamen auf diese Funktion zugreifen.
 
@@ -372,7 +427,9 @@ Callback-Funktionen ermöglichen das **Verallgemeinern** von Algorithmen, indem 
 
 ### Closure-Funktionen
 
-> **Definition:** **Closure-Funktionen** sind Funktionen, die als Rückgabewert von einer anderen Funktion erzeugt werden.
+::: {#def-closure-fkt}
+**Closure-Funktionen** sind Funktionen, die als Rückgabewert von einer anderen Funktion erzeugt werden.
+:::
 
 Eine Closure-Funktion wird im Geltungsbereich der erzeugenden Funktion definiert und übernimmt alle Bezeichner dieses Geltungsbereichs, so dass für eine komplexe Operation alle notwendigen Werte vorhanden sind. 
 
@@ -408,11 +465,14 @@ Closure-Funktionen **vereinfachen** komplexe Funktionen, indem deren Parameter �
 
 Wenn das Ergebnis einer Funktion als Parameter einer beliebigen anderen Funktion verwendet wird, dann sind die beiden Funktionen **verkettet**. Mit verketteten Funktionen lassen sich komplexere Funktionen bilden. Umgekehrt lassen sich komplexe Funktionen in eine Verkettung einfacherer Teilfunktionen gliedern. Diese Technik heisst **Problemzerlegung** 
 
-> **Definition:** Eine **Funktionskette** ist eine Abfolge von Funktionen, wobei eine nachfolgende Funktion das Ergebnis einer vorangehenden Funktion als Parameter akzeptiert. 
+::: {#def-fkt-kette}
+Eine **Funktionskette** ist eine Abfolge von Funktionen, wobei eine nachfolgende Funktion das Ergebnis einer vorangehenden Funktion als Parameter akzeptiert. 
 
 Die Funktionsverkettung dient dem Festlegen der Reihenfolge von Operationen. Das Prinzip der Funktionsverkettung ist einfach: Es wird das Ergebnis einer Funktion als Parameter einer anderen Funktion verwendet.
 
-> In der Literatur wird die *Funktionsverkettung* auch als **Composting** bezeichnet.
+::: {.callout-note}
+In der Literatur wird die *Funktionsverkettung* auch als **Composting** bezeichnet.
+:::
 
 Das folgende Beispiel nutz aus, dass die Operatoren der Grundrechenarten eigentlich Funktionen sind. Die Operation aus @eq-problemzerlegung-basis verwendet also die beiden Funktionen `subtraktion()` und `potenz()`. @eq-problemzerlegung-kette zeigt die Operation aus @eq-problemzerlegung-basis als verkettete Funktionen. 
 
@@ -426,7 +486,9 @@ Im Gegensatz zu Operatoren ist die Ausführungsreihenfolge verketteter Funktione
 
 Werden Funktionsaufrufe als Parameter von anderen Funktionen geschrieben, dann sind diese Funktionen *geschachtelt* geschrieben. In *geschachtelten Funktionsketten* lässt sich die Reihenfolge der Funktionsaufrufe nicht immer leicht erkennen. Das ist immer dann der Fall, wenn viele Funktionen verkettet wurden. In solchen Fällen hilft die Darstellung der Funktionskette als *Baum*. @fig-fkt-baum zeigt den Funktionsbaum für @eq-problemzerlegung-kette. 
 
-> Ein Funktionsbaum ist eine Spezialform eines sog. *Abstract Syntax Tree*. REFERENCE
+::: {.callout-note}
+Ein Funktionsbaum ist eine Spezialform eines sog. *Abstract Syntax Tree*. [@knuth_semantics_1968]
+:::
 
 ```{mermaid} 
 %%| label: fig-fkt-baum
@@ -473,7 +535,10 @@ $$ {#eq-parameterliste-redux}
 
 Aus dieser Bedingung hat die Konsequenz, dass die spezielle Funktionsverkettung nur verwendet werden kann, wenn die nachfolgende Funktion mindestens einen Parameter hat. 
 
-> **Merke:** Die spezielle Funktionsverkettung ist für parameterlose Funktionen **undefiniert**.
+::: {.callout-note}
+## Merke
+Die spezielle Funktionsverkettung ist für parameterlose Funktionen **undefiniert**.
+:::
 
 Weil die verbleibende Parameterliste Teil der Operation ist, darf sie vom Operator nicht vernachlässigt werden. Der Operator muss also den ersten Parameter, die nachfolgende Funktion **und** die restlichen Parameter der nachfolgenden Funktion berücksichtigen. Daraus ergibt sich, dass der spezielle Funktionsverkettungsoperator *kein* binärer Operator ist. Die Funktion der speziellen Funktionsverkettung ist in @eq-spec-fktchain definiert.
 
@@ -483,13 +548,19 @@ $$ {#eq-spec-fktchain}
 
 In der Definition der speziellen Funktionsverkettung fehlt die vorangehende Funktion. Dieses Fehlen ergibt sich aus der Logik von Operatoren, weil höherwertige Teiloperationen vor niederwertigen Teiloperationen oder weiter links stehende Teiloperationen zuerst ausgeführt werden müssen. Der erste Parameter der nachfolgenden Funktion ist deshalb immer das Ergebnis einer vorangehenden Funktion. Diese Überlegung lässt sich weiter verallgemeinern: 
 
-> **Merke** Jeder Wert oder Bezeichner im Wertebereich von $P_1$ kann als linker Operand der speziellen Funktionsverkettung verwendet werden.
+::: {.callout-note}
+## Merke
+Jeder Wert oder Bezeichner im Wertebereich von $P_1$ kann als linker Operand der speziellen Funktionsverkettung verwendet werden.
+:::
 
 ### Anwendung von Funktionsketten
 
 Funktionsketten sind ein leistungsfähiges Werkzeug für die Problemzerlegung bei der Datenarbeit. Funktionen lassen sich jedoch nicht beliebig verketten. 
 
-> **Merke:** Funktionen lassen sich nur verketten, wenn die Rückgabewerte der vorangehenden Funktion den gleichen Wertebereich haben, wie der entsprechende Parameter der nachfolgenden Funktion. 
+::: {.callout-note}
+## Merke
+Funktionen lassen sich nur verketten, wenn die Rückgabewerte der vorangehenden Funktion den gleichen Wertebereich haben, wie der entsprechende Parameter der nachfolgenden Funktion. 
+:::
 
 Weil unter dieser Voraussetzung jede Funktion als Parameter einer anderen Funktion verkettet werden kann, lassen sich mit verketteten Funktionen beliebig komplexe Operationen bilden. Jede diese Operationen ist automatisch eine Funktion. Deshalb werden Funktionsketten in der Praxis häufig als zentraler Teil von Funktionen eingesetzt. 
 
@@ -543,7 +614,10 @@ $$ {#eq-id-fkt-chain-zusammenfassung}
 
 Die Identitätsfunktion ist also auch das neutrale Element der speziellen Funktionsverkettung. 
 
-> **Merke:** Die Identitätsfunktion ist das neutrale Element der allgemeinen und speziellen Funktionsverkettungsoperators. 
+::: {.callout-note}
+## Merke
+Die Identitätsfunktion ist das neutrale Element der allgemeinen und speziellen Funktionsverkettungsoperators. 
+:::
 
 #### Verkettung mit Umkehrfunktionen
 
@@ -562,8 +636,16 @@ F^{-1} \circ F = F \circ F^{-1} =  f_{id}
 $$ {#eq-ufkt_zusammenfassung}
 
 
-> **Merke:** Wird eine *umkehrbare Projektion* mit ihrer Umkehrfunktion verkettet, dann ist diese verkettete Funktion mit der Identitätsfunktion funktional gleich.
+::: {.callout-note}
+## Merke
+Wird eine *umkehrbare Projektion* mit ihrer Umkehrfunktion verkettet, dann ist diese verkettete Funktion mit der Identitätsfunktion funktional gleich.
+:::
 
 Nun ist $f_{id}$ auch das neutrale Element der Funktionsverkettung. Deshalb gilt zusätzlich, dass jede Verkettung einer umkehrbaren Projektion mit ihrer Umkehrfunktion *redundant* ist. Diese Überlegung lässt sich weiter verallgemeinern: 
 
-> **Merke:** Jede (Teil-)Funktionskette, die mit der Identitätsfunktion funktional gleich ist, ist ***redundant*** und kann weggelassen werden.
+::: {.callout-note}
+## Merke
+Jede (Teil-)Funktionskette, die mit der Identitätsfunktion funktional gleich ist, ist ***redundant*** und kann weggelassen werden.
+:::
+
+## Referenzen
