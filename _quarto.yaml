@@ -1,10 +1,14 @@
 project:
   type: book
 
+bibliography: dxi-skript.bib
+
+
 crossref:
 #   fig-prefix: Abbildung   # (default is "Figure")
 #   tbl-prefix: Tabelle    # (default is "Table")
   eq-prefix: Formel # (default is "Equation")
+  prp-title: Satz
 #   sec-prefix: Abschnitt # (default is "Section")
 
 lang: de
