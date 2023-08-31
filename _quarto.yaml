@@ -3,7 +3,6 @@ project:
 
 bibliography: dxi-skript.bib
 
-
 crossref:
 #   fig-prefix: Abbildung   # (default is "Figure")
 #   tbl-prefix: Tabelle    # (default is "Table")
@@ -16,8 +15,7 @@ book:
   title: Daten und Information
   subtitle: Data Science Grundlagen für die Life Sciences
   author: 
-  - family: Glahn
-    given: Christian  
+  - name: Christian Glahn
   page-navigation: true
   
   chapters:
@@ -63,11 +61,17 @@ book:
     - kapitel/14-daten-visualisieren/kapitel.md
     - kapitel/10-lineare-modelle/kapitel.md
 
+  - references.qmd
 
 format:
   html:
-    theme: bootstrap
+    theme: 
+    - cosmo
+    # - bootstrap
+    # - extra.scss
     toc: true
     html-math-method: katex
+  pdf:
+    papersize: a4
 
 csl: _contrib/apa.csl
