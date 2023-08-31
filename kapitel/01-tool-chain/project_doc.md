@@ -263,7 +263,7 @@ Falls über ein Teilprojekt berichtet wird, dann gelten die nächsten *geplanten
 
 Das Zitieren von Quellen ist ein wichtiger Teil der wissenschaftlichen Arbeit. Das Zitieren von Quellen dient dazu, die Herkunft von Ideen, Aussagen und Ergebnissen zu dokumentieren. Das Referenzieren externer Quellen ist verpflichtend. Im Bericht wird auf die Quellen in einer Kurzform verweisen. Die vollständigen Angaben aller Quellen werden im Quellenverzeichnis aufgeführt.
 
-Wie Quellen richtig referenziert werden, ist in sog. Zitierstandards festgelegt. Wichtige Zitierstandars sind der APA Styleguide, der Chicago Styleguide, der IEEE Styleguide oder der ACM Styleguide REFERENCE. In einem Projektbericht wird nur ein Zitierstandard verwendet. Es ist nicht vorgesehen, Zitierstandards zu mischen.
+Wie Quellen richtig referenziert werden, ist in sog. Zitierstandards festgelegt. Wichtige Zitierstandars sind der APA Styleguide [@american_psychological_association_publication_2020], der Chicago Styleguide [@the_university_of_chicago_press_editorial_staff_chicago_2017], der IEEE Styleguide [@ieee_ieee_2018] oder der ACM Styleguide [@rodkin_acm_2023]. In einem Projektbericht wird nur ein Zitierstandard verwendet. Es ist nicht vorgesehen, Zitierstandards zu mischen.
 
 Eine wörtliche Übernahme einer anderen Quelle wird als Zitat bezeichnet. Zitate sollten sehr sparsam in Berichten verwendet werden. Zitate sind oft nur dann notwendig, wenn die wörtliche Übernahme einer Aussage oder eines Ergebnisses für die Argumentation erforderlich ist. 
 
@@ -286,3 +286,5 @@ Eine gute Managementzusammenfassung kann direkt in einer Präsentation verwendet
 - Was sind die wichtigsten Ergebnisse? 
 - Welche Schlussfolgerungen können gezogen werden?
 - Welche Massnahmen werden empfohlen? (optional)
+
+## Referenzen
