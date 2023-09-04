@@ -72,9 +72,7 @@ Ohne vorbereitende Kodierung lassen sich unstrukturierte Daten kaum systematisch
 ### Strukturierte Daten
 
 ::: {#def-strukturierte-daten}
-
 **Strukturierte Daten** haben einen festen Wertebereich. 
-
 ::: 
 
 Weil strukturierte Daten einen festen Wertebereich haben, ist sichergestellt, dass nur Werte innerhalb dieses *abgeschlossenen* Bereichs gültig sind. Deshalb werden Techniken, mit denen strukturierte Daten erhoben gelten auch als ***geschlossene*** Erhebungstechniken.
@@ -91,10 +89,10 @@ Strukturierte Daten sind nicht auf Tabellen beschränkt.
 hamster: 
 - name: Fred
   gewicht: 175
-  zeit: 
+  zeit: 2023-04-11T10:20:30Z
 - name: Frida
   gewicht: 160
-  zeit:
+  zeit: 2023-04-12T09:10:11Z
 ```
 
 ### Semi-strukturierte Daten
@@ -139,38 +137,85 @@ Solche Codes sind *transaktionsspezifisch*, so dass nicht alle Codes vorkommen m
 
 ## Daten erheben
 
-Die eigentliche Datensammlung kann manuell, technisch unterstützt oder automatisch erfolgen. Bei der *manuellen Datenerhebung* werden alle Daten von einer Person erfasst und festgehalten. Bei der *technisch unterstützten Datenerhebung* helfen spezielle Erhebungswerkzeuge, indem 
+Die eigentliche Datensammlung kann manuell, technisch unterstützt oder automatisch erfolgen. Bei der *manuellen Datenerhebung* werden alle Daten von einer Person erfasst und festgehalten. Bei der *technisch-unterstützten Datenerhebung* helfen spezielle Erhebungswerkzeuge, die Datenerhebung zu vereinfachen, indem sie Werte überprüft werden oder automatisch erfasst werden. Bei der *automatischen Datenerhebung* werden Daten durch *Sensoren* erfasst und gespeichert.
 
 ### Manuelle Datenerhebung
 
-- Notizen
-- Transkripte
+In der Laborarbeit ist die Erfassung von Messwerten in Tabellen oder Listen üblich. Dabei werden die Werte von Hand direkt in eine Tabelle oder Liste eingetragen. So erfasste Tabellen oder Listen sind *strukturierte Daten*. Beim Eintragen der Daten muss darauf geachtet werden, dass die Werte an der richtigen Stelle eingetragen werden, weil solche Fehler oft unerkannt bleiben und eine nachträgliche Korrektur oft nicht möglich ist.
 
-- Listen
-- Formulare
-  - Papier
-  - MS Forms
-  - Google Forms
-  - Survey-Tools: Survey Monkey, Lime Survey
+Die einfachste Form der manuellen Datenerfassung sind *Notizen*. Notizen sind persönliche Aufzeichnungen über die eigene Arbeit bzw. über Beobachtungen bei der Arbeit. Diese Daten sind entweder *unstrukturiert* oder *semi-strukturiert*. Sie erlauben eine grosse Flexibilität falls die Daten nicht vorstrukturiert werden können oder die Struktur weitgehend unbekannt ist. Notizen lassen sich schwer *objektivisieren*, weil sie immer einen subjektiven Anteil der Person haben, welche die Notiz verfasst hat.
 
-Fragetypen in Formularen
+::: {.callout-tip}
+## Praxis
+Es ist eine gute Idee, Messwerte in Tabellen zu erfassen und zusätzliche Notizen zu machen. Aus beiden ergeben sich Laborberichte, die wiederum zu Labortagebüchern wachsen. In der wissenschaftlichen Praxis sind die strukturierten Daten zwar das Hauptergebnis einer Untersuchung, aus den Notizen ergeben sich jedoch oft neue Einsichten, die sich nicht aus den strukturierten Daten herauslesen lassen. 
+::: 
 
-- offene Fragen
-  - Kurzantwort
-  - Langantwort
-  - Dateien hochladen
-- geschlossene Fragen
-  - Single choice (einfachauswahl)
-  - Multiple choice (mehrfachauswahl)
-  - Ranking (Sortieren, Anordnung)
-  - Likert-Skala (Lineare Skala, Bewertung)
-  - Semantisches Differential (Bewertung) ("Multiple Choice Grid")
-  - Matrix (Multiple Choice Grid)
+Neben Notizen sind *Transskripte* ein wichtiges Werkzeug der manuellen Datenerfassung. Transskripte sind eine Verschriftlichung einer anderen Aufzeichnung. Oft sind das Tonaufzeichnungen von Gesprächen oder Videoaufzeichnugen eines Experiments. Diese Aufzeichnungen liefern immer *unstrukturierte Daten*. Die ursprüngliche Aufzeichnung ist dabei *meistens* eine Primärquelle für die Daten. Das Transskript ist eine *abgeleitete Sekundärquelle* der Primärquelle. Weil beim Transskribieren die Primärquelle *neu kodiert* wird, muss beim Transskribieren besonders sorgfältig gearbeitet werden, um die usprünglichen Daten nicht zu sehr zu verfälschen. 
 
-Durch die Wahl der Fragetypen wird die Information *kodiert*.
+Inzwischen gibt es brauchbare Werkzeuge zur Transskription von Mediendateien. Diese automatisch erstellten Transkripte müssen aber immer nachkontrolliert werden. Nur so wird das Risiko reduziert, dass sich die Bedeutung der Daten durch Transskriptionsfehler ändert.
+
+### Technisch-unterstützte Datenerhebung
+
+Bei der technisch-unterstützten Datenerhebung soll das manuelle Datensammeln durch technische Werkzeuge vereinfacht werden, indem bestimmte Daten automatisch erfasst werden. Ein wichtiges Instrument für die technisch-unterstützte Datenerhebung sind *Formulare*. Formulare sind strukturierte Dokumente zur systematischen und wiederholten manuellen Eingabe von Daten durch Menschen.
+
+Im Gegensatz zu Papierfromularen können digitale Formulare die Eingaben überprüfen und bieten unterschiedliche Eingabeformate. Digitale Formulare können auch automatisch Daten erfassen, die nicht direkt eingegeben werden, wie beispielsweise den Zeitpunkt der Eingabe. Die populärste Art der digitalen Formulare sind inzwischen online Formulare, weil sie die grösste Flexibilität bei einer vergleichsweise niedrigen Nutzungsschwelle bieten.
+
+Es lassen sich zwei Arten von Diensten für online Formulare unterschieden: 
+
+1. Formular-Dienste, wie z.B. MS-Forms oder Google Forms. REFERENCE
+2. Umfrage- bzw. Survey-Dienste, wie z.B. Survey Monkey oder Lime Survey.
+
+Der wesentliche Unterschied zwischen diesen Diensten sind zusätzliche Funktionen zur Datenerhebung. Survey-Dienste bieten zusätzliche Funktionen, wie die Anonymisierung der Daten, zusätzliche Daten über die Ausführung, Fragebogendokumentation oder die Unterstützung von wiederholten Befragungen.
+
+Alle Formulare erlauben die Eingabe von Daten mit *offenen* und *geschlossenen* Wertebereich sowie das Auslesen der Daten in tabellarischer Form. Für jedes ausgefüllte Formular wird dazu eine Zeile erstellt, wobei die Eingabefelder jeweils als eine Spalte abgebildet werden.
+
+::: {#def-fragebogen-item}
+Eine Eingabemöglichkeit eines Formulars wird als **Fragebogen-Item** oder schlicht als **Item** bezeichnet.
+:::
+
+Items mit offenen Wertebereich sind Langantworten und Dateien. Alle anderen Eingaben haben einen geschlossenen Wertebereich. Die sog. Kurzantworten erscheinen als offene Eingabefelder. Ihr Wertebereich kann aber durch Validierungsregeln eingeschränkt werden.
+
+Bei den Items mit geschlossenen Wertebereich kann zwischen einfachen und mehrfachen Eingaben unterschieden werden. Bei einfachen Eingaben kann nur eine Antwortmöglichkeit ausgewählt werden (sog. Single-Choice). Der Wertebereich dieser Items wird über die Antwortmöglichkeiten festgelegt. 
+
+*Skalen* sind **Single-Choice-Items** für einen *ordinalen Wertebereich*. Oft werden die Antwortmöglichkeiten mit einem Rang versehen. 
+
+Ein Spezialfall der Skalen ist die **Likert-Skala**, bei der eine lineare Skala mit einer Bewertung zwischen zwei Extremwerten versehen wird. Die Extrem-Pole sollten möglichst weit auseinander gewählt werden. Z.B. *"trifft absolut nicht zu"* und *"trifft voll und ganz zu"* und ***nicht*** *"trifft nicht zu"* und *"trifft zu"*. Obwohl Likert-Skalen *subjketive Ansichten* messen, wird der Wertebereich meist als *intervallskalierter Wertebereich* behandlet. 
+
+Bei mehrfachen Eingaben können mehrere Antwortmöglichkeiten ausgewählt werden. Mehrfache Eingaben werden auch als **Multiple-Choice-Items** bezeichnet. Im Gegensatz zu Single-Choice-Items haben Multiple-Choice-Items *immer* einen *binären Wertebereich*. Das bedeutet, dass jede Antwortmöglichkeit nur zwei Werte annehmen kann: *ausgewählt* oder *nicht ausgewählt*. Intern werden Multiple-Choice-Items als separate Items gespeichert und auch so tabellarisch dargestellt. Ein Multiple-Choice-Item hat deshalb immer eine *Ja/Nein*-Frage als Grundlage, wobei die fehlende Auswahl durch einen nicht vorhandenen Eintrag repräsentiert wird.
+
+Die sog. **Grid-Items** oder **Fragebatterien** sind Items, bei denen mehrere Fragen mit der gleichen Antwortmöglichkeiten gestellt werden. Entsprechend haben diese Items den *gleichen Wertebereich*. Zu den Grid-Items sind oft als Skalen oder als Multiple-Choice-Items organisiert. Diese Items werden oft als Matrix dargestellt, wobei die Fragen als Zeilen und die Antwortmöglichkeiten als Spalten dargestellt werden. Intern werden die einzelnen Fragen von Grid-Items als separate Items gespeichert und werden auch tabellarisch so abgebildet. Dabei gelten die gleichen Regeln wie bei einfachen Single-Choice- und Multiple-Choice-Items. 
+
+Eine Fragebatterie aus Likert-Skalen wird **Semantisches Differential** genannt. Oft handelt es sich bei den Items um *Aussagen*, die über die gleiche Skala bewertet werden. 
+
+Ein besonderes Grid-Item ist das **Ranking** oder **Sortieren**. Bei dieser Art von Items werden mehrere Antwortmöglichkeiten in *eine* Reihenfolge gebracht. Die Antwortmöglichkeiten werden als eigene Items gespeichert, wobei der Wertebereich für jede Antwortmöglichkeit durch die möglichen Ränge festgelegt ist. Diese Items haben einen *ordialen Wertebereich*.
+
+Eine Variante des Sortieren sind **Zuordnungs-Items**. Bei diesen Items muss jedem Wert aus einer Liste von Werten jeweils ein Wert aus einer zweiten Liste zugeordnet werden. Die Werte aus der ersten Liste werden als Items gespeichert und die Werte aus der zweiten Liste legen den Wertebereich der Items. Diese Items haben einen *nominalen Wertebereich*.
+
+Gelegentlich werden Fotos oder Bilder angeboten und die Teilnehmenden werden gebeten, Bereiche auf diesen Bildern auszuwählen. Dabei handelt es sich um eine Variante eines **Multiple-Choice-Grids**, bei dem die Antwortmöglichkeiten als Bilder dargestellt werden.
+
+Durch die Wahl der Fragetypen und dem Festlegen der Wertebereiche von Formular-Items werden wird die Information *kodiert*.
 
 ### Automatische Datenerhebung
 
-- Sensoren
-- Logs
+Bei der automatischen Datenerhebung werden Daten automatisch erfasst und gespeichert.
 
+Bei der automatischen Datenerhebung werden grundsätzlich drei Kategorien unterschieden:
+
+- **Snapshots** erfassen eine Momentaufnahme eines Systems. Bei Snapshots handelt es sich immer um komplexe *strukturierte Daten*. Ein Snapshot kann beispielsweise ein Foto, ein MRI-Scan oder eine Gen-Sequenz sein. Ein Snapshot liefert einen *Datensatz*, der in der Regel sehr viele Werte umfassst. Snapshots werden oft von speziellen Geräten erfasst und gespeichert.
+
+- **Metriken** geben Auskunft über *Zustände* zu einem bestimmten Zeitpunkt. Oft werden Metriken in regelmässigen Abständen erfasst. Bei Metriken handelt es sich immer um einfache *strukturierte Daten*. Eine Metrik kann beispielsweise die Anzahl der Besucher einer Webseite zu einem bestimmten Zeitpunkt oder die Temperatur in einem Raum sein. Eine Metrik hat üblicherweise drei Eigenschaften:
+
+  - *Name*
+  - *Wert*
+  - *Zeitpunkt*
+
+- **Logs** geben Auskunft über *Ereignisse* in einem System. Ein Log-Eintrag wird erfasst, wenn ein Ereignis eintritt. Logs sind meist *strukturierte* oder *semi-strukturierte Daten*. Ein Log-Eintrag kann beispielsweise die Anmeldung eines Benutzers an einem System oder das Öffnen einer Webseite sein. Ein Log-Eintrag ist oft über zwei Hauptmerkmale definiert:
+
+  - *Zeitpunkt*
+  - *Ereignismeldung*
+
+  Log-Einträge werden oft chronologisch in der Reihenfolge der Ereignisse gespeichert.
+
+Nur weil Sensoren und andere datengenerierende Instrumente verwendet werden, findet eine automatische Datenerhebung unter Umständen nicht statt. Ein entsprechendes Instrument muss die Funktion bereitstellen, um Metriken und/oder Logs zu generieren und bereitzustellen.
+
+Bei der automatischen Datenerhebung für Metrikten und Logs werden meistens mehrere Systeme gemeinsam eingesetzt. Ein System erfasst die Daten und ein anderes System speichert die Daten in einer Datenbank. Die Daten werden in der Regel in einem *Datenstrom* bzw. *Zeitreihe* erfasst und gespeichert.
