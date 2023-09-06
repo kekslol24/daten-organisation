@@ -22,44 +22,67 @@ book:
   - index.qmd
   # - vorwort.qmd
  
-  - kapitel/01-einleitung/kapitel.md
-  - kapitel/01-information/kapitel.qmd
   
-  - part: Technische Voraussetzungen
+  # Woche 1
+  - part: Ausgangslage und Vorbereitung
     chapters:
-    - kapitel/01-tool-chain/tastatur.md
-    - kapitel/01-tool-chain/git_github.qmd
-    - kapitel/01-tool-chain/project_doc.md
-
+    - kapitel/01-einleitung/kapitel.md 
+    - kapitel/01-tool-chain/tastatur.md  
+    - kapitel/01-information/kapitel.qmd
+  
   - part: Datenquellen
     chapters:
 
+    # Woche 2
+    - kapitel/01-tool-chain/project_doc.md
     - kapitel/02-daten-sammeln/kapitel.md
+
+    # Woche 3
     - kapitel/03-daten-organisieren/kapitel.md
-    - kapitel/04-dateiformate/kapitel.md
+    - kapitel/01-tool-chain/git_github.qmd
+
+    # Woche 4
     - kapitel/05-datentypen/kapitel.md
     - kapitel/05-zeichenketten/kapitel.md
     - kapitel/06-datenstrukturen/kapitel.md
-    - kapitel/06-daten-kodieren/kapitel.md
+    
+    # Woche 5
+    - kapitel/04-dateiformate/kapitel.md
+
+    # Woche 13 (optional)
     - kapitel/15-externe-datenquellen/kapitel.md
  
   - part: Mathematik der Daten
     chapters:
+    # Woche 6
     - kapitel/06-variablen/kapitel.qmd
     # - kapitel/07-funktionen/kapitel.md
     # - kapitel/07-neutrales-element/kapitel.md
+
+    # Woche 8
     - kapitel/08-boolsche-operationen/kapitel.qmd
+
+    # Woche 9
     - kapitel/09-vektor-operationen/kapitel.md
+
+    # Woche 10
     - kapitel/10-matrix-operationen/kapitel.md
+
+    # Woche 11
+    - kapitel/06-daten-kodieren/kapitel.md
     - kapitel/11-indizieren-gruppieren/kapitel.md
     - kapitel/12-daten-formen/kapitel.md
 
   - part: Deskriptive Datenanalyse
     chapters:
     
+    # Woche 12
     - kapitel/13-daten-beschreiben/kapitel.md
+    
+    # Woche 7
     - kapitel/14-daten-visualisieren/kapitel.md
-    - kapitel/10-lineare-modelle/kapitel.md
+
+#    - kapitel/10-lineare-modelle/kapitel.md
 
   - references.qmd
 
