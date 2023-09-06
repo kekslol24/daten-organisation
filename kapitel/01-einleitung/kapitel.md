@@ -15,9 +15,9 @@ execute:
 
 ### Produktion und Logistik
 
-### Steuerung von Geschäftsprozessen
+### Steuerung von Geschäftsprozessen
 
-### Medizinische Bildgebung
+### Medizinische Bildgebung
 
 ### Medizinische Diagnostik
 
@@ -36,10 +36,12 @@ Datenzentrische Anweldungen lassen sich in vier Kategorien einteilen:
 
 Diese vier Kategorien werden in der Anwendung of kombiniert, so dass sich nicht alle Anwendungen eindeutig zuordnen lassen. 
 
-## Daten und Information
-
-### Informationstheorie
-
-
-
 ## Organisation dieses Buchs
+
+### Ziele 
+
+![Inhaltliche Ziele](figures/DXI_big_picture/DxI_big_picture.png)
+
+### Aufbau
+
+
