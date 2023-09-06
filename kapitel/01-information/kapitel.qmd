@@ -73,6 +73,7 @@ Zusätzlich muss das *Rauschen* des Kanals berücksichtigt werden. Später wurde
 ```{mermaid}
 %%| label: fig-shannon-model
 %%| fig-cap: Integriertes Kommunikationsmodell [@shannon_mathematical_1948;@shannon_communication_1949]
+%%| fig-width: 100%
 
 flowchart LR
   a(Information) --> b(Kodieren)

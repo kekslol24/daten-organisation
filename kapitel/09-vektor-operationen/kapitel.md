@@ -20,7 +20,7 @@ Eine besondere Gruppe von Vektoren sind Sequenzen.
 
 Implizit setzt diese Definition einen Anfangswert oder einen Endwert voraus. Per Konvention wird üblicherweise der Anfangswert einer Sequenz angegeben. Wird kein Anfangswert für eine Sequenz angegeben, dann wird ebenfalls per Konvention der Wert 1 angenommen. 
 
-> **Begriffe:** Der **Anfangswert** einer Sequenz wird auch als **Startwert** oder **Initialwert** bezeichnet.
+> **Begriffe:** Der **Anfangswert** einer Sequenz wird auch  **Startwert** oder **Initialwert** genannt.
 
 
 > **Beispiel 1:** Eine Sequenz mit der Länge 5 entspricht dem Vektor `{1,2,3,4,5}`.

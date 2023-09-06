@@ -274,6 +274,7 @@ Die logischen Ausdrücke eines Entscheidungsbaums sind grundsätzlich *unabhäng
 ```{mermaid}
 %%| label: fig-entscheidungsbaum
 %%| fig-cap: Schema eines Entscheidungsbaums mit zwei Entscheidungen
+%%| fig-width: 100%
 
 graph TB
   a([erster logischer Ausdruck]) --->|Wahr| b
@@ -295,6 +296,7 @@ Ein *Entscheidungsbaum*, der für einen logischen Ausdruck mindestens ein Ergebn
 ```{mermaid}
 %%| label: fig-lin-entscheidungsbaum
 %%| fig-cap: Schema eines linearen Entscheidungsbaum mit zwei Entscheidungen
+%%| fig-width: 100%
 
 graph TB
   a([erster logischer Ausdruck]) --->|Wahr| b([Ergebnis Wahr])
@@ -313,6 +315,8 @@ Als **Filter** werden Funktionen bezeichnet, die Werte eines Vektors mithilfe ei
 
 Ein Vektor ist gefiltert, wenn der logische Ausdruck für alle Werte `Wahr` ergibt. Als Konsequenz werden alle Werte aus einem Vektor entfernt, für die der logische Ausdruck `Falsch` ergibt. 
 
+<!-- BEISPIEL filtern über einen Vektor -->
+
 ::: {.callout-note}
 ## Merke
 Durch das Filtern wird die Länge von Vektoren verändert. Das Ergebnis ist immer höchstens so lang wie der ursprüngliche ungefilterte Vektor.
@@ -321,6 +325,8 @@ Durch das Filtern wird die Länge von Vektoren verändert. Das Ergebnis ist imme
 Der logische Ausdruck muss sich nicht auf die Werte des Vektors beziehen. Damit Werte mit einem solchen logischen Ausdruck ausgewählt werden können, bedarf es einen Referenzvektor mit gleicher Länge. Ein Wert wird mit dieser Technik ausgewählt, wenn der logische Ausdruck für den Wert an der gleichen Position im Referenzvektor `Wahr` ergibt.
 
 Weil die Vektoren von Stichprobenobjekten immer die gleiche Länge haben, lassen sich Filter zum Auswählen von Datensätzen verwenden.
+
+<!-- BEISPIEL -->
 
 ## Sortieren
 
@@ -333,7 +339,9 @@ Als **Sortieren** werden Funktionen bezeichnet, die Reihenfolge von Werten mitte
 Durch Sortieren wird die Länge von Vektoren *nicht* verändert.
 :::
 
-Die Basis für das Sortieren sind Vektoren. Ein Vektor ist sortiert, wenn der logische Ausdruck für alle Werte paarweise `Wahr` ergibt. Die einfachsten logischen Ausdrücke zum Sortieren sind die Vergleiche *grösser als* und *kleiner als*. 
+Die Basis für das Sortieren sind Vektoren. Ein Vektor ist sortiert, wenn der logische Ausdruck für alle Werte paarweise `Wahr` ergibt. Die einfachsten logischen Ausdrücke zum Sortieren sind die Vergleiche *grösser oder gleich* und *kleiner oder gleich*. 
+
+Die Reihenfolge der Werte wird beim Sortieren immer dann vertauscht, wenn der logische Ausdruck `Falsch` ergibt. Das `Falsch` bedeutet in diesem Fall, dass die Werte noch nicht in der richtigen Reihenfolge vorliegen.
 
 ::: {.callout-note}
 ## Merke
@@ -359,7 +367,14 @@ $$
 v_{Vorgänger} \ge v_{Nachfolger}
 $$ {#eq-sort-desc}
 
-Wie beim Filtern können sich die logischen Ausdrücke beim Sortieren auf andere Vektoren beziehen. Dafür wird ein Referenzvektor benötigt. Die Sortierung des Vektors erfolgt entsprechend der Positionen im Referenzvektor. Deshalb müssen Referenzvektoren immer die gleiche Länge wie die Sortiervektoren haben.
+<!-- BEISPIEL asc und desc -->
+
+### Sortieren für Fortgeschrittene
+
+Wie beim Filtern können sich die logischen Ausdrücke beim Sortieren auf andere Vektoren beziehen. Dabei wird ebenfalls ein Referenzvektor benötigt. Die Sortierung des Vektors erfolgt entsprechend der Positionen im Referenzvektor. Deshalb müssen Referenzvektoren immer die gleiche Länge wie die Sortiervektoren haben.
+
+<!-- BEISPIEL -->
 
 Beim Sortieren können komplexe logische Ausdrücke für spezielle Sortiuerungen eingesetzt werden. Dabei muss beachtet werden, dass diese Ausdrücke eine eindeutige Reihenfolge zulassen. 
 
+<!-- BEISPIEL -->
