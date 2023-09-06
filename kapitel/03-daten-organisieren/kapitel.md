@@ -1,18 +1,70 @@
 ---
-# bibliography: references.bib
-
-title: Daten organisieren
-
-abstract: ""
-
 execute: 
   echo: false
 ---
 
+# Daten organisieren
+
+Daten sind das wichtigste Gut der Datenwissenschaften. Deshalb sollte sorgsam und systematisch mit ihnen umgegangen werden. 
+
+## Daten strukturieren
+
+Im [Kapitel @sec-chapter-daten-sammeln] wurde die Bedeutung des Datenschemas für das Sammeln von Daten behandelt. Ein Schema gibt vor, welche Werte einen Datensatz bilden. Dieser Abschnitt konzentriert sich auf die Umsetzung des Datenschemas. 
+
+### Begriffe
+
+
+::: {#def-messereignis}
+
+:::
+
+::: {#def-entitaet}
+
+:::
+
+::: {#def-grundgesamtheit}
+Alle prinzipiell messbaren Entitäten bilden die **Grundgesamtheit**.
+::: 
+
+::: {#def-stichprobe}
+Die Gesamtheit der zusammengehörenden Daten ist eine **Stichprobe**. Eine Stichprobe bildet die beobachteten Entitäten ab.
+::: 
+
+Die **Statistik** befasst sich mit den Methoden, um von Stichproben auf die ursprüngliche **Grundgesamtheit** zu schliessen. Aus Sicht der Daten und Datenverarbeitung ist die Grundgesamtheit *unerheblich*, weil die nicht gemessene Aspekte oder Entitäten unbekannt bleiben müssen!
+
+
+
+### Daten normalisieren
+
+Wenn Daten in einer Tabelle jeweils ein Messereignis repräsentieren, dann liegen sie in **Normalform** vor. In der Normalform ist die Tabelle gleichbedeutend mit der zugehörigen Stichprobe. Jede Zeile ist der Datensatz einer beobachteten Entität. Die Spalten repräsentieren die Messungen.
+
+## Daten ablegen
+
+### Dateien und Verzeichnisse
+
+### Datenverlust vermeiden
+
+- min. zwei speicherorte (replikation)
+- versionierung
+- archivierung
+
+
+## Daten bereitstellen und teilen
+
+### Datenbanken
+
+### Webseiten, URLs und APIs
+
+### Cloud-Speicher
+
+
+
+
+--- ALT
 
 Uns begegnen meistens Daten in Form von Tabellen. Solche Tabellen repräsentieren **Messungen**, die wir auswerten und analysieren möchten. Diese Messungen bilden einen Ausschnitt einer **Grundgesamtheit** ab. Ohne an dieser Stelle genauer auf das statische Konzept der Grundgesamtheit einzugehen, sind Daten in der Regel eine *gemessene* **Stichprobe** einer Grundgesamtheit.
 
-> Die **Statistik** befasst sich mit den Methoden, um von Stichproben auf die ursprüngliche Grundgesamtheit zu schliessen. Aus Sicht der Daten und Datenverarbeitung ist die Grundgesamtheit **unerheblich**, weil wir die nicht gemessenen Aspekte nicht kennen können!
+> 
 
 > **Definition**: Als **Stichprobe** wird die Gesamtheit der zusammengehörenden Daten bezeichnet.
 
