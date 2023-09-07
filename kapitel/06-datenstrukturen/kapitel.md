@@ -1,78 +1,77 @@
 ---
-# bibliography: references.bib
-
-title: Datenstrukturen
-
-abstract: ""
-
 execute: 
   echo: false
 ---
 
-Aus atomaren Datentypen können komplexe Datentypen abgeleitet werden, die mehrere Werte zusammenfassen. Solche Strukturen werden oft auch als *Datenfelder* (engl. *arrays*) bezeichnet. Zwei Arten solcher Datenfelder sind für uns besonders wichtig: 
+# Datenstrukturen {#sec-chapter-datenstrukturen}
 
-> **Definition:** Eine **Liste** ist ein Datenfeld mit Werten mit *beliebigen Datentypen*.
+Aus fundamentalen Datentypen können *komplexe Datentypen* zusammengesetzt werden, um mehrere Werte zusammenzufassen. Komplexe Datentypen können ausserdem wiederum komplexe Datentypen enthalten. So lassen sich komplexe Strukturen bilden.
 
+::: {#def-datenstruktur}
+Eine **Datenstruktur** ist ein Datentyp, in dem mehrere Werte zusammengefasst werden können.
+:::
 
-> **Definition:** Ein **Vektor** ist ein Datenfeld mit Werten mit dem *gleichen Datentyp*. 
+Weil eine Datenstruktur ebenfalls ein Datentyp ist, lässt sie sich wie ein einzelner Wert behandeln. Dadurch haben Datenstrukturen eine Reihe von Vorteilen: 
 
-> **Definition:** Vektoren und Listen werden als **komplexe Datentypen** bezeichnet, weil sie *atomare Datentypen* zu *komplexeren Strukturen* verbinden.  
+- Datenstrukturen können als *Einheit* behadelt werden.
+- Datenstrukturen können *verschachtelt* werden, um noch komplexere Strukturen zu bilden.
+- Datenstrukturen können als Sammlung von Einzelwerten betrachtet werden, welche getrennt verarbeitet werden können.
 
-Für Datenfelder können wir die Länge bestimmen. 
+Durch diese Eigentschaften sind Datenstrukturen besonders gut für die Datenorganisation geeignet. 
 
-R stellt zu diesem Zweck die `length()`-Funktion bereit. 
+*Datenfelder* (engl. *arrays*) sind eine besondere Datenstruktur. Datenfelder fassen Werte so zusammen, dass jeder Wert eine *eindeutige Position* hat. Die Position eines Wertes wird durch einen *Index* angegeben. Die Anzahl der Werte in einer Datenstruktur ist deren **Länge**. Die Länge und die Idizes einer Datenstruktur sind natürliche Zahlen.
 
-Excel unterscheidet zwischen horizontalen und vertikalen Datenfeldern. Die Länge dieser Felder müssen wir mit den beiden Funktionen `ZEILEN()` und `SPALTEN()` bestimmen. 
+Über die zusammengefassten Datentypen lassen sich zwei Arten von Datenfeldern unterscheiden.
 
-- `ZEILEN()` bestimmt die Länge  von vertikalen Datenfeldern. 
-- `SPALTEN()` bestimmt die Länge von horizontalen Datenfeldern. 
+::: {#def-vektor}
+**Vektoren** sind Datenfelder mit Werten vom *gleichen Datentyp*. 
+:::
 
-> **Achtung:** Die Excel Funktionen `ANZAHL()` und `ANZAHL2()` sind zum Bestimmen der Länge von Datenfeldern nicht geeignet, weil sie nur die Anzahl der Werte zurückgeben. Diese entspricht leider nicht immer der Länge von Datenfeldern.
+Weil alle Werte in einem Vektor vom gleichen Datentyp sind, sind Vektoren *homogene Datenstrukturen*.
 
-### Mehrdimensionale Datentypen: Verschachtelte Listen, Stichproben und Matrizen
+::: {#def-liste}
+**Listen** sind Datenfelder mit Werten mit *beliebigen Datentypen*.
+:::
 
-Die Logik der komplexen Datentypen können wir weiterführen und Listen und Vektoren zu noch komplexeren Strukturen verknüpfen. 
+Weil die Datentypen der Listenwerte nicht festgelegt sind, sind Listen *heterogene Datenstrukturen*.
 
-> **Definition:** Eine **verschachtelte Liste** ist eine Liste, die aus beliebigen anderen Datenfeldern (d.h. Listen oder Vektoren) besteht, wobei die eingebetteten Datenfelder *unterschiedliche Längen* haben können.
+## Mehrdimensionale Datentypen: Verschachtelte Listen, Stichproben und Matrizen
 
+Die Logik der komplexen Datentypen erlaubt es, Listen und Vektoren zu noch komplexeren Strukturen zu verknüpfen. 
 
-In R können wir verschachtelte Listen mit Hilfe des verketteten Aufrufs von `list()` Funktionen erzeugen. 
+::: {#def-geschachtelte-liste}
+Eine **geschachtelte Liste** ist eine Liste, die aus beliebigen anderen Datenfeldern (d.h. Listen oder Vektoren) besteht, wobei die eingebetteten Datenfelder *unterschiedliche Längen* haben können.
+:::
 
-Excel bietet aktuell *keine* Möglichkeiten zur Arbeit mit verschachtelten Listen.
+Ein **Spezialfall** der verschachtelten Liste sind **Listen, die Vektoren mit *gleicher Länge* schachteln**. Diese Spezialfälle haben besondere Namen: 
 
-Ein **Spezialfall** der verschachtelten Liste sind **Listen, die Vektoren mit *gleicher Länge* verschachteln**. Diese Spezialfälle haben besondere Namen: 
+::: {#def-liste-komplex}
+Eine **Datenrahmen** (engl. *data frame*) verknüpft mehrere gleichlange Vektoren mit *unterschiedlichen Datentypen*. 
+:::
 
-> **Definition:** Eine **Stichprobe** verknüpft mehrere Vektoren mit *unterschiedlichen (atomaren) Datentypen*. 
+Ein Datenrahmen kann als eine Liste von Vektoren mit gleicher Länge verstanden werden. Diese Datenstruktur muss eine Liste sein, weil die einzelnen Vektoren unterschiedliche Datentypen haben können. Entsprechend gelten Datenrahmen ebenfalls als *hetreogene Datenstrukturen*.
 
+::: {#def-matrix-structure}
+Eine **Matrix** verknüpft mehrere gleichlange Vektoren vom Datentyp *Zahlen*. Die Länge der Vektoren einer Matrix muss mindestens 1 sein.
+:::
 
-In R werden Stichprobenobjekte mit der `tibble()` aus einzelnen Vektoren oder mit der `tribble()` Funktion aus einer Liste erzeugt. 
-
-In Excel können wir Stichprobenobjekte als [*Tabelle*](https://moodle.zhaw.ch/mod/page/view.php?id=544754) oder als *Bereich* organisieren. 
-
-In R ist ein Stichprobenobjekt eine verschachtelte Liste. Deshalb entspricht die *Länge* eines Stichprobenobjekts der Anzahl der Spalten bzw. Vektoren. Wir können einen beliebigen Vektor auswählen und dessen Länge bestimmen, um den Umfang einer Stichprobe zu erhalten. Dabei müssen wir aber aufpassen, dass wir keine leere Stichprobe vorliegen haben. Falls eine Stichprobe ohne Datensätze vorliegt, dann schlägt diese Strategie fehl. Deshalb wählen wir die `count()` Funktion, um Stichprobenumfänge zu bestimmen. 
-
-#### Matrizen
-
-> **Definition:** Eine **Matrix** verknüpft mehrere Vektoren vom Datentyp *Zahlen*.
+Weil alle Vektoren in einer Matrix vom gleichen Datentyp sind, sind Matrizen *homogene Datenstrukturen*. 
 
 Eine Matrix hat eine Höhe (oft als *m* Zeilen gekennzeichnet) und eine Breite (oft als *n* Spalten gekennzeichnet). Die Anzahl der Zeilen und Spalten müssen natürliche Zahlen sein. Daraus folgt, dass nur Matrizen existieren, für die m und n > 0 gilt. 
 
-In Excel akzeptieren manche Matrixoperationen auch Stichproben. Dazu gehören die folgenden Funktionen:
+Eine Matrix mit m Zeilen und n Spalten wird als $m \times n$-Matrix bezeichnet. Die Anzahl der Zeilen und Spalten einer Matrix sind ihre *Dimensionen*.
 
-* `MTRANS()`
-* `INDEX()`
+::: {.callout-note}
+Die *Dimensionen* einer Matrix müssen beide $>0$ sein, aber sie müssen genau nicht gleich sein. Weil *m* und *n* einer Matrix grösser als `0` sein müssen, folgt daraus: **Vektoren** sind *spezielle Matrizen* mit m-Zeilen und *einer Spalte* (n = 1).
+:::
 
-> Weil *m* und *n* einer Matrix grösser als `0` sein müssen, ergibt sich, dass wir uns einen Vektor als eine spezielle Matrix mit m-Zeilen und *einer Spalte* (n = 1) vorstellen können.
+::: {#def-quadratische-matrix}
+Eine Matrix mit gleich vielen Spalten und Zeilen wird als **quadratische Matrix** bezeichnet. 
+:::
 
+Für eine quadratische Matrix gilt immer $m = n$.
 
-> **Definition:** Eine Matrix mit gleich vielen Spalten und Zeilen (es gilt also m = n) wird als **quadratische Matrix** bezeichnet. 
-
-
-In R ist eine Matrix *keine* verkettete Liste, sondern ein eigener Datentyp, der über die Anzahl der Spalten und Zeilen definiert ist. Die Funktion `length()` ergibt die Gesamtzahl der Werte in einer Matrix. Um die Anzahl der Spalten und Zeilen einer Matrix zu bestimmen, müssen wir die Funktionen `ncol()` für die Anzahl der Spalten (engl. columns) und `nrow()` für die Anzahl der Zeilen (engl. row) verwenden.
-
-In Excel ergibt sich eine Matrix aus der Anordnung der Werte.
-
-Der Wert an einer Position in einer Matrix ist durch den Zeilen- und Spaltenindex gegeben.
+Der Wert an einer Position in einer Matrix ist durch den Zeilen- und Spaltenindex eindeutig identifiziert.
 
 $$
 \begin{bmatrix}
@@ -82,24 +81,3 @@ a_{21} & a_{22} & \cdots & a_{2n} \\\
 a_{m1} & a_{m2} &  \cdots &  a_{mn}  
 \end{bmatrix}
 $$ 
-
-Wir beachten, dass per Konvention der Zeilenindex immer als Erstes und der Spaltenindex immer als Zweites angegeben wird. Anstelle der mathematischen Schreibweise trennen wir die beiden Indizes. Auf diese Weise können wir auf jeden Wert in einer Matrix zugreifen. 
-
-In R verwenden wir die eckigen Klammern, um auf die einzelnen Werte zuzugreifen. Dabei gilt `matrix[zeilenindex, spaltenindex]` wie das folgende Beispiel zeigt. 
-
-```R
-# Die folgende Zeile gibt eine 3x4 Matrix mit zufälligen ganzen Zahlen mit  0 < m_ij < 100 zurück
-m = ( runif(12) * 100  ) %>% trunc() %>% matrix(3, 4) 
-
-m[2, 3] # gibt den Wert aus der zweiten Zeile (i = 2) und der dritten Spalte (j = 3) zurück.  
-```
-
-> Gewöhnen Sie sich an, in R die eckigen Klammern **nur** für Matrizenindizes zu verwenden. 
-
-
-In Excel können wir eine ähnliche Matrix mit der Formel `= ZUFALLSMATRIX(3; 4; 1; 100; WAHR)` erzeugen. Um in Excel auf die einzelnen Werte zuzugreifen, verwenden wir die Funktion `INDEX()`. Diese Funktion erwartet einen Bereich mit einer "Matrix" und gibt den Wert an der entsprechenden Zeilen- und Spaltenposition zurück. Entsprechend erhalten wir den Wert an der Position 2, 3 mit der folgenden Formel, wenn wir unsere Zufallsmatrix an der Adresse A1 eingefügt haben: `= INDEX(A1#; 2; 3)`.
-
-> Excel `INDEX()`-Funktion kann für beliebige Bereiche verwendet werden. Daher eignet sich diese Funktion auch zum *Selektieren* von Vektoren aus Stichprobenobjekten. 
-
-
-

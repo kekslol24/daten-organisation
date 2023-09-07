@@ -5,14 +5,45 @@ execute:
 
 # Daten organisieren
 
-Daten sind das wichtigste Gut der Datenwissenschaften. Deshalb sollte sorgsam und systematisch mit ihnen umgegangen werden. 
+Daten sind das wichtigste Gut der Datenwissenschaften. Deshalb sollte sorgsam und systematisch mit ihnen umgegangen werden. Zu diesem Zweck müssen Daten organisiert werden. 
+
+Das Ziel der Datenorganisation ist es, Daten so zu strukturieren, damit sie einfach und effizient verarbeitet werden können. Zur Datenorganisation gehört die Strukturierung, Ablage, Versionierung und Bereitstellung von Daten.
 
 ## Daten strukturieren
 
 Im [Kapitel @sec-chapter-daten-sammeln] wurde die Bedeutung des Datenschemas für das Sammeln von Daten behandelt. Ein Schema gibt vor, welche Werte einen Datensatz bilden. Dieser Abschnitt konzentriert sich auf die Umsetzung des Datenschemas. 
 
-### Begriffe
+### Daten als Tabellen
 
+Daten werden oft als Tabellen präsentiert. Tabellen sind eine einfache und intuitive Form der *Datenorganisation*. Vorläufig lassen sich Tabellen wie in @def-tabellenstruktur definieren. Diese Definition wird in [Kapitel @sec-chapter-datenstrukturen] erweitert, um verschiedene Datenstrukturen zu unterscheiden.
+
+::: {#def-tabellenstruktur}
+**Tabellen** formen eine Datenstruktur, die Zeilen und Spalten hat und in der alle Zeilen die gleiche Breite und alle Spalten die gleiche Länge haben.
+:::
+
+Tabellen organisieren Daten in Zeilen und Spalten, wobei jede Zeile und jede Spalte eine Überschrift haben kann.
+
+::: {#def-vektornamen}
+Die Überschriften einer Tabelle werden als *Namen*, bzw. *Spaltennamen* und *Zeilennamen* bezeichnet. 
+:::
+
+Eine bestimmte Spalte in einer bestimmten Zeile heisst *Tabellenzelle* oder schlicht *Zelle*. Eine Zelle enthält genau einen Wert.
+
+@def-tabellenstruktur legt fest, dass eine *Tabelle* keine Zellen haben kann, die sich über mehrere Zeilen oder Spalten erstrecken. Viele Publikationen zeigen jedoch Datenstrukturen mit solchen Zellen. Solche Datenstrukturen sind keine Tabellen im Sinne von @def-tabellenstruktur. 
+
+::: {#def-tabellarisch}
+Eine tabellenartige Struktur mit Tabellenzellen, die sich über mehr als eine Zeile oder eine Spalte erstrecken heisst **tabellarische Darstellung**.
+::: 
+
+*Tabellarische Darstellungen* dienen der *Präsentation* von Daten und Ergebnissen. Sie sind nicht für die *Datenorganisation* geeignet.
+
+::: {.callout-tip}
+In Berichten und Publikationen wird *nicht* zwischen *Tabellen* und *tabellarischen Darstellungen* unterschieden. Beide Strukturen werden unter *Tabellen* zusammengefasst. Beide Strukturen einheitlich als *Tabelle* beschriftet und nummeriert. 
+
+**Diese Vereinfachung ist jedoch nur die *Präsentation* von Daten erlaubt.** 
+:::
+
+### Begriffe
 
 ::: {#def-messereignis}
 
@@ -31,6 +62,7 @@ Die Gesamtheit der zusammengehörenden Daten ist eine **Stichprobe**. Eine Stich
 ::: 
 
 Die **Statistik** befasst sich mit den Methoden, um von Stichproben auf die ursprüngliche **Grundgesamtheit** zu schliessen. Aus Sicht der Daten und Datenverarbeitung ist die Grundgesamtheit *unerheblich*, weil die nicht gemessene Aspekte oder Entitäten unbekannt bleiben müssen!
+
 
 
 
@@ -55,12 +87,16 @@ Wenn Daten in einer Tabelle jeweils ein Messereignis repräsentieren, dann liege
 
 ### Webseiten, URLs und APIs
 
-### Cloud-Speicher
+### Cloud-Speicher
 
 
 
 
---- ALT
+--- 
+
+ALT
+
+---
 
 Uns begegnen meistens Daten in Form von Tabellen. Solche Tabellen repräsentieren **Messungen**, die wir auswerten und analysieren möchten. Diese Messungen bilden einen Ausschnitt einer **Grundgesamtheit** ab. Ohne an dieser Stelle genauer auf das statische Konzept der Grundgesamtheit einzugehen, sind Daten in der Regel eine *gemessene* **Stichprobe** einer Grundgesamtheit.
 

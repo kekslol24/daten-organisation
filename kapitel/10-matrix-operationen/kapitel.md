@@ -9,9 +9,180 @@ execute:
   echo: false
 ---
 
-Für Matrizen gelten etwas andere Regeln als für einzelne Werte. Wenn Sie sich diese Regeln genau ansehen, dann werden Sie feststellen, dass es sich dabei um Verallgemeinerungen der bekannten Rechenregeln handelt. Dazu stellen wir uns vor, dass ein einzelner Wert auch als eine 1x1-Matrix dargestellt werden kann. 1x1-Matrizen sind gleichzeitig die kleinsten quadratischen Matrizen.
+Matrizen sind für die Datenwissenschaften eine besondere Datenstruktur. In diesem Kapitel wird @def-matrix-structure erweitert, um die wichtigsten Matrixoperationen zu behandeln.
+
+Für Matrizen gelten etwas andere Regeln als für einzelne Werte. Wenn Sie sich diese Regeln genau ansehen, dann werden Sie feststellen, dass es sich dabei um Verallgemeinerungen der bekannten Rechenregeln handelt. 
+
+Dazu stellen wir uns vor, dass ein einzelner Wert auch als eine 1x1-Matrix dargestellt werden kann. 1x1-Matrizen sind gleichzeitig die kleinsten quadratischen Matrizen.
 
 Für alle Rechenregeln müssen Sie beachten, dass die Grösse aller verwendeten Matrizen für die jeweilige Operation entscheidend ist. 
+
+## Grundbegriffe
+
+::: {#def-matrix-hauptdiagonale}
+Die **Hauptdiagonale** einer Matrix sind alle Positionen mit gleichen Zeilen- und Spaltenindizes.
+::: 
+
+
+In Excel akzeptieren manche Matrixoperationen auch Stichproben. Dazu gehören die folgenden Funktionen:
+
+* `MTRANS()`
+* `INDEX()`
+
+
+
+::: {#def-symmetrische-matrix}
+Eine **symmetrische Matrix** ist eine quadratische Matrix, die bezüglich der Hauptdiagonalen symmetrisch ist.
+:::
+
+Daraus folgt, dass die Werte einer symmetrischen Matrix an einer Position $(i, j)$ gleich den Werten an der Position $(j, i)$ sind.
+
+::: {#exm-symmetrische-matrix}
+Symmetrische Matrix
+
+$$
+\begin{bmatrix}
+1 & 0 & 6 & 4 & 9 \\\
+0 & 2 & 2 & 6 & 14 \\\
+6 & 2 & 3 & 7 & 8 \\\
+4 & 6 & 7 & 4 & 9 \\\
+9 & 14 & 8 & 9 & 5
+\end{bmatrix}
+$$ 
+:::
+
+::: {#def-diagonalmatrix}
+Eine **Diagonalmatrix** hat nur Werte auf der Hauptdiagonalen. Alle anderen Werte sind `0`.
+::: 
+
+::: {#def-einheitsmatrix}
+Die **Einheitsmatrix** ist eine Diagonalmatrix mit `1` entlang der Hauptdiagonalen.
+:::
+
+::: {#def-identitaetsmatrix}
+Die **Identitätsmatrix** ist eine quadratische Einheitsmatrix.
+:::
+
+Die Identitätsmatrix wird in Formeln als $I$ gekennzeichnet.
+
+::: {#exm-identitätsmatrix}
+Identitätsmatrix
+
+$$
+\begin{bmatrix}
+1 & 0 & 0 & 0 & 0 \\\
+0 & 1 & 0 & 0 & 0 \\\
+0 & 0 & 1 & 0 & 0 \\\
+0 & 0 & 0 & 1 & 0 \\\
+0 & 0 & 0 & 0 & 1
+\end{bmatrix}
+$$ 
+:::
+
+::: {#def-dreiecksmatrix}
+Eine **Dreiecksmatrix** ist eine Matrix, die nur Werte unterhalb oder oberhalb der Hauptdiagonalen hat.
+:::
+
+In der Regel wird die Hauptdiagonale 
+
+::: {#exm-untere-dreiecksmatrix}
+Untere Dreiecksmatrix
+
+$$
+\begin{bmatrix}
+1 & 0 & 0 & 0 & 0 \\\
+11 & 2 & 0 & 0 & 0 \\\
+6 & 2 & 3 & 0 & 0 \\\
+4 & 6 & 7 & 4 & 0 \\\
+9 & 14 & 8 & 9 & 5
+\end{bmatrix}
+$$ 
+:::
+
+::: {#exm-obere-dreiecksmatrix}
+Obere Dreiecksmatrix
+
+$$
+\begin{bmatrix}
+1 & 11 & 6 & 4 & 9 \\\
+0 & 2 & 2 & 6 & 14 \\\
+0 & 0 & 3 & 7 & 8 \\\
+0 & 0 & 0 & 4 & 9 \\\
+0 & 0 & 0 & 0 & 5
+\end{bmatrix}
+$$ 
+:::
+
+
+::: {#def-sparse-matrix}
+Eine **dünnbesetzte Matrix** (oder *Sparse Matrix*) ist eine Matrix, die überwiegend `0`-Werte enthält.
+:::
+
+::: {#exm-sparse-matrix}
+Sparse Matrix
+
+$$
+\begin{bmatrix}
+0 & 1 & 0 & 0 & 9 \\\
+0 & 0 & 2 & 6 & 0 \\\
+6 & 0 & 0 & 0 & 0 \\\
+0 & 0 & 0 & 7 & 0 \\\
+0 & 4 & 0 & 3 & 0
+\end{bmatrix}
+$$ 
+:::
+
+
+::: {#def-transponierte-matrix}
+Eine Matrix, welche die Werte einer anderen Matrix $A$ mit vertauschten Zeilen- und Spaltenindizes enthält, wird **transponierte Matrix** von $A$ genannt.
+:::
+
+Für die *transponierte Matrix von $A$* wird $A^T$ geschrieben.
+
+::: {#exm-transponierte-matrix}
+Transponierte Matrix
+
+$$
+A = \begin{bmatrix}
+1 & 0 \\\
+0 & 2 \\\
+6 & 2  \\\
+4 & 6  \\\
+9 & 7 
+\end{bmatrix} \\\
+\\\
+A^T = \begin{bmatrix}
+1 & 0 & 6 & 4 & 9 \\\
+0 & 2 & 2 & 6 & 7
+\end{bmatrix}
+$$ 
+:::
+
+In R ist eine Matrix *keine* verkettete Liste, sondern ein eigener Datentyp, der über die Anzahl der Spalten und Zeilen definiert ist. Die Funktion `length()` ergibt die Gesamtzahl der Werte in einer Matrix. Um die Anzahl der Spalten und Zeilen einer Matrix zu bestimmen, müssen wir die Funktionen `ncol()` für die Anzahl der Spalten (engl. columns) und `nrow()` für die Anzahl der Zeilen (engl. row) verwenden.
+
+In Excel ergibt sich eine Matrix aus der Anordnung der Werte.
+
+Wir beachten, dass per Konvention der Zeilenindex immer als Erstes und der Spaltenindex immer als Zweites angegeben wird. Anstelle der mathematischen Schreibweise trennen wir die beiden Indizes. Auf diese Weise können wir auf jeden Wert in einer Matrix zugreifen. 
+
+In R verwenden wir die eckigen Klammern, um auf die einzelnen Werte zuzugreifen. Dabei gilt `matrix[zeilenindex, spaltenindex]` wie das folgende Beispiel zeigt. 
+
+```R
+# Die folgende Zeile gibt eine 3x4 Matrix mit zufälligen ganzen Zahlen mit  0 < m_ij < 100 zurück
+m = ( runif(12) * 100  ) %>% trunc() %>% matrix(3, 4) 
+
+m[2, 3] # gibt den Wert aus der zweiten Zeile (i = 2) und der dritten Spalte (j = 3) zurück.  
+```
+
+> Gewöhnen Sie sich an, in R die eckigen Klammern **nur** für Matrizenindizes zu verwenden. 
+
+
+In Excel können wir eine ähnliche Matrix mit der Formel `= ZUFALLSMATRIX(3; 4; 1; 100; WAHR)` erzeugen. Um in Excel auf die einzelnen Werte zuzugreifen, verwenden wir die Funktion `INDEX()`. Diese Funktion erwartet einen Bereich mit einer "Matrix" und gibt den Wert an der entsprechenden Zeilen- und Spaltenposition zurück. Entsprechend erhalten wir den Wert an der Position 2, 3 mit der folgenden Formel, wenn wir unsere Zufallsmatrix an der Adresse A1 eingefügt haben: `= INDEX(A1#; 2; 3)`.
+
+> Excel `INDEX()`-Funktion kann für beliebige Bereiche verwendet werden. Daher eignet sich diese Funktion auch zum *Selektieren* von Vektoren aus Stichprobenobjekten. 
+
+
+
+
 
 ## Matrixaddition
 
@@ -79,7 +250,8 @@ $$
 a \cdot M = a \cdot \begin{bmatrix}
 m_{11} & m_{12}  & m_{13}  \\\
 m_{21} & m_{22} & m_{23}  
-\end{bmatrix} = \begin{bmatrix}
+\end{bmatrix} \\\ \\\ 
+= \begin{bmatrix}
 a \cdot m_{11} & a \cdot m_{12}  & a \cdot m_{13}  \\\
 a \cdot m_{21} & a \cdot m_{22} & a \cdot m_{23}  
 \end{bmatrix}
@@ -94,7 +266,8 @@ a_2
 \end{bmatrix} \cdot \begin{bmatrix}
 m_{11} & m_{12}  & m_{13}  \\\
 m_{21} & m_{22} & m_{23}  
-\end{bmatrix} = \begin{bmatrix}
+\end{bmatrix} \\\ \\\
+= \begin{bmatrix}
 a_1 \cdot m_{11} & a_1 \cdot m_{12}  & a_1 \cdot m_{13}  \\\
 a_2 \cdot m_{21} & a_2 \cdot m_{22} & a_2 \cdot m_{23}  
 \end{bmatrix}
@@ -119,8 +292,8 @@ b_{11} & b_{12} & \cdots & b_{1p} \\\
 b_{21} & b_{22} & \cdots & b_{2p} \\\
 \vdots & \vdots & \ddots & \vdots \\\
 b_{n1} & b_{n2} & \cdots & b_{np} \\\
-\end{bmatrix} =
-\begin{bmatrix} 
+\end{bmatrix} \\\ \\\
+= \begin{bmatrix} 
 \sum_{i=1}^{n}{a_{1i} \cdot b_{i1}} & \sum_{i=1}^{n}{a_{1i} \cdot b_{i2}} & \cdots & \sum_{i=1}^{n}{a_{1i} \cdot b_{ip}} \\\
 \sum_{i=1}^{n}{a_{2i} \cdot b_{i1}} & \sum_{i=1}^{n}{a_{2i} \cdot b_{i2}} & \cdots & \sum_{i=1}^{n}{a_{2i} \cdot b_{ip}} \\\
 \vdots & \vdots & \ddots & \vdots \\\
@@ -135,7 +308,11 @@ Diese komplizierte Berechnung wird so häufig gebraucht, dass Excel und R diese 
 * Das Kreuzprodukt wird in R mittels des `%*%`-Operanden berechnet.
 * Das Kreuzprodukt wird in Excel mittels der `MMULT()`-Funktion berechnet.
 
-Aus der Definition des Kreuzprodukts zeigt sich, dass die Operanden beim Kreuzprodukt nur vertauscht werden können, wenn beide Matrizen quadratisch sind. Dabei gilt für beliebige Matrizen ausserdem \\( A \times B \ne B \times A \\). 
+Aus der Definition des Kreuzprodukts zeigt sich, dass die Operanden beim Kreuzprodukt nur vertauscht werden können, wenn beide Matrizen quadratisch sind. Dabei gilt für beliebige Matrizen ausserdem @eq-kreuzprodukt-nicht-kommutativ.
+
+$$
+A \times B \ne B \times A
+$$ {#eq-kreuzprodukt-nicht-kommutativ}
 
 Das Kreuzprodukt hat ein *neutrales Element*: Die **Einheitsmatrix**. Aus diesem Grund wird die Einheitsmatrix gelegentlich auch als *Identitätsmatrix* bezeichnet. Die Einheitsmatrix ist eine quadratische Matrix, die an den Positionen der abfallenden Diagonalen den Wert 1 und sonst den Wert 0 hat. 
 
