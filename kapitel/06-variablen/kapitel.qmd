@@ -242,6 +242,8 @@ Diese Operation $b-a$ ist wesentlich einfacher als die ursprüngliche Funktion. 
 
 ### Besondere Operatoren
 
+#### Der Modulo-Operator
+
 #### Der Zuweisungsoperator
 
 Der Zuweisungsoperator ist ein besonderer Operator. Er ist ein binärer Operator, der einen Wert einem Bezeichner zuweist. Die meisten Programmiersprache verwenden dafür den `=`-Zeichen. Dabei steht der Bezeichner links und der Wert rechts vom Operator.
