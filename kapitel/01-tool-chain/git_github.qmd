@@ -472,7 +472,7 @@ Dadurch wird der gleiche Merge-Konflikt wie beim regulären Merge ausgelöst. Di
 
 Anschliessend können beide Branches konfliktfrei zusammengeführt werden. 
 
-::: {#callout-tip} 
+::: {.callout-tip} 
 ## Praxis
 Es hat sich als gute Praxis etabliert, Merge-Konflikte immer mit `git rebase` und nicht mit `git merge` zu lösen.
 :::
@@ -491,7 +491,7 @@ Weil intern ein Merge durchgeführt wird, kann auch `git pull` zu Merge-Konflikt
 `git pull` führt automatisch ein `git fetch` aus, falls keine Änderungen für ein Remote-Repository lokal gefunden wurden.
 :::
 
-::: {#callout-tip} 
+::: {.callout-tip} 
 ## Praxis
 Sind für ein Repository mehrere Remotes konfiguriert, dann sollten die einzelnen Remotes einzeln synchronisiert werden. 
 :::
@@ -526,7 +526,7 @@ Wenn Code in zwei Code-Zweigen zusammengeführt werden soll, werden sog. ***Pull
 Ursprünglich wurden Pull-Requests in Form von E-Mails an die Projektkoordination geschickt und enthieleten einen Verweis auf den einzubindenen Fork. In `git`-Hosting-Plattformen sind Pull-Requests spezielle Issues, die einen Branch oder einen Fork mit dem Repository verknüpfen.
 :::
 
-::: {#callout-tip} 
+::: {.callout-tip} 
 ## Praxis
 Sobald ein Commit in einem Branch vorliegt, kann ein Pull-Request erstellt werden. Es ist eine gute Vorgehensweise, möglichst früh einen Pull-Request zu öffnen.  
 :::
