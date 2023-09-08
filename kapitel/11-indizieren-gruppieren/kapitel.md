@@ -1,14 +1,10 @@
 ---
 # bibliography: references.bib
 
-title: Indizieren und Gruppieren
-
-abstract: ""
-
 execute: 
   echo: false
 ---
-
+# Indizieren und Gruppieren {#sec-chapter-indizieren-gruppieren}
 ## Indizieren
 
 > **Definition:** Mit **Indizieren** wird die Arbeitsweise von Algorithmen bezeichnet, mit der Datensätze *identifiziert* werden.  

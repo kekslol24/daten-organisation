@@ -1,35 +1,26 @@
 ---
 # bibliography: references.bib
-
-title: Matrix-Operationen
-
-abstract: ""
-
 execute: 
   echo: false
 ---
 
+# Matrix-Operationen {#sec-chapter-matrix-operationen}
+
 Matrizen sind für die Datenwissenschaften eine besondere Datenstruktur. In diesem Kapitel wird @def-matrix-structure erweitert, um die wichtigsten Matrixoperationen zu behandeln.
 
-Für Matrizen gelten etwas andere Regeln als für einzelne Werte. Wenn Sie sich diese Regeln genau ansehen, dann werden Sie feststellen, dass es sich dabei um Verallgemeinerungen der bekannten Rechenregeln handelt. 
+Für Matrizen gelten etwas andere Regeln als für einzelne Werte. Bei genauer Betrachtung lässt sich feststellen, dass es sich dabei um Verallgemeinerungen der bekannten Rechenregeln handelt. 
 
 Dazu stellen wir uns vor, dass ein einzelner Wert auch als eine 1x1-Matrix dargestellt werden kann. 1x1-Matrizen sind gleichzeitig die kleinsten quadratischen Matrizen.
 
-Für alle Rechenregeln müssen Sie beachten, dass die Grösse aller verwendeten Matrizen für die jeweilige Operation entscheidend ist. 
+::: {.callout-note}
+Für alle Rechenregeln muss beachtet werden, dass die Grösse aller verwendeten Matrizen für die jeweilige Operation entscheidend ist. 
+:::
 
 ## Grundbegriffe
 
 ::: {#def-matrix-hauptdiagonale}
 Die **Hauptdiagonale** einer Matrix sind alle Positionen mit gleichen Zeilen- und Spaltenindizes.
 ::: 
-
-
-In Excel akzeptieren manche Matrixoperationen auch Stichproben. Dazu gehören die folgenden Funktionen:
-
-* `MTRANS()`
-* `INDEX()`
-
-
 
 ::: {#def-symmetrische-matrix}
 Eine **symmetrische Matrix** ist eine quadratische Matrix, die bezüglich der Hauptdiagonalen symmetrisch ist.
@@ -38,14 +29,14 @@ Eine **symmetrische Matrix** ist eine quadratische Matrix, die bezüglich der Ha
 Daraus folgt, dass die Werte einer symmetrischen Matrix an einer Position $(i, j)$ gleich den Werten an der Position $(j, i)$ sind.
 
 ::: {#exm-symmetrische-matrix}
-Symmetrische Matrix
+## Symmetrische Matrix
 
 $$
 \begin{bmatrix}
-1 & 0 & 6 & 4 & 9 \\\
-0 & 2 & 2 & 6 & 14 \\\
-6 & 2 & 3 & 7 & 8 \\\
-4 & 6 & 7 & 4 & 9 \\\
+1 & 0 & 6 & 4 & 9 \\
+0 & 2 & 2 & 6 & 14 \\
+6 & 2 & 3 & 7 & 8 \\
+4 & 6 & 7 & 4 & 9 \\
 9 & 14 & 8 & 9 & 5
 \end{bmatrix}
 $$ 
@@ -59,6 +50,18 @@ Eine **Diagonalmatrix** hat nur Werte auf der Hauptdiagonalen. Alle anderen Wert
 Die **Einheitsmatrix** ist eine Diagonalmatrix mit `1` entlang der Hauptdiagonalen.
 :::
 
+::: {#exm-einheitsmatrix-3-6}
+## Einheitsmatrix mit 3 Zeilen und 6 Spalten
+
+$$
+\begin{bmatrix}
+1 & 0 & 0 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0 & 0 & 0
+\end{bmatrix}
+$$
+:::
+
 ::: {#def-identitaetsmatrix}
 Die **Identitätsmatrix** ist eine quadratische Einheitsmatrix.
 :::
@@ -66,14 +69,14 @@ Die **Identitätsmatrix** ist eine quadratische Einheitsmatrix.
 Die Identitätsmatrix wird in Formeln als $I$ gekennzeichnet.
 
 ::: {#exm-identitätsmatrix}
-Identitätsmatrix
+## Identitätsmatrix
 
 $$
 \begin{bmatrix}
-1 & 0 & 0 & 0 & 0 \\\
-0 & 1 & 0 & 0 & 0 \\\
-0 & 0 & 1 & 0 & 0 \\\
-0 & 0 & 0 & 1 & 0 \\\
+1 & 0 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 1 & 0 \\
 0 & 0 & 0 & 0 & 1
 \end{bmatrix}
 $$ 
@@ -83,31 +86,31 @@ $$
 Eine **Dreiecksmatrix** ist eine Matrix, die nur Werte unterhalb oder oberhalb der Hauptdiagonalen hat.
 :::
 
-In der Regel wird die Hauptdiagonale 
+Die Hauptdiagonale einer Dreiecks-Matrix wird nicht immer zum Wertebereich hinzugezählt. Je nach Anforderung, muss dieser Wertebereich entsprechend ein- oder ausgeschlossen werden.
 
 ::: {#exm-untere-dreiecksmatrix}
-Untere Dreiecksmatrix
+## Untere Dreiecksmatrix
 
 $$
 \begin{bmatrix}
-1 & 0 & 0 & 0 & 0 \\\
-11 & 2 & 0 & 0 & 0 \\\
-6 & 2 & 3 & 0 & 0 \\\
-4 & 6 & 7 & 4 & 0 \\\
+1 & 0 & 0 & 0 & 0 \\
+11 & 2 & 0 & 0 & 0 \\
+6 & 2 & 3 & 0 & 0 \\
+4 & 6 & 7 & 4 & 0 \\
 9 & 14 & 8 & 9 & 5
 \end{bmatrix}
 $$ 
 :::
 
 ::: {#exm-obere-dreiecksmatrix}
-Obere Dreiecksmatrix
+## Obere Dreiecksmatrix
 
 $$
 \begin{bmatrix}
-1 & 11 & 6 & 4 & 9 \\\
-0 & 2 & 2 & 6 & 14 \\\
-0 & 0 & 3 & 7 & 8 \\\
-0 & 0 & 0 & 4 & 9 \\\
+1 & 11 & 6 & 4 & 9 \\
+0 & 2 & 2 & 6 & 14 \\
+0 & 0 & 3 & 7 & 8 \\
+0 & 0 & 0 & 4 & 9 \\
 0 & 0 & 0 & 0 & 5
 \end{bmatrix}
 $$ 
@@ -119,14 +122,14 @@ Eine **dünnbesetzte Matrix** (oder *Sparse Matrix*) ist eine Matrix, die überw
 :::
 
 ::: {#exm-sparse-matrix}
-Sparse Matrix
+## Sparse Matrix
 
 $$
 \begin{bmatrix}
-0 & 1 & 0 & 0 & 9 \\\
-0 & 0 & 2 & 6 & 0 \\\
-6 & 0 & 0 & 0 & 0 \\\
-0 & 0 & 0 & 7 & 0 \\\
+0 & 1 & 0 & 0 & 9 \\
+0 & 0 & 2 & 6 & 0 \\
+6 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 7 & 0 \\
 0 & 4 & 0 & 3 & 0
 \end{bmatrix}
 $$ 
@@ -140,59 +143,29 @@ Eine Matrix, welche die Werte einer anderen Matrix $A$ mit vertauschten Zeilen- 
 Für die *transponierte Matrix von $A$* wird $A^T$ geschrieben.
 
 ::: {#exm-transponierte-matrix}
-Transponierte Matrix
+## Transponierte Matrix
 
 $$
 A = \begin{bmatrix}
-1 & 0 \\\
-0 & 2 \\\
-6 & 2  \\\
-4 & 6  \\\
+1 & 0 \\
+0 & 2 \\
+6 & 2  \\
+4 & 6  \\
 9 & 7 
 \end{bmatrix} \\\
-\\\
+\\
 A^T = \begin{bmatrix}
-1 & 0 & 6 & 4 & 9 \\\
+1 & 0 & 6 & 4 & 9 \\
 0 & 2 & 2 & 6 & 7
 \end{bmatrix}
 $$ 
 :::
 
-In R ist eine Matrix *keine* verkettete Liste, sondern ein eigener Datentyp, der über die Anzahl der Spalten und Zeilen definiert ist. Die Funktion `length()` ergibt die Gesamtzahl der Werte in einer Matrix. Um die Anzahl der Spalten und Zeilen einer Matrix zu bestimmen, müssen wir die Funktionen `ncol()` für die Anzahl der Spalten (engl. columns) und `nrow()` für die Anzahl der Zeilen (engl. row) verwenden.
-
-In Excel ergibt sich eine Matrix aus der Anordnung der Werte.
-
 Wir beachten, dass per Konvention der Zeilenindex immer als Erstes und der Spaltenindex immer als Zweites angegeben wird. Anstelle der mathematischen Schreibweise trennen wir die beiden Indizes. Auf diese Weise können wir auf jeden Wert in einer Matrix zugreifen. 
-
-In R verwenden wir die eckigen Klammern, um auf die einzelnen Werte zuzugreifen. Dabei gilt `matrix[zeilenindex, spaltenindex]` wie das folgende Beispiel zeigt. 
-
-```R
-# Die folgende Zeile gibt eine 3x4 Matrix mit zufälligen ganzen Zahlen mit  0 < m_ij < 100 zurück
-m = ( runif(12) * 100  ) %>% trunc() %>% matrix(3, 4) 
-
-m[2, 3] # gibt den Wert aus der zweiten Zeile (i = 2) und der dritten Spalte (j = 3) zurück.  
-```
-
-> Gewöhnen Sie sich an, in R die eckigen Klammern **nur** für Matrizenindizes zu verwenden. 
-
-
-In Excel können wir eine ähnliche Matrix mit der Formel `= ZUFALLSMATRIX(3; 4; 1; 100; WAHR)` erzeugen. Um in Excel auf die einzelnen Werte zuzugreifen, verwenden wir die Funktion `INDEX()`. Diese Funktion erwartet einen Bereich mit einer "Matrix" und gibt den Wert an der entsprechenden Zeilen- und Spaltenposition zurück. Entsprechend erhalten wir den Wert an der Position 2, 3 mit der folgenden Formel, wenn wir unsere Zufallsmatrix an der Adresse A1 eingefügt haben: `= INDEX(A1#; 2; 3)`.
-
-> Excel `INDEX()`-Funktion kann für beliebige Bereiche verwendet werden. Daher eignet sich diese Funktion auch zum *Selektieren* von Vektoren aus Stichprobenobjekten. 
-
-
-
-
 
 ## Matrixaddition
 
 Die Matrizenaddition addiert die Elemente zweier Matrizen *paarweise*. Damit die Addition funktioniert, muss es für jeden Wert in Matrix A einen Partnerwert in Matrix B mit gleichem Zeilenindex i und Spaltenindex j geben. Daraus folgt direkt, dass die Matrixaddition nur für Matrizen mit gleichen Dimensionen m und n definiert ist.
-
-**Besonderheiten**
-
-R erzwingt die Regeln für die Matrixaddition. Deshalb ist es mit R nicht möglich, zwei Matrizen mit ungleichen Dimensionen m und n zu addieren. 
-
-Excel erlaubt die Addition von zwei Matrizen mit ungleichen Dimensionen. In diesem Fall wird die Addition nur für die paarweise vorhandenen Werte durchgeführt.  Für alle  anderen Werte werden gedachte Kreuzungspunkte angelegt und mit dem Fehlerwert `#NV` belegt. Dieses Ergebnis ist deshalb ungeeignet, um zwei beliebige Matrizen zu addieren.
 
 ##  Vektoraddition
 
@@ -200,59 +173,42 @@ Die Vektoraddition funktioniert etwas anders als die Matrixaddition. In diesem F
 
 Die Vektoraddition ist nur dann definiert, wenn die Matrix und der Vektor die gleiche Anzahl an Zeilen haben. 
 
-<p class="alert alert-primary" markdown="1">
 Bei der Vektoraddition wird der Vektor zu jeder Spalte in der Matrix addiert. Dabei werden die Werte *paarweise* zusammengezählt. 
- 
 
-Veranschaulichen wir uns das für einen 2-Vektor und eine 2 x 3-Matrix.
+::: {#exm-matrix-vektoraddition}
+## Vektoraddition eines 2-Vektor und eine 2 x 3-Matrix.
 
 $$
-v + M = \begin{bmatrix}
-v_{1}  \\\
+v + M \\
+\\
+= \begin{bmatrix}
+v_{1}  \\
 v_{2} 
 \end{bmatrix} + \begin{bmatrix}
-m_{11} & m_{12}  & m_{13}  \\\
+m_{11} & m_{12}  & m_{13}  \\
 m_{21} & m_{22} & m_{23}  
-\end{bmatrix} = \begin{bmatrix}
-v_1 + m_{11} & v_1 + m_{12}  & v_1 + m_{13}  \\\
+\end{bmatrix} \\\
+\\
+= \begin{bmatrix}
+v_1 + m_{11} & v_1 + m_{12}  & v_1 + m_{13}  \\
 v_2 + m_{21} & v_2 + m_{22} & v_2 + m_{23}  
 \end{bmatrix}
 $$
 
-In R implementieren wir diese Logik wie folgt: 
-
-```R
-v = c(1, 2)
-M = matrix(c(3, 4, 5, 6, 7, 8), 2, 3)
-
-v + M
-```
-
-In Excel vektorisieren wir die Werte zuerst, damit wir sie als dynamische Felder in Formeln verwenden können. Der Anschaulichkeit halber nehme ich hier an, dass der Vektor an der Adresse `V1` und die Matrix an der Adresse `M1` beginnt und beide Adressen die Werte von einer geeigneten Stelle auf dem Arbeitsblatt per Identitätsfunktion vektorisiert wurden. Die Werte sind in beiden Fällen wie im R-Beispiel. 
-
-Die Vektoraddition wird anschliessend durch die folgende Formel erzeugt: 
-
-```Excel
-= V1# + M1#
-```
-
-**Besonderheiten**
-
-R erlaubt die Vektoraddition nur, wenn ein Operand ein Vektor (z.B. mit der `c()`-Funktion erstellt wurde) und ein Operand eine Matrix ist. Handelt es sich beim Vektor um eine m x 1-Matrix prüft R, ob die Bedingungen für die Matrixaddition erfüllt sind und bricht die Operation anschliessend ab. 
-
-Weil Excel nicht explizit zwischen Matrizen und Vektoren unterscheidet und deshalb ein m-Vektor nicht von einer m x 1-Matrix unterschieden werden kann, führt Excel eine *implizite* Vektorkonversion durch. Liegen also zwei Matrizen vor, von denen eine nur eine Spalte hat, wird diese implizit als Vektor verwendet und *immer* eine Vektoraddition durchgeführt. *Um eine Matrixaddition sicherzustellen, **müssen** Sie die Bedingungen für die Matrixaddition in Excel selbst implementieren, bevor Sie die Operation durchführen!*
 
 ## Skalarmultiplikation (Punktprodukt)
 
 Die Skalarmultiplikation oder das Punktprodukt multipliziert einen Wert a mit einer Matrix (oder Vektor) M. Dabei wird \\( a \\) als **Skalar** bezeichnet, weil dieser alle Werte um den gegebenen Wert *skaliert*.  Bei der Skalarmultiplikation wird jeder Wert in der Matrix mit dem Skalar multipliziert. 
 
 $$
-a \cdot M = a \cdot \begin{bmatrix}
-m_{11} & m_{12}  & m_{13}  \\\
+a \cdot M \\
+\\
+= a \cdot \begin{bmatrix}
+m_{11} & m_{12}  & m_{13}  \\
 m_{21} & m_{22} & m_{23}  
 \end{bmatrix} \\\ \\\ 
 = \begin{bmatrix}
-a \cdot m_{11} & a \cdot m_{12}  & a \cdot m_{13}  \\\
+a \cdot m_{11} & a \cdot m_{12}  & a \cdot m_{13}  \\
 a \cdot m_{21} & a \cdot m_{22} & a \cdot m_{23}  
 \end{bmatrix}
 $$
@@ -260,53 +216,51 @@ $$
 Dieses Konzept lässt sich auf Vektoren übertragen. Dabei ist der Skalar a ein Vektor mit der gleichen Anzahl an Zeilen für den Vektor und die Matrix. Danach funktioniert die Skalarmultiplikation analog zur Vektoraddition. 
 
 $$
-a \cdot M = \begin{bmatrix}
-a_1\\\
+a \cdot M \\
+= \begin{bmatrix}
+a_1\\
 a_2 
 \end{bmatrix} \cdot \begin{bmatrix}
-m_{11} & m_{12}  & m_{13}  \\\
+m_{11} & m_{12}  & m_{13}  \\
 m_{21} & m_{22} & m_{23}  
 \end{bmatrix} \\\ \\\
 = \begin{bmatrix}
-a_1 \cdot m_{11} & a_1 \cdot m_{12}  & a_1 \cdot m_{13}  \\\
+a_1 \cdot m_{11} & a_1 \cdot m_{12}  & a_1 \cdot m_{13}  \\
 a_2 \cdot m_{21} & a_2 \cdot m_{22} & a_2 \cdot m_{23}  
 \end{bmatrix}
 $$
 
-## Matrizenmultiplikation/ Kreuzprodukt
+## Matrixmultiplikation/ Kreuzprodukt
 
 Das Kreuzprodukt ist eine andere Variante zwei Matrizen zu multiplizieren. Dabei werden zwei Matrizen A und B über Kreuz multipliziert. Dazu muss gegeben sein, dass die Matrix A gleich viel Spalten hat, wie Matrix B Zeilen. Es muss also gelten, dass wir eine m x n-Matrix mit einer n x p-Matrix multiplizieren, wobei n für beide Matrizen gleich sein muss. Sind diese Voraussetzungen nicht erfüllt, kann das Kreuzprodukt nicht gebildet werden.
 
 Das Kreuzprodukt ist wie folgt definiert: 
 
 $$
-A \times B = \begin{bmatrix} 
-a_{11} & a_{12} & \cdots & a_{1n} \\\
-a_{21} & a_{22} & \cdots & a_{2n} \\\
-\vdots & \vdots & \ddots & \vdots \\\
-a_{m1} & a_{m2} & \cdots & a_{mn} \\\
+A \times B \\ \\
+= \begin{bmatrix} 
+a_{11} & a_{12} & \cdots & a_{1n} \\
+a_{21} & a_{22} & \cdots & a_{2n} \\
+\vdots & \vdots & \ddots & \vdots \\
+a_{m1} & a_{m2} & \cdots & a_{mn} \\
 \end{bmatrix} 
 \times
 \begin{bmatrix} 
-b_{11} & b_{12} & \cdots & b_{1p} \\\
-b_{21} & b_{22} & \cdots & b_{2p} \\\
-\vdots & \vdots & \ddots & \vdots \\\
-b_{n1} & b_{n2} & \cdots & b_{np} \\\
-\end{bmatrix} \\\ \\\
+b_{11} & b_{12} & \cdots & b_{1p} \\
+b_{21} & b_{22} & \cdots & b_{2p} \\
+\vdots & \vdots & \ddots & \vdots \\
+b_{n1} & b_{n2} & \cdots & b_{np} \\
+\end{bmatrix} \\\
+\\\
 = \begin{bmatrix} 
-\sum_{i=1}^{n}{a_{1i} \cdot b_{i1}} & \sum_{i=1}^{n}{a_{1i} \cdot b_{i2}} & \cdots & \sum_{i=1}^{n}{a_{1i} \cdot b_{ip}} \\\
-\sum_{i=1}^{n}{a_{2i} \cdot b_{i1}} & \sum_{i=1}^{n}{a_{2i} \cdot b_{i2}} & \cdots & \sum_{i=1}^{n}{a_{2i} \cdot b_{ip}} \\\
-\vdots & \vdots & \ddots & \vdots \\\
-\sum_{i=1}^{n}{a_{mi} \cdot b_{i1}} & \sum_{i=1}^{n}{a_{mi} \cdot b_{i2}} & \cdots & \sum_{i=1}^{n}{a_{mi} \cdot b_{ip}} \\\
+\sum_{i=1}^{n}{a_{1i} \cdot b_{i1}} & \sum_{i=1}^{n}{a_{1i} \cdot b_{i2}} & \cdots & \sum_{i=1}^{n}{a_{1i} \cdot b_{ip}} \\
+\sum_{i=1}^{n}{a_{2i} \cdot b_{i1}} & \sum_{i=1}^{n}{a_{2i} \cdot b_{i2}} & \cdots & \sum_{i=1}^{n}{a_{2i} \cdot b_{ip}} \\
+\vdots & \vdots & \ddots & \vdots \\
+\sum_{i=1}^{n}{a_{mi} \cdot b_{i1}} & \sum_{i=1}^{n}{a_{mi} \cdot b_{i2}} & \cdots & \sum_{i=1}^{n}{a_{mi} \cdot b_{ip}} \\
 \end{bmatrix} 
 $$
 
 Das Ergebnis eines Kreuzprodukts ist immer eine Matrix mit m-Zeilen und p-Spalten.
-
-Diese komplizierte Berechnung wird so häufig gebraucht, dass Excel und R diese Operation für uns bereitstellen, sodass wir uns nur das Prinzip merken müssen.
-
-* Das Kreuzprodukt wird in R mittels des `%*%`-Operanden berechnet.
-* Das Kreuzprodukt wird in Excel mittels der `MMULT()`-Funktion berechnet.
 
 Aus der Definition des Kreuzprodukts zeigt sich, dass die Operanden beim Kreuzprodukt nur vertauscht werden können, wenn beide Matrizen quadratisch sind. Dabei gilt für beliebige Matrizen ausserdem @eq-kreuzprodukt-nicht-kommutativ.
 
@@ -314,33 +268,150 @@ $$
 A \times B \ne B \times A
 $$ {#eq-kreuzprodukt-nicht-kommutativ}
 
-Das Kreuzprodukt hat ein *neutrales Element*: Die **Einheitsmatrix**. Aus diesem Grund wird die Einheitsmatrix gelegentlich auch als *Identitätsmatrix* bezeichnet. Die Einheitsmatrix ist eine quadratische Matrix, die an den Positionen der abfallenden Diagonalen den Wert 1 und sonst den Wert 0 hat. 
+Das Kreuzprodukt hat ein *neutrales Element*: Die **Identitätsmatrix** $I$.  Die Identitätsmatrix ist eine quadratische Matrix, die an den Positionen der abfallenden Diagonalen den Wert 1 und sonst den Wert 0 hat. 
 
-**Beispiel für eine 3-dimensionale Einheitsmatrix**
+::: {#exm-3d-id-matrix}
+## 3-dimensionale Einheitsmatrix
 
 $$
 \begin{bmatrix}
-1 & 0 & 0 \\\
-0 & 1 & 0 \\\
+1 & 0 & 0 \\
+0 & 1 & 0 \\
 0 & 0 & 1
 \end{bmatrix}
 $$
+:::
 
-**Kreuzprodukt für Vektoren**
+Für die Identitätsmatrix gilt @eq-id-matrix-kreuzprodukt.
+
+$$
+A \times I = I \times A = A
+$$ {#eq-id-matrix-kreuzprodukt}
+
+### Kreuzprodukt für Vektoren
 
 Aus der Anforderung für das Kreuzprodukt folgt direkt das Kreuzprodukt für Vektoren, die wir als m x 1- sowie als 1 x p-Matrizen verstehen können. Es gilt also: n = 1. Deshalb mussten wir für das Einmaleins-Beispiel den zweiten Vektor *transponieren*. Dadurch vereinfacht sich die komplizierte Formel des Kreuzprodukts auf die paarweise-überkreuzte Multiplikation. 
 
-**Besonderheiten** 
+### Inverse Matrix
 
-Excel berücksichtigt bei der Matrixmultiplikation nur die Zeilen und Spalten, für welche die Bedingung des Kreuzprodukts erfüllt sind. Überschüssige Zeilen oder Spalten werden ignoriert bzw. führen zu Fehlern.
+::: {#def-inverse-matrix}
+Die **inverse Matrix** $A^{-1}$ ist die Matrix, die mit der Matrix $A$ multipliziert die Identitätsmatrix $I$ ergibt. Es gilt also @eq-inverse-matrix.
+:::
+
+$$
+A \times A^{-1} = A^{-1} \times A = I
+$$ {#eq-inverse-matrix}
+
+Die inverse Matrix kann nicht für beliebige Matrizen gebildet werden, sondern ist nur für bestimme quadratische Matrizen definiert. Die Inverse Matrix wird für verschiedene Anwendungen benötigt und wird deshalb von den meisten Softwarepaketen bereitgestellt. Es ist deshalb selten notwendig, eine inverse Matrix selbst zu berechnen.
+
+### Anwendungen des Kreuzprodukts
+
+#### Zeilen- und Spaltensummen berechnen
+
+Für Zeilen- bzw. Spaltensummen werden drei Eigenschaften ausgenutzt: 
+
+1. Vektoren lassen sich als $1 \times n$- bzw. $n \times 1$-Matrizen verstehen.
+2. Das Ergebnis des Kreuzpodukts ist immer eine Matrix mit $m \times p$-Dimensionen. 
+3. Das neutrale Element der Multiplikation ist `1`.
+
+Weil für jede Ergebnisposition des Kreuzprodukts @eq-pos-summe-matrixprod gilt. 
+
+$$
+\sum_{i=1}^{n}{a_{ji} \cdot b_{ik}}
+$$ {#eq-pos-summe-matrixprod}
+
+Wird einer der beiden Parameter $a_{ji}$ oder $b_{ik}$ eins, dann reduziert sich dieser Term auf eine einfache Summe entsprechend @eq-pos-summe-matrixprod-eins.
+
+$$
+\sum_{i=1}^{n}{a_{ji} \cdot b_{ik}} = \sum_{i=1}^{n}{a_{ji} \cdot 1} = \sum_{i=1}^{n}{a_{ji}}
+$$ {#eq-pos-summe-matrixprod-eins}
+
+Für die Spalten- bzw. Zeilensumme soll jeweils ein Vektor bestimmt werden, der die Summe der Werte in der jeweiligen Zeile bzw. Spalte enthält. Dazu wird die Matrix mit einem geeigneten Einsvektor multipliziert.
+
+Für die Spaltensumme, muss dieser Einsvektor die Länge der Anzahl der Zeilen haben. Für die Zeilensumme muss der Einsvektor die Länge der Anzahl der Spalten haben.
+
+::: {#exm-spalten-summe}
+## Spaltensumme für eine $3 \times 4$-Matrix
+$$
+\begin{bmatrix}
+1 & 1 & 1
+\end{bmatrix}
+\times \begin{bmatrix}
+3 & 6 & 2  &1 \\
+4 & 3 & 2 & 1 \\
+1 & 2 & 3 & 4 
+\end{bmatrix} = 
+\begin{bmatrix}
+8 & 11 & 7 & 6
+\end{bmatrix}
+$$
+:::
+
+::: {#exm-zeilen-summe}
+## Zeilensumme für eine $3 \times 4$-Matrix
+$$
+\begin{bmatrix}
+3 & 6 & 2  &1 \\
+4 & 3 & 2 & 1 \\
+1 & 2 & 3 & 4 
+\end{bmatrix} \times \begin{bmatrix}
+1 \\
+1 \\
+1 \\
+1
+\end{bmatrix}= 
+\begin{bmatrix}
+12 \\ 10 \\ 10
+\end{bmatrix}
+$$
+:::
+
+
+#### Vorgänger- und Nachfolgersummen
+
+Wird ein Vektor mit einer Dreiecks-Matrix multipliziert, dann werden die Vorgänger- bzw. Nachfolgerwerte addiert. 
+
+::: {#exm-nachfolger-summe}
+## Nachfolgersumme für einen Vektor der Länge 4
+
+$$
+\begin{bmatrix}3 &6 &2 &1\end{bmatrix} \times \begin{bmatrix}
+1 & 0 & 0 & 0 \\
+1 & 1 & 0 & 0 \\
+1 & 1 & 1 & 0 \\
+1 & 1 & 1 & 1
+\end{bmatrix} = \begin{bmatrix}12 & 9 & 3 & 1\end{bmatrix}
+$$
+::: 
+
+Diese Logik lässt sich auch auf Matrizen erweitern. Dabei werden die Vorgänger- bzw. Nachfolgerwerte für jede Zeile berechnet.
+
+::: {#exm-nachfolger-summe}
+## Nachfolgersumme für eine $2 \times 4$-Matrix
+
+$$
+\begin{bmatrix}
+3 & 6& 2  &1 \\
+4 & 3 & 2 & 1
+\end{bmatrix} 
+\times \begin{bmatrix}
+1 & 0 & 0 & 0 \\
+1 & 1 & 0 & 0 \\
+1 & 1 & 1 & 0 \\
+1 & 1 & 1 & 1
+\end{bmatrix} = 
+\begin{bmatrix}
+12& 9& 3 &1 \\
+10 & 6 & 3 & 1
+\end{bmatrix}
+$$
+:::
 
 ## Das äussere Matrixprodukt
 
 Bei den Vektoren und Matrizen haben wir bereits das Kreuzprodukt kennengelernt, mit dem wir aus zwei Vektoren eine Matrix konstruieren können. Das Kreuzprodukt ist allerdings nur für die Multiplikation als paarweiser Operator definiert. Neben dem Kreuzprodukt gibt es noch eine zweite und flexiblere Möglichkeit, um aus zwei Vektoren eine Matrix zu generieren: Das sog. äussere Produkt. 
 
-<p class="alert alert-primary" markdown="1"> 
-Beim **äusseren Produkt** oder *dyadischen Produkt* werden die Werte zweier Vektoren *paarweise* miteinander verknüpft, wodurch eine Matrix erzeugt wird, bei der die Anzahl der Zeilen entsprechend der Länge des linken und die Anzahl der Spalten mit der Länge des rechten Vektors übereinstimmt.
- 
+Beim **äusseren Produkt** oder *dyadischen Produkt* werden die Werte zweier *Vektoren* *paarweise* miteinander verknüpft, wodurch eine Matrix erzeugt wird, bei der die Anzahl der Zeilen entsprechend der Länge des linken und die Anzahl der Spalten mit der Länge des rechten Vektors übereinstimmt.
 
 Wenn also zwei Vektoren x mit der Länge m und y mit der Länge n gegeben sind, dann können wir das äussere Produkt wie folgt schreiben: 
 
@@ -350,18 +421,147 @@ $$
 
 Das Ergebnis des äusseren Produkts ist also immer eine Matrix. Wir beachten, dass die Definition nur eine Verknüpfung fordert, aber nicht festlegt, welche Verknüpfung verwendet werden soll. Wir können also *beliebige Operationen* zur Verknüpfung verwenden. 
 
-> Wird als Verknüpfungsoperator für das äussere Produkt die Multiplikation gewählt, dann entspricht das Ergebnis des äusseren Produkts für zwei Vektoren dem Kreuzprodukt. 
+Wird als Verknüpfungsoperator für das äussere Produkt die Multiplikation gewählt, dann entspricht das Ergebnis des äusseren Produkts für zwei Vektoren dem Kreuzprodukt zwischen Vektoren.
 
+Anders als beim Kreuzprodukt, können beim äusseren Matrixprodukt beliebige Operatoren verwendet werden. In der Praxis werden sehr oft Vergleichsoperatoren für die Verknüpfung verwendet. 
 
-Anders als beim Kreuzprodukt, können wir beliebige andere Operatoren verwenden. In der Praxis werden sehr oft Vergleichsoperatoren für die Verknüpfung verwendet. 
-
-> So ist es z.B. möglich, das gemeinsame Auftreten von Werten in einer Tabelle über zwei Vektoren zu bestimmen. Das Ergebnis ist eine sog. Co-Occurrence-Matrix, bei der an den einzelnen Positionen jeweils die Anzahl steht mit der die korrespondierenden Werte der jeweiligen Spalte und Zeilen gleichzeitig vorkommen. Bei der Erstellung einer Co-Occurrence-Matrix müssen zuerst die zählbaren Elemente identifiziert werden. Das wird durch das äussere Produkt erreicht. Das erfolgt in zwei Schritten.
-> 
-> In einem ersten Schritt werden für jeden Vektor die eindeutigen Elemente bestimmt. In Excel wird dazu die  Funktion `EINDEUTIG()` und in R die Funktion `unique()` verwendet. Anschliessend wird das äussere Produkt über den eindeutigen und den ursprünglichen Vektor gebildet und als Verknüpfung der Vergleich auf Gleichheit verwendet. 
-> 
-> In R wird dies über die Operation ``outer(vektor1, vektor2, `==`) * 1`` erreicht, wobei die anschliessende Multiplikation mit `1` die Wahrheitswerte in Zahlenwerte umwandelt. 
+> ::: {#exm-dreiecks-matrix-erzeugen}
+> ## Eine Dreiecks-Matrix mit dem äusseren Produkt erzeugen.
 >
-> In Excel lautet die entsprechende Operation `= (Vektor1# = Vektor2#) * 1`. 
+> Eine Dreiecks-Matrix eine wichtige Matrix, weil durch die `0` ober- bzw. unterhalb der Hauptdigonalen bei der Matrixmultiplikation viele Rechenoperationen eingespart werden können. Diese Einsparung kommt in der Praxis immer dann zum Tragen, wenn nur Vorgänger- oder Nachfolgerwerte berückstichtigt werden müssen. Dafür ist es oft sinnvoll, eine Dreiecks-Matrix zu erzeugen, die nur die Werte `1` und `0` enthält.
+>
+> Eine Dreiecksmatrix lässt sich mit dem äusseren Produkt aus zwei Sequenzen erzeugen. Dazu wird in zwei Schritten vorgegangen.
+>
+> 1. Eine Sequenz wird mit der gewünschten Länge erzeugt.
+> 2. Die Sequenz wird mit sich selbst multipliziert. Als Operator wird ein Vergleichsoperator verwendet, der die Werte der Sequenz paarweise vergleicht.
+>
+> Eine Dreiecks-Matrix entsteht, wenn ein grösser- oder kleiner-Vergleich durchgeführt wird. Soll die Hauptdiagonale einbezogen werden, dann jeweils ein grösser-oder-gleich- bzw. kleiner-oder-gleich-Vergleich durchgeführt werden.
+>
+> Um eine $3\times 3$-Matrix zu erzeugen, wird eine Sequenz mit der Länge 3 benötigt.
+>
+> $$
+> \{1;2;3\}
+>$$
+>
+> Diese Sequenz wird mit sich selbst multipliziert. Als Operator wird ein grösser-Vergleich verwendet.
+>
+> $$
+> \{1;2;3\} \otimes_{>} \{1;2;3\} = \begin{bmatrix}
+> 0 & 0 & 0 \\
+> 1 & 0 & 0 \\
+> 1 & 1 & 0
+\end{bmatrix} 
+> $$
+>
+> ::: 
 
+Weil das äussere Produkt beliebige Operatoren erlaubt, lassen sich mit der gleichen Technik wie für die Dreiecks-Matrix auch andere Strukturen systematisch erzeugen. Falls dabei komplexe logische Ausdrücke verwendet werden, ist es sinnvoll, diese in einer Funktion zu kapseln.
 
-> In Excel muss ein Vektor ein Spalten und der andere Vektor ein Zeilenvektor sein. Die Reihenfolge ist unwichtig. Sie müssen also einen der beiden Vektoren ggf. *transponieren*.
+> ::: {#exm-komplex-structure-erzeugen}
+> ## Eine komplexe Struktur mit dem äusseren Produkt erzeugen.
+> 
+> Es soll eine $6 \times 6$-Matrix erzeugt werden, die entlang Hauptdiagonalen und der direkt benachbarten Nebendiagonalen den Wert `1` enthält. Alle anderen Werte sollen `0` sein.
+> 
+> Dazu wird Sequenz der Länge `6` als Basis für das äussere Produkt verwendet. 
+> 
+> $$
+> \{1;2;3;4;5;6\}
+> $$
+> 
+> Weil diese Struktur nicht durch einen direkten Vergleich erzeugt werden kann, wird eine Funktion $f$ für den logischen Ausdruch erstellt. Daraus ergibt sich das folgende äussere Produkt.
+> 
+> $$ 
+> \{1;2;3;4;5;6\} \otimes_{f} \{1;2;3;4;5;6\}
+> $$
+> 
+> Um die gewünschte Struktur zu erzeugen, bedarf es eines komplexen logischen Ausdrucks mit zwei Vergleichen. Zum einen muss für die Struktur der eine Index kleiner oder gleich dem um eins erhöhten anderen Index sein. Zum anderen darf die Differenz zwischen den beiden Indizes nicht grösser als eins sein. Daraus ergibt sich die folgende Definition für die Funktion $f$.
+> 
+> $$
+> f(i, j) \to (i \le j+1) \land (j - i \le 1)
+> $$
+> 
+> Das Ergebnis des äusseren Produkts mit dieser Funktion als Operator ist die gewünschte Matrix.
+> 
+> $$
+> \begin{bmatrix}
+> 1 &  1 &  0 &  0 &  0 &  0 \\
+> 1 &  1 &  1 &  0 &  0 &  0 \\
+> 0 &  1 &  1 &  1 &  0 &  0 \\
+> 0 &  0 &  1 &  1 &  1 &  0\\
+> 0 &  0 &  0 &  1 &  1 &  1 \\
+> 0 &  0 &  0 &  0 &  1 &  1 
+> \end{bmatrix}
+> $$
+> 
+> :::
+
+Das äussere Produkt erlaubt beliebige Operatoren für die Multiplikation und ist deshalb sehr flexibel. Weil Operatoren nur spezielle Funktionen sind, lassen sich komplexe Operatoren z.B. mittels logischer Ausdrücke erzeugen.
+
+> ::: {#exm-werte-markieren}
+> ## Werte in einem Vektor markieren
+> 
+> Häufig ist es notwendig, bestimmte Werte in einem Vektor zu markieren, damit sie von nachfolgenden Matrix-Operationen berücksichtigt werden können. Ein typisches Beispiel für solche Markierungen ist das Markieren der einzelnen Werte eines diskreten Wertebereichs. 
+> 
+> Dazu wird zuerst ein Hilfsvektor erstellt, der alle (vorkommenden) Werte des Wertebereichs enthält. Anschliessend wird das äussere Produkt zwischen dem originalen Vektor und dem Hilfsvektor mit einem Vergleichsoperator durchgeführt.
+> 
+> Hier soll der Wertebereich die Werte 1 bis 5 enthalten. Daraus ergibt sich der Hilfsvektor $v_h = \{1;2;3;4;5\}$. Der Vektor $v$ soll markiert werden. Dieser Vektor enthält die Werte $\{1;3; 2; 3; 4; 5; 3; 2; 4; 4; 5; 1; 4\}$.
+> 
+> Als Vergleichsoperator wird die Gleichheit verwendet, um die Werte zu markieren. Das Ergebnis ist die folgende Matrix.
+> 
+> $$
+> v \otimes_{=} v_h = \begin{bmatrix}
+> 1 & 0 & 0 & 0 & 0 \\
+> 0 & 0 & 1 & 0 & 0 \\
+> 0 & 1 & 0 & 0 & 0 \\
+> 0 & 0 & 1 & 0 & 0 \\
+> 0 & 0 & 0 & 1 & 0 \\
+> 0 & 0 & 0 & 0 & 1 \\
+> 0 & 0 & 1 & 0 & 0 \\
+> 0 & 1 & 0 & 0 & 0 \\
+> 0 & 0 & 0 & 1 & 0 \\
+> 0 & 0 & 0 & 1 & 0 \\
+> 0 & 0 & 0 & 0 & 1 \\
+> 1 & 0 & 0 & 0 & 0 \\
+> 0 & 0 & 0 & 1 & 0
+> \end{bmatrix}
+> $$
+>
+> Nun lässt sich bspw. die Spaltensumme entsprechend von @exm-spalten-summe mithilfe eines Einsvektors $v_1$ der Länge `13` berechnen, um die Häufigkeit der einzelnen Werte zu bestimmen.
+>
+> $$
+> v_1 \times \begin{bmatrix}
+> 1 & 0 & 0 & 0 & 0 \\
+> 0 & 0 & 1 & 0 & 0 \\
+> 0 & 1 & 0 & 0 & 0 \\
+> 0 & 0 & 1 & 0 & 0 \\
+> 0 & 0 & 0 & 1 & 0 \\
+> 0 & 0 & 0 & 0 & 1 \\
+> 0 & 0 & 1 & 0 & 0 \\
+> 0 & 1 & 0 & 0 & 0 \\
+> 0 & 0 & 0 & 1 & 0 \\
+> 0 & 0 & 0 & 1 & 0 \\
+> 0 & 0 & 0 & 0 & 1 \\
+> 1 & 0 & 0 & 0 & 0 \\
+> 0 & 0 & 0 & 1 & 0
+> \end{bmatrix} = \begin{bmatrix} 2 & 2 & 3 & 4 & 2 \end{bmatrix}
+> $$
+> :::
+
+## Co-Occurence-Matrizen erzeugen
+
+Co-Occurance Matrizen helfen beim Feststellen der Häufigkeiten des gemeinsamen Auftretens von Werten in zwei Vektoren. Das Ergebnis zeigt an den einzelnen Positionen jeweils die Anzahl steht mit der die korrespondierenden Werte der jeweiligen Spalte bzw. Zeilen gleichzeitig vorkommen. Bei der Erstellung einer Co-Occurrence-Matrix müssen zuerst die zählbaren Elemente identifiziert werden. Das wird durch das äussere Produkt erreicht. Das erfolgt in drei Schritten.
+
+1. Es werden zwei Vektoren erstellt, in dem die Werte aus den Vektoren genau einmal vorkommen. 
+2. Es werden zwei Matrizen über das äussere Produkt des jeweiligen original Vektors und dem zugehörigen eindeutigen Vektor aus Schritt 1 erstellt. Der Operator für das äussere Produkt ist in diesem Fall der Gleichheitsoperator.
+3. Mit den beiden Matrizen aus Schritt 2 wird das Kreuzprodukt gebildet. Dazu muss eine der beiden Matrizen transponiert werden. Dieses Kreuzprodukt ist immer zulässig, weil beide Matrizen die gleiche Anzahl an Zeilen haben, wenn sie aus dem gleichen Datenrahmen gebildet wurden.
+
+Die Schritte 1 und 2 sind eine direkte Anwendung von @exm-werte-markieren.
+
+Das Ergebnis ist eine Matrix mit der Anzahl der gemeinsamen Vorkommen der Werte aus den beiden eindeutigen Vektoren aus Schritt ein. Die Werte lassen sich über das Kreuzprodukt zuordnen: 
+
+- Die Spalten entsprechen den eindeutigen Werten der linken (nicht transponierten) Matrix.
+- Die Zeilen entsprechen den eindeutigen Werten der rechten (transponierten) Matrix.
+
+Alternativ zur Position der Werte kann auch ein *Sekundärindex* (s.[Kapitel @sec-chapter-indizieren-gruppieren]) für das äussere Produkt verwendet werden.
+
+Eine Co-occurance-Matrix ist immer symmetrisch. Durch eine Skalarmultiplikation mit einer Dreiecks-Matrix aus @exm-dreiecks-matrix-erzeugen kann die Matrix in eine untere oder obere Dreiecksmatrix umgewandelt werden.
