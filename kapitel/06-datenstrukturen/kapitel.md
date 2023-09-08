@@ -3,7 +3,7 @@ execute:
   echo: false
 ---
 
-# Datenstrukturen {#sec-chapter-datenstrukturen}
+## Datenstrukturen {#sec-chapter-datenstrukturen}
 
 Aus fundamentalen Datentypen können *komplexe Datentypen* zusammengesetzt werden, um mehrere Werte zusammenzufassen. Komplexe Datentypen können ausserdem wiederum komplexe Datentypen enthalten. So lassen sich komplexe Strukturen bilden.
 

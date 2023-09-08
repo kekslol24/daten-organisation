@@ -44,7 +44,7 @@ book:
     # Woche 4
     - kapitel/05-datentypen/kapitel.md
     - kapitel/05-zeichenketten/kapitel.md
-    - kapitel/06-datenstrukturen/kapitel.md
+    # - kapitel/06-datenstrukturen/kapitel.md
     
     # Woche 5
     - kapitel/04-dateiformate/kapitel.md
