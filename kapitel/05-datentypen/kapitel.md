@@ -23,6 +23,10 @@ Diese Datentypen beschreiben jeweils einzelne Werte.
 **Fundamentale Datentypen** heissen Datentypen, die Eigenschaften für einzelne Werte festlegen.
 :::
 
+::: {#def-skalar}
+Ein Wert von einem fundamentalen Datentyp heisst **Skalar**.
+:::
+
 Die fundamentalen Datentypen legen die allgemeinen Wertebereiche fest, auf welchen die speziellen Wertebereiche der Datenschemata aufbauen.
 
 ### Undefinierte Werte
@@ -321,9 +325,9 @@ Die Vektorform einer Matrix kann nur gebildet werden, weil wegen @def-matrix-str
 
 > ::: {#exm-vektorform}
 > Vektorformen einer Matrix
-
+>
 > Für die folgende Matrix $A$ mit $m = 3$ Zeilen und $n = 2$ Spalten soll in ihre Vektorform überführt werden.
-
+>
 > $$
 > A = \begin{bmatrix}
 > 1 & 0 \\\

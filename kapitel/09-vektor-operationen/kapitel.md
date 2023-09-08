@@ -1,171 +1,395 @@
 ---
 # bibliography: references.bib
 
-title: Vektor-Operationen
-
-abstract: ""
-
 execute: 
   echo: false
 ---
+#  Vektor-Operationen
 
-## Sequenzen und zwei besondere Vektoren
+Im [Kapitel @sec-datentypen] wurden Vektoren unter der allgemeinen @def-vektor eingeführt.
 
-Eine besondere Gruppe von Vektoren sind Sequenzen. 
+::: {#def-vektor-element}
+Die Werte eines Vektors heissen **Elemente**.
+:::
 
->**Definition:** Als **Sequenz** werden Vektoren bezeichnet, bei denen die Werte aufeinanderfolgender Indizes immer den gleichen Abstand haben. 
+Ein Vektor ist eine Datenstruktur mit mehreren Werten, wobei die Anzahl der Werte eine ganze Zahl $\ge 0$ ist. Dieser Wert entspricht der Länge des Vektors. 
 
-> **Konvention:** Der *Abstand einer Sequenz* wird als **Schrittweite** bezeichnet. Wird keine Schrittweite für eine Sequenz angegeben, wird die Schrittweite 1 angenommen. 
+::: {#def-vektor-index}
+Jedes Element hat eine eindeutige Position im Vektor. Diese Position heisst **Index**.
+:::
 
+Vektoren sind bezüglich des Datentyps *homogen*. D.h. alle Elemente eines Vektors haben den gleichen Datentyp.
 
-Implizit setzt diese Definition einen Anfangswert oder einen Endwert voraus. Per Konvention wird üblicherweise der Anfangswert einer Sequenz angegeben. Wird kein Anfangswert für eine Sequenz angegeben, dann wird ebenfalls per Konvention der Wert 1 angenommen. 
+::: {#def-leerer-vektor}
+Ein Vektor der Länge `0` heisst **leerer Vektor**. 
+:::
 
-> **Begriffe:** Der **Anfangswert** einer Sequenz wird auch  **Startwert** oder **Initialwert** genannt.
+Der leere Vektor wird endweder als $\varnothing$ oder als $\{\}$ geschrieben. Beide Schreibweisen sind gleichwertig.
 
+Der leere Vektor ist eine besondere Datenstruktur, die keine Elemente enthält. Der leere Vektor kann als *Startwert* für die Konstruktion von Vektoren verwendet werden oder als *Ergebnis* von Operationen auf Vektoren vorkommen.
 
-> **Beispiel 1:** Eine Sequenz mit der Länge 5 entspricht dem Vektor `{1,2,3,4,5}`.
+## Sequenzen
 
+Eine besondere Gruppe von Vektoren sind Sequenzen. Sequenzen sind Vektoren deren Werte der Ordnung des Wertebereichs folgen. 
 
-> **Beispiel 2:** Eine Sequenz mit der Schrittweite 3 und der Länge 4 entspricht dem Vektor `{1,4,7,10}`.
+$$
+v_i < v_{i+1}, \text{wenn aufsteigende Reihenfolge} \\\
+v_i > v_{i+1}, \text{wenn absteigende Reihenfolge}
+$$ {#eq-sequenz-sortiert-bedingung}
 
+Eine Sequenz erfordert also immer einen *ordinalen Wertebereich*.
 
-> **Beispiel 3:** Eine Sequenz mit dem Startwert 3 und der Länge 6 entspricht dem Vektor `{3,4,5,6,7,8}`.
+::: {.callout-warning}
+## Sequenzen in den Life Sciences
 
+In den Life Sciences werden *zusammenhängende Abfolgen von Werten* als Sequenzen bezeichnet. In diesen Sequenzen ist die *Reihenfolge* der Werte in diesen Sequenzen von Interesse. Solche Sequenzen haben nicht zwingend einen ordinalen Wertebereich und werden in der Regel als eigenständige Werte und nicht als Vektoren behandelt.
+::: 
 
-> **Beispiel 4:** Eine Sequenz mit dem Startwert 3, der Schrittweite 3 und der Länge 10 entspricht dem Vektor `{3,6,9,12,15,18,21,24,27,30}`.
+Nachfolgend werden nur Sequenzen vom Datentyp *Zahl* behandelt.
 
+::: {#def-lineare-sequenz}
+Eine **lineare Sequenz** ist ein Vektor, bei dem die Werte aufeinanderfolgender Indizes immer den gleichen Abstand haben.
+:::
 
-Wir erkennen, dass eine Sequenz mit gleichem Anfangswert und Schrittweite der jeweiligen Multiplikationsreihe entspricht. Der Startwert und die Indizes der Sequenz entsprechen den Multiplikatoren. 
+Deshalb gilt für lineare Sequenzen @eq-sequenz-diff.
 
-### Die Sequenzfunktion 
+$$
+v_{i+1} - v_i = v_{j+1} - v_j
+$$ {#eq-sequenz-diff}
 
-Mit der Sequenzfunktion können Sequenzen von beliebiger Länge erzeugt werden. In Excel kann die Sequenzfunktion Zeilenvektoren, Spaltenvektoren oder Matrizen erzeugen und hat den bezeichnenden Namen `SEQUENZ()`. In R erzeugt die Sequenzfunktion immer Spaltenvektoren und hat den Namen `seq()`. 
+::: {.callout-warning}
+## Konvention
 
-Um eine Sequenz der Länge 5 zu erzeugen, geben wir in Excel die Formel `= SEQUENZ(5)` ein. Diese Formel erzeugt einen Spaltenvektor, mit der entsprechenden Sequenz. Diese Formel entspricht in R der Operation `seq(5)`. 
+Für die praktische Anwendung sind lineare Sequenzen von zentraler Bedeutung. Deshalb wird im Folgenden der Begriff *Sequenz* synonym für *lineare Sequenz* verwendet. Alle anderen Sequenzen werden als Reihenfolgen bezeichnet oder explizit hervorgehoben. 
+:::
 
-Um in Excel eine Sequenz als Zeilenvektor zu erzeugen, verwenden wir die Operation `= SEQUENZ(1; 5)`, wobei der zweite Parameter der Funktion die Länge des Zeilenvektors angibt.
+::: {#def-schrittweite}
+Der *Abstand einer Sequenz* wird als **Schrittweite** bezeichnet. Wird keine Schrittweite für eine Sequenz angegeben, wird die Schrittweite `1` angenommen. 
+:::
 
-Der Anfangswert einer Sequenz wird in Excel als dritter Parameter der `SEQUENZ()`-Funktion übergeben. Die Operation `= SEQUENZ(6;1;3)` entspricht dem Beispiel 3. 
-
-Wenn wir in R einen Startwert festlegen, dann müssen wir die Länge explizit markieren. Das Beispiel 3 erhalten wir also über die folgende Operation: `seq(length = 6, from = 3)`. In R können wir alternativ auch den Endwert der Sequenz übergeben. Wir könnten Beispiel 3 auch über die Operation `seq(length = 6, to = 8)` erzeugen. 
-
-
-> **Merke:** In R übergeben wir den Endwert für eine Sequenz, wenn wir eine Sequenz mit einem bekannten Endwert erzeugen müssen. 
-
-
-> **Beispiel** Wir möchten in R die letzten vier Werte aus Vektor der Länge 10 extrahieren. 
-
-
-```
-vektor = seq(length = 10, from = 7, by = 13)
-
-vektor[ seq(length = 4, to = 10) ] # ergibt (85, 98, 111, 124)
-```
-
-Die zweite Operation können wir verallgemeinern, sodass wir die letzten vier Werte aus Vektoren mit beliebiger Länge extrahieren können: 
-
-```
-vektor[ seq(length = 4, to = length(vektor)) ] # ergibt (85, 98, 111, 124)
-```
-
-Im vorangegangenen Beispiel wird der Parameter `by` verwendet, um die Schrittweite der ersten Sequenz festzulegen. Mit diesem Parameter können wir Beispiel 2 wie folgt erzeugen: `seq(length = 4, by = 3)`. In Excel verwenden wir dazu den vierten Parameter der Funktion `SEQUENZ()`, um das gleiche Ergebnis zu erhalten: `= SEQUENZ(4; 1; 1; 3)`. 
-
-Wir benötigen alle Parameter für Beispiel 4: 
-
-Für Excel: 
-
-```
-= SEQUENZ(10; 1; 3; 3)
-```
-
-Für R:
-
-```
-seq(length = 10, from = 3, by = 3)
-```
-
-## Besondere Vektoren
-
-> **Definition:** Ein Vektor mit beliebiger Länge wird als **Nullvektor** bezeichnet, wenn an allen Indizes der Wert `0` steht. 
+::: {#def-anfangswert} 
+Der **Anfangswert** einer Sequenz wird auch  **Startwert** oder **Initialwert** genannt. Wird kein Anfangswert für eine Sequenz angegeben, dann wird der Wert `1` angenommen.
+:::
 
 
-Der *Nullvektor* ist damit eine besondere Sequenz, bei der die Schrittweite immer `0` ist.
+::: {#exm-festelänge}
+## Anfangswert
+
+Eine Sequenz mit der Länge 5 entspricht dem Vektor `{1,2,3,4,5}`.
+:::
+
+::: {#exm-länge-schrittweite}
+## Länge und Schrittweite
+Eine Sequenz mit der Schrittweite 3 und der Länge 4 entspricht dem Vektor `{1,4,7,10}`.
+::: 
+
+::: {#exm-startwert-länge}
+## Startwert und Länge
+
+Eine Sequenz mit dem Startwert 3 und der Länge 6 entspricht dem Vektor `{3,4,5,6,7,8}`.
+::: 
+
+::: {#exm-startwert-schrittweite-länge}
+## Startwert, Schrittweite und Länge
+
+Eine Sequenz mit dem Startwert 3, der Schrittweite 3 und der Länge 10 entspricht dem Vektor `{3,6,9,12,15,18,21,24,27,30}`.
+:::
+
+::: {.callout-note}
+## Merke
+
+Eine Sequenz mit gleichem Anfangswert und Schrittweite entspricht der jeweiligen Multiplikationsreihe. Der Startwert und die Indizes der Sequenz sind hierbei den Multiplikatoren. 
+:::
+
+### Besondere Sequenzen
+
+::: {#def-einheitsvektor}
+Der **Einheitsvektor** ist ein Vektor mit der geometrischen Länge 1.
+::: 
+
+Der *Einheitsvektor* ist *keine* Sequenz, weil die Werte der Indizes nicht mit der gleichen Schrittweite ansteigen.
+
+::: {#def-nullvektor} 
+Ein Vektor mit beliebiger Länge heisst **Nullvektor**, wenn an allen Indizes der Wert `0` steht. 
+:::
+
+Der *Nullvektor* ist damit eine besondere Sequenz, bei der der Startwert und die Schrittweite `0` ist.
 
 Ein zweiter Vektor mit der Schrittweite `0` ist der *Einsvektor*. 
 
-> **Definition:** Der **Einsvektor** ist ein Vektor mit beliebiger Länge mit dem Wert `1` bei jedem Index. 
+::: {#def-einsvektor}
+Der **Einsvektor** ist ein Vektor mit beliebiger Länge mit dem Wert `1` bei jedem Index. 
+:::
+
+Der *Einsvektor* ist damit eine besondere Sequenz, mit dem Startwert `1` und der Schrittweite `0`.
+
+In der mathematischen Literatur wird der *Einsvektor* oft nicht benannt. Wegen der besonderen Bedeutung dieses Vektors für verschiedene Operationen, wird diese Sequenz hier benannt.
+
+::: {.callout-important}
+Der **Einsvektor** darf nicht mit dem **Einheitsvektor** verwechselt werden. Im Gegensatz zum Einsvektor hat der *Einheitsvektor* die geometrische Länge $1$. Der Einsvektor der Länge `3` hat etwa die geometrische Länge von $\sqrt{3} \approx 1.7321$
+:::
+
+## Konkatenation
+
+Datenvektoren können zu neuen Vektoren zusammengefügt werden. Dieser Vorgang heisst **Konkatenation**. Dabei werden zwei Vektoren vom **gleichen Datentyp** *hintereinander* aneinandergehängt.
+
+Bei der Konkatenation muss die Bedingung des **gleichen Datentyps** zwingend erfüllt sein. Eine Konkatenation von Vektoren mit unterschiedlichen Datentypen ist unzulässig, weil die resultierende Datenstruktur kein Vektor mehr wäre.
+
+> ::: {#exm-konkatenation}
+> ## Konkatenation
+> 
+> Die Konkatenation der Vektoren $v = \{1;2;3\}$ und $w = \{4;5;6\}$ ergibt einen neunen Vektor $v \circ w.$ Es gilt dabei die folgende Vorgehensweise:
+>
+> $$ 
+> v\circ w = \{1;2;3\} \circ \{4;5;6\} = \{1;2;3;4;5;6\}
+> $$
+> ::: 
+
+Der leere Vektor ist das neutrale Element der Konkatenation. D.h. die Konkatenation eines Vektors mit dem leeren Vektor ergibt den ursprünglichen Vektor. Es gilt als @eq-konkatenation-leerer-vektor.
+
+$$
+v \circ \varnothing = \varnothing \circ v = v
+$$ {#eq-konkatenation-leerer-vektor}
+
+Ein Skalar kann als Vektor mit der Länge `1` aufgefasst werden. Die Konkatenation eines Vektors mit einem Skalart ergibt einen Vektor, der um `1` länger als der ursprüngliche Vektor ist.  Es gilt also @eq-konkatenation-einzelner-wert.
+
+$$
+v \circ a \Leftrightarrow v \circ \{ a \}
+$$
+
+$$
+\begin{aligned}
+v \circ a &= \{v_1; v_2; \dots; v_n\} \circ a \\
+&= \{v_1; v_2; \dots; v_n\} \circ \{a\} \\
+&= \{v_1; v_2; \dots; v_n; a\}
+\end{aligned}
+$$ {#eq-konkatenation-einzelner-wert}
+
+Weil die Reihenfolge der Konkatenation bedeutungsvoll ist, kann ein einzelner Wert auch *vor* einem Vektor angefügt werden.
+
+$$
+\begin{aligned}
+a \circ v &= a \circ \{v_1; v_2; \dots; v_n\} \\
+&= \{a\} \circ \{v_1; v_2; \dots; v_n\}  \\
+&= \{a; v_1; v_2; \dots; v_n\}
+\end{aligned}
+$$ 
+
+## Tranformationen
+
+::: {#def-transformation}
+Eine **Transformation** bezeichnet eine Umformung der Element eines Vektors, wobei die Länge des Vektors unverändert bleibt. 
+::: 
+
+Eine Transformation erfordert also immer eine Funktion, die auf die Elemente des Vektors angewandt wird. Diese Funktion wird für jedes Element des Vektors separat ausgeführt. Dadurch ist sichergestellt, dass es für jedes Element des Vektors genau ein Ergebnis gibt.
+
+::: {.callout-note}
+## Merke
+
+Beim Transformieren sind alle Operationen auf die Elemente eines Vektors **unabhängig** voneinander und die Ergebnisse beeinflussen sich nicht gegenseitig.
+:::
+
+Beim Transformieren kann der Datentyp eines Vektors verändert werden.
+
+### Transformationen mit einem Skalar
+
+Eine Transformation mit einem Skalar wird auch als **Skalierung** bezeichnet.
+
+Für die Skalierung eines Vektors ist eine Transformationsfunktion mit zwei Parametern erforderlich. Beim Skalieren wird die Transformationsfunktion mit dem Skalar mit jedem Element des Vektors separat durchgeführt. 
+
+Es gilt also die Logik der @eq-transformation-mit-skalar. Der Operator $\circ$ ist hier der Platzhalter für die Transformationsfunktion.
+
+$$
+\begin{aligned}
+s \circ v &= s \circ \{v_1; v_2; \dots; v_n\} \\
+&= \{s \circ v_1; s \circ v_2; \dots; s \circ v_n\}
+\end{aligned}
+$$ {#eq-transformation-mit-skalar}
 
 
-In der mathematischen Literatur wird der *Einsvektor* oft nicht benannt. Wegen der besonderen Bedeutung dieses Vektors für verschiedene Operationen, benennen wir den Vektor hier.
+> ::: {#exm-skalierung-mit-zahlen}
+> ## Skalierung mit Zahlen
+> 
+> Die Skalierung eines Vektors $v = \{1;2;3\}$ mit dem Skalar $s = 2$ ergibt den Vektor $v' = \{3;4;5\}$. Es gilt dabei die folgende Vorgehensweise:
+> 
+> $$
+> \begin{aligned}
+> s + v &= 2 + \{1;2;3\} \\
+> &= \{2 + 1; 2 + 2; 2 + 3\} \\
+> &= \{3; 4; 5\}
+> \end{aligned}
+> $$
+>
+> Diese Vorgehensweise wird als Skalaraddition bezeichnet. Die Skalaraddition ist eine Transformation mit einem Skalar und der Addition als Transformationsfunktion. 
+>
+> Analog zur Skalaraddition gibt es die Skalarmultiplikation. Bei der Skalarmultiplikation wird die Multiplikation als Transformationsfunktion verwendet. Die Skalarmultiplikation wird wie folgt durchgeführt.
+>
+> $$
+> \begin{aligned}
+> s \cdot v &= 2 \cdot \{1;2;3\} \\
+> &= \{2 \cdot 1; 2 \cdot 2; 2 \cdot 3\} \\
+> &= \{2; 4; 6\}
+> \end{aligned}
+> $$
+> ::: 
 
-> **ACHTUNG** Der **Einsvektor** darf nicht mit dem **Einheitsvektor** verwechselt werden. Im Gegensatz zum Einsvektor hat der Einheitsvektor die geometrische Länge 1. Der Einsvektor der Länge 3 hat wegen dem Satz des Pythagoras die geometrische Länge von $\sqrt{3} \approx 1.7321$
+### Transformationen mit einem Vektor
 
-Der *Nullvektor* und der *Einsvektor* werden durch die Sequenzfunktion erzeugt, wenn die Schrittweite auf 0 festgelegt wird. 
+Die Transformation mit einem Skalar kann auf Vektoren erweitert werden. Dabei wird die Transformationsfunktion mit den Elementen eines zweiten Vektors anstelle des Skalars durchgeführt. Eine solche Transformation erfordert, dass die Werte der beiden Vektoren *paarweise* durch die Transformationsfunktion verknüpft werden. Damit solche paarweisen Operationen möglich sind, müssen die beiden Vektoren die *gleiche Länge* haben. 
 
-Nullvektor mit der Länge 5 in Excel: 
+::: {.callout-note}
+## Merke
 
-```
-= SEQUENZ(5; 1; 0; 0)
-```
+Die Skalar-Transformation kann nur mit einem Vektor der Länge 1 *oder* mit einem Vektor mit der gleichen Länge wie der zu transformierende Vektor durchgeführt werden.
+:::
 
-Einsvektor mit der Länge 5 in Excel: 
+Dann gilt die Logik der @eq-transformation-mit-vektor. Der Operator $\circ$ ist hier der Platzhalter für die Transformationsfunktion.
 
-```
-= SEQUENZ(5; 1; 1; 0)
-```
+$$
+\begin{aligned}
+v \circ w &= \{v_1; v_2; \dots; v_n\} \circ \{w_1; w_2; \dots; w_n\} \\
+&= \{v_1 \circ w_1; v_2 \circ w_2; \dots; v_n \circ w_n\}
+\end{aligned}
+$$ {#eq-transformation-mit-vektor}
 
-Die beiden Vektoren können in R durch die folgende Sequenzfunktion erzeugt werden. 
+> ::: {#exm-vektoraddition}
+> ## Vektoraddition
+> 
+> Für die beiden gleichlangen Vektoren $v = \{1;2;3\}$ und $w = \{4;5;6\}$ wird die Vektoraddition paarweise durchgeführt.
+>
+> $$
+> \begin{aligned}
+> v + w &= \{v_1; v_2; v_3\} + \{w_1; w_2; w_3\} \\
+> &= \{1;2;3\} + \{4; 5; 6\} \\
+> &= \{1 + 4; 2 + 5; 3 + 6\} \\
+> &= \{5; 7; 9\}
+> \end{aligned}
+> $$
+>
+> Deutlicher wird diese Mechanik, wenn die Vektoren als Spaltenvektoren geschrieben werden.
+>
+> $$
+> \begin{aligned}
+> v + w &= \begin{pmatrix} v_1 \\ v_2 \\ v_3 \end{pmatrix} + \begin{pmatrix} w_1 \\ w_2 \\ w_3 \end{pmatrix} \\ \\
+> &= \begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix} + \begin{pmatrix} 4 \\ 5 \\ 6 \end{pmatrix} \\ \\
+> &= \begin{pmatrix} 1 + 4 \\ 2 + 5 \\ 3 + 6 \end{pmatrix} \\ \\
+> &= \begin{pmatrix} 5 \\ 7 \\ 9 \end{pmatrix}
+> \end{aligned}
+> $$
+> :::
 
-```
-seq(length = 5, from = 0, by = 0) # Nullvektor
-seq(length = 5, from = 1, by = 0) # Einsvektor
-```
+## Aggregationen
 
-Eleganter erreicht man dieses Ziel in R mit der Funktion `rep()`. Diese Funktion wiederholt (engl. *repeat*) einen Wert für die angegebene Länge. 
+::: {#def-aggregation}
+Eine **Aggregation** ist eine *Funktion*, die Elemente eines Vektors zusammenfasst. Durch aggregieren kann sich die Länge des Vektors verändern.
+:::
 
-```
-rep(0, 5) # Nullvektor der Länge 5
-rep(1, 5) # Einsvektor der Länge 5
-```
+Eine Aggregationsfunktion heisst *Aggregator*. Aggregatoren haben in der Regel nur einen Parameter, der ein Vektor ist. Ein Aggregator wendet eine zweite Funktion auf die Elemente des Vektors an. Diese zweite Funktion heisst *Reduktionsfunktion*. Die Reduktionsfunktion legt fest, *wie* die Elemente des Vektors zusammengefasst werden. 
 
-Leider gibt es für diese Funktion keine Entsprechung in Excel.
+::: {.callout-note}
+## Merke
+
+Beim Aggregieren hängen die Operationen von der jeweiligen vorangehenden Operation ab. Die einzelnen Operationen sind voneinander **abhängig** und die Ergebnisse beeinflussen sich gegenseitig.
+:::
+
+> ::: {#exm-aggregation-reduktion}
+> ## Aggregation und Reduktion beim Summieren
+>
+> Der $\sum{}$-Operator ist ein Aggregator. Die dem Operator nachfolgenden Terme legen die zu aggregierenden Vektorelement fest. Die Reduktionsfunktion ist die Addition (`+`). 
+>
+> Für den Vektor $v = \{1;2;3;4;5\}$ kann die die Summe der Quadrate wie folgt geschrieben werden.
+>
+> $$
+> \sum_{i=1}^5 v_i^2
+> $$
+>
+> Diese Schreibweise legt fest, dass die Vektorelemente quadriert werden müssen. Dabei handelt es sich um eine Transformation mit einem Skalar (`2`) und der Potenz als Transformationsfunktion. Diese vorgelagerte Transformation erzeugt einen impliziten Vektor mit den quadrierten Elementen $\{1, 4, 9, 16, 25\}$. 
+>
+> Die Reduktionsfunktion der Summe ist die Addition (`+`). Beim Reduzieren werden die Elemente des impliziten Vektors nacheinander addiert. Dabei wird das Element mit dem bisherigen Ergebnis *reduziert*. Beim ersten Schritt liegt noch kein Ergenis vor, weshalb das Element direkt übernommen wird. Dadurch ergeben sich in diesem Beispiel die folgenden Reduktionsschritte. 
+>
+> $$
+> \begin{aligned}
+> \sum{v^2} = \sum_{i=1}^5 v_i^2 &= 1 + 4 + 9 + 16 + 25 \\
+> &= 5 + 9 + 16 + 25 \\
+> &= 14 + 16 + 25 \\
+> &= 30 + 25 \\
+> &= 55
+> \end{aligned}
+> $$
+>
+> Die Summe der Quadrate des Vektors $v$ ist also $55$.
+> :::
+
+Im @sec-filtern wurden Filter als Funktionen eingeführt, die Werte aus Vektoren mithilfe eines logischen Ausdrucks auswählen. Das Filtern ist eine spezielle Aggregation, bei dem die ursprünglichen Werte unverändert bleiben, aber die Länge des Vektors verändert wird. Anders als die Summe, liefert das Filtern einen Vektor und keinen einzelnen Wert als Ergebnis. Beim Filtern wird die Reduktionsfunktion als *Selektionsfunktion* bezeichnet. Die Selektionsfunktion fügt einen Wert dem Ergebnisvektor durch *Konkatenation* hinzu, wenn der logische Ausdruck `Wahr` ergibt. Der Startwert für die Reduktion ist beim Filtern der *leere Vektor*.
 
 ## Zählen
 
-> **Definition:** Als **Umfang** bezeichnen wir die Anzahl der Elemente eines Vektors.
+::: {#def-umfang} 
+Als **Umfang** bezeichnen wir die Anzahl der Elemente eines Vektors oder einer Liste.
+:::
 
+::: {#def-zählen}
+**Zählen** bezeichnet das Bestimmen der Anzahl von Elementen eines Vektors oder einer Liste.
+::: 
 
-> **Definition:** Als **Grösse** bezeichnen wir den Raum, den ein oder mehrere Objekte  einnehmen. Objekte können Werte, Vektoren oder Stichproben sein.
+Die Anzahl der Elemente eines Vektors ist immer gleich der Länge des Vektors. Deshalb kann der Umfang eines Vektors direkt aus der Länge des Vektors abgelesen werden.
 
+::: {.callout-note}
+## Mathematik vs. Datenwisssenschaft
 
-> **Definition:** Als **Zählen** bezeichnen wir das Bestimmen der Anzahl von Elementen eines Objekts. Wir sprechen vom **Abzählen**, wenn wir zum Zählen eine **Summe über die zählbaren Einheiten** bilden. 
+In der Mathematik (Mengenlehre) existiert das Konzept der **Abzählbarkeit**. Dieses Konzept wird auf *beliebige* und insbesondere unendliche Mengen angewandt, um deren abstrakte Umfänge zu vergleichen. 
 
+Beim Rechnen und Problemlösen mit Computern liegen **immer** mit **speziellen, endlichen** Strukturen vor. Damit muss beim Zählen immer die Frage nach dem *konkreten Umfang* der vorliegenden Elemente beantwortet werden.
+:::
 
-> Beachten Sie, dass es in der Mathematik (Mengenlehre) ein Konzept der **Abzählbarkeit** gibt. Dieses Konzept wird auf *beliebige* und insbesondere unendliche Mengen angewandt, um deren abstrakte Umfänge zu vergleichen. 
->
-> Beim Rechnen und Problemlösen mit Computern haben wir es **immer** mit **speziellen, endlichen** Objekten zu tun. Wir beantworten damit immer die Frage nach dem *konkreten Umfang* der vorliegenden Objekte.
+Nicht immer muss der Umfang des gesamten Vektors bestimmt werden. Stattdessen sollen einzelne Elemente eines Vektors gezählt werden, die bestimmte Bedingungen erfüllen.  Eine solche Bedingung wird immer als **logischer Ausdruck** formuliert.
 
+::: {#def-zählbare-einheit}
+ Eine **zählbare Einheit** bezeichnet ein Element, für das eine Zählbedingung `Wahr` ergibt. Eine **nicht zählbare Einheit** bezeichnet ein Element, für das eine Zählbedingung `Falsch` ergibt. 
+:::
 
-> **Definition:** Eine **zählbare Einheit** bezeichnet ein Objekt, das gezählt werden muss. Eine **nicht zählbare Einheit** bezeichnet ein Objekt, das zwar vorhanden ist, aber nicht gezählt werden darf. 
+- Eine **zählbare Einheit** wird durch den Wert `1` (oder `Wahr`) repräsentiert. Ein zählbares Element wird gezählt.
+- Eine **nicht-zählbare Einheit** wird durch den Wert `0` (oder `Falsch`) repräsentiert. Diese Elemente werden nicht gezählt.
 
+### Zählen durch Summieren
 
-- Eine **zählbare Einheit** wird durch den Wert `1` (oder `WAHR`) repräsentiert.
-- Eine **nicht zählbare Einheit** wird durch den Wert `0` (oder `FALSCH`) repräsentiert.
+Beim Zählen durch Summieren geht eine Transformation in die Werte `0` und `1` mithilfe eines logischen Ausdurcks einer Summen-Aggregation unmittelbar voraus.
 
-Eine zählbare Einheit kann mehrere Teilobjekte umfassen. Daraus ergibt sich, dass der Umfang einer endlichen Menge von Objekten gleich der Summe zählbaren Einheiten dieser Menge entspricht. Es gilt also die folgende Formel für das *Abzählen*: 
+Gelegentlich werden nicht alle Elemente einer Datenstruktur gezählt, sondern nur diejenigen, die bestimmte Bedingungen erfüllen.
 
-$$
-\sum{zählbar(objekt)}
-$$ 
+::: {#def-abzählen}
+Es wird vom **Abzählen** gesprochen, wenn zum Zählen eine **Summe über die zählbaren Einheiten** gebildet wird. 
+:::
 
-Wobei die Funktion $zählbar(objekt)$ das Ergebnis 1 (oder WAHR) für eine zählbare und 0 (oder FALSCH) für eine nicht zählbare Einheit liefert. 
+Dabei wird ausgenutzt, dass die Summe über einen Vektor von `0` und `1` die Anzahl der `1`-Werte ergibt.
 
-> In der Praxis werden wir selten die Funktion $zählbar()$ explizit definieren, sondern mit einer alternativen Funktion oder einem *logischen Ausdruck* substituieren. 
+::: {.callout-note}
+## Merke
 
-> **Merke:** Wenn wir die zählbaren Einheiten durchnummerieren, dann entspricht der Umfang dieser Einheiten der grössten Nummerierung.
+Immer wenn eine Summe über einen Vektor von `0` und `1` gebildet wird, wird eine Zählen-Operation vorbereitet.
+::: 
 
-## Filtern
+Die Transformation in die Werte `0` und `1` durch einen logischen Ausdruck wird als **Indikatorfunktion** bezeichnet. Die Indikatorfunktion ist eine Transformation mit einem logischen Ausdruck. Eine solche Funktion kann für nachgelagerte arithmetische Transformations-Operationen als Ersatz für eine vorgelagerte Entscheidung verwendet werden. In solchen Fällen wird das Ergebnis der Indikatorfunktion über eine Skalar-Multiplikation mit der nachgelagerten Operation verknüpft. Dabei stellt die Indikatorfunktion sicher, dass der Vektor die gleiche Länge wie die nachgelagerte Operation hat.
 
-Neben den Verzweigungen gibt es eine zweite wichtige Operation, die logische Ausdrücke verwendet: Die *Filter-Operation*. Die Filter-Operation verwendet einen logischen Ausdruck, um Datensätze gezielt aus einer Stichprobe auszuwählen. Der logische Ausdruck kann dabei beliebig komplex sein. Mit Hilfe von Filtern können wir unsere Analysen fokussieren und Fragestellungen für Teilmengen beantworten.
+### Zählen durch Filtern
 
-> **Definition:** Als Filter wird eine Funktion bezeichnet, die Datensätze mittels logischer Ausdrücke auswählt. Dabei enthält das Ergebnis nur die Datensätze, für die der jeweilige logische Ausdruck Wahr ergibt. 
+Beim Zählen durch Filtern wird die Summe über die zählbaren Einheiten durch eine Filter-Aggregation zusammegefasst. Nach dem Filtern bleibt ein Vektor mit den zählbaren Einheiten übrig, der keine nicht-zählbaren Elemente enthält. Die Länge dieses Vektors entspricht der Anzahl der zählbaren Einheiten.
+
+::: {.callout-note}
+## Merke
+
+Werden die zählbaren Einheiten durch einen Filter ausgewählt, dann entspricht die Summe der zählbaren Einheiten der Länge des gefilterten Vektors.
+:::
+
+Weil das Filtern die Länge des Vektors verändert, kann das Filtern **nicht** als *Indikatorfunktion* verwendet werden.
+
+### Zählen durch Nummerieren
+
+Beim Nummerieren wird eine Sequenz erzeugt, die für jede zählbare Einheit einen Wert enthält. Die Länge dieser Sequenz entspricht der Anzahl der zählbaren Einheiten. Gleichzeigit entspricht der Maximal-Wert der Sequenz ebenfalls der Anzahl der zählbaren Einheiten.
+
+::: {.callout-note}
+## Merke
+Wenn die zählbaren Einheiten durchnummeriert werden, dann entspricht der Umfang dieser Einheiten der grössten Nummerierung (dem Maximum).
+:::
+
+Nummerierungen werden häufig verwendet, um einzelnen Datensätzen eindeutige Identifikatoren zuzuweisen. Diese Nummerierungen können zum Zählen leicht benutzt werden.

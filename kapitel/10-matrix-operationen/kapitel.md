@@ -146,7 +146,8 @@ Für die *transponierte Matrix von $A$* wird $A^T$ geschrieben.
 ## Transponierte Matrix
 
 $$
-A = \begin{bmatrix}
+\begin{aligned}
+A &= \begin{bmatrix}
 1 & 0 \\
 0 & 2 \\
 6 & 2  \\
@@ -154,10 +155,11 @@ A = \begin{bmatrix}
 9 & 7 
 \end{bmatrix} \\\
 \\
-A^T = \begin{bmatrix}
+A^T &= \begin{bmatrix}
 1 & 0 & 6 & 4 & 9 \\
 0 & 2 & 2 & 6 & 7
 \end{bmatrix}
+\end{aligned}
 $$ 
 :::
 
@@ -179,9 +181,8 @@ Bei der Vektoraddition wird der Vektor zu jeder Spalte in der Matrix addiert. Da
 ## Vektoraddition eines 2-Vektor und eine 2 x 3-Matrix.
 
 $$
-v + M \\
-\\
-= \begin{bmatrix}
+\begin{aligned}
+v + M &= \begin{bmatrix}
 v_{1}  \\
 v_{2} 
 \end{bmatrix} + \begin{bmatrix}
@@ -189,10 +190,11 @@ m_{11} & m_{12}  & m_{13}  \\
 m_{21} & m_{22} & m_{23}  
 \end{bmatrix} \\\
 \\
-= \begin{bmatrix}
+&= \begin{bmatrix}
 v_1 + m_{11} & v_1 + m_{12}  & v_1 + m_{13}  \\
 v_2 + m_{21} & v_2 + m_{22} & v_2 + m_{23}  
 \end{bmatrix}
+\end{aligned}
 $$
 
 
@@ -201,33 +203,34 @@ $$
 Die Skalarmultiplikation oder das Punktprodukt multipliziert einen Wert a mit einer Matrix (oder Vektor) M. Dabei wird \\( a \\) als **Skalar** bezeichnet, weil dieser alle Werte um den gegebenen Wert *skaliert*.  Bei der Skalarmultiplikation wird jeder Wert in der Matrix mit dem Skalar multipliziert. 
 
 $$
-a \cdot M \\
-\\
-= a \cdot \begin{bmatrix}
+\begin{aligned}
+a \cdot M &= a \cdot \begin{bmatrix}
 m_{11} & m_{12}  & m_{13}  \\
 m_{21} & m_{22} & m_{23}  
 \end{bmatrix} \\\ \\\ 
-= \begin{bmatrix}
+&= \begin{bmatrix}
 a \cdot m_{11} & a \cdot m_{12}  & a \cdot m_{13}  \\
 a \cdot m_{21} & a \cdot m_{22} & a \cdot m_{23}  
 \end{bmatrix}
+\end{aligned}
 $$
 
 Dieses Konzept lässt sich auf Vektoren übertragen. Dabei ist der Skalar a ein Vektor mit der gleichen Anzahl an Zeilen für den Vektor und die Matrix. Danach funktioniert die Skalarmultiplikation analog zur Vektoraddition. 
 
 $$
-a \cdot M \\
-= \begin{bmatrix}
+\begin{aligned}
+a \cdot M &= \begin{bmatrix}
 a_1\\
 a_2 
 \end{bmatrix} \cdot \begin{bmatrix}
 m_{11} & m_{12}  & m_{13}  \\
 m_{21} & m_{22} & m_{23}  
 \end{bmatrix} \\\ \\\
-= \begin{bmatrix}
+&= \begin{bmatrix}
 a_1 \cdot m_{11} & a_1 \cdot m_{12}  & a_1 \cdot m_{13}  \\
 a_2 \cdot m_{21} & a_2 \cdot m_{22} & a_2 \cdot m_{23}  
 \end{bmatrix}
+\end{aligned}
 $$
 
 ## Matrixmultiplikation/ Kreuzprodukt
@@ -237,8 +240,8 @@ Das Kreuzprodukt ist eine andere Variante zwei Matrizen zu multiplizieren. Dabei
 Das Kreuzprodukt ist wie folgt definiert: 
 
 $$
-A \times B \\ \\
-= \begin{bmatrix} 
+\begin{aligned}
+A \times B &= \begin{bmatrix} 
 a_{11} & a_{12} & \cdots & a_{1n} \\
 a_{21} & a_{22} & \cdots & a_{2n} \\
 \vdots & \vdots & \ddots & \vdots \\
@@ -252,12 +255,13 @@ b_{21} & b_{22} & \cdots & b_{2p} \\
 b_{n1} & b_{n2} & \cdots & b_{np} \\
 \end{bmatrix} \\\
 \\\
-= \begin{bmatrix} 
+&= \begin{bmatrix} 
 \sum_{i=1}^{n}{a_{1i} \cdot b_{i1}} & \sum_{i=1}^{n}{a_{1i} \cdot b_{i2}} & \cdots & \sum_{i=1}^{n}{a_{1i} \cdot b_{ip}} \\
 \sum_{i=1}^{n}{a_{2i} \cdot b_{i1}} & \sum_{i=1}^{n}{a_{2i} \cdot b_{i2}} & \cdots & \sum_{i=1}^{n}{a_{2i} \cdot b_{ip}} \\
 \vdots & \vdots & \ddots & \vdots \\
 \sum_{i=1}^{n}{a_{mi} \cdot b_{i1}} & \sum_{i=1}^{n}{a_{mi} \cdot b_{i2}} & \cdots & \sum_{i=1}^{n}{a_{mi} \cdot b_{ip}} \\
 \end{bmatrix} 
+\end{aligned}
 $$
 
 Das Ergebnis eines Kreuzprodukts ist immer eine Matrix mit m-Zeilen und p-Spalten.
