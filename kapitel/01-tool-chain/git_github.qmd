@@ -539,7 +539,7 @@ Pull-Requests habe wie Issues den Zustand offen und geschlossen. Sobald ein Merg
 
 ### GitHub-Flow
 
-Es hat sich bewährt, **jede** Aktvität am Repository in einem eigenen **Branch** durchzuführen. Dabei wird jeder Branch immer mit einem **Issue** verknüpft. Ist die Arbeit abgeschlossen, dann wird ein Pull-request zur Qualitätskontrolle erstellt. Sind die Änderungen in Ordnung, dann kann dieser Pull-Request mit einem **Merge** abgeschlossen werden.  Der `main`-Branch enthält bei dieser Vorgehensweise immer eine korrekte und funktionierende Version des Projekts. Diese Vorgehensweise wird als ***GitHub-Flow*** bezeichnet. 
+Es hat sich bewährt, **jede** Aktvität am Repository in einem eigenen **Branch** durchzuführen. Dabei wird jeder Branch immer mit einem **Issue** verknüpft. Ist die Arbeit abgeschlossen, dann wird ein Pull-request zur Qualitätskontrolle erstellt. Sind die Änderungen in Ordnung, dann kann dieser Pull-Request mit einem **Merge** abgeschlossen werden.  Der `main`-Branch enthält bei dieser Vorgehensweise immer eine korrekte und funktionierende Version des Projekts. Diese Vorgehensweise wird als ***GitHub-Flow*** [@github_inc_github_nodate] bezeichnet. 
 
 @fig-githubflow zeigt ein einfaches Beispiel für den Ablauf des GitHub-Flows.
 
