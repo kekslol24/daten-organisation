@@ -26,61 +26,82 @@ book:
   # Woche 1
   - part: Ausgangslage und Vorbereitung
     chapters:
+    # TODO
     - kapitel/01-einleitung/kapitel.md 
+    # OK
     - kapitel/01-tool-chain/tastatur.md  
+    # OK
     - kapitel/01-information/kapitel.qmd
   
   - part: Datenquellen
     chapters:
 
     # Woche 2
+    # OK
     - kapitel/01-tool-chain/project_doc.md
+    # OK
     - kapitel/02-daten-sammeln/kapitel.md
 
     # Woche 3
+    # TODO
     - kapitel/03-daten-organisieren/kapitel.md
+    # OK
     - kapitel/01-tool-chain/git_github.qmd
 
     # Woche 4
+    # Issue #3
     - kapitel/05-datentypen/kapitel.md
+    # Altes Skript integrieren
     - kapitel/05-zeichenketten/kapitel.md
     # - kapitel/06-datenstrukturen/kapitel.md
     
     # Woche 5
+    # TODO
     - kapitel/04-dateiformate/kapitel.md
+    # TODO Umgang mit Daten
     - kapitel/04-dateiformate/datenverarbeiten.md
 
     # Woche 13 (optional)
+    # TODO
     - kapitel/15-externe-datenquellen/kapitel.md
  
   - part: Mathematik der Daten
     chapters:
     # Woche 6
+    # OK
     - kapitel/06-variablen/kapitel.qmd
     # - kapitel/07-funktionen/kapitel.md
     # - kapitel/07-neutrales-element/kapitel.md
 
     # Woche 8
+    # OK 
     - kapitel/08-boolsche-operationen/kapitel.qmd
 
     # Woche 9
+    # OK
     - kapitel/09-vektor-operationen/kapitel.md
 
     # Woche 10
+    # OK
     - kapitel/10-matrix-operationen/kapitel.md
 
     # Woche 11
+    # TODO (Kapitel zusammenfassen?)
     - kapitel/06-daten-kodieren/kapitel.md
+    # TODO 
     - kapitel/11-indizieren-gruppieren/kapitel.md
+    # TODO
     - kapitel/12-daten-formen/kapitel.md
 
   - part: Deskriptive Datenanalyse
     chapters:
     
     # Woche 12
+    # TODO
     - kapitel/13-daten-beschreiben/kapitel.md
     
     # Woche 7
+    # TODO 
     - kapitel/14-daten-visualisieren/kapitel.md
 
 #    - kapitel/10-lineare-modelle/kapitel.md
