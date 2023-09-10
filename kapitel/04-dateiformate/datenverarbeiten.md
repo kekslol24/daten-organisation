@@ -9,8 +9,10 @@
 Ein grosses Problem bei der Arbeit mit Daten ist die *nachträgliche Datenmanipulation*. Dabei werden die erhobenen Daten verändert. Datenmanipulation kommt einem Datenverlust gleich, weil die ursprünglichen Daten nicht mehr verfügbar sind. 
 
 ::: {#def-datenmanipulation}
-Eine **Datenmanipulation** heisst jede Veränderung von Daten bei denen nicht gemessene Werte hinzugefügt, verändert oder gelöscht werden.
+Eine **Datenmanipulation** heisst jede Veränderung von Daten bei denen Werte ohne Messung hinzugefügt, beliebige Werte verändert oder gelöscht werden.
 :::
+
+Eine Datenmanipulation muss von der systematischen Datenverarbeitung abgegrenzt werden. Bei der systematischen Datenverarbeitung werden Daten mit Hilfe von Werkzeugen und definierten Methoden verarbeitet. Dabei gehen keine Daten verloren, werden neue Werte erzeugt oder bestehende Werte verändert. Bei der systematischen Datenverarbeitung lassen sich alle Ergebnisse aus den ursprünglichen Daten herleiten.
 
 ::: {.callout-important}
 ## Keine Datenreproduktion möglich
@@ -37,7 +39,7 @@ Eine sehr häufig vorkommende Form der versehentlichen Datenmanipulation ist die
 
 ::: {.callout-tip}
 ## Praxis
-Um versehentliche Datenmanipulation zu vermeiden, sollte **nie** direkt mit den Daten gearbeitet werden. Stattdessen sollten die Daten **immer** in einer separaten Datei gespeichert und versioniert werden. Aus dieser Datei werden die Daten anschliessend *importiert* und *bearbeitet*. Die Ergebnisse können in *andere* Dateien *exportiert* werden.
+Um versehentliche Datenmanipulation zu vermeiden, sollte ausser bei Messungen **nie** direkt mit den Daten gearbeitet werden. Stattdessen sollten die Daten **immer** in einer separaten Datei gespeichert und versioniert werden. Aus dieser Datei werden die Daten anschliessend *importiert* und *bearbeitet*. Die Ergebnisse können in *andere* Dateien *exportiert* werden.
 
-Durch die Versionierung kann jederzeit auf die ursprünglichen Daten zurückgegriffen und wiederhergestellt werden, selbst wenn versehentlich die Daten überschrieben und versioniert wurden. 
+Durch die Versionierung kann jederzeit auf die ursprünglichen Daten zurückgegriffen und wiederhergestellt werden, selbst wenn sie versehentlich oder absichtlich überschrieben oder gelöscht wurden. 
 ::: 
