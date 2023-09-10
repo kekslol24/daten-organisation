@@ -56,7 +56,7 @@ book:
     # - kapitel/06-datenstrukturen/kapitel.md
     
     # Woche 5
-    # TODO
+    # OK
     - kapitel/04-dateiformate/kapitel.md
     # TODO Umgang mit Daten
     - kapitel/04-dateiformate/datenverarbeiten.md
