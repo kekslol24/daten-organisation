@@ -348,7 +348,7 @@ Mit dieser Schreibweise lassen sich auch schnell Grössenunterschiede zwischen W
 - Eine Differenz von 5 entspricht einem ungefähr 100000-fachen Grössenunterschied.
 
 
-### Serialisierung
+### Serialisierung {#sec-serialisierung}
 
 ::: {#def-serialisierung}
 Ein Zahlenwert kann bei einer Darstellung zu einer Basis in mehreren Ziffern erfolgen. Diese Zifferndarstellung wird als **Serialisierung** bezeichnet. 
@@ -364,7 +364,7 @@ Weil ein Zahlenwert in verschiedenen Zahlensystemen dargestellt werden kann, erg
 Ein Zahlenwert kann *mehrere* zulässige Serialisierungen haben. 
 :::
 
-## Zeichenkodierung
+## Zeichenkodierung {#sec-zeichenkodierung}
 
 Wir schreiben Texte nicht mit Zahlen, sondern mit Buchstaben, Satz- und Steuerzeichen. Im Computer werden Texte als Zahlen abgebildet. Dazu werden die einzelnen Zeichen eines Textes in Zahlenwerte übersetzt. Diese Übersetzung wird als **Zeichenkodierung** bezeichnet und wird per Konvention festgelegt. 
 
