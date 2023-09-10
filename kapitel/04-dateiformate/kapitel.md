@@ -13,9 +13,9 @@ In Computern werden Daten als *Datenströme* abgebildet.
 Ein **Datenstrom** ist eine Folge von binärkodierten Bits. 
 ::: 
 
-Ein Datenstrom ist also immer eine Abfolge von `0` und `1` Werten. Diese Abfolgen sind eine *Serialisierung* (s. [Abschnitt @sec-serialisierung]) von Daten. Für die Interpretation werden diese Abfolgen in Gruppen zusammengefasst. Üblich sind Gruppen von 8-Bit (dem sog. *Byte*), 16-Bit, 32-Bit oder 64-Bit. 
+Ein Datenstrom ist also immer eine Abfolge von `0` und `1` Werten. Diese Abfolgen sind eine *Datenserialisierung* (s. [Abschnitt @sec-serialisierung]). Für die Interpretation werden diese Abfolgen in Gruppen zusammengefasst. Üblich sind Gruppen von 8-Bit (dem sog. *Byte*), 16-Bit, 32-Bit oder 64-Bit. 
 
-Datenströme können eine *feste Länge* haben. Die Länge eines Datenstroms wird *Byte* angegegeben. 
+Datenströme können eine *feste Länge* haben. In diesem Fall wird die Länge eines Datenstroms wird *Byte* angegegeben. 
 
 ::: {#def-datei}
 Eine **Datei** ist ein Datenstrom mit fester Länge, der von einem Speichermedium geladen wird.
