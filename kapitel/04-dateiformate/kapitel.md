@@ -334,13 +334,16 @@ Attribute sollten nur für die Kodierung von ergänzenden Daten verwendet. Zu so
 Die Kodierung von Werten als Attribute findet sich nur noch in älteren XML-Dokumenten.
 
 ::: {#exm-xml-format-werte-attribute}
-## XML-Format einer tabellarischen Struktur Werten als Attribute
+## XML-Format einer tabellarischen Struktur mit Werten als Attribute
 
 ```xml
 <daten>
-  <person name="Müller" vorname="Hans" geburtsort="Berlin" geburtsdatum="01.01.1990" grösse="1.76"></person>
-  <person name="Untermayr" vorname="Peter" geburtsort="Wien" geburtsdatum="01.01.1980" grösse="1.82"></person>
-  <person name="Osterwalder" vorname="Urs" geburtsort="Bern" geburtsdatum="01.01.1970" grösse="1.78"></person>
+  <person name="Müller" vorname="Hans" geburtsort="Berlin" 
+          geburtsdatum="01.01.1990" grösse="1.76"></person>
+  <person name="Untermayr" vorname="Peter" geburtsort="Wien" 
+          geburtsdatum="01.01.1980" grösse="1.82"></person>
+  <person name="Osterwalder" vorname="Urs" geburtsort="Bern" 
+          geburtsdatum="01.01.1970" grösse="1.78"></person>
 </daten>
 ```
 :::
