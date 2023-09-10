@@ -63,7 +63,7 @@ book:
 
     # Woche 13 (optional)
     # TODO
-    - kapitel/15-externe-datenquellen/kapitel.md
+    #- kapitel/15-externe-datenquellen/kapitel.md
  
   - part: Mathematik der Daten
     chapters:
