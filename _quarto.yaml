@@ -52,8 +52,6 @@ book:
     # Woche 4
     # Issue #3
     - kapitel/05-datentypen/kapitel.md
-    # Altes Skript integrieren
-    - kapitel/05-zeichenketten/kapitel.md
     
     # Woche 5
     # OK
@@ -72,6 +70,10 @@ book:
     - kapitel/06-variablen/kapitel.qmd
     # - kapitel/07-funktionen/kapitel.md
     # - kapitel/07-neutrales-element/kapitel.md
+
+    # Altes Skript integrieren
+    - kapitel/05-zeichenketten/kapitel.md
+    
 
     # Woche 8
     # OK 
