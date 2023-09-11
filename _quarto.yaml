@@ -3,6 +3,8 @@ project:
 
 bibliography: dxi-skript.bib
 
+lang: de
+# Change labels that are not properly changed by the language
 crossref:
 #   fig-prefix: Abbildung   # (default is "Figure")
 #   tbl-prefix: Tabelle    # (default is "Table")
@@ -10,7 +12,6 @@ crossref:
   prp-title: Satz
 #   sec-prefix: Abschnitt # (default is "Section")
 
-lang: de
 book:
   title: Daten und Information
   subtitle: Data Science Grundlagen für die Life Sciences
@@ -53,7 +54,6 @@ book:
     - kapitel/05-datentypen/kapitel.md
     # Altes Skript integrieren
     - kapitel/05-zeichenketten/kapitel.md
-    # - kapitel/06-datenstrukturen/kapitel.md
     
     # Woche 5
     # OK
