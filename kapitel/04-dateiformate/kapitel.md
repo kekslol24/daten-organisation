@@ -7,7 +7,7 @@ execute:
 
 Zum Speichern und zum Austausch von Daten spielen Dateiformate enie wichtige Rolle. Dateiformate legen fest, wie Daten serialisiert werden. Die Serialisierung von Daten ist die Grundlage für die Speicherung und den Austausch von Daten. Eine spezielle Serialisierung wird als *Datenformat* bezeichnet.
 
-In Computern werden Daten als *Datenströme* abgebildet. 
+In Computern werden Daten immer als *Datenströme* abgebildet. 
 
 ::: {#def-datenstrom}
 Ein **Datenstrom** ist eine Folge von binärkodierten Bits. 
@@ -408,7 +408,7 @@ Der Datenaustausch über HTML-Tabellen ist inzwischen vernachlässigbar. HTML-Ta
 
 Mit der wachsenden Popularität des WWW wurde eine effizientere Form zur Kodierung komplexer Datenstrukturen erforderlich, um die Komplexität von Markupsprachen zu umgehen. Deshalb wurde die *JavaScript Object Notation* (JSON) entwickelt. JSON ist eine einfache Form der *Baumkodierung*. JSON ist eine *Untermenge* der JavaScript-Syntax und umfasst nur die Elemente zur Beschreibung von Datenstrukturen. Ein JSON-Dokument beschreibt deshalb immer eine gültige JavaScript-Datenstruktur. Deshalb kann JSON von JavaScript-Programmen in die üblichen Datenstrukturen überführt werden. Das vereinfacht die Programmierung und die Interaktivität von Anwendungen, die in Webbrowsern ausgeführt werden.
 
-JSON ist ein standardisiertes Datenformat [@bray_javascript_2017] und wird inzwischen von allen wichtigen Programmiersprachen unterstützt. 
+JSON ist ein standardisiertes Datenformat [@bray_javascript_2017] und wird inzwischen von allen wichtigen Programmiersprachen unterstützt. Auch JSON ist ein *Markup-Format*, bei dem die Markierungen der JavaScript-Syntax folgen. 
 
 JSON kennt nur sechs Datentypen, wodurch die Kodierung sehr einfach umzusetzen ist. Die Datentypen sind:
 
@@ -419,7 +419,11 @@ JSON kennt nur sechs Datentypen, wodurch die Kodierung sehr einfach umzusetzen i
 - Objekte
 - `null` (undefiniert)
 
-Der Objekt-Datentyp gibt dem Format seinen Namen. Objekte sind eine *Menge* von *Schlüssel-Wert-Paaren*. Die Schlüssel sind Zeichenketten, wobei jeder Schlüssel nur einmal pro Objekt vorkommen darf. Die Werte können von beliebigen JSON-Datentypen sein. 
+Zeichenketten müssen immer durch doppelte Anführungszeichen (`"`) eingeleitet und abgeschlossen werden.
+
+Der Listendatentyp wird durch Block-Klammern (`[` und `]`) markiert. 
+
+Der Objekt-Datentyp gibt dem Format seinen Namen. Objekte werden durch geschweifte Klammern (`{` und `}`) markiert und sind eine *Menge* von *Schlüssel-Wert-Paaren*. Die Schlüssel sind Zeichenketten, wobei jeder Schlüssel nur einmal pro Objekt vorkommen darf. Die Werte können von beliebigen JSON-Datentypen sein. Schlüssel und Werte sind immer durch einen Doppelpunkt getrennt.
 
 Tabellarische Strukturen lassen sich in JSON auf zwei Arten abbilden: 
 
@@ -434,25 +438,25 @@ Die erste Variante ist die gebräuchlichste, weil beim die Bedeutung der zusamme
 ```json
 [
     {
-        name: "Müller",
-        vorname: "Hans",
-        geburtsdatum: "01.01.1990",
-        geburtsort: "Berlin",
-        grösse: 1.76
+        "name": "Müller",
+        "vorname": "Hans",
+        "geburtsdatum": "01.01.1990",
+        "geburtsort": "Berlin",
+        "grösse": 1.76
     },
     {
-        name: "Untermayr",
-        vorname: "Peter",
-        geburtsdatum: "01.01.1980",
-        geburtsort: "Wien",
-        grösse: 1.82
+        "name": "Untermayr",
+        "vorname": "Peter",
+        "geburtsdatum": "01.01.1980",
+        "geburtsort": "Wien",
+        "grösse": 1.82
     },
     {
-        name: "Osterwalder",
-        vorname: "Urs",
-        geburtsdatum: "01.01.1970",
-        geburtsort: "Bern",
-        grösse: 1.78
+        "name": "Osterwalder",
+        "vorname": "Urs",
+        "geburtsdatum": "01.01.1970",
+        "geburtsort": "Bern",
+        "grösse": 1.78
     }
 ]
 ```
@@ -465,11 +469,11 @@ Die Objekt-mit-Listen Strukturierung eignet sich, wenn die Vektorstruktur der Da
 
 ```json
 {
-    name: ["Müller", "Untermayr", "Osterwalder"],
-    vorname: ["Hans", "Peter", "Urs"],
-    geburtsdatum: ["01.01.1990", "01.01.1980", "01.01.1970"],
-    geburtsort: ["Berlin", "Wien", "Bern"],
-    grösse: [1.76, 1.82, 1.78]
+    "name": ["Müller", "Untermayr", "Osterwalder"],
+    "vorname": ["Hans", "Peter", "Urs"],
+    "geburtsdatum": ["01.01.1990", "01.01.1980", "01.01.1970"],
+    "geburtsort": ["Berlin", "Wien", "Bern"],
+    "grösse": [1.76, 1.82, 1.78]
 }
 ```
 :::
@@ -486,7 +490,25 @@ In den letzten Jahren findet eine weitere Formatierung immer häufigere Verwendu
 
 YAML hat die gleichen Datentypen wie JSON und folgt den gleichen Prinzipien zur Datenkodierung. Dadurch hat YAML die gleichen Vorteile wie JSON. YAML erlaubt zusätzlich die Verwendung von Kommentaren, die in JSON nicht vorgesehen sind. Solche Kommentare dienen nur der Dokumentation für die menschliche Interaktion und werden beim Laden eines YAML-Dokuments ignoriert. 
 
-Der Aufälligste Unterschied zwischen YAML und JSON ist die Verwendung von Einrückungen zur Strukturierung von Daten. Dadurch ist YAML für Menschen etwas leichter lesbar und verständlich. Auch müssen Zeichenketten meistens nicht explizit markiert werden. YAML legt Regeln zur automatischen Erkennung des Datentyps fest. So müssen nur in Ausnahmefällen Zeichenketten explizit markiert werden, was bspw. zur Unterscheidung von Wahrheitswerten und Zeichenketten müssen Zeichenketten explizit markiert werden, wenn eine Zeichenkette nur aus einem Schlüsselwort für einen Boole'schen Wert besteht.
+Der Aufälligste Unterschied zwischen YAML und JSON ist die Verwendung von Einrückungen zur Strukturierung von Daten. Dadurch ist YAML für Menschen etwas leichter lesbar und verständlich. Auch müssen Zeichenketten meistens nicht explizit markiert werden. YAML legt Regeln zur automatischen Erkennung des Datentyps fest. So müssen nur in Ausnahmefällen Zeichenketten explizit markiert werden, was bspw. zur Unterscheidung von Wahrheitswerten und Zeichenketten müssen Zeichenketten explizit markiert werden, wenn eine Zeichenkette nur aus einem Schlüsselwort für einen Boole'schen Wert besteht. Zeichenketten müssen auch mit doppelten Anführungszeichen (`"`) markiert werden, wenn die Zeichenkette einen Doppelpunkt enhält.
+
+::: {#exm-yaml-format-specialstring}
+## Zeichenkettenmarkierung in YAML
+
+```YAML
+# Zeichenkette mit Doppelpunkt
+- "Müller: Hans"
+# Objekt mit Schlüssel "Müller" und Wert "Hans"
+- Müller: Hans
+# Zeichenkette mit Wahrheitswert
+- "true"
+- "no"
+# Wahrheitswerte werden intern in Wahr und Falsch umgewandelt
+- true
+- no
+```
+:::
+
 
 Weil YAML die Objektstruktur visuell unterstützt, erfolgt eine Datenkodierung von tabellarischen Strukturen in der Regel über Listen von Objekten.
 
