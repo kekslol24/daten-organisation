@@ -58,7 +58,7 @@ book:
     # Woche 5
     # OK
     - kapitel/04-dateiformate/kapitel.md
-    # TODO Umgang mit Daten
+    # OK
     - kapitel/04-dateiformate/datenverarbeiten.md
 
     # Woche 13 (optional)
