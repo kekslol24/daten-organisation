@@ -68,8 +68,6 @@ book:
     # Woche 6
     # OK
     - kapitel/06-variablen/kapitel.qmd
-    # - kapitel/07-funktionen/kapitel.md
-    # - kapitel/07-neutrales-element/kapitel.md
 
     # OK 
     - kapitel/05-zeichenketten/kapitel.md
