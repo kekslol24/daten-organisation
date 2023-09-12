@@ -242,7 +242,47 @@ Diese Operation $b-a$ ist wesentlich einfacher als die ursprüngliche Funktion. 
 
 ### Besondere Operatoren
 
-#### Der Modulo-Operator
+#### Divisions-Operatoren
+
+Unter den Grundrechenarten ist die Division ein Unikum. Als Einzige der Grundrechenarten kann das Ergebnis einen anderen Zahlentyp haben als die Operanden. Beispielsweise ergeben sich aus ganzen Zahlen rationale Zahlen und aus reellen Zahlen können sich ganze oder rationale Zahlen ergeben. Daraus ergibt sich, dass die Division über einen kontinuierlichen Wertebereich arbeitet.
+
+Die Division kann in zwei Unteroperationen gegliedert werden: 
+
+- Der **Ganzzahldivision** 
+- Dem **Modulo**
+
+Die *Ganzzahldivision* hat den ganzzahligen Anteil einer Division als Ergebnis. Damit ist der Wert vor dem Komma gemeint. Diese Operation ähnelt dem Runden, allerdings wird nur der Nachkommateil entfernt.
+
+Die Ganzzahldivision eignet sich zur Gruppierung von Werten in gleich grosse Blöcke. Ein *Block* ist dabei ein Intervall im Wertebereich der Variablen. Die Grösse eines Blocks wird durch den Divisor festgelegt.
+
+Weil die Ganzzahldivision für mehrere Werte in einem Intervall das gleiche Ergebnis hat, wird die Ganzzahl mit der Intervallschreibweise gekennzeichnet.
+
+::: {#exm-div}
+## Ganzzahldivision
+
+$$
+\lfloor \frac{6}{4} \rfloor = 1
+$$
+:::
+
+Die *Modulo*-Operation gibt den Rest nach der Ganzzahldivision zurück. Das Ergebnis von Modulo ist die *Differenz des Dividenden* bis zum Ergebnis der Ganzzahldivision mulipliziert mit dem Divisor.
+
+::: {#exm-modulo}
+## Modulo-Operation
+
+$$
+mod(6,4) = 6 - 4 \cdot \lfloor \frac{6}{4} \rfloor = 2
+$$
+:::
+
+Modulo erzeugt nur Werte im Intervall $0 \le m < |d|$, wobei $m$ das Ergebnis von Modulo und $d$ der Divisor ist. Auf diese Weise lassen sich beliebige Werte auf ein Intervall mit fester Länge $d$ projizieren. 
+
+::: {.callout-tip}
+## Praxis
+
+Die Ganzzahldivision und Modulo werden häufig als einfache und effiziente Gruppiereungsoperatoren verwendet.
+
+::: 
 
 #### Der Zuweisungsoperator
 
