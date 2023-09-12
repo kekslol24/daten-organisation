@@ -129,7 +129,7 @@ In der mathematischen Literatur wird der *Einsvektor* oft nicht benannt. Wegen d
 Der **Einsvektor** darf nicht mit dem **Einheitsvektor** verwechselt werden. Im Gegensatz zum Einsvektor hat der *Einheitsvektor* die geometrische Länge $1$. Der Einsvektor der Länge `3` hat etwa die geometrische Länge von $\sqrt{3} \approx 1.7321$
 :::
 
-## Konkatenation
+## Konkatenation {#sec-konkatenation}
 
 Datenvektoren können zu neuen Vektoren zusammengefügt werden. Dieser Vorgang heisst **Konkatenation**. Dabei werden zwei Vektoren vom **gleichen Datentyp** *hintereinander* aneinandergehängt.
 
