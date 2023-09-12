@@ -57,7 +57,7 @@ book:
     # OK
     - kapitel/04-dateiformate/kapitel.md
     # OK
-    - kapitel/04-dateiformate/datenverarbeiten.md
+    # - kapitel/04-dateiformate/datenverarbeiten.md
 
     # Woche 13 (optional)
     # TODO
@@ -71,9 +71,8 @@ book:
     # - kapitel/07-funktionen/kapitel.md
     # - kapitel/07-neutrales-element/kapitel.md
 
-    # Altes Skript integrieren
+    # OK 
     - kapitel/05-zeichenketten/kapitel.md
-    
 
     # Woche 8
     # OK 

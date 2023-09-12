@@ -25,6 +25,76 @@ Weil eine Datei auf einem Speichermedium gespeichert ist, kann der Datenstrom au
 
 Nicht alle Datenströme sind persistent. Deshalb ist es wichtig, die Art eines Datenstroms zu kennen, denn bei nicht-persisten oder **flüchtigen Datenströmen** kann auf die Daten nur einmal zugegriffen werden. *Flüchtige Datenströme* sind kommen vorwiegend bei der *automatischen Datenerfassung* vor. In diesem Fällen entspricht jeder Zugriff auf den Datenstrom einer Messung, wobei es nicht möglich ist, eine Messung zu wiederholen.
 
+
+## Dateien verwenden
+
+### Importieren
+
+::: {#def-import-data}
+Das Lesen eines Datenstroms in eine Datenstruktur wird **Importieren** genannt.
+:::
+
+Das Importieren von Daten folgt immer in mehreren Schritten: 
+
+1. *Lesen* eines Datenstroms.
+2. *Zuordnung* der Werte zu den richtigen Datentypen.
+3. *Auswahl* der zu verarbeitenden Daten.
+
+#### Daten einlesen
+
+Beim ersten Schritt werden die Symbole eines Datenstroms in eine geeignete Datenstruktur überführt. Dabei werden die gelesenen Symbole überprüft, ob es sich um Werte oder um eine Trennmarkierung handelt. Die Werte werden entsprechend ihrer Position im Datenstrom oder über Markierungen einer Datenstruktur zugeordnet.
+
+::: {#def-import-parsing}
+Die Zuordnung von Werten in einem Datenstrom zu einer Datenstruktur wird **Parsen** genannt. Eine Funktion, die einen Datenstrom in eine Datenstruktur überführt, heisst **Parser**.
+:::
+
+Jedes Dateiformat erfordert einen eigenen *Parser*. Wird ein ungeeigneter  *Parser* verwendet, dann werden die Daten nicht korrekt importiert und können nicht weiterverarbeitet werden, weil die Datenstruktur nicht die Organisation der Daten wiedergibt. Deshalb muss beim Importieren immer ein passender Parser für das vorliegende Dateiformat verwendet werden. 
+
+::: {.callout-note}
+Für die gängigsten Datenformate existieren eigene Parser. Die Entwicklung eines Parsers für ein bestimmtes Format ist nur selten notwendig. 
+:::
+
+Die Auswahl eines geeigneten Parsers liegt in der Verantwortung der Person, die die Daten importiert. In manchen Fällen kann das Dateiformat automatisch erkannt werden. In diesen Fällen wird ein geeigneter Parser automatisch ausgewählt. Diese automatische Auswahl ist aber nicht immer korrekt. Deshalb muss das Ergebnis des Parsers immer überprüft werden.
+
+#### Werte zuordnen
+
+Der zweite Schritt beim Importieren ist die Zuordnung der Werte zu den richtigen Datentypen und der richtigen Struktur. Normalerweise versucht ein Parser bereits die richtigen Datentypen zu erkennen. Dabei kann es zu Fehlern kommen, wenn sich die Werte nicht eindeutig einem Datentyp zuordnen lassen oder ein spezieller Datentyp verwendet werden soll. 
+
+Diesem Schritt umfasst auch das Erkennen und Behandeln von Markierungen, welche in internen Strukturen als Variablennamen oder benannten Datenfeldern abgebildet werden. Bei Separator-strukturierten Dateien umfasst dieser Teilschritt die Zuordnung von Überschriften. Bei Markup-Daten werden Tags und Markierungen für die interne Struktur verwendet.
+
+Dieser Schritt umfasst oft auch die Behandlung von ungültigen oder fehlenden Werten.
+
+#### Daten auswählen
+
+Gelegentlich werden mehr Daten in einem Datenstrom bereitgestellt, als für die weitere Verarbeitung benötigt werden. In solchen Fällen werden nur die Daten ausgewählt, die für die weitere Verarbeitung benötigt werden. Bei diesem Schritt werden nicht benötigte Daten aus der internen Datenstruktur entfernt. 
+
+::: {.callout-important}
+Das Auswählen von Daten bezieht sich ausschliesslich auf die interne Datenstruktur. Die ursprünglichen Daten im Datenstrom dürfen nicht verändert werden.
+::: 
+
+### Exportieren
+
+::: {#def-export-data}
+Das Schreiben von Daten aus einer Datenstruktur in einen Datenstrom heisst **Exportieren**.
+:::
+
+Beim Exportieren werden die Daten aus einer Datenstruktur in einen Datenstrom *serialisiert*. Eine Funktion die eine Datenstruktur in einen Datenstrom überführt, heisst **Serialisierer**.
+
+Ähnlich wie beim Importieren muss auch beim Exportieren existiert für jedes Datenformat ein geeigneter Serializer. Die Wahl eines Serialisierers hängt von der späteren Verwendung der Serialisierung ab. 
+
+::: {.callout-note}
+Es ist üblich, die gleichen Daten in verschiedenen Formaten zu serialisieren.
+:::
+
+Einige Dateiformat sind sehr komplex. Dadurch sind unvollständige Serialisierungen möglich. Eine unvollständige Serialisierung kann zu Datenverlusten führen. Deshalb sollte für gängige Dateiformate immer ein existierender Serializer verwendet werden.
+
+::: {.callout-tip}
+## Praxis
+
+Beim Exportieren von Daten die vorher importiert wurde dürfen die ursprüngliche Daten nicht überschrieben werden, weil sonst Daten verloren gehen können. Stattdessen sollten Daten beim Exportieren in eine separate Datei geschrieben werden.
+:::
+
+
 ## Textdateien
 
 ::: {#def-textformat}
@@ -36,6 +106,8 @@ Die Bits einer Textdatei sind nach einem festgelegten Standard kodiert (s. [@sec
 Textdateien haben den grossen Vorteil, dass die Dekodierung der Bits automatisch erfolgt. Eine Programm oder eine Funktion kann also direkt auf die kodierten Symbole zugreifen. 
 
 ::: {.callout-note}
+## Textkodierungen
+
 Ältere Datenerfassungs- oder Steuerungssysteme sind noch heute im Einsatz. Einige dieser Systeme verwenden für Textdaten einen älteren Kodierungsstandard. In solchen Fällen muss beim Zugriff auf die Daten die abweichende Kodierung explizit angegeben werden. 
 
 Eine abweichende Textkodierung wird oft an merkwürdigen Zeichenfolgen in den Daten erkannt. Nicht immer ist die verwendete Kodierung dokumentiert. Oft lässt sich die Textkodierung aus dem kulturellen Kontext der Daten ableiten. Die folgende Tabelle gibt für Europa und die USA eine Orientierung, welche Textkodierungen in welchen Zeiträumen verwendet wurden. 
@@ -49,21 +121,6 @@ Eine abweichende Textkodierung wird oft an merkwürdigen Zeichenfolgen in den Da
 | USA | vor 2000 | ANSI/ASCII [@american_national_standards_institute_code_1977] |
 :::
 
-## Mengen und Bäume
-
-Die Werte lassen sich auf verschiedene Arten in Datenströmen kodieren. Die einfachste Form ist die **Mengenkodierung**. Bei der Mengenkodierung werden die Werte in einer festen Reihenfolge in den Datenstrom geschrieben. Dabei werden die Werte als eine zusammenhängende *Menge* behandelt.
-
-Die verbreitesten Formen der Mengenkodierung sind die *Listenkodierung* und die *Tabellenkodierung*. Bei der Listenkodierung werden die einzelnen Werte nacheinander in den Datenstrom geschrieben. Dabei ist die Reihenfolge der Werte nich von Bedeutung. Bei der Tabellenkodierung werden die Werte in einer tabellarisch organisiert. Dabei werden die Werte in Zeilen und Spalten organisiert, wobei jede Zeile und jede Spalte als eine Teilmenge behandelt wird. Die Reihenfolge der Zeilen und Spalten ist dabei nicht von Bedeutung, solange die Zeilen- und Spaltenteilmengen erhalten bleiben.
-
-::: {.callout-note}
-Die Mengenkodierung ist gleichzeitig die Grundlage für *Datenbanken* und *tabellarischen Dateien*. In Datenbanken werden die Werte tabellenartig in sog. *Relationen* organisiert.
-:::
-
-Die Mengenkodierung ist einfach und effizient. Sie hat aber den Nachteil, dass die Werte nicht leicht hierarchisch organisiert werden können, weil jede Hierarchieebene eine eigene Menge erfordert und damit von den anderen Ebenen abgegrenzt wäre. Dieses Problem löst die **Baumkodierung**. Die Baumkodierung kodiert Werte in einer Hierarchie. Dadurch lassen sich komplex-geschachtelte Datenstrukturen in einer Datei abbilden. 
-
-In einer Baumkodierung werden die Werte auf einer Hierarchiestufe zusammegefasst. Eine Hierarchiestufe wird als *Knoten* bezeichnet. In einer solchen Kodierung hat jeder Knoten eine Vorgängerstufe. Diese Vorgängerstufe wird *Elternknoten* genannt. Die Knoten auf der gleichen Hierachiestufe haben immer den gleichen Elternknoten. Diese Knoten heissen *Geschwisterknoten*. Die Knoten ohne Nachfolger nennt man *Blattknoten*. Die eigentlichen Werte finden sich nur in Blattknoten. 
-
-Mit der Baumkodierung lassen sich beliebig komplexe Datenstrukturen abbilden. Für die Kodierung von Datenstrukturen mit *höchstens zwei* Hierarchiestufen und *vielen Werten* ist die Baumkodierung weniger effizient als die Mengenkodierung.
 
 ## Festkodierung
 
@@ -95,6 +152,23 @@ Normalerweise sind Textdateien unstrukturiert und die verwendeten Symbole dienen
 Zeilenbasierte Textdateien sind eine spezielle Form der *Listenkodierung*, wobei das Symbol für den Zeilenumbruch als Listentrennzeichen behandelt wird.
 
 Eine typische Anwendung der zeilenbasierten Textkodierung sind sog. *Log-Dateien*, mit denen Systemereignisse protokolliert werden.
+
+
+## Mengen und Bäume
+
+Die Werte lassen sich auf verschiedene Arten in Datenströmen kodieren. Die einfachste Form ist die **Mengenkodierung**. Bei der Mengenkodierung werden die Werte in einer festen Reihenfolge in den Datenstrom geschrieben. Dabei werden die Werte als eine zusammenhängende *Menge* behandelt.
+
+Die verbreitesten Formen der Mengenkodierung sind die *Listenkodierung* und die *Tabellenkodierung*. Bei der Listenkodierung werden die einzelnen Werte nacheinander in den Datenstrom geschrieben. Dabei ist die Reihenfolge der Werte nich von Bedeutung. Bei der Tabellenkodierung werden die Werte in einer tabellarisch organisiert. Dabei werden die Werte in Zeilen und Spalten organisiert, wobei jede Zeile und jede Spalte als eine Teilmenge behandelt wird. Die Reihenfolge der Zeilen und Spalten ist dabei nicht von Bedeutung, solange die Zeilen- und Spaltenteilmengen erhalten bleiben.
+
+::: {.callout-note}
+Die Mengenkodierung ist gleichzeitig die Grundlage für *Datenbanken* und *tabellarischen Dateien*. In Datenbanken werden die Werte tabellenartig in sog. *Relationen* organisiert.
+:::
+
+Die Mengenkodierung ist einfach und effizient. Sie hat aber den Nachteil, dass die Werte nicht leicht hierarchisch organisiert werden können, weil jede Hierarchieebene eine eigene Menge erfordert und damit von den anderen Ebenen abgegrenzt wäre. Dieses Problem löst die **Baumkodierung**. Die Baumkodierung kodiert Werte in einer Hierarchie. Dadurch lassen sich komplex-geschachtelte Datenstrukturen in einer Datei abbilden. 
+
+In einer Baumkodierung werden die Werte auf einer Hierarchiestufe zusammegefasst. Eine Hierarchiestufe wird als *Knoten* bezeichnet. In einer solchen Kodierung hat jeder Knoten eine Vorgängerstufe. Diese Vorgängerstufe wird *Elternknoten* genannt. Die Knoten auf der gleichen Hierachiestufe haben immer den gleichen Elternknoten. Diese Knoten heissen *Geschwisterknoten*. Die Knoten ohne Nachfolger nennt man *Blattknoten*. Die eigentlichen Werte finden sich nur in Blattknoten. 
+
+Mit der Baumkodierung lassen sich beliebig komplexe Datenstrukturen abbilden. Für die Kodierung von Datenstrukturen mit *höchstens zwei* Hierarchiestufen und *vielen Werten* ist die Baumkodierung weniger effizient als die Mengenkodierung.
 
 ## Separator-strukturierte Textdateien
 
@@ -139,6 +213,7 @@ Osterwalder,Urs,01.01.1970,Bern,1.78
 
 Im deutschsprachigen Raum wird die CSV-Spezifikation oft abgewandelt. Dabei wird das Komma durch ein Semikolon (`;`) ersetzt. Dadurch kann das Komma als Dezimaltrennzeichen verwendet werden, ohne es zusätzlich durch Anführungszeichen geschützt zu werden. Diese Abwandlung wird als *Semikolon-separierte Werte* bezeichnet und ebenfalls als `CSV` abgekürzt.
 
+
 ::: {#exm-semikolon-csv-file}
 ## Semikolon-Daten
 
@@ -149,6 +224,20 @@ Untermayr;Peter;01.01.1980;Wien;1,82
 Osterwalder;Urs;01.01.1970;Bern;1,78
 ```
 :::
+
+::: {.callout-important}
+## Achtung
+
+Weil beim `CSV`-Format zwei unterschiedliche Trennzeichen verwendet werden, treten beim Importieren oft Fehler auf, weil der Parser für das falsche Trennzeichen verwendet wurde. Bei der Arbeit mit `CSV`-Dateien sollte deshalb eine Datendatei auf das verwendete Trennzeichen geprüft werden. Diese Überprüfung kann entfallen, wenn das Trennzeichen dokumentiert wurde.
+:::
+
+::: {.callout-important}
+## Achtung
+Beim Importieren von CSV-Dateien in der Schweiz muss zusätzlich das Dezimaltrennzeichen geprüft werden. Werden die Daten aus einer Excel-Version mit *deutschen Regionseinstellungen* exportiert, dann wird das Semikolon als Feldtrennzeichen und das Komma als Dezimaltrennzeichen verwendet. Werden die Daten aus einer Excel-Version mit *englischen Regionseinstellungen* exportiert, dann wird das Komma als Feldtrennzeichen und der Punkt als Dezimaltrennzeichen verwendet. 
+
+In der Schweiz wird als Dezimaltrennzeichen wie im Englischen meistens ein Punkt verwendet. Werden Daten aus einer Excel-Version mit *schweizer Regionseinstellungen* werden die Trennzeichen gemischt: Als Feldtrennzeichen wird das Semikolon und als Dezimaltrennzeichen der Punkt verwendet. Das kann beim Import der Daten zu Fehlern führen, wenn das Dezimaltrennzeichen von einem Parser nicht angepasst wurde oder werden kann.
+::: 
+
 
 Das PSV-Format verwendet das Pipe-Symbol (`|`) als Trennzeichen. Während im CSV-Format Überschriften und Werte nicht klar unterschieden werden können, ist beim PSV-Format möglich. Dazu wird nach dem Überschriften eine Zeile mit Minuszeichen (`-`) und Trennzeichen eingefügt, um die Überschriften von den Werten abzugrenzen. Das PSV-Format wird oft als eingebettetes Format in Markdown-Dateien verwendet. 
 
