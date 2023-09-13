@@ -27,7 +27,7 @@ book:
   # Woche 1
   - part: Ausgangslage und Vorbereitung
     chapters:
-    # TODO
+    # draft 1
     - kapitel/01-einleitung/kapitel.md 
     # OK
     - kapitel/01-tool-chain/tastatur.md  
