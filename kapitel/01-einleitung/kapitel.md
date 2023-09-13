@@ -49,7 +49,6 @@ Dieses Buch kann auf zwei Arten gelesen und verwendet werden:
 | Daten beschreiben | x | x |
 | Daten visualisieren | bis und mit [Abschnitt @sec-viz-versch-skalenniveaus] | x |
 
-
 ### Begleitmaterial
 
 Zu diesem Buch gibt es die folgenden Begleitmaterialien mit Details und Anwendungsbeispielen für einzelne Programmiersprachen. Diese Begleitmaterialien sind so aufgebaut, dass sie direkt an die Inhalte dieses Buchs anknüpfen und die Abschnitte für die eine gewünschte Programmiersprache ergänzen und konkretisieren.
