@@ -67,3 +67,4 @@ index.log
 index.pdf
 index.toc
 index.out
+**/*.rmarkdown

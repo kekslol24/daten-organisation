@@ -14,16 +14,38 @@ Die Datenvisualisierung ist ein Hilfsmittel zur Analyse und zur Kommunikation. S
 
 > Visualisierungen sind eine Form der Informationskodierung. 
 
+::: {.callout-tip}
+## Künstlerische Freiheit
+Bei der Datenvisualisierung sollten ästhetische Elemente ohne Bezug zu den Daten vermieden werden. 
+:::
 
-## Aufbau eines Plots
+## Aufbau eines Diagramms
+
 
 ### Darstellungsbereich
 
+Der Darstellungsbereich enthält die eigentliche Visualisierung. Dieser Bereich muss für eine korrekte Darstellung alle Werte abbilden. Deshalb ist es nicht erlaubt, das Achsintervall des Darstellungsbereich so zu verändern, dass einzelne Werte nicht mehr dargestellt werden.
+
 ### Achsen
+
+Die Achsen markieren die Hauptdimensionen eines Diagramms. Es sollten nie mehr als zwei Hauptdimensionen in einem Diagramm verwendet werden, weil sich aus der Darstellung nicht mehr erkennen lässt, welche Achse zu welchen visuellen Elementen grhört.
+
+Achsen sollten mit den wichtigsten Werten beschriftet werden und müssen eine aussagekräftigen Achstitel haben. Die meisten Analyseumgebungen übernehmen standardmässig den Titel des Datenvektors.
 
 ### Titel
 
-## Legende
+Der Diagrammtitel ist ein aussagekräftiger Titel über den Inhalt eines Diagramms.
+
+::: {.callout-tip}
+## Praxis
+
+Der Diagrammtitel wird oft nicht in ein Diagramm aufgenommen, sondern später als Abbildungstitel hinzugefügt. 
+:::
+
+### Legende
+
+Eine Legende beschreibt die Wertebereiche der *Nebendimensionen* eines Diagramms. Ohne eine Legende lassen sich zusätzliche Kodierungen nicht nachvollziehen und dekodieren. In solchen Fällen müssen solche grafischen Elemente als künstlerische Ergänzung ohne inhaltlichen Wert interpretiert werden. 
+
 
 ## Plots mit einer Variablen
 
@@ -56,7 +78,7 @@ mtcars |> ggplot(aes(mpg)) + geom_histogram(binwidth= 1.5) + theme_minimal()
 mtcars |> ggplot(aes(gear)) + geom_bar() + theme_minimal()
 ```
 
-Die Reihenfolge der Balken ist nicht beliebig. Die Balken werden für alle ordinalskalierten Variablen in der Reihenfolge der Werte bzw. der Intervalle angeordnet. Nominalskalierte Variablen haben keine natürliche Reihenfolgen. Deshalb werden die Balken eines Histogramms für nominalskalierte Variablen in der Reihenfolge der Häufigkeiten angeordnet.
+Die Reihenfolge der Balken ist nicht beliebig. Die Balken werden für alle ordinalskalierten Wertebereiche in der Reihenfolge der Werte bzw. der Intervalle angeordnet. Nominalskalierte Wertebereiche haben keine natürliche Reihenfolgen. Deshalb werden die Balken eines Histogramms für nominalskalierte Wertebereiche in der Reihenfolge der Häufigkeiten angeordnet.
 
 Eine Sonderform eines Histogramms ist das sog. *Kreis-* bzw. *Tortendiagramm*. Ein Tortendiagramm ist ein Histogramm, bei dem die Balken durch Kreissegmente ersetzt werden. Die Grösse der Kreissegmente entspricht dem Anteil der Häufigkeit an der Gesamthäufigkeit. 
 
@@ -67,6 +89,22 @@ Ein Histogramm ist einem Kreisdiagramm immer vorzuziehen. Kreisdiagramme sollten
 
 ### Boxplot
 
+::: {#def-boxplot}
+Ein **Boxplot** stellt die Grösse der Verteilungsintervalle von Daten als Rechteck und Linien dar. Aussergewöhneliche Werte (Ausreisser) werden als Punkte dargestellt.
+:::
+
+**Box-Whisker-Diagramm** und **Kastengrafik** sind gebräuchliche Synonyme für Boxplots. 
+
+::: {.callout-note}
+## Merke
+
+Boxplots dürfen nur für ordinal- oder kontinuierlichskalierte Wertebereiche verwendet werden.
+:::
+
+Ein Boxplot hat nur eine Achse für den Wertebereich der dargestellten Werte. Die zweite Achse in einem einfachen Boxplot ist nur notwendig, um das Rechteck zeichnen zu können und hat sonst keine Bedeutung.
+
+Ein Boxplot gliedert die vorliegenden Daten in vier gleichgrosse Bereiche. Diese Bereiche heisse Quartile. Jedes Quartil umfasst jeweils ein Viertel der Werte. Die beiden mittleren Quartile werden als zwei Rechtecke dargestellt. Die Länge der beiden Rechtecke heisst **Interquartilsabstand**. Die Linie die am Übergang zwischen den beiden Rechtecken entsteht markiert den *Median* der Verteilung. Ausreisser sind Werte, die um mehr als das 1.5-fache des Interquartilsabstands von der nächsten Quartilsgrenze entfernt sind.
+
 ```{r}
 #| fig-cap: Beispiel für einen Boxplot 
 
@@ -75,7 +113,41 @@ Ein Histogramm ist einem Kreisdiagramm immer vorzuziehen. Kreisdiagramme sollten
 mtcars |> ggplot(aes(mpg)) + geom_boxplot() + theme_minimal()
 ```
 
-### Violinplots
+Weil ein Boxplot die Werte in gleichgrosse Intervalle gliedert, geben sie eine grobe Orientierung über die Verteilung der Werte. 
+
+### Dichtediagramme
+
+Boxplots und Histogramme fassen die Werte immer zu Intervallen zusammen. Dadurch lässt sich die genaue Verteilung der Daten nicht genau nachvollziehen. Bei **kontinuierlichen Wertebereichen** zeichen die Intervalle nicht immer ein akkurates Bild der Verteilung. Eine detailliertere Annäherung als ein Histogramm liefert die *Dichtefunktion* einer Verteilung.
+
+Die *Dichtefunktion* liefert die Wahrscheinlichkeiten, mit der Werte in einer Verteilung auftreten, als eine stetige Funktion von Wahrscheinlichkeitswerten. Weil nicht alle Werte in den Daten vorkommen, ist die Dichtefunktion eine ***Annäherung*** an die wahrscheinlichste Verteilung der dargestellten Werte. 
+
+::: {#def-dichteplot}
+**Dichtediagramme** sind eine Visualisierung der *Dichtefunktion* einer Verteilung und zeigen die Wahrscheinlichkeiten mit denen Werte eines *kontinuierlichen* Wertebereichs in einer Verteilung vorkommen. 
+:::
+
+::: {.callout-note}
+## Merke
+
+Dichtediagramme sind nur für kontinuierliche Wertebereiche erlaubt.
+:::
+
+```{r}
+#| fig-cap: Beispiel eines Dichtediagramms 
+
+# library(ggplot2)
+
+mtcars |> ggplot(aes(mpg)) + geom_density() + theme_minimal()
+```
+
+### Violindiagramm
+
+Ein **Violindiagramm** verbindet die Idee des Box-Plots mit der Dichtefunktion. Für *kontinuierliche Wertebereiche* zeigen Violindiagramm mehr Details als ein Boxplot. 
+
+::: {.callout-note}
+## Merke
+
+Violindiagramme verwenden die Annäherung der Dichtefunktion für die Visualisierung. Entsprechend werden auch nicht gemessene Werte abgebildet.
+:::
 
 ```{r}
 #| fig-cap: Beispiel eines violinplot 
@@ -85,20 +157,17 @@ mtcars |> ggplot(aes(mpg)) + geom_boxplot() + theme_minimal()
 mtcars |> ggplot(aes(mpg, c(1))) + geom_violin() + theme_minimal()
 ```
 
-
-### Dichteplots
-
-```{r}
-#| fig-cap: Beispiel eines Dichteplots 
-
-# library(ggplot2)
-
-mtcars |> ggplot(aes(mpg)) + geom_density() + theme_minimal()
-```
+Die zweite Achse eines Violindiagramms hat keine Bedeutung, sondern dient nur der Darstellung der Dichtefunktion. Hierbei ist zu beachten, dass die Kurve der Dichtefunktion *gespiegelt* ist. Deshalb sollten Violindiagramme nie als Grundlage für eine Schnellanalyse dienen, weil die Flächen leicht falsch interpretiert werden können.
 
 ## Plots mit zwei Variablen
 
-### Funktionsplots
+### Funktionsdiagramme
+
+::: {#def-funktionsdiagramm}
+Ein **Funktionsdiagramm** stellt die Parameter und die Ergebnisse einer oder mehrerer (mathematischer) Funktionen gegenüber.
+:::
+
+
 
 ```{r}
 #| fig-cap: Beispiel eines Funktionsplots mit einer linearen und einer quadratischen Funktionen 
@@ -142,7 +211,7 @@ mtcars |> ggplot(aes(mpg, hp)) + geom_point() + theme_minimal()
 
 #### Jitter-Diagramme
 
-Wenn beide Variablen diskrete Wertebereiche haben, haben die Punkte im Streudiagramm die Tendenz, dass sich die Punkte zu überlagern, weil es nur eine begrenzte Anzahl möglichen Wertepaaren gibt. Um dieses Problem zu umgehen, wird eine besondere Variante des Streudiagramms eingesetzt: Das sog. *Jitter-Diagramm* (etwa *Zitterdiagramm*).
+Wenn beide Variablen diskrete Wertebereiche haben, haben die Punkte im Streudiagramm die Tendenz, dass sich die Punkte zu überlagern, weil es nur eine begrenzte Anzahl möglichen Wertepaaren gibt. Um dieses Problem zu umgehen, wird eine besondere Variante des Streudiagramms eingesetzt: Das sog. *Jitter-Diagramm* (etwa *Zitterdiagramm*). Ein Jitter-Diagramm ist eine Variante von Streudiagrammen.
 
 
 ```{r}
@@ -157,7 +226,7 @@ Bei einem Jitter-Diagramm wird um die diskreten Werte ein Bereich festgelegt. Di
 ```{r}
 #| fig-cap: Beispiel eines Jitter-Diagramms mit zwei diskreten Variablen. Jitter-Bereiche sind Rot hervorgehoben.
 
-mtcars |> ggplot(aes(gear, cyl)) + geom_jitter() + geom_tile(color="red", fill = NA) + theme_minimal()
+mtcars |> ggplot(aes(gear, cyl)) + geom_jitter() + geom_tile(color="red", fill = NA, height = 1.9, width = .9) + theme_minimal()
 ```
 
 ::: {.callout-tip}
@@ -166,8 +235,10 @@ mtcars |> ggplot(aes(gear, cyl)) + geom_jitter() + geom_tile(color="red", fill =
 Bei der Grösse des Jitter-Bereichs sollte etwas Abstand zu den umgebenden Bereichen gelassen werden. Dadurcht entsteht ein Leerraum, welcher keine Punkte enthält, so lassen sich die einzelnen Bereiche optisch leichter voneinander abgrenzen.
 :::
 
-
 #### Liniendiagramme
+
+::: {#def-liniendiagramm}
+:::
 
 Liniendiagramme werden verwendet, wenn die Werte einer Variablen in einer bestimmten Reihenfolge zueinander stehen. Die Werte werden dann auf der entsprechenden Achse in der entsprechenden Reihenfolge abgetragen. Die Punkte werden dann durch eine Linie verbunden. 
 
@@ -181,7 +252,12 @@ Wenn die Werte einer Variablen nicht in einer festen Reihenfolge zueinander steh
 
 ### Ausgleichsgeraden
 
-Ausgleichsgeraden sind spezielle Funktionsplots. Eine *Ausgleichsgerade* verwendet eine *lineare Funktion* mit der Form $ax + c$. Die Funktion einer Ausgleichsgeraden *minimiert* die Funktionsergebnisse mit den tatsächlichen Werten. 
+
+::: {#def-liniendiagramm}
+Eine **Ausgleichsgerade** ist ein Funktionsdiagramm einer Funktion, welche die Ergebnisse einer linearen Funktion zu den tatsächlichen Werten *minimiert*.
+:::
+
+*Ausgleichsgeraden* verwenden *lineare Funktionen* in der Form $ax + c$. Die Funktion einer Ausgleichsgeraden *minimiert* die Funktionsergebnisse mit den tatsächlichen Werten. 
 
 Eine Ausgleichsgerade darf nicht willkürlich gezogen werden, sondern muss aus den gemessenen Werten ermittelt werden. Eine Ausgleichsgerade sollte immer gemeinsam mit den tatsächlichen Werten der Variablen dargestellt werden.
 
@@ -203,40 +279,97 @@ mtcars |>
 ```
 
 
-### Unterschiedliche Skalenniveaus
+### Zwei unterschiedliche Skalenniveaus kombinieren
 
-Sollen die Werte einer Variable mit diskreten Wertebereich gegen die Werte einer Variablen mit kontinuierlichem Wertebereich abgetragen werden, dann werden die *Verteilungen* der kontinuierlichen Variablen für die einzelnen Werte der diskreten Variablen dargestellt. Hierzu werden meist Box-Plots oder Violin-Plots verwendet.
+Sollen die Werte einer Variable mit diskreten Wertebereich gegen die Werte einer Variablen mit kontinuierlichem Wertebereich abgetragen werden, dann werden die *Verteilungen* der kontinuierlichen Variablen für die einzelnen Werte eines diskreten Wertebereichs dargestellt. Hierzu werden meist *Boxplots* oder *Violindiagramme* verwendet.
+
+Diese Form von kombinierten Diagrammen tritt sehr häufig in Verbindung mit Sekundärindizes auf. Dabei werden Verteilungen von gruppierten Werten gegenübergestellt.
 
 ```{r}
 #| fig-cap: Beispiel eines Diagramms mit diskreten und kontinuierlichen Variablen 
 
 # library(ggplot2)
 
-mtcars |> ggplot(aes(mpg, factor(gear))) + geom_boxplot() + theme_minimal()
+mtcars |> 
+    dplyr::mutate( gear = factor(gear)) |>
+    ggplot(aes(mpg, gear)) + geom_boxplot() + theme_minimal()
 ```
 
 ## Plots mit mehr als zwei Variablen
 
 Plots sind auf zwei Dimensionen beschränkt. Werden mehr als zwei Variablen dargestellt, dann werden die zusätzlichen Variablen durch verschiedene Darstellungsformen repräsentiert.  3D-Koordinatensysteme sollten vermieden werden, weil die Position der Punkte bei der 2D-Darstellung eines 3D-Koordinatensystems mehrdeutig ist und sich schwer interpretieren lässt.
 
-Für Beziehungen zwischen mehr als zwei Variablen muss für die zusätzlichen Variablen eine andere Darstellungsform gewählt werden.
+Für Beziehungen zwischen mehr als zwei Variablen muss für die zusätzlichen Variablen eine andere Darstellungsform gewählt werden. Die wichtigsten Darstellungsformen sind: 
 
-### Farbe
+- Farbliche Kodierung
+- Grössenkodierung
+- Form-Kodierung
+
+Diese Varianten können kombiniert werden, um zusätzliche Daten in eine Visualisierungzu integrieren. 
+
+::: {.callout-warning}
+## Wichtig
+
+Alle zusätzlichen Kodierungen **müssen** in einer *Legende* erklärt werden.
+:::
+
+### Farbliche Kodierung
+
+Bei der farblichen Kodierung werden die dargestellten Werte in Farben oder Farbtöne übersetzt. 
+
+Bei diskreten Wertebereichen sollten für die farbliche Kodierung Farben bzw. Farbtöne verwendet werden, die sich voneinander unterscheiden lassen. 
+
+::: {.callout-note}
+Die farblichen Kodierung sollte sparsam eingesetzt werden, weil die menschliche Farbwahrnehmung stark variiert. Eine vermeintlich gut gewählter Farbton lässt möglicherweise von den Adressaten einer Visualisierung nicht von anderen verwendeten Farben unterscheinde. Dadurch kann die Darstellung nicht wie vorgesehen dekodiert werden. 
+:::
+
+#### Farbliche Kodierung von diskreten Wertebereichen
+
+Bei diskreten Wertebereichen werden Farben verwendet, die einen möglichst grossen Kontrast zueinander haben. 
+
+::: {.callout-note}
+Diskrete Farben können Menschen nicht beliebig voneinander unterscheiden. Deshalb sollten der Wertebereich einer so kodierter Daten klein sein. 
+:::
 
 ```{r}
 #| fig-cap: Beispiel für die Farbkodierung einer dritten diskreten Dimension
 
-# library(ggplot2)
-
 mtcars |> 
-    ggplot(aes(mpg, hp, color= factor(gear))) + 
-    geom_point() +  
+    dplyr::mutate( gear = factor(gear)) |>
+    ggplot(aes(mpg, hp, color= gear)) + 
+    geom_point(size = 3) +  
     theme_minimal() -> diag
 
  suppressMessages(print(diag))
 ```
 
-### Grösse
+#### Farbliche Kodierung von kontinuierlichen Wertebereichen
+
+Kontinuierliche Wertebereiche werden als sog. Farbgradienten (bzw. Farbverlauf) zwischen zwei Farben kodiert.
+
+Bei Wertebereichen mit einem definierten Mittelpunkt, wird dieser oft mit einem Übergang über weiss dargestellt. In diesem Fall hat der Gradient 3 Farben. Daraus ergibt sich, dass je heller ein Farbton ist, desto näher ist der Wert am Mittelpunkt. Je nach Färbung ist dann ersichtlich, ob ein Wert ober- oder unterhalb des Mittelpunkts liegt.
+
+Farbgradienten haben den Nachteil, dass die meisten Menschen farbliche Unterschiede nicht stufenlos unterscheiden können. Deshalb sollten Farbgradienten nur verwendet werden, wenn die exakten Werte für die Visualisierung von untergeordneter Rolle sind.
+
+
+```{r}
+#| fig-cap: Beispiel für die Farbkodierung mit einem Farbgradienten
+
+mtcars |> 
+    ggplot(aes(drat, wt, color= qsec)) + 
+    geom_point(size = 3) +  
+    theme_minimal() -> diag
+
+ suppressMessages(print(diag))
+```
+
+### Grössenkodierung
+
+Bei der Grössenkodierung werden die Punkte von Streudiagrammen entsprechend eines dritten Werts vergrössert oder verkleinert. 
+
+::: {.callout-note}
+Eine Grössenkodierung eigent sich gut für kontinuierliche Wertebereiche. Obwohl sich ordinalskalierte Wertebereiche ebenfalls so darstellen lassen, sollte das möglichst vermieden werden, weil bei dieser Darstellungsform verborgen wird, dass es sich um diskrete Daten handelt.
+::: 
 
 ```{r}
 #| fig-cap: Beispiel für die Grössenkodierung einer dritten diskreten Dimension
@@ -251,21 +384,32 @@ mtcars |>
  suppressMessages(print(diag))
 ```
 
-### Form
+::: {#def-bubblechart}
+Ein **Bubble-Chart** oder **Ballondiagramm** ist ein *Streudiagramm* mit zusätzlichen grössenkodierten Werten.
+::: 
 
-Die Form eignet sich nur für diskrete Wertebereiche.
+### Form-Kodierung
+
+Über die Form von Punkten oder Linien können zuätzliche Werte in Diagrammen abgebildet werden. Formen eignen sich nur für diskrete Wertebereiche.
+
+Normalerweise wird die Kodierung für Punkte oder für Linien verwendet.
+
+::: {.callout-note}
+Bei der Formkodierung muss auf die Mindestgrösse geachtet werden, weil sehr kleinen Formen nur schwer von Punkten unterschieden werden können.
+:::
 
 ```{r}
-#| fig-cap: Beispiel für die Formkodierung einer dritten diskreten Dimension
-mtcars |> 
-    ggplot(aes(mpg, hp, shape = factor(gear))) + 
-    geom_point() +  
+#| fig-cap: Beispiel für die Formkodierung für Punkte und Linien
+mtcars |>
+    dplyr::mutate( gear = factor(gear)) |>
+    ggplot(aes(mpg, hp, shape = gear, linetype = gear)) + 
+    geom_point(size = 3) +  
+    geom_smooth(method = lm, se = FALSE) +
     theme_minimal() -> diag
 
  suppressMessages(print(diag))
 ```
 
-Eine spezielle Variante der Form ist der *Linienstil*. 
 
 ### Teildiagramme
 
