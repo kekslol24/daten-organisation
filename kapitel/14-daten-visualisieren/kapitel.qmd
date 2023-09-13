@@ -12,15 +12,16 @@ Die Datenvisualisierung ist ein wichtiges Werkzeug für die Datenanalyse. Die Da
 Die Datenvisualisierung ist ein Hilfsmittel zur Analyse und zur Kommunikation. Sie ist kein Selbstzweck und stellt *keine* Analyse dar. Die Datenvisualisierung kann helfen, Daten vor einer weiterführenden Analyse zu verstehen.
 :::
 
-> Visualisierungen sind eine Form der Informationskodierung. 
+Die Datenvisualisierung kann Informationstheoretisch betrachtet werden. Dabei werden die Werte visuell *kodiert*. Dieser Vorgang folgt den gleichen informationstheoretischen Prinzipien wie die Datenverarbeitung. Entsprechend muss die Datenvisualisierung als eine Form der Informationskodierung verstanden werden. Aus dieser Einsicht folgt konsequent, dass Information bei der Visualisierung zwangsläufig durch Rauschen und Equivokation verloren geht. Gleichzeitig müssen Visualisierungen nicht nur erstellt sondern auch gelesen und systematisch interpretiert werden. Bei wissenschaftlichen Visualisierungen werden spezielle visuelle Codes verwendet, um Werte und ihre Beziehungen zueinander sichtbar zu machen.
 
 ::: {.callout-tip}
 ## Künstlerische Freiheit
-Bei der Datenvisualisierung sollten ästhetische Elemente ohne Bezug zu den Daten vermieden werden. 
+Bei der Datenvisualisierung sollten ästhetische Elemente ohne Bezug zu den Daten **vermieden** werden, wenn sie das Dekodieren behindern.
 :::
 
 ## Aufbau eines Diagramms
 
+TODO VISUALISIERUNG
 
 ### Darstellungsbereich
 
@@ -167,7 +168,24 @@ Die zweite Achse eines Violindiagramms hat keine Bedeutung, sondern dient nur de
 Ein **Funktionsdiagramm** stellt die Parameter und die Ergebnisse einer oder mehrerer (mathematischer) Funktionen gegenüber.
 :::
 
+In Funktionsdiagrammen werden die Parameter einer Funktion ihren Ergebnissen gegenübergestellt. Zwischen diesen Werten gibt es eine Beziehung, die durch die verwendete Funktion festgelegt wird. 
 
+::: {#def-funktionale-abhängigkeit}
+Die Parametern und den Ergebnissen eine Funktion sind ***funktional abhängig***. Für den Spezialfall einer linearen Funktion sind die Werte **linear ahbängig**.
+::: 
+
+Funktionsdiagramme visualisieren also die funktionale Abhängigkeit zwischen Parametern und Ergenissen von Funktionen. 
+
+Für ein Funktionsdiagramm wird neben der Funktion zusätzlich ein Parameterintervall benötigt. Das Parameterintervall bildet die Grundlage für den Darstellungsbereich. Anschliessend wird eine Wertetabelle für das Parameterintervall erstellt. Diese Tabelle enthält zwei Vektoren: 
+
+- Eine *Sequenz* (s [@sec-sequenzen]) zwischen der Unter- und der Obergrenze des Parameterintervalls. 
+- Die Funktionsergebnisse für alle Werte gewählten Parameterintervall.
+
+::: {.callout-tip}
+## Praxis
+
+Viele Visualisierungsumgebungen erstellen die Wertetabelle automatich vor der Visualisierung einer Funktion. 
+:::
 
 ```{r}
 #| fig-cap: Beispiel eines Funktionsplots mit einer linearen und einer quadratischen Funktionen 
@@ -179,6 +197,12 @@ data.frame(x = c(-4, 4)) |> ggplot(aes(x)) +
     geom_line(stat = "function", fun = function (x) { 2*x + 3 }, color = "blue") + 
     theme_minimal()
 ```
+
+Bei der Datenvisualisierung werden Funktionsdiagramme zur Vorhersage oder zum Vergleich der Werte eines Vektors durch die Werte eines anderen Vektors verwendet. 
+
+::: {#def-modell}
+Ein ***Modell*** ist eine Funktion, die eine Beziehung zwischen Variablen als funktionale Anhängigkeit beschreibt.
+:::
 
 ### Beziehungen
 
@@ -220,13 +244,14 @@ Wenn beide Variablen diskrete Wertebereiche haben, haben die Punkte im Streudiag
 mtcars |> ggplot(aes(gear, cyl)) + geom_point() + theme_minimal()
 ```
 
-Bei einem Jitter-Diagramm wird um die diskreten Werte ein Bereich festgelegt. Die Punkte werden dann zufällig innerhalb dieses Bereichs abgetragen. Dadurch werden die Punkte aufgelockert und die Beziehung der Variablen wird sichtbar. Die Grösse des Bereicht wird so gewählt, dass sich mehrere Bereiche nicht überlappen. 
+Bei einem Jitter-Diagramm wird um die diskreten Werte ein Bereich festgelegt. **Der eigentliche Wert liegt im Mittelpunkt dieses Bereichs**. Für jeden Messpunkt, wird ein Punkte zufällig innerhalb dieses Bereichs markiert. Durch diese zufällige Positionierung entsteht der Eindruck einer zittrigen Hand.
 
+Durch das zufällige Positionieren werden die Punkte aufgelockert und die Beziehung der Variablen wird sichtbar. Die Grösse des Bereichs wird so gewählt, dass sich mehrere Bereiche *nicht überlappen*. 
 
 ```{r}
 #| fig-cap: Beispiel eines Jitter-Diagramms mit zwei diskreten Variablen. Jitter-Bereiche sind Rot hervorgehoben.
 
-mtcars |> ggplot(aes(gear, cyl)) + geom_jitter() + geom_tile(color="red", fill = NA, height = 1.9, width = .9) + theme_minimal()
+mtcars |> ggplot(aes(gear, cyl)) + geom_jitter() + geom_tile(color="red", fill = NA, height = 1.9, width = .95) + theme_minimal()
 ```
 
 ::: {.callout-tip}
@@ -235,14 +260,30 @@ mtcars |> ggplot(aes(gear, cyl)) + geom_jitter() + geom_tile(color="red", fill =
 Bei der Grösse des Jitter-Bereichs sollte etwas Abstand zu den umgebenden Bereichen gelassen werden. Dadurcht entsteht ein Leerraum, welcher keine Punkte enthält, so lassen sich die einzelnen Bereiche optisch leichter voneinander abgrenzen.
 :::
 
+Beim Lesen eines Jitter-Diagramm muss beachtet werden, dass der Bereich für die Punkte dem zugehörigen diskreten Wert entspricht. Durch die Anordnung der Punkte in einem Jitter-Diagramm kann der Eindruck einer Beziehung zwischen zwei Variablen visuell entstehen, ohne dass diese Beziehung tatsächlich existiert.
+
 #### Liniendiagramme
 
 ::: {#def-liniendiagramm}
+Ein ***Liniendiagramm*** eine Variante eines Streudiagramms, bei dem aufeinanderfolgende Punkte durch eine Linie verbunden werden. 
 :::
 
 Liniendiagramme werden verwendet, wenn die Werte einer Variablen in einer bestimmten Reihenfolge zueinander stehen. Die Werte werden dann auf der entsprechenden Achse in der entsprechenden Reihenfolge abgetragen. Die Punkte werden dann durch eine Linie verbunden. 
 
 Liniendiagramme werden häufig verwendet, um die Entwicklung von Variablen über die Zeit darzustellen.
+
+```{r}
+#| fig-cap: Beispiel eines Liniendiagramms (DAX Index 1991-1998)
+
+EuStockMarkets |> 
+    tidyr::as_tibble() |> 
+    dplyr::mutate(time = time(EuStockMarkets)) |>
+    ggplot(aes(time, DAX)) + 
+    geom_line() + 
+    theme_minimal() -> diag
+
+suppressMessages(print(diag))
+```
 
 ::: {.callout-warning}
 ## Achtung
@@ -251,7 +292,6 @@ Wenn die Werte einer Variablen nicht in einer festen Reihenfolge zueinander steh
 :::
 
 ### Ausgleichsgeraden
-
 
 ::: {#def-liniendiagramm}
 Eine **Ausgleichsgerade** ist ein Funktionsdiagramm einer Funktion, welche die Ergebnisse einer linearen Funktion zu den tatsächlichen Werten *minimiert*.
@@ -395,7 +435,7 @@ Ein **Bubble-Chart** oder **Ballondiagramm** ist ein *Streudiagramm* mit zusätz
 Normalerweise wird die Kodierung für Punkte oder für Linien verwendet.
 
 ::: {.callout-note}
-Bei der Formkodierung muss auf die Mindestgrösse geachtet werden, weil sehr kleinen Formen nur schwer von Punkten unterschieden werden können.
+Bei der Formkodierung muss auf die Mindestgrösse geachtet werden, weil sehr kleine Formen nur schwer voneinander unterscheidbar sind.
 :::
 
 ```{r}
@@ -410,11 +450,9 @@ mtcars |>
  suppressMessages(print(diag))
 ```
 
-
 ### Teildiagramme
 
 Mit Teildiagrammen werden die Werte entlang einer Variablen in Daten-Segmente getrennt und anschliessend werden die die restlichen Variablen für jedes Segment einzeln visualisiert. Diese Teildiagramme heissen *Facetten*.
-
 
 ```{r}
 #| fig-cap: Beispiel die Gliederung in Teildiagramme mithilfe einer dritten diskreten Dimension
@@ -427,6 +465,4 @@ mtcars |>
  suppressMessages(print(diag))
 ```
 
-
 Teildiagramme haben den Nachteil, dass die Daten über verschiedene Diagramme verteilt dargestellt werden. Das erschwert den direkten Vergleich der dargestellten Werte. Deshalb sollten Teildiagramme gewählt werden, wenn durch die isolierte Darstellung bestimmte Aspekte einer Analyse besser hervorgehoben werden. Dazu gehören beispielsweise Beziehungen von Variablen in Gruppen, die mit trotz visueller Kodierungen leicht übersehen werden können.
-
