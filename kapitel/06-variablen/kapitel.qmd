@@ -50,7 +50,10 @@ Variablen kann im gleichen Geltungsbereich mehrmals ein Wert zugewiesen werden. 
 
 Funktionen bilden die Grundlage für die Arbeit mit Daten. Funktionen legen fest, wie zu einem bestimmten Ergebnis gelangt wird. 
 
-> Eine Funktion erzeugt Ergebnisse. 
+::: {.callout-note}
+## Merke
+Eine Funktion erzeugt Ergebnisse. 
+:::
 
 Alle Ergebnisse einer Funktion sind die *Funktionseffekte*. Nicht alle Effekte einer Funktion sind erwünscht. Solche unerwünschten Effekte werden *Nebeneffekte* genannt. 
 
@@ -439,87 +442,7 @@ Ergeben mehrere Teiloperationen **immer** das neutrale Element für die nächste
 Redundante Operationen sollten in der Praxis möglichst *immer* vermieden werden, weil sie keinen Einfluss auf das Ergebnis haben, aber trotzdem Kapazitäten beanspruchen. Das verlangsamt den Arbeitsprozess unnötig. Leider sind redundante Operationen nicht immer als solche erkennbar. 
 :::
 
-## Funktionen als Werte {#sec-funktionen-als-werte}
-
-Bei der Substitution im [Abschnitt @sec-substitution] wurde eine Teiloperation einem Bezeichner zugewiesen, der anschliessend wie eine normale Variable behandlet wurde. Gleichzeitigt war dieser Bezeicher eine Funktion für die substituierte Teiloperation. Diese Überlegungen behandeln Funktionen genau gleich wie andere Datentypen. 
-
-Der Datentyp *Funktion* gibt einen gültigen Wertebereich vor. Die Symbole dieses Wertebereichs sind jedoch nicht Zahlen oder Zeichenfolgen, sondern Funktionen. Der Bezeichner einer Funktion kann so durch Zuweisung geändert werden, ***ohne*** die Funktion anzuwenden. 
-
-Eine Funktion ohne Bezeichner wird eine **anonyme Funktion** genannt. 
-
-::: {.callout-note}
-## Exkurs
-
-Im Internet und (seltener) in der Literatur werden anonyme Funktionen auch als **Lambda-Funktionen** bezeichnet. Dieser Name ist dem sog. $\lambda$-Kalkül [@church_formulation_1940] aus der Berechenbarkeitstheorie entlehnt, weil das $\lambda$-Kalkül keine Bezeichner und Operatoren benötigt. Deshalb können Operationen im $\lambda$-Kalkül ausschliesslich durch anonyme Funktionen realisiert werden. 
-
-*Eine Lambda-Funktion unterscheidet sich nicht von anderen Funktionen!*
-:::
-
-Dieser besondere Datentyp kann wie jeder andere Datentyp für Parameter und Ergebnisse von Funktionen verwendet werden.
-
-### Callback-Funktionen
-
-::: {#def-callback-fkt}
-Eine **Callback-Funktion** ist eine Funktion, die als Parameter an eine andere Funktion übergeben wurde.
-:::
-
-Bei der Übergabe einer Callback-Funktion wird die Funktion als Parameter übergeben. Das entspricht der Zuweisung einer Funktion an einen neuen Bezeichner. Dadurch muss die aufgerufene Funktion den Bezeichner der Callback-Funktion zum Zeitpunkt ihrer Definition nicht kennen, sondern kann über den Parameternamen auf diese Funktion zugreifen.
-
-Bei der Verwendung von Callback-Funktionen muss klar zwischen dem Funktionsbezeicher und der Anwendung der Funktion unterschieden werden. Damit eine Funktion und nicht ihr Ergebnis als Parameter an eine andere Funktion übergeben werden kann, muss der Anwendungsoperator und die Parameterliste der Funktion weggelassen werden. 
-
-In @eq-callback-app wird der Funktion $g$ das *Ergebnis* der Funktionsanwendung $f(3)$ übergeben. Im Gegensatz dazu wird in @eq-callback-call die Funktion $f$ selbst an die Funktion $g$ übergeben. Die Funktion $g$ kann nun die Funktion $f$ aufrufen. 
-
-$$
-g(f(3))
-$$ {#eq-callback-app}
-
-$$
-g(f)
-$$ {#eq-callback-call}
-
-Callback-Funktionen ermöglichen das **Verallgemeinern** von Algorithmen, indem der spezielle Teil einer Funktion durch eine Callback-Funktion festgelegt wird.  
-
-### Closure-Funktionen
-
-::: {#def-closure-fkt}
-**Closure-Funktionen** sind Funktionen, die als Rückgabewert von einer anderen Funktion erzeugt werden.
-:::
-
-Eine Closure-Funktion wird im Geltungsbereich der erzeugenden Funktion definiert und übernimmt alle Bezeichner dieses Geltungsbereichs, so dass für eine komplexe Operation alle notwendigen Werte vorhanden sind. 
-
-Das Beispiel in @eq-closure-bsp-def erzeugt die Funktion $pDef$ Closure-Funktionen zum Potenzieren mit einem festen Exponenten.
-
-$$
-pDef(exponent) \to \\ (closure(basis) \to potenz(basis, exponent))
-$$ {#eq-closure-bsp-def}
-
-Die Funktion $pDef$ kann nun dazu verwendet werden, neue Funktionen zu erzeugen. Z.B. die Funktionen $quadrat$ und $kubik$. Die Funktion $quadrat$ hat den festen Exponenten $2$ und die Funktion $kubik$ den festen Exponenten $3$. Diese Funktionsdefinitionen zeigt @eq-closure-app.
-
-$$
-\begin{aligned}
-quadrat &\to pDef(2) \\
-kubik &\to pDef(3)
-\end{aligned}
-$$ {#eq-closure-app}
-
-Die beiden Bezeichner enthalten nun eigene Versionen der $closure$-Funktion. 
-
-Jede Anwendung von $pDef$  erzeugt eine *neue* Funktion. Dabei ist der Bezeichner $closure$ auf den Geltungsbereich von $pDef$ beschränkt. Deshalb kann dieser nach dem Anwenden der Funktion $pDef$ nicht direkt verwendet werden. 
-
-Die erzeugten Funktionen lassen sich wie andere Funktionen über ihre Bezeichner anweden. Im aktuellen Beispiel ergeben sich so die Gleichungen in @eq-closure-results.
-
-$$
-\begin{aligned}
-quadrat(2) &= 4 \\
-quadrat(3) &= 9 \\
-kubik(2) &= 8 \\
-kubik(3) &= 27
-\end{aligned}
-$$ {#eq-closure-results}
-
-Closure-Funktionen **vereinfachen** komplexe Funktionen, indem deren Parameter über die erzeugende Funktion festgelegt werden. Diese Technik wird in der Literatur gelegentlich als *currying* bezeichnet. 
-
-## Funktionsketten
+## Funktionsketten {#sec-funktionsketten}
 
 Wenn das Ergebnis einer Funktion als Parameter einer beliebigen anderen Funktion verwendet wird, dann sind die beiden Funktionen **verkettet**. Mit verketteten Funktionen lassen sich komplexere Funktionen bilden. Umgekehrt lassen sich komplexe Funktionen in eine Verkettung einfacherer Teilfunktionen gliedern. Diese Technik heisst **Problemzerlegung** 
 
@@ -624,7 +547,90 @@ Weil unter dieser Voraussetzung jede Funktion als Parameter einer anderen Funkti
 
 Mit diesem Wissen lassen sich die Eigenschaften von Funktionen in Funktionsketten untersuchen. 
 
-#### Die Identitätsfunktion in Funktionsketten
+
+## Funktionen als Werte {#sec-funktionen-als-werte}
+
+Bei der Substitution im [Abschnitt @sec-substitution] wurde eine Teiloperation einem Bezeichner zugewiesen, der anschliessend wie eine normale Variable behandlet wurde. Gleichzeitigt war dieser Bezeicher eine Funktion für die substituierte Teiloperation. Diese Überlegungen behandeln Funktionen genau gleich wie andere Datentypen. 
+
+Der Datentyp *Funktion* gibt einen gültigen Wertebereich vor. Die Symbole dieses Wertebereichs sind jedoch nicht Zahlen oder Zeichenfolgen, sondern Funktionen. Der Bezeichner einer Funktion kann so durch Zuweisung geändert werden, ***ohne*** die Funktion anzuwenden. 
+
+Eine Funktion ohne Bezeichner wird eine **anonyme Funktion** genannt. 
+
+::: {.callout-note}
+## Exkurs
+
+Im Internet und (seltener) in der Literatur werden anonyme Funktionen auch als **Lambda-Funktionen** bezeichnet. Dieser Name ist dem sog. $\lambda$-Kalkül [@church_formulation_1940] aus der Berechenbarkeitstheorie entlehnt, weil das $\lambda$-Kalkül keine Bezeichner und Operatoren benötigt. Deshalb können Operationen im $\lambda$-Kalkül ausschliesslich durch anonyme Funktionen realisiert werden. 
+
+*Eine Lambda-Funktion unterscheidet sich nicht von anderen Funktionen!*
+:::
+
+Dieser besondere Datentyp kann wie jeder andere Datentyp für Parameter und Ergebnisse von Funktionen verwendet werden.
+
+### Callback-Funktionen
+
+::: {#def-callback-fkt}
+Eine **Callback-Funktion** ist eine Funktion, die als Parameter an eine andere Funktion übergeben wurde.
+:::
+
+Bei der Übergabe einer Callback-Funktion wird die Funktion als Parameter übergeben. Das entspricht der Zuweisung einer Funktion an einen neuen Bezeichner. Dadurch muss die aufgerufene Funktion den Bezeichner der Callback-Funktion zum Zeitpunkt ihrer Definition nicht kennen, sondern kann über den Parameternamen auf diese Funktion zugreifen.
+
+Bei der Verwendung von Callback-Funktionen muss klar zwischen dem Funktionsbezeicher und der Anwendung der Funktion unterschieden werden. Damit eine Funktion und nicht ihr Ergebnis als Parameter an eine andere Funktion übergeben werden kann, muss der Anwendungsoperator und die Parameterliste der Funktion weggelassen werden. 
+
+In @eq-callback-app wird der Funktion $g$ das *Ergebnis* der Funktionsanwendung $f(3)$ übergeben. Im Gegensatz dazu wird in @eq-callback-call die Funktion $f$ selbst an die Funktion $g$ übergeben. Die Funktion $g$ kann nun die Funktion $f$ aufrufen. 
+
+$$
+g(f(3))
+$$ {#eq-callback-app}
+
+$$
+g(f)
+$$ {#eq-callback-call}
+
+Callback-Funktionen ermöglichen das **Verallgemeinern** von Algorithmen, indem der spezielle Teil einer Funktion durch eine Callback-Funktion festgelegt wird.  
+
+### Closure-Funktionen
+
+::: {#def-closure-fkt}
+**Closure-Funktionen** sind Funktionen, die als Rückgabewert von einer anderen Funktion erzeugt werden.
+:::
+
+Eine Closure-Funktion wird im Geltungsbereich der erzeugenden Funktion definiert und übernimmt alle Bezeichner dieses Geltungsbereichs, so dass für eine komplexe Operation alle notwendigen Werte vorhanden sind. 
+
+Das Beispiel in @eq-closure-bsp-def erzeugt die Funktion $pDef$ Closure-Funktionen zum Potenzieren mit einem festen Exponenten.
+
+$$
+pDef(exponent) \to \\ (closure(basis) \to potenz(basis, exponent))
+$$ {#eq-closure-bsp-def}
+
+Die Funktion $pDef$ kann nun dazu verwendet werden, neue Funktionen zu erzeugen. Z.B. die Funktionen $quadrat$ und $kubik$. Die Funktion $quadrat$ hat den festen Exponenten $2$ und die Funktion $kubik$ den festen Exponenten $3$. Diese Funktionsdefinitionen zeigt @eq-closure-app.
+
+$$
+\begin{aligned}
+quadrat &\to pDef(2) \\
+kubik &\to pDef(3)
+\end{aligned}
+$$ {#eq-closure-app}
+
+Die beiden Bezeichner enthalten nun eigene Versionen der $closure$-Funktion. 
+
+Jede Anwendung von $pDef$  erzeugt eine *neue* Funktion. Dabei ist der Bezeichner $closure$ auf den Geltungsbereich von $pDef$ beschränkt. Deshalb kann dieser nach dem Anwenden der Funktion $pDef$ nicht direkt verwendet werden. 
+
+Die erzeugten Funktionen lassen sich wie andere Funktionen über ihre Bezeichner anweden. Im aktuellen Beispiel ergeben sich so die Gleichungen in @eq-closure-results.
+
+$$
+\begin{aligned}
+quadrat(2) &= 4 \\
+quadrat(3) &= 9 \\
+kubik(2) &= 8 \\
+kubik(3) &= 27
+\end{aligned}
+$$ {#eq-closure-results}
+
+Closure-Funktionen **vereinfachen** komplexe Funktionen, indem deren Parameter über die erzeugende Funktion festgelegt werden. Diese Technik wird in der Literatur gelegentlich als *currying* bezeichnet. 
+
+## Besonderheiten von Funktionsketten 
+
+### Die Identitätsfunktion 
 
 Als erstes soll die Verkettung einer beliebigen *Projektion* $F$ mit der Identitätsfunktion $f_{id}$ untersucht werden. Es ist wichtig, dass $F$ eine Projektion ist, weil nur diese einer Eingabe immer den gleichen Ergebniswert zuweisen. Die Identitätsfunktion ist in @eq-id-fkt definiert. Diese Funktion kann für jeden Wertebereich angepasst werden, so dass für jeden Wertebereich eine geeignete Identitätsfunktion für die Verkettung existiert. All diese Versionen der Identitätsfunktion werden unter $f_{id}$ zusammenfasst und als **die Identitätsfunktion** bezeichnet. 
 
@@ -677,7 +683,7 @@ Die Identitätsfunktion ist also auch das neutrale Element der speziellen Funkti
 Die Identitätsfunktion ist das neutrale Element der allgemeinen und speziellen Funktionsverkettungsoperators. 
 :::
 
-#### Verkettung mit Umkehrfunktionen
+### Verkettung mit Umkehrfunktionen
 
 In [Abschnitt @sec-spezielle-funktionen] wurden Projektionen definiert und festgehalten, dass einige Projektionen eine Umkehrfunktion haben.
 

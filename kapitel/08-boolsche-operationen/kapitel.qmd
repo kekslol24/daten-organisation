@@ -134,7 +134,7 @@ $$
 $$
 
 
-### Boole'sche Arithmetik
+### Boole'sche Arithmetik {#sec-boole-arithmetik}
 
 Obwohl die Arbeit von Geoge Boole wegweisend für die Logik als mathematische Disziplin war, konzentrierte sich seine Arbeit auf der Übersetzung von logischen Aussagen in *arithmetische* Ausdrücke. Die Boole'sche Arithmetik ist eine Erweiterung der Arithmetik. Dabei werden logische Ausdrücke mithilfe der Grundrechenarten in berechenbare Ausdrücke übersetzt. 
 

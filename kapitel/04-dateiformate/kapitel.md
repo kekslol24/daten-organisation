@@ -170,7 +170,7 @@ In einer Baumkodierung werden die Werte auf einer Hierarchiestufe zusammegefasst
 
 Mit der Baumkodierung lassen sich beliebig komplexe Datenstrukturen abbilden. Für die Kodierung von Datenstrukturen mit *höchstens zwei* Hierarchiestufen und *vielen Werten* ist die Baumkodierung weniger effizient als die Mengenkodierung.
 
-## Separator-strukturierte Textdateien
+## Separator-strukturierte Textdateien {#sec-separator-strukturierte-textdateien}
 
 Eine besondere Klasse der zeilenbasierten Textdateien sind die sog. "*Separator-strukturierten*" Dateien. Diese Dateiformate sind eine einfache Form der *Tabellenkodierung*, bei der die Werte in der gleichen Zeile durch ein zusätzlichens *Trennzeichen* voneinander abgegrenzt werden. 
 

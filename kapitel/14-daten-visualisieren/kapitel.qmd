@@ -319,7 +319,7 @@ mtcars |>
 ```
 
 
-### Zwei unterschiedliche Skalenniveaus kombinieren
+### Zwei unterschiedliche Skalenniveaus kombinieren {#sec-viz-versch-skalenniveaus}
 
 Sollen die Werte einer Variable mit diskreten Wertebereich gegen die Werte einer Variablen mit kontinuierlichem Wertebereich abgetragen werden, dann werden die *Verteilungen* der kontinuierlichen Variablen für die einzelnen Werte eines diskreten Wertebereichs dargestellt. Hierzu werden meist *Boxplots* oder *Violindiagramme* verwendet.
 
