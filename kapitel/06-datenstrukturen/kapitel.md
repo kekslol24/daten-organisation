@@ -36,7 +36,7 @@ Weil alle Werte in einem Vektor vom gleichen Datentyp sind, sind Vektoren *homog
 
 Weil die Datentypen der Listenwerte nicht festgelegt sind, sind Listen *heterogene Datenstrukturen*.
 
-## Mehrdimensionale Datentypen: Verschachtelte Listen, Stichproben und Matrizen
+## Mehrdimensionale Datentypen: Geschachtelte Listen, Stichproben und Matrizen
 
 Die Logik der komplexen Datentypen erlaubt es, Listen und Vektoren zu noch komplexeren Strukturen zu verknüpfen. 
 

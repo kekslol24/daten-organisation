@@ -28,7 +28,7 @@ Der leere Vektor wird endweder als $\varnothing$ oder als $\{\}$ geschrieben. Be
 
 Der leere Vektor ist eine besondere Datenstruktur, die keine Elemente enthält. Der leere Vektor kann als *Startwert* für die Konstruktion von Vektoren verwendet werden oder als *Ergebnis* von Operationen auf Vektoren vorkommen.
 
-## Sequenzen
+## Sequenzen {#sec-sequenzen}
 
 Eine besondere Gruppe von Vektoren sind Sequenzen. Sequenzen sind Vektoren deren Werte der Ordnung des Wertebereichs folgen. 
 
