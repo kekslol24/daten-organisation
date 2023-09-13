@@ -1,0 +1,288 @@
+---
+execute: 
+  echo: false
+---
+
+# Daten visualisieren {#sec-chapter-daten-visualisieren}
+
+Die Datenvisualisierung ist ein wichtiges Werkzeug für die Datenanalyse. Die Datenvisualisierung hilft Systematiken zu erkennen, Beziehungen zu verstehen und Strukturen zu erfassen, die in strukturierten Daten nicht direkt nachvollzogen werden können. Sie ist ein wesentliches Instrument für die Kommunikation von Daten, weil sich graphische Darstellungen leichter erfassen lassen als strukturierte Daten.
+
+::: {.callout-note}
+## Merke
+Die Datenvisualisierung ist ein Hilfsmittel zur Analyse und zur Kommunikation. Sie ist kein Selbstzweck und stellt *keine* Analyse dar. Die Datenvisualisierung kann helfen, Daten vor einer weiterführenden Analyse zu verstehen.
+:::
+
+> Visualisierungen sind eine Form der Informationskodierung. 
+
+
+## Aufbau eines Plots
+
+### Darstellungsbereich
+
+### Achsen
+
+### Titel
+
+## Legende
+
+## Plots mit einer Variablen
+
+### Histogramme
+
+::: {#def-histogramm}
+Ein Histogramm zeigt die Häufigkeiten einer Variablen mithilfe von Balken an. Umgangssprachlich werden Histogramme auch als *Balkendiagramme* bezeichnet.
+:::
+
+Die Höhe der Balken entspricht der Häufigkeit der Werte. Ein Histogramm macht die Verteilung einer Variable sichtbar.
+
+- Bei *kontinuierlich-skalierten Variablen* werden die Werte zu **Intervallen** zusammengefasst. Die Häufigkeit bezieht sich dann auf Anzahl der Werte im entsprechenden Intervall. Die Breite des Balkens entspricht dann der Breite des Intervalls. 
+
+```{r}
+#| fig-cap: Beispiel für ein Histogramm für einen kontinuierlichen Wertebereich 
+
+library(ggplot2)
+
+mtcars |> ggplot(aes(mpg)) + geom_histogram(binwidth= 1.5) + theme_minimal()
+```
+
+- Bei *diskret-skalierten Variablen* wird jeder Wert durch einen eigenen Balken repräsentiert. Die Häufigkeit der Werte bezieht sich dann auf die einzelnen Werte. Die Breite der Balken ist dann beliebig. 
+
+
+```{r}
+#| fig-cap: Beispiel für ein Histogramm für einen diskreten Wertebereich 
+
+# library(ggplot2)
+
+mtcars |> ggplot(aes(gear)) + geom_bar() + theme_minimal()
+```
+
+Die Reihenfolge der Balken ist nicht beliebig. Die Balken werden für alle ordinalskalierten Variablen in der Reihenfolge der Werte bzw. der Intervalle angeordnet. Nominalskalierte Variablen haben keine natürliche Reihenfolgen. Deshalb werden die Balken eines Histogramms für nominalskalierte Variablen in der Reihenfolge der Häufigkeiten angeordnet.
+
+Eine Sonderform eines Histogramms ist das sog. *Kreis-* bzw. *Tortendiagramm*. Ein Tortendiagramm ist ein Histogramm, bei dem die Balken durch Kreissegmente ersetzt werden. Die Grösse der Kreissegmente entspricht dem Anteil der Häufigkeit an der Gesamthäufigkeit. 
+
+::: {.callout-note}
+## Merke
+Ein Histogramm ist einem Kreisdiagramm immer vorzuziehen. Kreisdiagramme sollten nur verwendet werden, wenn wenige Kreissegmente vorhanden sind. Dabei sollten entweder ein Kreissegment besonders hervorstechen oder alle Segmente ungefährt *gleichverteilt* sein. 
+:::
+
+### Boxplot
+
+```{r}
+#| fig-cap: Beispiel für einen Boxplot 
+
+# library(ggplot2)
+
+mtcars |> ggplot(aes(mpg)) + geom_boxplot() + theme_minimal()
+```
+
+### Violinplots
+
+```{r}
+#| fig-cap: Beispiel eines violinplot 
+
+# library(ggplot2)
+
+mtcars |> ggplot(aes(mpg, c(1))) + geom_violin() + theme_minimal()
+```
+
+
+### Dichteplots
+
+```{r}
+#| fig-cap: Beispiel eines Dichteplots 
+
+# library(ggplot2)
+
+mtcars |> ggplot(aes(mpg)) + geom_density() + theme_minimal()
+```
+
+## Plots mit zwei Variablen
+
+### Funktionsplots
+
+```{r}
+#| fig-cap: Beispiel eines Funktionsplots mit einer linearen und einer quadratischen Funktionen 
+
+# library(ggplot2)
+
+data.frame(x = c(-4, 4)) |> ggplot(aes(x)) + 
+    geom_line(stat = "function", fun = function (x) { x^2 }, color = "red") + 
+    geom_line(stat = "function", fun = function (x) { 2*x + 3 }, color = "blue") + 
+    theme_minimal()
+```
+
+### Beziehungen
+
+Werden die Werte von zwei Variablen gegenübergestellt, dann wird die Beziehung zwischen den Variablen sichtbar. 
+
+::: {.callout-important}
+## Achtung
+Gelegentlich werden Beziehungen zwischen Variablen mit Balken dargestellt. Diese Darstellung ist unzulässt. Balken sollten ausschliesslich zur Darstellung von Häufigkeiten verwendet werden.
+:::
+
+Beziehungen zwischen Variablen können auf verschiedene Arten dargestellt werden.
+
+#### Streudiagramme
+
+Normalerweise werden Beziehungen zwischen zwei Variablen mit einem sog. *Streudiagramm* dargestellt. 
+
+::: {#def-streudiagramm}
+Ein Streudiagramm stellt die Werte aus zwei Variablen als Punkte dar. Umgangssprachlich werden Streudiagramme als *Punktdiagramme* bezeichnet. 
+:::
+
+Die Werte der ersten Variablen werden z.B. auf der x-Achse abgetragen, die Werte der zweiten Variablen auf der y-Achse. Die Punkte werden dann an der entsprechenden Stelle im Koordinatensystem dargestellt. Die Wahl der Achse ist beliebig.
+
+```{r}
+#| fig-cap: Beispiel eines Streudiagramms 
+
+# library(ggplot2)
+
+mtcars |> ggplot(aes(mpg, hp)) + geom_point() + theme_minimal()
+```
+
+#### Jitter-Diagramme
+
+Wenn beide Variablen diskrete Wertebereiche haben, haben die Punkte im Streudiagramm die Tendenz, dass sich die Punkte zu überlagern, weil es nur eine begrenzte Anzahl möglichen Wertepaaren gibt. Um dieses Problem zu umgehen, wird eine besondere Variante des Streudiagramms eingesetzt: Das sog. *Jitter-Diagramm* (etwa *Zitterdiagramm*).
+
+
+```{r}
+#| fig-cap: Beispiel eines Streudiagramms mit überlagernden Punkten aus zwei diskreten Variablen
+
+mtcars |> ggplot(aes(gear, cyl)) + geom_point() + theme_minimal()
+```
+
+Bei einem Jitter-Diagramm wird um die diskreten Werte ein Bereich festgelegt. Die Punkte werden dann zufällig innerhalb dieses Bereichs abgetragen. Dadurch werden die Punkte aufgelockert und die Beziehung der Variablen wird sichtbar. Die Grösse des Bereicht wird so gewählt, dass sich mehrere Bereiche nicht überlappen. 
+
+
+```{r}
+#| fig-cap: Beispiel eines Jitter-Diagramms mit zwei diskreten Variablen. Jitter-Bereiche sind Rot hervorgehoben.
+
+mtcars |> ggplot(aes(gear, cyl)) + geom_jitter() + geom_tile(color="red", fill = NA) + theme_minimal()
+```
+
+::: {.callout-tip}
+## Praxis
+
+Bei der Grösse des Jitter-Bereichs sollte etwas Abstand zu den umgebenden Bereichen gelassen werden. Dadurcht entsteht ein Leerraum, welcher keine Punkte enthält, so lassen sich die einzelnen Bereiche optisch leichter voneinander abgrenzen.
+:::
+
+
+#### Liniendiagramme
+
+Liniendiagramme werden verwendet, wenn die Werte einer Variablen in einer bestimmten Reihenfolge zueinander stehen. Die Werte werden dann auf der entsprechenden Achse in der entsprechenden Reihenfolge abgetragen. Die Punkte werden dann durch eine Linie verbunden. 
+
+Liniendiagramme werden häufig verwendet, um die Entwicklung von Variablen über die Zeit darzustellen.
+
+::: {.callout-warning}
+## Achtung
+
+Wenn die Werte einer Variablen nicht in einer festen Reihenfolge zueinander stehen, dann dürfen die Werte nicht durch eine Linie verbunden werden! In diesem Fall muss ein Streudiagramm verwendet werden.
+:::
+
+### Ausgleichsgeraden
+
+Ausgleichsgeraden sind spezielle Funktionsplots. Eine *Ausgleichsgerade* verwendet eine *lineare Funktion* mit der Form $ax + c$. Die Funktion einer Ausgleichsgeraden *minimiert* die Funktionsergebnisse mit den tatsächlichen Werten. 
+
+Eine Ausgleichsgerade darf nicht willkürlich gezogen werden, sondern muss aus den gemessenen Werten ermittelt werden. Eine Ausgleichsgerade sollte immer gemeinsam mit den tatsächlichen Werten der Variablen dargestellt werden.
+
+Die *Funktion* einer Ausgleichsgeraden ist ein *einfaches* Modell für die gefundenen Daten. Die Beziehung zwischen den Variablen wird in diesem Modell als *lineare Abhängigkeit* abgebildet.
+
+```{r}
+#| fig-lab: fig-bsp-streudiagramm-mit-ausgleich
+#| fig-cap: Beispiel einer Ausgleichsgeraden in einem Streudiagramm
+
+# library(ggplot2)
+
+mtcars |> 
+    ggplot(aes(mpg, hp)) + 
+    geom_point() +  
+    geom_smooth(method="lm", se = FALSE) + 
+    theme_minimal() -> diag
+
+ suppressMessages(print(diag))
+```
+
+
+### Unterschiedliche Skalenniveaus
+
+Sollen die Werte einer Variable mit diskreten Wertebereich gegen die Werte einer Variablen mit kontinuierlichem Wertebereich abgetragen werden, dann werden die *Verteilungen* der kontinuierlichen Variablen für die einzelnen Werte der diskreten Variablen dargestellt. Hierzu werden meist Box-Plots oder Violin-Plots verwendet.
+
+```{r}
+#| fig-cap: Beispiel eines Diagramms mit diskreten und kontinuierlichen Variablen 
+
+# library(ggplot2)
+
+mtcars |> ggplot(aes(mpg, factor(gear))) + geom_boxplot() + theme_minimal()
+```
+
+## Plots mit mehr als zwei Variablen
+
+Plots sind auf zwei Dimensionen beschränkt. Werden mehr als zwei Variablen dargestellt, dann werden die zusätzlichen Variablen durch verschiedene Darstellungsformen repräsentiert.  3D-Koordinatensysteme sollten vermieden werden, weil die Position der Punkte bei der 2D-Darstellung eines 3D-Koordinatensystems mehrdeutig ist und sich schwer interpretieren lässt.
+
+Für Beziehungen zwischen mehr als zwei Variablen muss für die zusätzlichen Variablen eine andere Darstellungsform gewählt werden.
+
+### Farbe
+
+```{r}
+#| fig-cap: Beispiel für die Farbkodierung einer dritten diskreten Dimension
+
+# library(ggplot2)
+
+mtcars |> 
+    ggplot(aes(mpg, hp, color= factor(gear))) + 
+    geom_point() +  
+    theme_minimal() -> diag
+
+ suppressMessages(print(diag))
+```
+
+### Grösse
+
+```{r}
+#| fig-cap: Beispiel für die Grössenkodierung einer dritten diskreten Dimension
+
+# library(ggplot2)
+
+mtcars |> 
+    ggplot(aes(mpg, hp, size = disp)) + 
+    geom_point() +  
+    theme_minimal() -> diag
+
+ suppressMessages(print(diag))
+```
+
+### Form
+
+Die Form eignet sich nur für diskrete Wertebereiche.
+
+```{r}
+#| fig-cap: Beispiel für die Formkodierung einer dritten diskreten Dimension
+mtcars |> 
+    ggplot(aes(mpg, hp, shape = factor(gear))) + 
+    geom_point() +  
+    theme_minimal() -> diag
+
+ suppressMessages(print(diag))
+```
+
+Eine spezielle Variante der Form ist der *Linienstil*. 
+
+### Teildiagramme
+
+Mit Teildiagrammen werden die Werte entlang einer Variablen in Daten-Segmente getrennt und anschliessend werden die die restlichen Variablen für jedes Segment einzeln visualisiert. Diese Teildiagramme heissen *Facetten*.
+
+
+```{r}
+#| fig-cap: Beispiel die Gliederung in Teildiagramme mithilfe einer dritten diskreten Dimension
+#| 
+mtcars |> 
+    ggplot(aes(mpg, hp)) + 
+    geom_point() +
+    facet_wrap(vars(gear)) -> diag
+
+ suppressMessages(print(diag))
+```
+
+
+Teildiagramme haben den Nachteil, dass die Daten über verschiedene Diagramme verteilt dargestellt werden. Das erschwert den direkten Vergleich der dargestellten Werte. Deshalb sollten Teildiagramme gewählt werden, wenn durch die isolierte Darstellung bestimmte Aspekte einer Analyse besser hervorgehoben werden. Dazu gehören beispielsweise Beziehungen von Variablen in Gruppen, die mit trotz visueller Kodierungen leicht übersehen werden können.
+

@@ -101,7 +101,7 @@ book:
     
     # Woche 7
     # TODO 
-    - kapitel/14-daten-visualisieren/kapitel.md
+    - kapitel/14-daten-visualisieren/kapitel.qmd
 
 #    - kapitel/10-lineare-modelle/kapitel.md
 
