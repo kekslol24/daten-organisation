@@ -8,7 +8,7 @@ execute:
 
 ### Ziele 
 
-![Inhaltliche Ziele](figures/DXI_big_picture/DxI_big_picture.png)
+![Inhaltliche Ziele](figures/DXI_big_picture/DxI_big_picture.png){#fig-lernziele}
 
 ### Aufbau
 
@@ -49,10 +49,10 @@ Dieses Buch kann auf zwei Arten gelesen und verwendet werden:
 | Daten beschreiben | x | x |
 | Daten visualisieren | bis und mit [Abschnitt @sec-viz-versch-skalenniveaus] | x |
 
-### Begleitmaterial
+## Begleitmaterial
 
 Zu diesem Buch gibt es die folgenden Begleitmaterialien mit Details und Anwendungsbeispielen für einzelne Programmiersprachen. Diese Begleitmaterialien sind so aufgebaut, dass sie direkt an die Inhalte dieses Buchs anknüpfen und die Abschnitte für die eine gewünschte Programmiersprache ergänzen und konkretisieren.
 
-- Daten und Information - Data Sciece Grundlagen mit Excel
-- Daten und Information - Data Sciece Grundlagen mit R
+- [Daten und Information - Data Sciece Grundlagen mit Excel]()
+- [Daten und Information - Data Sciece Grundlagen mit R]()
 
