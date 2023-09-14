@@ -21,17 +21,66 @@ Bei der Datenvisualisierung sollten ästhetische Elemente ohne Bezug zu den Date
 
 ## Aufbau eines Diagramms
 
-TODO VISUALISIERUNG
+Eine Visualisierung ist in ein *Diagramm* eingebettet. Ein Diagramm enthält meist mehr Elemente als die eigentliche Visualisierung. @fig-labelled-diag zeigt die wichtigsten Elemente eines Diagramms.
+
+**Jedes** Diagramm umfasst den **Darstellungsbereich** mit den **Datenpunkten** (s. @def-messereignis), **Achsen** für die *Hauptdimensionen* mit **Achsmarkierungen** für die Position ausgewählter Werte im Wertebereich der Dimension und **Achsbeschriftungen**, die die *Hauptdimensionen* kennzeichnen.
+
+*Komplexe* Diagramme erfordern zusätzlich eine **Legende** für **jede** dargestellte Nebendimension.
+
+*Optional* können Visualisierungen mit einer erklärenden **Überschrift** versehen werden. Ebenfalls *optional* sind **Hilfslinien**, die die *Orientierung* im Wertebereich der *Hauptdimensionen* erleichtern.
+
+![Komponenten eines Diagramms am Beispiel eines Ballondiagramms](figures/plot_example_beschriftet.png){#fig-labelled-diag}
+
+### Haupt- und Nebendimensionen
+
+Für eine Visualisierung müssen immer zuerst die darzustellenden Merkmale ausgewählt werden. 
+
+::: {#def-dimensionen}
+Eine **Dimension** eines Diagramms entspricht einem dargestellten *Merkmal* der verwendeten Stichprobe.
+:::
+
+::: {.callout-warning}
+Die Merkmale aus unterschiedlichen Stichproben dürfen beim Visualisieren nicht gemischt werden!
+:::
+
+Beim Visualisieren werden *Haupt-* und *Nebendimensionen* unterschieden.
+
+::: {#def-viz-hauptdimension}
+Eine **Hauptdimension** eines Diagramms bildet den Wertebereich eines Merkmals als eine *horizontale oder vertikale Länge* ab.
+:::
+
+Die Hauptdimensionen legen die **Position** der *Datenpunkte* in der Visualisierung fest.
+
+Jede Visualisierung hat *mindestens eine* Hauptdimension.
+
+::: {#def-viz-nebendimension}
+**Nebendimensionen** eines Diagramms bilden den Wertebereich eines Merkmals als *visuelle Eigenschaften* von Datenpunkten ab.
+:::
+
+Visuelle Eigenschaften können *Grösse*, *Form* oder *Farbe* von Datenpunkte sein.
+
+Nebendimensionen werden nicht in allen Diagrammen verwendet.
 
 ### Darstellungsbereich
 
-Der Darstellungsbereich enthält die eigentliche Visualisierung. Dieser Bereich muss für eine korrekte Darstellung alle Werte abbilden. Deshalb ist es nicht erlaubt, das Achsintervall des Darstellungsbereich so zu verändern, dass einzelne Werte nicht mehr dargestellt werden.
+Der Darstellungsbereich enthält die eigentliche Visualisierung der *Datenpunkte*. Dieser Bereich muss für eine korrekte Darstellung *alle gemessenen Werte*, aber nicht zwingend den gesamten Wertebereich umfassen. Deshalb ist es nicht erlaubt, das Achsintervall des Darstellungsbereich so zu verändern, dass einzelne Werte nicht mehr dargestellt werden.
+
+Der Darstellungsbereich wird durch die *Hauptdimensionen* der Visualisierung aufgespannt. 
 
 ### Achsen
 
-Die Achsen markieren die Hauptdimensionen eines Diagramms. Es sollten nie mehr als zwei Hauptdimensionen in einem Diagramm verwendet werden, weil sich aus der Darstellung nicht mehr erkennen lässt, welche Achse zu welchen visuellen Elementen grhört.
+Die **Achsen** markieren die *Hauptdimensionen* eines Diagramms. Es sollten nicht mehr als zwei Hauptdimensionen in einem Diagramm verwendet werden, weil sich aus der Darstellung nicht mehr erkennen lässt, welche Achse zu welchen visuellen Elementen grhört.
 
-Achsen sollten mit den wichtigsten Werten beschriftet werden und müssen eine aussagekräftigen Achstitel haben. Die meisten Analyseumgebungen übernehmen standardmässig den Titel des Datenvektors.
+Die horizontale Achse wird per Konvention **x-Achse** und die vertikale Achse 
+**y-Achse** genannt. 
+
+Achsen sollten mit den wichtigsten Werten an **Achsmarkierungen** beschriftet werden und müssen eine aussagekräftige **Achsbeschriftung** haben. Die meisten Analyseumgebungen übernehmen standardmässig den Titel des Datenvektors.
+
+Für **nominalskalierte Wertebereiche** müssen **alle** dargestellten Werte über eine Achsmarkierung beschriftet werden. Bei sehr vielen Werten kann es vorkommen, dass diese Markierungen unleserlich werden. In diesem Fall sollten die Werte alphabetisch oder nummerisch sortiert werden und nur markannte Werte (z.B. jeden fünften Wert) hervorgehoben werden. In diesem Fall muss auf den vollständigen Wertebereich verwiesen werden, damit die Datenpunkte eindeutig identifiziert werden können.
+
+Bei **ordinalskalierten Wertebereichen** müssen die **Extreme des Wertebereichs** beschriftet werden. Gegebenenfalls sollte auch der *Mittelpunkt* des Wertebereichs auf der Achse beschriftet werden.
+
+Bei **kontinuierlichen Wertebereichen** sollten Werte in **regelmässigen Abständen** markiert und beschriftet werden. Diese genauen Abstände hängen vom Umfang des dargestellten Intervalls ab.
 
 ### Titel
 
@@ -40,13 +89,12 @@ Der Diagrammtitel ist ein aussagekräftiger Titel über den Inhalt eines Diagram
 ::: {.callout-tip}
 ## Praxis
 
-Der Diagrammtitel wird oft nicht in ein Diagramm aufgenommen, sondern später als Abbildungstitel hinzugefügt. 
+Der Diagrammtitel wird oft nicht in ein Diagramm aufgenommen, sondern erst später als Abbildungstitel hinzugefügt. 
 :::
 
 ### Legende
 
-Eine Legende beschreibt die Wertebereiche der *Nebendimensionen* eines Diagramms. Ohne eine Legende lassen sich zusätzliche Kodierungen nicht nachvollziehen und dekodieren. In solchen Fällen müssen solche grafischen Elemente als künstlerische Ergänzung ohne inhaltlichen Wert interpretiert werden. 
-
+Eine *Legende* beschreibt die *Wertebereiche* der *Nebendimensionen* einer Visualisierung. Ohne eine Legende lassen sich zusätzliche Kodierungen nicht nachvollziehen und dekodieren. Ein Diagramm muss eine Legende haben, sobald Nebendimensionen abgebildet sind. Fehlt eine Legende sind zusätzliche grafische Elemente als künstlerische Ergänzung ohne inhaltlichen Wert zu interpretieren.
 
 ## Plots mit einer Variablen
 
@@ -61,6 +109,7 @@ Die Höhe der Balken entspricht der Häufigkeit der Werte. Ein Histogramm macht 
 - Bei *kontinuierlich-skalierten Variablen* werden die Werte zu **Intervallen** zusammengefasst. Die Häufigkeit bezieht sich dann auf Anzahl der Werte im entsprechenden Intervall. Die Breite des Balkens entspricht dann der Breite des Intervalls. 
 
 ```{r}
+#| label: fig-visual-histogram-cont
 #| fig-cap: Beispiel für ein Histogramm für einen kontinuierlichen Wertebereich 
 
 library(ggplot2)
@@ -72,6 +121,7 @@ mtcars |> ggplot(aes(mpg)) + geom_histogram(binwidth= 1.5) + theme_minimal()
 
 
 ```{r}
+#| label: fig-visual-histogram-discrete
 #| fig-cap: Beispiel für ein Histogramm für einen diskreten Wertebereich 
 
 # library(ggplot2)
@@ -107,6 +157,7 @@ Ein Boxplot hat nur eine Achse für den Wertebereich der dargestellten Werte. Di
 Ein Boxplot gliedert die vorliegenden Daten in vier gleichgrosse Bereiche. Diese Bereiche heisse Quartile. Jedes Quartil umfasst jeweils ein Viertel der Werte. Die beiden mittleren Quartile werden als zwei Rechtecke dargestellt. Die Länge der beiden Rechtecke heisst **Interquartilsabstand**. Die Linie die am Übergang zwischen den beiden Rechtecken entsteht markiert den *Median* der Verteilung. Ausreisser sind Werte, die um mehr als das 1.5-fache des Interquartilsabstands von der nächsten Quartilsgrenze entfernt sind.
 
 ```{r}
+#| label: fig-visual-boxplot-single
 #| fig-cap: Beispiel für einen Boxplot 
 
 # library(ggplot2)
@@ -133,6 +184,7 @@ Dichtediagramme sind nur für kontinuierliche Wertebereiche erlaubt.
 :::
 
 ```{r}
+#| label: fig-visual-density
 #| fig-cap: Beispiel eines Dichtediagramms 
 
 # library(ggplot2)
@@ -151,6 +203,7 @@ Violindiagramme verwenden die Annäherung der Dichtefunktion für die Visualisie
 :::
 
 ```{r}
+#| label: fig-visual-violin
 #| fig-cap: Beispiel eines violinplot 
 
 # library(ggplot2)
@@ -188,6 +241,7 @@ Viele Visualisierungsumgebungen erstellen die Wertetabelle automatich vor der Vi
 :::
 
 ```{r}
+#| label: fig-visual-math-funcs
 #| fig-cap: Beispiel eines Funktionsplots mit einer linearen und einer quadratischen Funktionen 
 
 # library(ggplot2)
@@ -226,6 +280,7 @@ Ein Streudiagramm stellt die Werte aus zwei Variablen als Punkte dar. Umgangsspr
 Die Werte der ersten Variablen werden z.B. auf der x-Achse abgetragen, die Werte der zweiten Variablen auf der y-Achse. Die Punkte werden dann an der entsprechenden Stelle im Koordinatensystem dargestellt. Die Wahl der Achse ist beliebig.
 
 ```{r}
+#| label: fig-visual-points
 #| fig-cap: Beispiel eines Streudiagramms 
 
 # library(ggplot2)
@@ -239,6 +294,7 @@ Wenn beide Variablen diskrete Wertebereiche haben, haben die Punkte im Streudiag
 
 
 ```{r}
+#| label: fig-visual-points-discrete
 #| fig-cap: Beispiel eines Streudiagramms mit überlagernden Punkten aus zwei diskreten Variablen
 
 mtcars |> ggplot(aes(gear, cyl)) + geom_point() + theme_minimal()
@@ -249,6 +305,7 @@ Bei einem Jitter-Diagramm wird um die diskreten Werte ein Bereich festgelegt. **
 Durch das zufällige Positionieren werden die Punkte aufgelockert und die Beziehung der Variablen wird sichtbar. Die Grösse des Bereichs wird so gewählt, dass sich mehrere Bereiche *nicht überlappen*. 
 
 ```{r}
+#| label: fig-visual-jitter-labelled
 #| fig-cap: Beispiel eines Jitter-Diagramms mit zwei diskreten Variablen. Jitter-Bereiche sind Rot hervorgehoben.
 
 mtcars |> ggplot(aes(gear, cyl)) + geom_jitter() + geom_tile(color="red", fill = NA, height = 1.9, width = .95) + theme_minimal()
@@ -273,6 +330,7 @@ Liniendiagramme werden verwendet, wenn die Werte einer Variablen in einer bestim
 Liniendiagramme werden häufig verwendet, um die Entwicklung von Variablen über die Zeit darzustellen.
 
 ```{r}
+#| label: fig-visual-lines
 #| fig-cap: Beispiel eines Liniendiagramms (DAX Index 1991-1998)
 
 EuStockMarkets |> 
@@ -304,7 +362,7 @@ Eine Ausgleichsgerade darf nicht willkürlich gezogen werden, sondern muss aus d
 Die *Funktion* einer Ausgleichsgeraden ist ein *einfaches* Modell für die gefundenen Daten. Die Beziehung zwischen den Variablen wird in diesem Modell als *lineare Abhängigkeit* abgebildet.
 
 ```{r}
-#| fig-lab: fig-bsp-streudiagramm-mit-ausgleich
+#| label: fig-bsp-streudiagramm-mit-ausgleich
 #| fig-cap: Beispiel einer Ausgleichsgeraden in einem Streudiagramm
 
 # library(ggplot2)
@@ -318,7 +376,6 @@ mtcars |>
  suppressMessages(print(diag))
 ```
 
-
 ### Zwei unterschiedliche Skalenniveaus kombinieren {#sec-viz-versch-skalenniveaus}
 
 Sollen die Werte einer Variable mit diskreten Wertebereich gegen die Werte einer Variablen mit kontinuierlichem Wertebereich abgetragen werden, dann werden die *Verteilungen* der kontinuierlichen Variablen für die einzelnen Werte eines diskreten Wertebereichs dargestellt. Hierzu werden meist *Boxplots* oder *Violindiagramme* verwendet.
@@ -326,6 +383,7 @@ Sollen die Werte einer Variable mit diskreten Wertebereich gegen die Werte einer
 Diese Form von kombinierten Diagrammen tritt sehr häufig in Verbindung mit Sekundärindizes auf. Dabei werden Verteilungen von gruppierten Werten gegenübergestellt.
 
 ```{r}
+#| label: fig-visual-boxplot-multiple
 #| fig-cap: Beispiel eines Diagramms mit diskreten und kontinuierlichen Variablen 
 
 # library(ggplot2)
@@ -372,6 +430,7 @@ Diskrete Farben können Menschen nicht beliebig voneinander unterscheiden. Desha
 :::
 
 ```{r}
+#| label: fig-visual-color-coding-discrete
 #| fig-cap: Beispiel für die Farbkodierung einer dritten diskreten Dimension
 
 mtcars |> 
@@ -393,6 +452,7 @@ Farbgradienten haben den Nachteil, dass die meisten Menschen farbliche Unterschi
 
 
 ```{r}
+#| label: fig-visual-color-coding-gradient
 #| fig-cap: Beispiel für die Farbkodierung mit einem Farbgradienten
 
 mtcars |> 
@@ -412,6 +472,7 @@ Eine Grössenkodierung eigent sich gut für kontinuierliche Wertebereiche. Obwoh
 ::: 
 
 ```{r}
+#| label: fig-visual-size-coding
 #| fig-cap: Beispiel für die Grössenkodierung einer dritten diskreten Dimension
 
 # library(ggplot2)
@@ -439,6 +500,7 @@ Bei der Formkodierung muss auf die Mindestgrösse geachtet werden, weil sehr kle
 :::
 
 ```{r}
+#| label: fig-visual-form-coding
 #| fig-cap: Beispiel für die Formkodierung für Punkte und Linien
 mtcars |>
     dplyr::mutate( gear = factor(gear)) |>
@@ -454,7 +516,10 @@ mtcars |>
 
 Mit Teildiagrammen werden die Werte entlang einer Variablen in Daten-Segmente getrennt und anschliessend werden die die restlichen Variablen für jedes Segment einzeln visualisiert. Diese Teildiagramme heissen *Facetten*.
 
+Solche Facetten können nur mithilfe *diskreter Daten* gebildet werden. Jede Facette *muss eine Überschrift* haben, die den Wert der Nebendimension zeigt, der die dargestellten Datenpunkte zusammenfasst.
+
 ```{r}
+#| label: fig-visual-facets
 #| fig-cap: Beispiel die Gliederung in Teildiagramme mithilfe einer dritten diskreten Dimension
 #| 
 mtcars |> 
