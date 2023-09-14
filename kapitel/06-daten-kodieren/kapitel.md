@@ -5,5 +5,61 @@ execute:
   echo: false
 ---
 
-# Daten kodieren und kombinieren {#sec-daten-kodieren}
+# Daten kombinieren und kodieren {#sec-daten-kodieren}
 
+## Kombinieren
+
+::: {#def-daten-kombinieren}
+**Kombinieren** von Daten bedeutet die Verknüpfung von Daten aus verschiedenen Quellen.
+:::
+
+Beim Kombinieren von Daten werden die Daten aus verschiedenen Quellen zu einer gemeinsamen Datenstruktur zusammengeführt. Es gibt verschiedene Arten von Kombinationen, die sich in der Art der Verknüpfung unterscheiden.
+
+### Kombinationsarten
+
+- Konkatenation (Zeilen)
+
+Bei der Konkatenation wird davon ausgegangen, dass beide Quellen genau die gleichen Merkmale haben. Die Daten werden dann einfach aneinandergehängt. Die Reihenfolge der Datensätze bleibt dabei erhalten.
+
+- Vereinigung (union/ outer join)
+
+Bei der Vereinigung werden alle Werte aus beiden Quellen über ein gemeinsames Merkmal kombiniert. Das Ergebnis enthält anschliessend Datensätze mit allen Merkmalen aus beiden Quellen. Gibt es für Datensätze in einer Quelle keine Entsprechung in der anderen, werden die fehlenden Werte mit einem speziellen Wert (z.B. *undefinierte Werte*) aufgefüllt.
+
+- spaltenkonkatenation ist eine spezielle Form der Vereinigung 
+
+- partielle Vereinigung (partial union)
+
+Die partielle Vereinigung kombiniert nur Werte, die in beiden Quelle ein gemeinsames Merkmal teilen. Das Ergebnis enthält anschliessend nur noch Datensätze mit allen Merkmalen aus beider Quellen für die es eine Entsprechung gibt.
+
+- Schnittmenge (intersection/inner join)
+
+Die Schnittmenge kombiniert nur Werte, die in beiden Quellen vorkommen. Die Schnittmenge ist also eine Teilmenge der Vereinigung.
+
+- Differenz (difference)
+
+Bei der Differenz werden alle Datensätze mit einer Entsprechung von gemeinsamen Merkmalen in beiden Quellen aus dem Ergebnis entfernt. Das Ergebnis umfasst also nur Datensätze, die in der ersten Quelle vorkommen, aber nicht in der zweiten Quelle.
+
+Die *Differenz* entspricht einen Filter mit einem oder mehreren $\notin$-Vergleichen.
+
+## Kodieren
+
+::: {#def-daten-kodieren}
+**Kodieren** von Daten bedeutet die Umwandlung von Daten in ein anderes Format oder einen anderen Wertebereich.
+:::
+
+Beim Kodieren wird eine **Kodierungsfunktion** verwendet, die jeden Wert des urspünglichen Wertebereichs einem Wert des gewünschten Wertebereichs zuordnet. Dabei ist es nicht notwendig, dass alle ursprünglichen Werte eindeutig zugewiesen werden. Das heisst, dass mehrere Werte des ursprünglichen Wertebereichs dem gleichen Wert des neuen Wertebereichs zugeordnet werden können.
+
+### Kodierungstabellen
+
+Eine besondere Technik des Kodierens ist die Verwendung von Kodierungstabellen.
+
+::: {#def-kodierungstabelle}
+Eine **Kodierungstabelle** ist eine Tabelle, die jedem Wert eines Wertebereichs einen Wert eines anderen Wertebereichs zuordnet.
+::: 
+
+Die *Kodierungsfunktion* ist in diesem Fall die Vereinigung oder eine partielle Vereinigung der Stichprobe mit der Kodierungstabelle.
+
+::: {.callout-tip}
+## Praxis
+Kodierungstabellen sollten immer für die Kodierung von nominal- oder ordinalskalierten Wertebereichen verwendet werden, weil sie die Kodierungsfunktion explizit machen und gleichzeitig die Kodierung *dokumentieren*.
+::: 

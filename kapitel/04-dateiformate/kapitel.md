@@ -154,7 +154,7 @@ Zeilenbasierte Textdateien sind eine spezielle Form der *Listenkodierung*, wobei
 Eine typische Anwendung der zeilenbasierten Textkodierung sind sog. *Log-Dateien*, mit denen Systemereignisse protokolliert werden.
 
 
-## Mengen und Bäume
+## Mengen und Bäume {#sec-mengen-und-baeume}
 
 Die Werte lassen sich auf verschiedene Arten in Datenströmen kodieren. Die einfachste Form ist die **Mengenkodierung**. Bei der Mengenkodierung werden die Werte in einer festen Reihenfolge in den Datenstrom geschrieben. Dabei werden die Werte als eine zusammenhängende *Menge* behandelt.
 
