@@ -218,4 +218,4 @@ Bei der automatischen Datenerhebung werden grundsätzlich drei Kategorien unters
 
 Nur weil Sensoren und andere datengenerierende Instrumente verwendet werden, findet eine automatische Datenerhebung unter Umständen nicht statt. Ein entsprechendes Instrument muss die Funktion bereitstellen, um Metriken und/oder Logs zu generieren und bereitzustellen.
 
-Bei der automatischen Datenerhebung für Metrikten und Logs werden meistens mehrere Systeme gemeinsam eingesetzt. Ein System erfasst die Daten und ein anderes System speichert die Daten in einer Datenbank. Die Daten werden in der Regel in einem *Datenstrom* bzw. *Zeitreihe* erfasst und gespeichert.
+Bei der automatischen Datenerhebung für Metriken und Logs werden meistens mehrere Systeme gemeinsam eingesetzt. Ein System erfasst die Daten und ein anderes System speichert die Daten in einer Datenbank. Die Daten werden in der Regel in einem *Datenstrom* bzw. *Zeitreihe* erfasst und gespeichert.
