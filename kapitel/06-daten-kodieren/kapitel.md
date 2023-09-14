@@ -10,14 +10,14 @@ execute:
 ## Kombinieren
 
 ::: {#def-daten-kombinieren}
-**Kombinieren** von Daten bedeutet die Verknüpfung von Daten aus verschiedenen Quellen.
+**Kombinieren** von Daten bedeutet die Verknüpfung von Daten aus verschiedenen Quellen zu einer Datenstruktur.
 :::
 
 Beim Kombinieren von Daten werden die Daten aus verschiedenen Quellen zu einer gemeinsamen Datenstruktur zusammengeführt. Es gibt verschiedene Arten von Kombinationen, die sich in der Art der Verknüpfung unterscheiden.
 
 ### Kombinationsarten
 
-- Konkatenation (Zeilen)
+- Zeilenweise Konkatenation
 
 Bei der Konkatenation wird davon ausgegangen, dass beide Quellen genau die gleichen Merkmale haben. Die Daten werden dann einfach aneinandergehängt. Die Reihenfolge der Datensätze bleibt dabei erhalten.
 
@@ -27,9 +27,11 @@ Bei der Vereinigung werden alle Werte aus beiden Quellen über ein gemeinsames M
 
 - spaltenkonkatenation ist eine spezielle Form der Vereinigung 
 
+Für eine Spaltenkonkatenation müssen beide Stichproben den gleichen Umfang haben. Meistens fehlen jedoch gemeinsame Merkmale für die Vereinigung. In diesem Fall wird die Vereinigung über einen *gedachten Wert* durchgeführt. Dazu werden alle Datensätze in beiden Quellen *durchnummeriert*. Diese Nummer wird dann als gemeinsames Merkmal verwendet. Anschliessend wird die Nummerierung aus dem Ergebnis entfernt.
+
 - partielle Vereinigung (partial union)
 
-Die partielle Vereinigung kombiniert nur Werte, die in beiden Quelle ein gemeinsames Merkmal teilen. Das Ergebnis enthält anschliessend nur noch Datensätze mit allen Merkmalen aus beider Quellen für die es eine Entsprechung gibt.
+Die partielle Vereinigung kombiniert nur Werte, die in beiden Quelle ein gemeinsames Merkmal teilen. Das Ergebnis enthält anschliessend nur noch Datensätze mit allen Merkmalen aus beider Quellen für die es eine Entsprechung für die gemeinsamen Merkmale gibt.
 
 - Schnittmenge (intersection/inner join)
 
@@ -48,6 +50,8 @@ Die *Differenz* entspricht einen Filter mit einem oder mehreren $\notin$-Verglei
 :::
 
 Beim Kodieren wird eine **Kodierungsfunktion** verwendet, die jeden Wert des urspünglichen Wertebereichs einem Wert des gewünschten Wertebereichs zuordnet. Dabei ist es nicht notwendig, dass alle ursprünglichen Werte eindeutig zugewiesen werden. Das heisst, dass mehrere Werte des ursprünglichen Wertebereichs dem gleichen Wert des neuen Wertebereichs zugeordnet werden können.
+
+Sehr häufig werden Kodierungsfunktionen als **Entscheidungsbäume** (s. @def-entscheidungsbaum) umgesetzt. Dabei werden logische Ausdrücke für die Zuweisung der Ergebniswerte verwendet. Die logischen Ausdrücke werden dabei der Reihe nach geprüft. Die erste zutreffende Entscheidung, bestimmt den Ergebniswert.
 
 ### Kodierungstabellen
 
