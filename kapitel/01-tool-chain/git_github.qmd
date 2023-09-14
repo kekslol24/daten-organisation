@@ -1,13 +1,9 @@
 ---
-# bibliography: references.bib
-
-title: Versionierung mit Git und GitHub
-
-abstract: ""
-
 execute: 
   echo: false
 ---
+
+# Versionierung mit Git und GitHub {#sec-chapter-github}
 
 ::: {#def-versionierung}
 Versionierung ist ein Prozess, bei dem Änderungen an einem Dokument oder einer Datei nachverfolgt werden.
