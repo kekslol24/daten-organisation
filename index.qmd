@@ -1,7 +1,11 @@
 # Vorwort {.unnumbered}
 
-Ein paar Worte 
+Work in Progress
 
 # Copyright {.unnumbered}
 
-Kurze Information zum Copyleft und Verwendung
+Dieses Buch ist unter der Creative Commons Lizenz Version 4.0 BY-NC-ND veröffentlicht.
+
+[![CC BY-NC-ND](kapitel/01-einleitung/figures/by-nc-nd1.png){.unnumbered width=100}](https://creativecommons.org/licenses/by-nc-nd/4.0/deed.de)
+
+Details zur Nutzungsbedingungen und dem Copyright finden sich unter [createivecommons.org](https://creativecommons.org/licenses/by-nc-nd/4.0/deed.de).
