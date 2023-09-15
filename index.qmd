@@ -4,8 +4,8 @@ Work in Progress
 
 # Copyright {.unnumbered}
 
-Dieses Buch ist unter der Creative Commons Lizenz Version 4.0 BY-NC-ND veröffentlicht.
+Dieses Werk ist lizenziert unter einer Creative Commons Namensnennung - Nicht-kommerziell - Weitergabe unter gleichen Bedingungen 4.0 International Lizenz (CC-BY-NC-SA). Details zur Nutzungsbedingungen und dem Copyright finden sich unter [createivecommons.org](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.de).
 
-[![CC BY-NC-ND](kapitel/01-einleitung/figures/by-nc-nd1.png){.unnumbered width=100}](https://creativecommons.org/licenses/by-nc-nd/4.0/deed.de)
+2023, Christian Glahn, Zurich, Switzerland
 
-Details zur Nutzungsbedingungen und dem Copyright finden sich unter [createivecommons.org](https://creativecommons.org/licenses/by-nc-nd/4.0/deed.de).
+[![](kapitel/01-einleitung/figures/by-nc-sa.png){.unnumbered width=100}](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.de)
