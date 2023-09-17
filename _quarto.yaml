@@ -3,6 +3,9 @@ project:
 
 bibliography: dxi-skript.bib
 
+execute: 
+  freeze: auto
+
 lang: de
 # Change labels that are not properly changed by the language
 crossref:
