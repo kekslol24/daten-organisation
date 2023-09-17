@@ -44,7 +44,7 @@ book:
     - kapitel/02-daten-sammeln/kapitel.md
 
     # Woche 3
-    # TODO
+    # OK
     - kapitel/03-daten-organisieren/kapitel.md
     # OK
     - kapitel/01-tool-chain/git_github.qmd
@@ -57,7 +57,7 @@ book:
     # OK
     - kapitel/04-dateiformate/kapitel.md
    
-   
+
     # Woche 13 (optional)
     # TODO 2014
     #- kapitel/15-externe-datenquellen/kapitel.md
