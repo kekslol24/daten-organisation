@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Daten und Information - 7&nbsp; Versionierung mit Git und GitHub</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../kapitel/05-datentypen/kapitel.html" rel="next">
+<link href="../../kapitel/03-daten-organisieren/kapitel.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "Keine Treffer",
+    "search-matching-documents-text": "Treffer",
+    "search-copy-link-title": "Link in die Suche kopieren",
+    "search-hide-matches-text": "Zusätzliche Treffer verbergen",
+    "search-more-match-text": "weitere Treffer in diesem Dokument",
+    "search-more-matches-text": "weitere Treffer in diesem Dokument",
+    "search-clear-button-title": "Zurücksetzen",
+    "search-detached-cancel-button-title": "Abbrechen",
+    "search-submit-button-title": "Abschicken",
+    "search-label": "Suchen"
+  }
+}</script>
+<script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../kapitel/01-tool-chain/project_doc.html">Datenquellen</a></li><li class="breadcrumb-item"><a href="../../kapitel/01-tool-chain/git_github.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Versionierung mit Git und GitHub</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">Daten und Information</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Suchen"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vorwort</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Ausgangslage und Vorbereitung</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/01-einleitung/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Einleitung</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/01-tool-chain/tastatur.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Tastatur und Tastaturkürzel</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/01-information/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Informationstheorie</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Datenquellen</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/01-tool-chain/project_doc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Dokumentation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/02-daten-sammeln/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Daten sammeln</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/03-daten-organisieren/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Daten organisieren</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/01-tool-chain/git_github.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Versionierung mit Git und GitHub</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/05-datentypen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Datentypen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/04-dateiformate/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Dateiformate</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Mathematik der Daten</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/06-variablen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Variablen, Funktionen und Operatoren</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/05-zeichenketten/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Zeichenketten</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/08-boolsche-operationen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Boole’sche Operationen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/09-vektor-operationen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Vektor-Operationen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/10-matrix-operationen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Matrix-Operationen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/11-daten-kodieren/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Daten kombinieren und kodieren</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/11-indizieren-gruppieren/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Indizieren und Gruppieren</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/12-daten-formen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Daten formen</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Deskriptive Datenanalyse</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/13-daten-beschreiben/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Daten beschreiben</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/14-daten-visualisieren/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Daten visualisieren</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Referenzen</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Inhaltsverzeichnis</h2>
+   
+  <ul>
+  <li><a href="#git-installieren" id="toc-git-installieren" class="nav-link active" data-scroll-target="#git-installieren"><span class="header-section-number">7.1</span> <code>git</code> installieren</a>
+  <ul class="collapse">
+  <li><a href="#git-unter-macos-installieren" id="toc-git-unter-macos-installieren" class="nav-link" data-scroll-target="#git-unter-macos-installieren"><span class="header-section-number">7.1.1</span> <code>git</code> unter MacOS installieren</a></li>
+  <li><a href="#git-unter-windows-installieren" id="toc-git-unter-windows-installieren" class="nav-link" data-scroll-target="#git-unter-windows-installieren"><span class="header-section-number">7.1.2</span> <code>git</code> unter Windows installieren</a></li>
+  <li><a href="#grafische-oberflächen-für-git" id="toc-grafische-oberflächen-für-git" class="nav-link" data-scroll-target="#grafische-oberflächen-für-git"><span class="header-section-number">7.1.3</span> Grafische Oberflächen für <code>git</code></a></li>
+  <li><a href="#git-hosting-plattformen" id="toc-git-hosting-plattformen" class="nav-link" data-scroll-target="#git-hosting-plattformen"><span class="header-section-number">7.1.4</span> <code>git</code>-Hosting-Plattformen</a></li>
+  </ul></li>
+  <li><a href="#git-konzepte" id="toc-git-konzepte" class="nav-link" data-scroll-target="#git-konzepte"><span class="header-section-number">7.2</span> <code>git</code>-Konzepte</a>
+  <ul class="collapse">
+  <li><a href="#repositories-clones-und-forks" id="toc-repositories-clones-und-forks" class="nav-link" data-scroll-target="#repositories-clones-und-forks"><span class="header-section-number">7.2.1</span> Repositories, Clones und Forks</a></li>
+  <li><a href="#versionierungsstatus-feststellen" id="toc-versionierungsstatus-feststellen" class="nav-link" data-scroll-target="#versionierungsstatus-feststellen"><span class="header-section-number">7.2.2</span> Versionierungsstatus feststellen</a></li>
+  <li><a href="#versionierung-durch-commits" id="toc-versionierung-durch-commits" class="nav-link" data-scroll-target="#versionierung-durch-commits"><span class="header-section-number">7.2.3</span> Versionierung durch Commits</a></li>
+  <li><a href="#checkout" id="toc-checkout" class="nav-link" data-scroll-target="#checkout"><span class="header-section-number">7.2.4</span> Checkout</a></li>
+  <li><a href="#tags" id="toc-tags" class="nav-link" data-scroll-target="#tags"><span class="header-section-number">7.2.5</span> Tags</a></li>
+  <li><a href="#branching-und-merging" id="toc-branching-und-merging" class="nav-link" data-scroll-target="#branching-und-merging"><span class="header-section-number">7.2.6</span> Branching und Merging</a></li>
+  <li><a href="#fetch-pull-und-push" id="toc-fetch-pull-und-push" class="nav-link" data-scroll-target="#fetch-pull-und-push"><span class="header-section-number">7.2.7</span> Fetch, Pull und Push</a></li>
+  </ul></li>
+  <li><a href="#git-projektmanagement" id="toc-git-projektmanagement" class="nav-link" data-scroll-target="#git-projektmanagement"><span class="header-section-number">7.3</span> <code>git</code>-Projektmanagement</a>
+  <ul class="collapse">
+  <li><a href="#issues" id="toc-issues" class="nav-link" data-scroll-target="#issues"><span class="header-section-number">7.3.1</span> Issues</a></li>
+  <li><a href="#pull-requests" id="toc-pull-requests" class="nav-link" data-scroll-target="#pull-requests"><span class="header-section-number">7.3.2</span> Pull-Requests</a></li>
+  </ul></li>
+  <li><a href="#anwendungen-und-praxistipps" id="toc-anwendungen-und-praxistipps" class="nav-link" data-scroll-target="#anwendungen-und-praxistipps"><span class="header-section-number">7.4</span> Anwendungen und Praxistipps</a>
+  <ul class="collapse">
+  <li><a href="#github-flow" id="toc-github-flow" class="nav-link" data-scroll-target="#github-flow"><span class="header-section-number">7.4.1</span> GitHub-Flow</a></li>
+  <li><a href="#dateien-und-verzeichnisse-von-der-versionierung-ausschliessen" id="toc-dateien-und-verzeichnisse-von-der-versionierung-ausschliessen" class="nav-link" data-scroll-target="#dateien-und-verzeichnisse-von-der-versionierung-ausschliessen"><span class="header-section-number">7.4.2</span> Dateien und Verzeichnisse von der Versionierung ausschliessen</a></li>
+  <li><a href="#repository-organisation" id="toc-repository-organisation" class="nav-link" data-scroll-target="#repository-organisation"><span class="header-section-number">7.4.3</span> Repository-Organisation</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="sec-chapter-github" class="quarto-section-identifier"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Versionierung mit Git und GitHub</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<div id="def-versionierung" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 7.1 </strong></span>Versionierung ist ein Prozess, bei dem Änderungen an einem Dokument oder einer Datei nachverfolgt werden.</p>
+</div>
+<p>Die meisten Cloud-Dienste bieten inzwischen das Speichern von Dateiversionen an. Diese Funktionen sind in der Regel so gelöst, dass die Datei in regelmässigen Abständen gespeichert wird, so dass eine <em>zeitliche</em> Abfolge von geänderten Versionen entsteht. Für manche Dateiformate ist es möglich, einzelne Änderungen des Inhalts nachzuvollziehen.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hinweis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Für die Arbeit mit Daten ist das Versionsmanagement wichtig, damit das Datenmanagement durchgängig und nachvollziehbar ist.</p>
+</div>
+</div>
+<p>Das regelmässige Speichern von Dateien ist der Startpunkt für die eigentliche Versionierung, dem <em>Versionsmanagement</em> oder der <em>Versionskontrolle</em> (engl. Version Control).</p>
+<p>Bei der Versionierung werden die Änderungen an einer Datei festgehalten und mit einer Versions<em>nummer</em> gespeichert. Der entscheidende Unterschied zum regelmässigen Speichern auf Cloud-Diensten ist, dass einzelne Versionen für den späteren Gebrauch oder zur späteren Kontrolle markiert und wiederhergestellt werden können. Die Versionskontrolle stellt sicher, dass für jede Datei die jeweils aktuelle Version eindeutig definiert ist.</p>
+<p>Die Versionierung betrifft alle erzeugenden Projektdateien. Dazu gehören:</p>
+<ul>
+<li>Datendateien</li>
+<li>Code-Dateien</li>
+<li>Code-Konfiguration</li>
+<li>Projektkonfiguration</li>
+<li>Dokumentation</li>
+</ul>
+<p>Es gibt verschiedene Systeme für die Versionierung. Im Bereich der Software-Entwickung und den Datenwissenschaften hat sich <code>git</code> als Industriestandard etabliert.</p>
+<p><code>git</code> ist ein verteiltes Versionierungssystem. <em>Verteilt</em> bedeutet dabei, dass die Versionierung mit allen teilnehmenden Systemen vollständig geteilt wird und es keine zentrale Instanz für die Versionierung gibt. Es handelt sich daher um ein redundantes <em>Peer-to-Peer</em>-System. <code>git</code> unterteilt die Versionierung in Projekte, den sog. <strong><em>Repositories</em></strong>, dass auf verschiedenen Computern repliziert bzw. ge-<strong>cloned</strong> wird. Dadurch erhält jeder Computer mit einem Repository-Clone eine vollständige Kopie der Versionierung eines Projekts.</p>
+<p>Diese Kurzeinführung stellt die zentralen <code>git</code>-Konzepte für die tägliche Arbeit vor:</p>
+<ul>
+<li><code>git</code> installieren</li>
+<li>Repositories, Clone und Forks</li>
+<li>Dateiversionen einem Repository hinzufügen (commit)</li>
+<li>Pull und Push</li>
+<li>Branches, Merges und Pull-Requests</li>
+</ul>
+<section id="git-installieren" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="git-installieren"><span class="header-section-number">7.1</span> <code>git</code> installieren</h2>
+<p><code>git</code> besteht im wesentlichen aus einem Kommandozeilen-Werkzeug, das alle Funktionen von <code>git</code> bereitstellt. Dieses Werkzeug wird oft auch als <em>CLI-Tool</em> bezeichnet. Es für die meisten GUI-Apps die Voraussetzung für die Arbeit. Ausserdem stellen nicht alle GUI-Apps alle <code>git</code>-Funktionen bereit und gelegentlich kann es in Spezialfällen notwendig sein, <code>git</code> direkt zu verwenden. Deshalb sollte <code>git</code> immer auf einem Computer installiert sein.</p>
+<section id="git-unter-macos-installieren" class="level3" data-number="7.1.1">
+<h3 data-number="7.1.1" class="anchored" data-anchor-id="git-unter-macos-installieren"><span class="header-section-number">7.1.1</span> <code>git</code> unter MacOS installieren</h3>
+<p>Es wird dringend empfohlen die offiziell von Apple vertriebene Version von <code>git</code> zu verwenden.</p>
+<p>Unter MacOS ist <code>git</code> Teil der internen Entwicklungsumgebung. Dazu sollte <a href="https://apps.apple.com/gb/app/xcode/id497799835">XCode</a> installiert sein. XCode muss mindestens einmal gestartet worden sein, damit die Lizenzbedingungen erstmalig akzeptiert werden. Anschliessend müssen die <a href="https://developer.apple.com/download/all/?q=command%20line%20tools">XCode Command Line Tools</a> dem System hinzugefügt werden. Wählen Sie die Version dieser Tools immer so aus, dass sie zu der von Ihnen installierten Version von XCode passt. Für diesen Download benötigen Sie einen Entwicker-Account auf Apple’s Entwicklerplattform. Dieser Account ist kostenlos. Nach der Installation der XCode Command Line Tools ist auch <code>git</code> auf Ihrem Rechner installiert.</p>
+</section>
+<section id="git-unter-windows-installieren" class="level3" data-number="7.1.2">
+<h3 data-number="7.1.2" class="anchored" data-anchor-id="git-unter-windows-installieren"><span class="header-section-number">7.1.2</span> <code>git</code> unter Windows installieren</h3>
+<p>Unter Windows stellt das Projekt <a href="https://gitforwindows.org/">git for Windows</a> eine für Windows Systeme angepasste Version von <code>git</code> bereit. Diese Version bietet neben <code>git</code> zusätzliche Werkzeuge, mit denen sich Anleitungen leichter nachvollziehen lassen.</p>
+</section>
+<section id="grafische-oberflächen-für-git" class="level3" data-number="7.1.3">
+<h3 data-number="7.1.3" class="anchored" data-anchor-id="grafische-oberflächen-für-git"><span class="header-section-number">7.1.3</span> Grafische Oberflächen für <code>git</code></h3>
+<p>GUI-Apps die Arbeit mit <code>git</code>. Für die Arbeit mit diesem Buch werden die folgenden Werkzeuge empfohlen.</p>
+<ul>
+<li><a href="https://code.visualstudio.com/download">Visual Studio Code</a> unterstützt <code>git</code> in der Basisinstallation.</li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens">GitLens</a> ist eine Erweiterung für Visual Studio Code und bindet zusätzliche Funktionen für das Versionsmangement direkt in die IDE ein.</li>
+<li><a href="https://desktop.github.com/">GitHub Desktop</a> stellt eine einfache Benutzeroberfläche für die Basisaufgaben mit GitHub am Computer Desktop bereit.</li>
+<li><a href="https://www.gitkraken.com/">GitKraken</a> bietet unfangreiche Funktionen zum Versionsmanagement mit <code>git</code>. Mit GitKraken lassen sich fast alle <code>git</code>-Aufgaben über die GUI lösen. Ausserdem ist GitKraken nicht auf GitHub als Hosting-Plattform beschränkt.</li>
+</ul>
+</section>
+<section id="git-hosting-plattformen" class="level3" data-number="7.1.4">
+<h3 data-number="7.1.4" class="anchored" data-anchor-id="git-hosting-plattformen"><span class="header-section-number">7.1.4</span> <code>git</code>-Hosting-Plattformen</h3>
+<p><code>git</code> ist zuerst auf den eigenen Computer beschränkt. Für das Zusammenarbeiten mit anderen und die Sicherung der eigenen Versionierung empfielt sich die Verwendung einer sog. <code>git</code>-Hosting-Plattform. Eine <code>git</code>-Hosting-Plattform erlaubt es die Versionierung eines Projekts online zu sichern und mit anderen zu teilen, die bietet Projektmanagementfunktionen sowie Automatisierungsmöglichkeiten, die über die Kernfunktionen von <code>git</code> hinausgehen.</p>
+<p>Die wichtigsten <code>git</code>-Hosting-Plattformen mit gleichwertigem Funktionsumfang sind:</p>
+<ul>
+<li><a href="https://github.com">GitHub</a></li>
+<li><a href="https://gitlab.com">GitLab</a></li>
+<li><a href="https://gitea.com">Gitea</a></li>
+</ul>
+<p>Jede dieser Plattformen benötigt ein eigenes Benutzerkonto.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hinweis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Dieses Buch verwendet <strong><em>GitHub</em></strong> für Code-Beispiele, Diskussionen und andere Funktionen. <strong><em>GitLab</em></strong> und <strong><em>Gittea</em></strong> sind Alternativen zu GitHub mit gleichwertigen Funktionsumfang und ähneln sich bei der Bedienung und im Funktionsumfang stark. Aus Sicht der Projektorganisation sind die Plattformen fast identisch. Es gibt vor Allem emotionale und wirtschaftliche Gründe, sich für die eine oder die andere Plattform zu entscheiden.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="git-konzepte" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="git-konzepte"><span class="header-section-number">7.2</span> <code>git</code>-Konzepte</h2>
+<section id="repositories-clones-und-forks" class="level3" data-number="7.2.1">
+<h3 data-number="7.2.1" class="anchored" data-anchor-id="repositories-clones-und-forks"><span class="header-section-number">7.2.1</span> Repositories, Clones und Forks</h3>
+<p>Die Grundlage der Versionierung mit <code>git</code> ist das Repository. Ein Repository enthält die Dateiversionen eines Projekts. Aus den Versionen kann das Projekt auf den Zustand zu jedem Versionierungszeitpunkt wiederhergestellt werden.</p>
+<p>Ein Repository enthält alle versionierten Dateien und deren Versionen. Auf dem eigenen Computer sieht ein <code>git</code>-Repository ersteinmal wie ein normales Verzeichnis aus. Die Versionen sind in einer versteckten Versionsdatenbank gespeichert, über die mit dem <code>git</code>-Kommando oder einem entsprechenden GUI-Tool interagiert wird.</p>
+<p>Um aus einem normalen Verzeichnis ein <code>git</code>-Repository zu erstellen, muss das Verzeichnis für <code>git</code> <em>initianlisiert</em> werden. Im Terminal kann ein beliebiges Verzeichnis zu einem Repository initialisiert werden.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>git</code>-Repositories können aus zwei Arten synchronisiert werden: Durch Clone und durch Forks. Jedes Kopie eines <code>git</code>-Repositories enthält immer alle Versionen des Projekts. Wird ein Repository auf einen anderen Computer synchronisiert, dann wird das entfernte Repository als <strong>Remote</strong> bezeichnet. Handelt es sich bei diesem Repository um ein Quell-Repository, dann wird dieses auch als <strong>Upstream</strong>-Repository bezeichnet. Die lokale Variante des Repositories wird auch als <strong>Downstream</strong>-Repository bezeichnet.</p>
+<p>Zwei gleichwertige Kopien eines Repositories werden als <strong>Clone</strong> bezeichnet. Gleichwertig bedeutet, dass die Versionen zwischen diesen Repositories direkt synchronisierbar sind.</p>
+<p>Neben gleichwertigen Repositories gibt es noch hierarchische Beziehungen zwischen Repositories. Dabei kann nur vom Upstream Remote direkt in die lokale Kopie sysnchronisiert werden. Änderungen im Downstream-Repository können nicht direkt in das Upstream Remote synchronisiert werden. Das Downstream Repository wird als <strong>Fork</strong> bezeichnet. Änderungen eines Forks können über sog. Pull-Requests an das Upstream-Repository gesendet werden.</p>
+</section>
+<section id="versionierungsstatus-feststellen" class="level3" data-number="7.2.2">
+<h3 data-number="7.2.2" class="anchored" data-anchor-id="versionierungsstatus-feststellen"><span class="header-section-number">7.2.2</span> Versionierungsstatus feststellen</h3>
+<p>Mit dem Kommando <code>git status</code> kann der aktuelle Änderungsstatus eines Repositories gestgestellt werden. In einem frisch initialisierten Repository liefert dieses Kommando die folgende Meldung.</p>
+<pre><code>On branch main
+
+No commits yet
+
+nothing to commit (create/copy files and use "git add" to track)</code></pre>
+<p>Wird einem leeren Repository eine neue Datei hinzugefügt, zeigt <code>git status</code> an, dass die neue Datei noch nicht versioniert wird. Als Beispiel wird die Datei <code>README.md</code> mit dem folgenden Inhalt erstellt.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Mein erstes Projekt</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Nach dem diese Datei gespeichert wurde, liefert <code>git status</code> die folgende Meldung.</p>
+<pre><code>On branch main
+
+No commits yet
+
+Untracked files:
+  (use "git add &lt;file&gt;..." to include in what will be committed)
+    README.md
+
+nothing added to commit but untracked files present (use "git add" to track)</code></pre>
+</section>
+<section id="versionierung-durch-commits" class="level3" data-number="7.2.3">
+<h3 data-number="7.2.3" class="anchored" data-anchor-id="versionierung-durch-commits"><span class="header-section-number">7.2.3</span> Versionierung durch Commits</h3>
+<p><code>git</code> muss mitgeteilt werden, dass eine neue, noch nicht verfolgte Datei in die Versionierung aufgenommen wird. Die Meldung von <code>git status</code> gibt den Hinweis, dass das Kommando dazu verwendet werden muss.</p>
+<p>Im obigen Beispiel kann die neue mit <code>git add README.md</code> in die Versionierung aufgenommen werden.</p>
+<p>Im Gegensatz zu Cloud-Speichern führt <code>git</code> keine automatische Synchronisation bei Änderungen einer Datei durch. Stattdessen müssen zu versionierende Dateien und Änderungen ihnen explizit versioniert werden. Auf den ersten Blick sieht das kompliziert aus, bietet im Entwicklungsprozess mehr Flexibilität und Kontrolle.</p>
+<p>Die Versionierung erfolgt immer in zwei Schritten:</p>
+<ol type="1">
+<li>Auswahl der zuversionierenden Dateien mit <code>git add</code>.</li>
+<li>Erstellen einer neuen Verion mit den Änderungen in den ausgewählten Dateien mit <code>git commit</code>.</li>
+</ol>
+<p>Auf der Kommandozeile werden die beiden Schritte durch zwei Aufrufe von <code>git</code>:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Alle geänderten und neuen Dateien für die Versionierung auswählen</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add . </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Eine neune Version für die ausgewählten Dateien erzeugen.</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Falls nur verfolgte Dateien in einer Version aufgenommen werden sollen, dann können die beiden Schritte mit dem folgenden Kommando zusammengefasst werden.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-a</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Sollen neue, noch nicht versionierte Dateien in die Versionierung aufgenommen werden, dann müssen diese Dateien zwingend mit <code>git add</code> ausgewählt werden.</p>
+<blockquote class="blockquote">
+<p>GUI-Apps fassen die beiden Schritte automatisch zusammen.</p>
+</blockquote>
+<p>Im obigen Beispiel wurde die Datei <code>README.md</code> bereits zur Versionierung markiert. Diese Datei soll nun versioniert werden. Das wird mit <code>git commit</code> erreicht. Wird <code>git commit</code> direkt aufgerufen, startet <code>git</code> den sog. Message-Editor, um die Meldung für diese Version einzugeben. <code>git</code> versucht einen Vorschlag für die Meldung vorzuschlagen. Diese Meldung kann übernommen werden, indem die Rautesymbole am Zeilenanfang gelöscht werden. Abschliessend muss die Meldung gespeichert und geschlossen werden, damit <code>git</code> die Meldung übernimmt.</p>
+<p><code>git</code> erfordert, dass alle Versionen eine Meldung haben, die kurz die vorgenommenen Änderungen beschreibt. Diese Versionsmeldung erlaubt es, die Entwicklung eines Projekts schrittweise nachzuvollziehen.</p>
+<blockquote class="blockquote">
+<p><strong>Hinweis:</strong> Es ist zwar prinzipiell möglich auch leere Versionsmeldungen zu speichern, dadurch lässt sich die Versionsgeschichte nur schwer reproduzieren. Ausserdem wird die Auswahl einer bestimmten Version erschwert, weil aus der Versionsnummer nicht direkt hervorgeht, welche Änderungen vorgenommen wurden.</p>
+</blockquote>
+<p>Das Kommando <code>git status</code> zeigt nun an, dass keine Änderungen gefunden wurden.</p>
+<p>Nachdem eine Version erstellt wurde, kann die Versionsgeschichte mit <code>git log</code> angezeigt werden. Das Ergebnis sieht nach dem initialen Commit des obigen Beispiels sieht etwas folgendermassen aus:</p>
+<pre><code>commit b281e4a03a4e71bcc41fa2f68e822b98c1555e1d (HEAD -&gt; main)
+Author: Christian Glahn &lt;christian.glahn@zhaw.ch&gt;
+Date:   Fri Aug 18 14:37:49 2023 +0200
+
+    Initial commit
+        new file:   README.md</code></pre>
+<p>Die kryptische Symbolfolge in der ersten Zeile hinter dem Wort <code>commit</code> ist die Versionsnummer. Die Versionsnummer ist eindeutig im Projekt und über die meisten Projekte hinweg. In Klammern stehen die beiden Worte <code>HEAD</code> und <code>main</code>. <code>HEAD</code> zeigt die Markierung der aktuellen Version. <code>main</code> zeigt das Ende des aktuellen Versionszweig mit dem Namen <code>main</code> an. Dieser Information folgt der Name der Person, welche die Version erzeugt hat und dem Datum und der Uhrzeit, was den Versionszeitpunkt markiert. Abschliessend folgt die Versionsmeldung.</p>
+<p>Dieser Schritt kann nun mit einer Änderung an der Datei <code>README.md</code> wiederholt werden. Hierzu wird zusätzlicher Text <code>"Eine Übung zur Git Versionierung"</code> ans Ende der Datei hizugefügt. Der Inhalt der Datei sollte nun wie folgt aussehen:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Mein erstes Projekt</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>Eine Übung zur Versionierung mit git.</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Diese Änderungen werden nun mit <code>git commit -a</code> versioniert.</p>
+<p><code>git log</code> zeigt nun die folgende Information.</p>
+<pre><code>commit 1504d416bb1ef926fde4d5e949f3ed330d97b065 (HEAD -&gt; main)
+Author: Christian Glahn &lt;christian.glahn@zhaw.ch&gt;
+Date:   Fri Aug 18 15:27:19 2023 +0200
+
+    Zusatzinformation zum Projekt
+      modified:   README.md
+
+commit b281e4a03a4e71bcc41fa2f68e822b98c1555e1d
+Author: Christian Glahn &lt;christian.glahn@zhaw.ch&gt;
+Date:   Fri Aug 18 15:26:36 2023 +0200
+
+    Initial commit
+        new file:   README.md</code></pre>
+<p>Die beiden Markierungen <code>HEAD</code> und <code>main</code> wurden zur aktuellen Version verschoben.</p>
+</section>
+<section id="checkout" class="level3" data-number="7.2.4">
+<h3 data-number="7.2.4" class="anchored" data-anchor-id="checkout"><span class="header-section-number">7.2.4</span> Checkout</h3>
+<p>Eine Versionierung macht nur dann Sinn, wenn auf eine ältere Version zugegriffen werden kann. Das erlaubt das Kommando <code>git checkout</code>. Dieses Kommando benötigt eine Versionsnummer oder eine Markierung, um die entsprechede Version zuzugreifen.</p>
+<p>So kann auf die erste Version im Projekt zugegriffen werden:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout b281e4a03a4e71bcc41fa2f68e822b98c1555e1d</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Dieses Kommando ersetzt alle Dateien im Arbeitsverzeichnis in den Zustand der angegebenen Version.</p>
+<p>Der Inhalt der Datei <code>README.md</code> ist nun wieder wie folgt.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Mein erstes Projekt</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Der Befehlt <code>git log</code> zeigt nun die Versionsgeschichte bis zum aktuell vorliegenden Inhalt.</p>
+<pre><code>commit b281e4a03a4e71bcc41fa2f68e822b98c1555e1d (HEAD)
+Author: Christian Glahn &lt;christian.glahn@zhaw.ch&gt;
+Date:   Fri Aug 18 15:26:36 2023 +0200
+
+    Initial commit
+        new file:   README.md</code></pre>
+<p>Hier gilt es zu beachten, dass die Markiergung <code>main</code> nicht mehr angezeigt wird. Diese Markierung ist nicht verloren, liegt aber aus Sicht der aktuellen Version in der Zukunft und wird deshalb nicht dargestellt. Wenn diese Versionsnummer nicht notiert wurde, kann auf die “zukunftigen” Versionen nicht leicht zugegriffen werden. Damit wieder auf die letzte Version zugegriffen werden kann, kann die Markierung <code>main</code> verwendet werden.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout main</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Mit diesem Kommando werden alle Dateien auf den neusten Stand gebracht. <code>git log</code> zeigt nun wieder die vollständige Versionsgeschichte.</p>
+</section>
+<section id="tags" class="level3" data-number="7.2.5">
+<h3 data-number="7.2.5" class="anchored" data-anchor-id="tags"><span class="header-section-number">7.2.5</span> Tags</h3>
+<p>Die Navigation über die Versionsnummern ist wegen der kryptischen Versionsnummern nicht ganz einfach. Ausserdem haben nicht alle Versionen in einem <code>git</code>-Repository die gleiche Bedeutung für die Nutzenden. Um zwischen wichtigen Versionen leichter navigieren zu können dienen Tags.</p>
+<p>Tags sind spezielle Markierungen von Versionen in einem <code>git</code>-Repository. Das besondere Tag <code>HEAD</code> markiert immer die aktuell vorliegende Version. Mit dem Kommando <code>git tag</code> können neue Markierungen angelegt werden, um die Navigation zwischen Versionen zu erleichtern oder wichtige Zeitpunkte zu markieren.</p>
+<p>Ein Tag darf keine Leerzeichen enthalten und sollte kompakt sein. Das folgende Beispiel markiert die erste Version im Repository.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> tag erste_version b281e4a03a4e71bcc41fa2f68e822b98c1555e1d</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Tags werden in der Versionsgeschichte angezeit. <code>git log</code> zeigt dann das folgende Ergebnis.</p>
+<pre><code>commit 1504d416bb1ef926fde4d5e949f3ed330d97b065 (HEAD -&gt; main)
+Author: Christian Glahn &lt;christian.glahn@zhaw.ch&gt;
+Date:   Fri Aug 18 15:27:19 2023 +0200
+
+    Zusatzinformation zum Projekt
+      modified:   README.md
+
+commit b281e4a03a4e71bcc41fa2f68e822b98c1555e1d (tag: erste_version)
+Author: Christian Glahn &lt;christian.glahn@zhaw.ch&gt;
+Date:   Fri Aug 18 15:26:36 2023 +0200
+
+    Initial commit
+        new file:   README.md</code></pre>
+<p>Nun kann auf die erste Version direkt zugegriffen werden, ohne die kryptische Versionsnummer kennen zu müssen.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout erste_version</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Dieses Kommando springt nun auf die erste Version in diesem Repository. Das kann mit <code>git log</code> überprüft werden.</p>
+<p>Das Kommando <code>git tag -l</code> listet alle verfügbaren Tags eines Repositories.</p>
+</section>
+<section id="branching-und-merging" class="level3" data-number="7.2.6">
+<h3 data-number="7.2.6" class="anchored" data-anchor-id="branching-und-merging"><span class="header-section-number">7.2.6</span> Branching und Merging</h3>
+<p>Die Markierung <code>main</code> ist kein Tag, sondern markiert einen Versionszweig. Diese Markierung wandert mit jedem Commit immer zur neusten Version. Es ist möglich mehrere Versionszweige im gleichen Repository zu führen. Ein Versionszweig wird als <strong>Branch</strong> bezeichnet.</p>
+<p>Die Versionszweige eines Repositories lassen sich mit dem Kommando <code>git branch</code> anzeigen. Im Beispiel-Repository liefert dieses Kommando das folgende Ergebnis.</p>
+<pre><code>* main</code></pre>
+<p>Jedes <code>git</code>-Repository hat mindestens einen Versionszweig. Neuere Versionen von <code>git</code> verwenden <code>main</code> als Namen für diesen Haupt-Branch.</p>
+<p>Versionszweige werden in der Praxis dafür verwendet, um komplexe Änderungen im Projekt vorzunehmen oder um zusammenzuarbeiten.</p>
+<p>Um einen neuen Branch zu erstellen wird das Kommando <code>git branch -c</code> verwendet. Es fügt an der aktuell aktiven Version einen neuen Branch ein.</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout erste_version</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-c</span> extras</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Dieses Kommando erstellt am Tag <code>erste_version</code> einen neuen Branch mit dem Namen <code>extras</code>. <code>git branch</code> zeigt nun das folgende Ergebnis.</p>
+<pre><code>* (HEAD detached at erste_version)
+  main
+  extras</code></pre>
+<p>Um den <code>extras</code>-Branch zu aktivieren, muss dieser nur <code>git checkout extras</code> aufgerufen werden.</p>
+<p><code>git log</code> zeigt nun als Versionsgeschichte.</p>
+<pre><code>commit b281e4a03a4e71bcc41fa2f68e822b98c1555e1d (HEAD -&gt; extras, tag: erste_version)
+Author: Christian Glahn &lt;christian.glahn@zhaw.ch&gt;
+Date:   Fri Aug 18 15:26:36 2023 +0200
+
+    Initial commit
+        new file:   README.md</code></pre>
+<p>Der Pfeil von <code>HEAD</code> nach <code>extras</code> zeigt an, dass neue Versionen zum <code>extras</code>-Branch und nicht mehr zum <code>main</code>-Branch hinzugefügt werden. So lassen sich Verzweigungen umsetzen. Das veranschaulicht das folgende Beispiel: Es wird eine neue Datei mit dem Namen <code>AUTHORS.md</code> und dem folgenden Inhalt.</p>
+<pre><code>Christian Glahn (ZHAW)</code></pre>
+<p>erstellt. Es handelt sich um eine neue Datei und deshalb muss sie mit <code>git add</code> zum Repository hinzugefügt und eine Version mit <code>git commit</code> erstellt werden.</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add AUTHORS.md</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Autorenliste"</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>git log</code> zeigt nun als Versionsgeschichte:</p>
+<pre><code>commit 5d10e17be5a2fc0d987db10644b35c73224f51f2 (HEAD -&gt; extras)
+Author: Christian Glahn &lt;christian.glahn@zhaw.ch&gt;
+Date:   Fri Aug 18 16:58:01 2023 +0200
+
+    Autorenliste
+
+commit b281e4a03a4e71bcc41fa2f68e822b98c1555e1d (tag: erste_version)
+Author: Christian Glahn &lt;christian.glahn@zhaw.ch&gt;
+Date:   Fri Aug 18 15:26:36 2023 +0200
+
+    Initial commit
+        new file:   README.md</code></pre>
+<p>Diese neue Datei existiert vorerst nur im <code>extras</code>-Branch. Diesem Branch können nun weitere Änderungen hinzugefügt werden.</p>
+<p>Sind die Änderungen abgeschlossen, dann können diese Änderungen in den Hauptzweig übernommen werden. Dieses Zusammenführen von zwei Branches wird als <strong>Merge</strong> bezeichnet. Die folgenden Kommandos führen den Merge der Änderungen von <code>extras</code> in den <code>main</code>-Branch aus.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout main</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> merge <span class="at">-m</span> <span class="st">"Extras übernehmen"</span> extras</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Dieses Zusammenführen bindet die Versionen aus dem <code>extras</code>-Branch in den <code>main</code>-Branch ein. Es gehen also keine Versionen verloren. <code>git log</code> zeigt das.</p>
+<pre><code>commit 4f33342df57ec5f60b2ec1daeb581b49836f05bf (HEAD -&gt; main)
+Merge: 1504d41 5d10e17
+Author: Christian Glahn &lt;christian.glahn@zhaw.ch&gt;
+Date:   Fri Aug 18 17:01:27 2023 +0200
+
+    Extras übernehmen
+
+commit 5d10e17be5a2fc0d987db10644b35c73224f51f2 (extras)
+Author: Christian Glahn &lt;christian.glahn@zhaw.ch&gt;
+Date:   Fri Aug 18 16:58:01 2023 +0200
+
+    Autorenliste
+
+commit 1504d416bb1ef926fde4d5e949f3ed330d97b065
+Author: Christian Glahn &lt;christian.glahn@zhaw.ch&gt;
+Date:   Fri Aug 18 15:27:19 2023 +0200
+
+    Zusatzinformation zum Projekt
+      modified:   README.md
+
+commit b281e4a03a4e71bcc41fa2f68e822b98c1555e1d (tag: erste_version)
+Author: Christian Glahn &lt;christian.glahn@zhaw.ch&gt;
+Date:   Fri Aug 18 15:26:36 2023 +0200
+
+    Initial commit
+        new file:   README.md</code></pre>
+<p>Nun existiert die Datei <code>AUTHORS.md</code> auch im <code>main</code>-Branch.</p>
+<section id="merge-konflikte-lösen" class="level4" data-number="7.2.6.1">
+<h4 data-number="7.2.6.1" class="anchored" data-anchor-id="merge-konflikte-lösen"><span class="header-section-number">7.2.6.1</span> Merge-Konflikte lösen</h4>
+<p>Gelegentlich entstehen beim Mergen Konflikte. Ein Merge-Konflikt sind widersprüchliche Inhalte an der gleichen Code-Position. Solche Konflikte können auch entstehen, wenn mehrere Personen gleichgzeitig auf dem gleichen Branch arbeiten.</p>
+<p><code>git</code> löst solche Widersprüche nicht selbst, sondern erfordert ein aktives Eingreifen der Entwickler:innen. Um diesen Schritt zu erleichtern, fügt git Markierungen für die Konflikte ein. Diese Markierungen sind in den aktiven Daten zu finden, aber sind keine eigenständigen Versionen im Repository.</p>
+<p>Ein solcher Konflikt kann dadurch provoziert werden, indem im <code>extras</code>-Branch der Datei <code>README.md</code> am Ende zusätzlicher Text hinzugefügt wird, so dass die Datei den folgenden Inhalt hat.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Mein erstes Projekt</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>Alle Informationen zu den Autoren finden sich in der Datei <span class="co">[</span><span class="ot">AUTHORS.md</span><span class="co">]</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Wird nun versucht den <code>extras</code> und den <code>main</code>-Branch zusammenzuführen, meldet <code>git merge</code> den folgenden Konflikt:</p>
+<pre><code>Auto-merging README.md
+CONFLICT (content): Merge conflict in README.md
+Automatic merge failed; fix conflicts and then commit the result.</code></pre>
+<p>Der Inhalt der Datei <code>README.md</code> zeigt nun den Merge-Konflikt.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Mein erstes Projekt</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>Eine Übung zur Versionierung mit git.</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="fu">=======</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>Alle Informationen zu den Autoren finden sich in der Datei <span class="co">[</span><span class="ot">AUTHORS.md</span><span class="co">]</span>.</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="at">&gt;&gt;&gt;&gt;&gt;&gt;&gt; extras</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Durch die Gleichheitszeichen sind der aktuelle Branch (oben) und der einzubindende Branch (unten) getrennt. Jeweils am Anfang und Ende des Konfliktbereichs stehen die Namen des betreffenden Branches.</p>
+<p>Es bleibt den Entwickler:innen überlassen, sich für eine, beide oder keine der Änderungen zu entscheiden. In diesem Beispiel sollen beide Inhalte erhalten bleiben. Dazu werden die <code>git</code>-Markierungen aus der Datei entfernt und durch Zeilenumbrüche ersetzt. Der Dateiinhalt ist nun:</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Mein erstes Projekt</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>Eine Übung zur Versionierung mit git.</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>Alle Informationen zu den Autoren finden sich in der Datei <span class="co">[</span><span class="ot">AUTHORS.md</span><span class="co">]</span>.</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Die Datei ist nun konfliktfrei und kann in die Versionierung aufgenommen werden.</p>
+</section>
+<section id="rebase" class="level4" data-number="7.2.6.2">
+<h4 data-number="7.2.6.2" class="anchored" data-anchor-id="rebase"><span class="header-section-number">7.2.6.2</span> Rebase</h4>
+<p>Normalerweise erfolgt das Auflösen von Merge-Konflikten durch die Verantwortlichen des Hauptzweigs. Das ist aus Sicht des Projektmanagements ungünstig. Besser wäre es, wenn nur konfliktfreie Änderungen übernommen werden müssten. <code>git</code> bietet hierzu das Kommando <code>git rebase</code> an. Das Kommando zieht alle Änderungen des Zielzweigs in den aktuellen Arbeitszweig.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> checkout extras</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> rebase main</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Dadurch wird der gleiche Merge-Konflikt wie beim regulären Merge ausgelöst. Dieser Konflikt kann nun durch die Person gelöst werden, die für den Arbeits-Branch verantwortlich ist.</p>
+<p>Anschliessend können beide Branches konfliktfrei zusammengeführt werden.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Praxis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Es hat sich als gute Praxis etabliert, Merge-Konflikte immer mit <code>git rebase</code> und nicht mit <code>git merge</code> zu lösen.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="fetch-pull-und-push" class="level3" data-number="7.2.7">
+<h3 data-number="7.2.7" class="anchored" data-anchor-id="fetch-pull-und-push"><span class="header-section-number">7.2.7</span> Fetch, Pull und Push</h3>
+<p><code>git</code> synchronisiert Repositories nicht automatisch. Damit Änderungen in einem Clone oder Fork im eigenen Repository übernommen werden, müssen die Repositories <em>synchronisiert</em> werden.</p>
+<p>Das Kommando <code>git fetch</code> synchronisiert die Versionen der Remotes mit dem lokalem Repository. Falls ein Repository mehrere Remotes registriert hat, können alle Änderungen in allen Remotes mit <code>git fetch --all</code> auf einmal abgeglichen werden.</p>
+<p>Nach <code>git fetch</code> enthält das lokale Repository alle Versionen der Remotes. Diese Versionen werden allerdings nicht automatich in die lokalen Versionszweige übernommen. Die so synchornisierten Änderungen existieren als eigene Branches im Repository. Im Gegensatz zum regulären Merge, werden diese “Remote-Branches” mit dem Kommando <code>git pull</code> in die lokalen Versionen übernommen. <code>git pull</code> löst alle Unterschiede für den aktuellen Branch im lokalen und remote Repository auf.</p>
+<p>Weil intern ein Merge durchgeführt wird, kann auch <code>git pull</code> zu Merge-Konflikten führen. Diese Konflikte müssen gelöst werden, bevor weitergearbeitet werden kann.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hinweis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>git pull</code> führt automatisch ein <code>git fetch</code> aus, falls keine Änderungen für ein Remote-Repository lokal gefunden wurden.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Praxis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Sind für ein Repository mehrere Remotes konfiguriert, dann sollten die einzelnen Remotes einzeln synchronisiert werden.</p>
+</div>
+</div>
+<p>Das Kommando <code>git push</code> wird zum Synchronisieren des lokalen Repositories mit den Remotes genutzt. Beim <code>git push</code> wird im Remote ein Merge durchgeführt. Führt dieser zu Konflikten, meldet <code>git push</code> einen Fehler, jedoch <em>keinen</em> Merge-Konflikt. Bei Fehlern von <code>git push</code> muss zuerst <code>git fetch</code> und anschliessend ein <code>git rebase</code> ausgeführt werden und eventuelle Merge-Konflikte lokal gelöst werden.</p>
+<p><code>git push</code> kann nur für <em>Clones</em> verwendet werden. <em>Forks</em> können normalerweise nicht direkt in das Upstream-Remote synchronisieren. Sollen Änderungen für ein Upstream Repository vorgeschlagen werden, dann muss ein sogenannter <em>Pull-Request</em> ausgelöst werden. In diesem Fall werden die Änderungen durch ein <code>git pull</code> im Upstream-Repository übernommen.</p>
+</section>
+</section>
+<section id="git-projektmanagement" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="git-projektmanagement"><span class="header-section-number">7.3</span> <code>git</code>-Projektmanagement</h2>
+<p>Die im folgenden beschrieben Funktionen sind kein Teil von <code>git</code>, sondern finden sich als Erweiterungen in <code>git</code>-Hosting-Plattformen. Diese Funktionen wurden für den Einstieg in die Verwendung von <code>git</code>-Hosting-Plattformen ausgewählt und zeigen nur einen Bruchteil der Managementfunktionen moderner <code>git</code>-Hosting-Plattformen.</p>
+<section id="issues" class="level3" data-number="7.3.1">
+<h3 data-number="7.3.1" class="anchored" data-anchor-id="issues"><span class="header-section-number">7.3.1</span> Issues</h3>
+<p><code>git</code>-Hosting-Plattformen führen neben dem eigentlichen Repository eine Liste mit <em>Issues</em>. <strong>Issues</strong> bezeichnen traditionell ein <em>Problem</em>, <em>Fragestellung</em> oder <em>Angelegenheit</em> im oder mit dem Projekt. Das können z.B. noch nicht realisierte Projektziele, fehlende Dokumentation oder auch Sicherheitsproblemen durch Programmierfehler sein. Damit <em>Issues</em> nicht verloren und vergessen werden, sollten sie dokumentiert werden. Dazu dient der Issues-Bereich in <code>git</code>-Hosting-Plattformen.</p>
+<p>Die Issues eines Projekts sind nummeriert, so dass über diese Nummer auf das jeweilige Issue referenziert werden kann. Ein Issue besteht immer aus einem Titel, welcher die notwendige Änderung kurz beschreibt. Zusätzlich verfügen Issues über eine Beschreibung, in der detailliert beschrieben werden kann, was das Problem ist und welche Anforderungen erfüllt sein müssen, damit ein Issue erfüllt ist.</p>
+<p>Die <em>Issues</em> von <code>git</code>-Hosting-Plattformen haben zwei Zustände: <em>Offen</em> (engl. open) und <em>geschlossen</em> (engl. closed). Offene Issues sind noch nicht bearbeitet. Geschlossene Issues sind bearbeitet und erledigt. Issues können deshalb als To-Do-Liste für ein Projekt verwendet werden: Jedes Issue lässt sich mit Änderungen im Repository verbinden. Weil jede Änderung mit einer Version gleichzusetzen ist, kann ein Issue geschlossen werden, wenn im Repository ein Commit existiert, das die notwendige Änderung enthält.</p>
+<div id="callout-note">
+<p><code>git</code>-Hosting-Plattformen unterstützen sog. <em>Action-Keywords</em> in Commit-Meldungen. Wird ein solches Keyword zusammen mit der Issue-Nummer verwendet, dann schliesst die Hosting-Plattform das genannte Issue automatisch. Gleichzeitig wird dokumentiert, mit welchem Commit das Issue geschlossen wurde.</p>
+</div>
+<p>Die Möglichkeit ein Issue zu kommentieren ist weitere sehr praktische Funktion. So können Notizen, Gedanken und Recherchen einem Issue zugeordnet werden. Diese Dokumentation wird automatisch mit einem Datum und dem Account-Namen versehen, so dass sich die Arbeit an einem Issue leicht reproduzieren lässt. Der Vorteil dieser Funktion ist, dass so Konzepte und Ideen einem Issue zugeordnet werden können, selbst wenn sich diese nicht im eigentlichen Repository wiederfinden. So kann die Entscheidungsfindung in einem Projekt nachvollziehbar dokumentiert werden.</p>
+</section>
+<section id="pull-requests" class="level3" data-number="7.3.2">
+<h3 data-number="7.3.2" class="anchored" data-anchor-id="pull-requests"><span class="header-section-number">7.3.2</span> Pull-Requests</h3>
+<p>Wenn Code in zwei Code-Zweigen zusammengeführt werden soll, werden sog. <strong><em>Pull-Requests</em></strong> bzw. <strong><em>Merge-Requests</em></strong> erstellt. Ein Pull-Request ist eine Anfrage zum Zusammenführen eines Branches oder eines Forks mit einem anderen Branch.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hinweis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Ursprünglich wurden Pull-Requests in Form von E-Mails an die Projektkoordination geschickt und enthieleten einen Verweis auf den einzubindenen Fork. In <code>git</code>-Hosting-Plattformen sind Pull-Requests spezielle Issues, die einen Branch oder einen Fork mit dem Repository verknüpfen.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Praxis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Sobald ein Commit in einem Branch vorliegt, kann ein Pull-Request erstellt werden. Es ist eine gute Vorgehensweise, möglichst früh einen Pull-Request zu öffnen.</p>
+</div>
+</div>
+<p>Wie Issues können Pull-Requests kommentiert werden, so dass notwendige Anpassungen angeregt werden können. Es kann auch die Qualität der Versionen in einem Branch überprüft werden. Entspricht ein Pull-Request nicht den Qualitätsanforderungen eines Projekts, können vor einem Merge die notwendigen Änderungen vorgenommen werden. Alle <code>git</code>-Hosting-Plattformen bieten die Möglichkeit für jeden Pull-Request Projektstandards automatisch zu überprüfen und verhindern das Zusammenführen bei Problemen.</p>
+<p>Pull-Requests habe wie Issues den Zustand offen und geschlossen. Sobald ein Merge mit dem Ziel-Branch erfolgt durchfegührt wurde, schliesst die <code>git</code>-Hosting-Plattform den Pull-Request automatisch. Pull-Requests können auch Issues zugeordent werden, so dass ein oder mehrere zugeordnete Issues automatisch geschlossen werden, sobald ein Pull-Request gemerged wurde.</p>
+</section>
+</section>
+<section id="anwendungen-und-praxistipps" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="anwendungen-und-praxistipps"><span class="header-section-number">7.4</span> Anwendungen und Praxistipps</h2>
+<section id="github-flow" class="level3" data-number="7.4.1">
+<h3 data-number="7.4.1" class="anchored" data-anchor-id="github-flow"><span class="header-section-number">7.4.1</span> GitHub-Flow</h3>
+<p>Es hat sich bewährt, <strong>jede</strong> Aktvität am Repository in einem eigenen <strong>Branch</strong> durchzuführen. Dabei wird jeder Branch immer mit einem <strong>Issue</strong> verknüpft. Ist die Arbeit abgeschlossen, dann wird ein Pull-request zur Qualitätskontrolle erstellt. Sind die Änderungen in Ordnung, dann kann dieser Pull-Request mit einem <strong>Merge</strong> abgeschlossen werden. Der <code>main</code>-Branch enthält bei dieser Vorgehensweise immer eine korrekte und funktionierende Version des Projekts. Diese Vorgehensweise wird als <strong><em>GitHub-Flow</em></strong> <span class="citation" data-cites="github_inc_github_nodate">(<a href="../../references.html#ref-github_inc_github_nodate" role="doc-biblioref">GitHub Inc., o.&nbsp;J.</a>)</span> bezeichnet.</p>
+<p><a href="#fig-githubflow">Abbildung&nbsp;<span>7.1</span></a> zeigt ein einfaches Beispiel für den Ablauf des GitHub-Flows.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-githubflow" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<div>
+<pre class="mermaid mermaid-js" data-label="fig-githubflow">%%{init: {'theme': 'base' } }%%
+gitGraph
+   commit id: "1"
+   commit id: "2"
+   branch issue_1
+   checkout issue_1
+   commit id: "3" tag: "Pull-Request"
+   checkout issue_1
+   commit  id: "4"
+   checkout main
+   merge issue_1
+   branch issue_2
+   commit id: "5"
+</pre>
+</div>
+<figcaption class="figure-caption">Abbildung&nbsp;7.1: Vereinfachter GitHub-Flow</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Der GitHub-Flow arbeitet immer nach dem gleichem Grundschema:</p>
+<ol type="1">
+<li>Es wird ein <em>Issue</em> mit den Anforderungen für die Aufgabe erstellt.</li>
+<li>Es wird ein <em>Issue-Branch</em> erstellt.</li>
+<li>Es werden die Änderungen im <em>Issue-Branch</em> festgehalten.</li>
+<li>Es wird ein <em>Pull-Request</em> für den <em>Issue-Branch</em> erstellt.</li>
+<li>Sind alle Anforderungen erfüllt und existieren keine Merge-Konflikte, wird ein Merge des Issue-Branch mit dem <code>main</code>-Branch durchgeführt.</li>
+<li>Der <em>Issue-Branch</em> wird aus dem Repository gelöscht.</li>
+</ol>
+<p>Im GitHub-Flow gelten die folgenden Regeln für die Projektarbeit:</p>
+<ul>
+<li>Branches werden <em>ausschliesslich</em> über Pull-Requests mit dem <code>main</code>-Branch zusammengeführt.</li>
+<li><em>Alle</em> Pull-Requests beziehen sich auf mindestens ein Issue.</li>
+<li>Es erfolgen <em>keine</em> Commits in den <code>main</code>-Branch.</li>
+<li>Es werden ausschliesslich konfliktfreie Merges durchgeführt. Alle Merge-Konflikte müssen im zugehörigen Issue-Branch gelöst werden.</li>
+</ul>
+<p>Ein <em>Issue-Branch</em> ist ein normaler <code>git</code>-Branch mit dem Namen oder der Nummer des Issues. Am einfachsten sind Branchnamen die mit <code>issue_</code> beginnen und mit der jeweiligen Issue-Nummer enden. Z.B. für das erste Issue eines Projekts würde der zugehörige Issue-Branch <code>issue_1</code> heissen. Der Vorteil dieser Benennung ist, dass ein Branch einem Issue zugeordnet werden kann, selbst wenn noch kein Pull-Request erstellt wurde.</p>
+<p>Es wird empfohlen, einen Pull-Request zu öffnen, sobald eine Version in den Branch committed wurde. Dadurch können automatische Qualitätssicherungsschritte die Arbeit unterstützen. Ein Pull-Request muss spätestens nach vollendeter Arbeit an einem Issue erstellt werden.</p>
+<p>Pull-Requests sollten mit <em>Action-Keywords</em> konfiguriert werden, so dass mit dem schliessen des Pull-Requests durch einen Merge das zugehörige Issue automatisch geschlossen wird.</p>
+<p>Abschliessend wird der Issue-Branch gelöscht. Technisch wird nur die Verzweigung aus dem Repository entfernt, weil die Versionierung beim Merge erhalten bleibt. Dadurch wird sichergestellt, dass an dieser Aufgabe nicht versehentlich weiter gearbeitet wird.</p>
+</section>
+<section id="dateien-und-verzeichnisse-von-der-versionierung-ausschliessen" class="level3" data-number="7.4.2">
+<h3 data-number="7.4.2" class="anchored" data-anchor-id="dateien-und-verzeichnisse-von-der-versionierung-ausschliessen"><span class="header-section-number">7.4.2</span> Dateien und Verzeichnisse von der Versionierung ausschliessen</h3>
+<p><code>git</code> meldet “nicht verfolgte”-Dateien, um Datenverlusten vorzubeugen. Nicht alle Dateien in einem Projekt müssen oder sollten versioniert werden. Das gilt meist für die folgenden Kategorien.</p>
+<ul>
+<li>Dateien des Betriebssystems</li>
+<li>Konfigurationsdateien</li>
+<li>Hilfsmodule und Komponenten von Dritten</li>
+<li>Temporäre Dateien und Zwischenergebnisse</li>
+</ul>
+<p>Damit diese Dateien nicht versehentlich in der Versionierung erfasst werden, sollten sie aus dem Prozess ausgenommen werden. Dateien und Verzeichnisse können von der Versionierung ausgenommen werden, indem sie in der Datei <code>.gitignore</code> erwähnt werden. <code>.gitignore</code> kann gezielt einzelne Namen oder Namesmuster ausklammern. <code>.gitignore</code> ist Teil der versionierten Daten, so dass sauber nachvollziehbar ist, welche Dateien aus der Versionierung ausgenommenen werden sollten.</p>
+<p>Eine Datei wird nur ignoriert, wenn sich noch nicht in der Versionierung erfasst wurde.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Achtung
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Eine Datei wird von der Versionierung ausgeschlossen, wenn eine der folgenden Regeln zutrifft.</p>
+</div>
+</div>
+<ul>
+<li>Der Datei- oder Verzeichnisname ist explizit in <code>.gitignore</code> gelistet. Für Namen in Unterverzeichnissen muss dazu der Gesamtepfad angegeben sein.</li>
+<li>Eine Datei oder ein Verzeichnis liegt in einem Verzeichnis, dass ignoriert wird.</li>
+<li>Der Datei- oder Verzeichnisname wird durch ein Namesmuster erfasst.</li>
+</ul>
+<p>Die folgenden Namesmuster sind gebräuchlich:</p>
+<ul>
+<li><code>*/dateiname</code> - eine Datei oder ein Verzeichnis mit einem bestimmten Namen liegt in einem Verzeichnis im Projektverzeichnis.</li>
+<li><code>**/dateiname</code> - eine Datei oder ein Verzeichnis liegt an beliebiger Stelle im Projekt</li>
+<li><code>*.tmp</code> - alle Dateien oder Verzeichnisse im Projektverzeichnis, die auf <code>.tmp</code> enden.</li>
+<li><code>bild*</code> - alle Dateien oder Verzeichnisse im Projektverzeichnis, die mit <code>bild</code> beginnen.</li>
+</ul>
+<div id="callout-note">
+<p>Gelegentlich kommt es vor, dass festgestellt wird, dass eine oder mehrere Dateien ignoriert werden soll, obwohl sie bereits in die Versionierung aufgenommen wurde. In diesem Fall erscheit es, als ob <code>.gitignore</code> nicht funktioniert. Das liegt daran, dass <code>git</code> eine Datei nur ignoriert, wenn diese nicht in der Versionierung erfasst wurde. Um eine bereits erfasste Datei zu irgnorieren, muss diese Datei aus dem Versionsdatenbank mit <code>git rm</code> entfernt werden.</p>
+</div>
+<p><strong>Beispiel</strong></p>
+<p>Das folgende Beispiel zeigt typische <code>.gitignore</code>-Datei für ein R-Projekt.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ignore MacOS Filesystem Metadata</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="ot">**/.DS_Store</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="co"># R-specific Files</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="at">.Rhistory</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="at">.Rapp.history</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="at">.RData</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="at">.RDataTmp</span></span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="at">.Ruserdata</span></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="at">.Renviron</span></span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a><span class="ot">*-Ex.R</span></span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a><span class="at">/*.tar.gz</span></span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a><span class="at">/*.Rcheck/</span></span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a><span class="at">.Rproj.user/</span></span>
+<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-18"><a href="#cb31-18" aria-hidden="true" tabindex="-1"></a><span class="at">vignettes/*.html</span></span>
+<span id="cb31-19"><a href="#cb31-19" aria-hidden="true" tabindex="-1"></a><span class="at">vignettes/*.pdf</span></span>
+<span id="cb31-20"><a href="#cb31-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-21"><a href="#cb31-21" aria-hidden="true" tabindex="-1"></a><span class="at">rsconnect/</span></span>
+<span id="cb31-22"><a href="#cb31-22" aria-hidden="true" tabindex="-1"></a><span class="at">.httr-oauth</span></span>
+<span id="cb31-23"><a href="#cb31-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-24"><a href="#cb31-24" aria-hidden="true" tabindex="-1"></a><span class="ot">*_cache/</span></span>
+<span id="cb31-25"><a href="#cb31-25" aria-hidden="true" tabindex="-1"></a><span class="at">/cache/</span></span>
+<span id="cb31-26"><a href="#cb31-26" aria-hidden="true" tabindex="-1"></a><span class="ot">*.utf8.md</span></span>
+<span id="cb31-27"><a href="#cb31-27" aria-hidden="true" tabindex="-1"></a><span class="ot">*.knit.md</span></span>
+<span id="cb31-28"><a href="#cb31-28" aria-hidden="true" tabindex="-1"></a><span class="at">po/*~</span></span>
+<span id="cb31-29"><a href="#cb31-29" aria-hidden="true" tabindex="-1"></a><span class="at">_bookdown_files/</span></span>
+<span id="cb31-30"><a href="#cb31-30" aria-hidden="true" tabindex="-1"></a><span class="at">_book</span></span>
+<span id="cb31-31"><a href="#cb31-31" aria-hidden="true" tabindex="-1"></a><span class="at">.quarto/</span></span>
+<span id="cb31-32"><a href="#cb31-32" aria-hidden="true" tabindex="-1"></a><span class="at">/.quarto/</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="repository-organisation" class="level3" data-number="7.4.3">
+<h3 data-number="7.4.3" class="anchored" data-anchor-id="repository-organisation"><span class="header-section-number">7.4.3</span> Repository-Organisation</h3>
+<p>Die Arbeit mit Git und den anderen Hosting-Plattformen erscheint oft mühsam und aufwändig. Das gilt speziell für grösseres Umorganisieren eines Repositories. Gerade bei komplexen Projekten sollte deshalb möglichst früh die Organisation des Versionsmanagements festgelegt werden.</p>
+<p>In der Praxis finden sich drei Organisationsstrategien.</p>
+<ol type="1">
+<li>Monorepo</li>
+<li>Projektrepo</li>
+<li>Microrepo</li>
+</ol>
+<p>Die Wahl der Repository-Organisation hängt stark von den Projektanforderungen ab.</p>
+<section id="monorepo" class="level4" data-number="7.4.3.1">
+<h4 data-number="7.4.3.1" class="anchored" data-anchor-id="monorepo"><span class="header-section-number">7.4.3.1</span> Monorepo</h4>
+<p>Bei der Monorepo-Strategie werden alle Dateien in einem einzigen Repository organisiert. Diese Strategie ist besonders bei Projektbeginn oder bei einfachen Projekten mit geringer funktionaler Trennung geeignet. Der Vorteil dieser Strategie ist, dass alle Daten in einem Repository zusammengefasst vorliegen und als Ganzes verwaltet werden können.</p>
+<p>Für komplexe Projekte wird diese Organisationsstrategie normalerweise mit dem Git-Flow als Branching-Strategie kombiniert. Dabei müssen alle Projektteile aufeinander abgestimmt werden und benötigen eine konsitente Qualitätskontrolle, weil alle Änderungen voneinander abhängig sind. Komplexe Änderungen beeinflussen wegen der linearen Abhängigkeit der Versionen deshalb alle anderen Bereich und sind deshalb wesentlich schwerer zu korrigieren.</p>
+</section>
+<section id="projektrepo" class="level4" data-number="7.4.3.2">
+<h4 data-number="7.4.3.2" class="anchored" data-anchor-id="projektrepo"><span class="header-section-number">7.4.3.2</span> Projektrepo</h4>
+<p>Die Projektrepo-Strategie ist eine Variante der Monorepo-Strategie für komplexe Projekte, mit klar getrennten aber voneinander abhängigen Projektteilen. Dazu werden einzelene Projektteile in eigene Repositories ausgegliedert und als <em><code>git</code>-Submodule</em> in das Haupt-Repository eingebunden. Solche Submodule können unabhängig vom Haupt-Projekt entwickelt werden und auch in anderen Projekten wiederverwendet werden. Die Integration eines Submoduls erfolgt für einen bestimmten Commit oder ein bestimmtes Tag. Dadurch wird eine differenziertere Qualitätskontrolle möglich.</p>
+</section>
+<section id="microrepo" class="level4" data-number="7.4.3.3">
+<h4 data-number="7.4.3.3" class="anchored" data-anchor-id="microrepo"><span class="header-section-number">7.4.3.3</span> Microrepo</h4>
+<p>Bei der Microrepo-Strategie werden alle Projektteile in eigenen Repositories unabhängig voneinander geführt, so dass nur der jeweilige Projektteil und die zugehörige Konfiguration in einem Repository vorliegen.</p>
+<p>Bei der Microrepo-Strategie werden Daten, Code und Konfiguration grundsätzlich immer voneinander getrennt und werden in eigenen Repositories verwaltet. Damit ist diese Strategie die Antithese zum Monorepo. Die Integration der Komponenten erfolgt über das lokale Dateisystem oder über Packetmanager und <code>git</code>-Tags.</p>
+<p>Diese Strategie eignet sich für Datenprojekte, Projekte mit wenigen direkten Abhähngigkeiten oder Projekte mit verschiedenen Anwendungsgebieten (engl. Deployments). Durch klar getrennte Repositories lassen sich die einzelnen Komponenten in unterschiedlichen Kontexten problemlos unabhängig voneinander publizieren und anpassen. Deshalb ist diese Strategie besonders für Projekte mit sensitiven Daten, wie z.B. Patientendaten, oder Konfigurationen, wie beispielsweise Passwörtern, geeignet, bei denen die Datenverarbeitung keine sensitiven Teile hat.</p>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="list" style="display: none">
+<div id="ref-github_inc_github_nodate" class="csl-entry" role="listitem">
+GitHub Inc. (o.&nbsp;J.). <em><span>GitHub</span> flow</em>. <a href="https://docs.github.com/en/get-started/quickstart/github-flow">https://docs.github.com/en/get-started/quickstart/github-flow</a>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Kopiert");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Kopiert");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../kapitel/03-daten-organisieren/kapitel.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Daten organisieren</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../kapitel/05-datentypen/kapitel.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Datentypen</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Daten und Information - 9&nbsp; Dateiformate</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../kapitel/06-variablen/kapitel.html" rel="next">
+<link href="../../kapitel/05-datentypen/kapitel.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "Keine Treffer",
+    "search-matching-documents-text": "Treffer",
+    "search-copy-link-title": "Link in die Suche kopieren",
+    "search-hide-matches-text": "Zusätzliche Treffer verbergen",
+    "search-more-match-text": "weitere Treffer in diesem Dokument",
+    "search-more-matches-text": "weitere Treffer in diesem Dokument",
+    "search-clear-button-title": "Zurücksetzen",
+    "search-detached-cancel-button-title": "Abbrechen",
+    "search-submit-button-title": "Abschicken",
+    "search-label": "Suchen"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../kapitel/01-tool-chain/project_doc.html">Datenquellen</a></li><li class="breadcrumb-item"><a href="../../kapitel/04-dateiformate/kapitel.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Dateiformate</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">Daten und Information</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Suchen"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vorwort</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Ausgangslage und Vorbereitung</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/01-einleitung/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Einleitung</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/01-tool-chain/tastatur.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Tastatur und Tastaturkürzel</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/01-information/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Informationstheorie</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Datenquellen</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/01-tool-chain/project_doc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Dokumentation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/02-daten-sammeln/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Daten sammeln</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/03-daten-organisieren/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Daten organisieren</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/01-tool-chain/git_github.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Versionierung mit Git und GitHub</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/05-datentypen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Datentypen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/04-dateiformate/kapitel.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Dateiformate</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Mathematik der Daten</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/06-variablen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Variablen, Funktionen und Operatoren</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/05-zeichenketten/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Zeichenketten</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/08-boolsche-operationen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Boole’sche Operationen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/09-vektor-operationen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Vektor-Operationen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/10-matrix-operationen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Matrix-Operationen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/11-daten-kodieren/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Daten kombinieren und kodieren</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/11-indizieren-gruppieren/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Indizieren und Gruppieren</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/12-daten-formen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Daten formen</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Deskriptive Datenanalyse</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/13-daten-beschreiben/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Daten beschreiben</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/14-daten-visualisieren/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Daten visualisieren</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Referenzen</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Inhaltsverzeichnis</h2>
+   
+  <ul>
+  <li><a href="#dateien-verwenden" id="toc-dateien-verwenden" class="nav-link active" data-scroll-target="#dateien-verwenden"><span class="header-section-number">9.1</span> Dateien verwenden</a>
+  <ul class="collapse">
+  <li><a href="#importieren" id="toc-importieren" class="nav-link" data-scroll-target="#importieren"><span class="header-section-number">9.1.1</span> Importieren</a></li>
+  <li><a href="#exportieren" id="toc-exportieren" class="nav-link" data-scroll-target="#exportieren"><span class="header-section-number">9.1.2</span> Exportieren</a></li>
+  </ul></li>
+  <li><a href="#textdateien" id="toc-textdateien" class="nav-link" data-scroll-target="#textdateien"><span class="header-section-number">9.2</span> Textdateien</a></li>
+  <li><a href="#festkodierung" id="toc-festkodierung" class="nav-link" data-scroll-target="#festkodierung"><span class="header-section-number">9.3</span> Festkodierung</a></li>
+  <li><a href="#zeilenbasierte-textdateien" id="toc-zeilenbasierte-textdateien" class="nav-link" data-scroll-target="#zeilenbasierte-textdateien"><span class="header-section-number">9.4</span> Zeilenbasierte Textdateien</a></li>
+  <li><a href="#sec-mengen-und-baeume" id="toc-sec-mengen-und-baeume" class="nav-link" data-scroll-target="#sec-mengen-und-baeume"><span class="header-section-number">9.5</span> Mengen und Bäume</a></li>
+  <li><a href="#sec-separator-strukturierte-textdateien" id="toc-sec-separator-strukturierte-textdateien" class="nav-link" data-scroll-target="#sec-separator-strukturierte-textdateien"><span class="header-section-number">9.6</span> Separator-strukturierte Textdateien</a></li>
+  <li><a href="#excel-arbeitsmappen" id="toc-excel-arbeitsmappen" class="nav-link" data-scroll-target="#excel-arbeitsmappen"><span class="header-section-number">9.7</span> Excel-Arbeitsmappen</a></li>
+  <li><a href="#markup-formate" id="toc-markup-formate" class="nav-link" data-scroll-target="#markup-formate"><span class="header-section-number">9.8</span> Markup-Formate</a>
+  <ul class="collapse">
+  <li><a href="#xml" id="toc-xml" class="nav-link" data-scroll-target="#xml"><span class="header-section-number">9.8.1</span> XML</a></li>
+  <li><a href="#html" id="toc-html" class="nav-link" data-scroll-target="#html"><span class="header-section-number">9.8.2</span> HTML</a></li>
+  </ul></li>
+  <li><a href="#json" id="toc-json" class="nav-link" data-scroll-target="#json"><span class="header-section-number">9.9</span> JSON</a></li>
+  <li><a href="#yaml" id="toc-yaml" class="nav-link" data-scroll-target="#yaml"><span class="header-section-number">9.10</span> YAML</a></li>
+  <li><a href="#dateiformate-und-versionierung" id="toc-dateiformate-und-versionierung" class="nav-link" data-scroll-target="#dateiformate-und-versionierung"><span class="header-section-number">9.11</span> Dateiformate und Versionierung</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="sec-chapter-dateiformate" class="quarto-section-identifier"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Dateiformate</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Zum Speichern und zum Austausch von Daten spielen Dateiformate enie wichtige Rolle. Dateiformate legen fest, wie Daten serialisiert werden. Die Serialisierung von Daten ist die Grundlage für die Speicherung und den Austausch von Daten. Eine spezielle Serialisierung wird als <em>Datenformat</em> bezeichnet.</p>
+<p>In Computern werden Daten immer als <em>Datenströme</em> abgebildet.</p>
+<div id="def-datenstrom" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 9.1 </strong></span>Ein <strong>Datenstrom</strong> ist eine Folge von binärkodierten Bits.</p>
+</div>
+<p>Ein Datenstrom ist also immer eine Abfolge von <code>0</code> und <code>1</code> Werten. Diese Abfolgen sind eine <em>Datenserialisierung</em> (s. <a href="../01-information/kapitel.html#sec-serialisierung">Abschnitt&nbsp;<span>3.4.1</span></a>). Für die Interpretation werden diese Abfolgen in Gruppen zusammengefasst. Üblich sind Gruppen von 8-Bit (dem sog. <em>Byte</em>), 16-Bit, 32-Bit oder 64-Bit.</p>
+<p>Datenströme können eine <em>feste Länge</em> haben. In diesem Fall wird die Länge eines Datenstroms wird <em>Byte</em> angegegeben.</p>
+<div id="def-datei" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 9.2 </strong></span>Eine <strong>Datei</strong> ist ein Datenstrom mit fester Länge, der von einem Speichermedium geladen wird.</p>
+</div>
+<p>Weil eine Datei auf einem Speichermedium gespeichert ist, kann der Datenstrom aus einer Datei wiederholt abgerufen werden. Deshalb gehören Dateien zu den sog. <strong><em>persistenten Datenströmen</em></strong>. Persistente Datenströme liefern also <em>dauerhafte Daten</em>.</p>
+<p>Nicht alle Datenströme sind persistent. Deshalb ist es wichtig, die Art eines Datenstroms zu kennen, denn bei nicht-persisten oder <strong>flüchtigen Datenströmen</strong> kann auf die Daten nur einmal zugegriffen werden. <em>Flüchtige Datenströme</em> sind kommen vorwiegend bei der <em>automatischen Datenerfassung</em> vor. In diesem Fällen entspricht jeder Zugriff auf den Datenstrom einer Messung, wobei es nicht möglich ist, eine Messung zu wiederholen.</p>
+<section id="dateien-verwenden" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="dateien-verwenden"><span class="header-section-number">9.1</span> Dateien verwenden</h2>
+<section id="importieren" class="level3" data-number="9.1.1">
+<h3 data-number="9.1.1" class="anchored" data-anchor-id="importieren"><span class="header-section-number">9.1.1</span> Importieren</h3>
+<div id="def-import-data" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 9.3 </strong></span>Das Lesen eines Datenstroms in eine Datenstruktur wird <strong>Importieren</strong> genannt.</p>
+</div>
+<p>Das Importieren von Daten folgt immer in mehreren Schritten:</p>
+<ol type="1">
+<li><em>Lesen</em> eines Datenstroms.</li>
+<li><em>Zuordnung</em> der Werte zu den richtigen Datentypen.</li>
+<li><em>Auswahl</em> der zu verarbeitenden Daten.</li>
+</ol>
+<section id="daten-einlesen" class="level4" data-number="9.1.1.1">
+<h4 data-number="9.1.1.1" class="anchored" data-anchor-id="daten-einlesen"><span class="header-section-number">9.1.1.1</span> Daten einlesen</h4>
+<p>Beim ersten Schritt werden die Symbole eines Datenstroms in eine geeignete Datenstruktur überführt. Dabei werden die gelesenen Symbole überprüft, ob es sich um Werte oder um eine Trennmarkierung handelt. Die Werte werden entsprechend ihrer Position im Datenstrom oder über Markierungen einer Datenstruktur zugeordnet.</p>
+<div id="def-import-parsing" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 9.4 </strong></span>Die Zuordnung von Werten in einem Datenstrom zu einer Datenstruktur wird <strong>Parsen</strong> genannt. Eine Funktion, die einen Datenstrom in eine Datenstruktur überführt, heisst <strong>Parser</strong>.</p>
+</div>
+<p>Jedes Dateiformat erfordert einen eigenen <em>Parser</em>. Wird ein ungeeigneter <em>Parser</em> verwendet, dann werden die Daten nicht korrekt importiert und können nicht weiterverarbeitet werden, weil die Datenstruktur nicht die Organisation der Daten wiedergibt. Deshalb muss beim Importieren immer ein passender Parser für das vorliegende Dateiformat verwendet werden.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hinweis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Für die gängigsten Datenformate existieren eigene Parser. Die Entwicklung eines Parsers für ein bestimmtes Format ist nur selten notwendig.</p>
+</div>
+</div>
+<p>Die Auswahl eines geeigneten Parsers liegt in der Verantwortung der Person, die die Daten importiert. In manchen Fällen kann das Dateiformat automatisch erkannt werden. In diesen Fällen wird ein geeigneter Parser automatisch ausgewählt. Diese automatische Auswahl ist aber nicht immer korrekt. Deshalb muss das Ergebnis des Parsers immer überprüft werden.</p>
+</section>
+<section id="werte-zuordnen" class="level4" data-number="9.1.1.2">
+<h4 data-number="9.1.1.2" class="anchored" data-anchor-id="werte-zuordnen"><span class="header-section-number">9.1.1.2</span> Werte zuordnen</h4>
+<p>Der zweite Schritt beim Importieren ist die Zuordnung der Werte zu den richtigen Datentypen und der richtigen Struktur. Normalerweise versucht ein Parser bereits die richtigen Datentypen zu erkennen. Dabei kann es zu Fehlern kommen, wenn sich die Werte nicht eindeutig einem Datentyp zuordnen lassen oder ein spezieller Datentyp verwendet werden soll.</p>
+<p>Diesem Schritt umfasst auch das Erkennen und Behandeln von Markierungen, welche in internen Strukturen als Variablennamen oder benannten Datenfeldern abgebildet werden. Bei Separator-strukturierten Dateien umfasst dieser Teilschritt die Zuordnung von Überschriften. Bei Markup-Daten werden Tags und Markierungen für die interne Struktur verwendet.</p>
+<p>Dieser Schritt umfasst oft auch die Behandlung von ungültigen oder fehlenden Werten.</p>
+</section>
+<section id="daten-auswählen" class="level4" data-number="9.1.1.3">
+<h4 data-number="9.1.1.3" class="anchored" data-anchor-id="daten-auswählen"><span class="header-section-number">9.1.1.3</span> Daten auswählen</h4>
+<p>Gelegentlich werden mehr Daten in einem Datenstrom bereitgestellt, als für die weitere Verarbeitung benötigt werden. In solchen Fällen werden nur die Daten ausgewählt, die für die weitere Verarbeitung benötigt werden. Bei diesem Schritt werden nicht benötigte Daten aus der internen Datenstruktur entfernt.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Wichtig
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Das Auswählen von Daten bezieht sich ausschliesslich auf die interne Datenstruktur. Die ursprünglichen Daten im Datenstrom dürfen nicht verändert werden.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="exportieren" class="level3" data-number="9.1.2">
+<h3 data-number="9.1.2" class="anchored" data-anchor-id="exportieren"><span class="header-section-number">9.1.2</span> Exportieren</h3>
+<div id="def-export-data" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 9.5 </strong></span>Das Schreiben von Daten aus einer Datenstruktur in einen Datenstrom heisst <strong>Exportieren</strong>.</p>
+</div>
+<p>Beim Exportieren werden die Daten aus einer Datenstruktur in einen Datenstrom <em>serialisiert</em>. Eine Funktion die eine Datenstruktur in einen Datenstrom überführt, heisst <strong>Serialisierer</strong>.</p>
+<p>Ähnlich wie beim Importieren muss auch beim Exportieren existiert für jedes Datenformat ein geeigneter Serializer. Die Wahl eines Serialisierers hängt von der späteren Verwendung der Serialisierung ab.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hinweis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Es ist üblich, die gleichen Daten in verschiedenen Formaten zu serialisieren.</p>
+</div>
+</div>
+<p>Einige Dateiformat sind sehr komplex. Dadurch sind unvollständige Serialisierungen möglich. Eine unvollständige Serialisierung kann zu Datenverlusten führen. Deshalb sollte für gängige Dateiformate immer ein existierender Serializer verwendet werden.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Praxis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Beim Exportieren von Daten die vorher importiert wurde dürfen die ursprüngliche Daten nicht überschrieben werden, weil sonst Daten verloren gehen können. Stattdessen sollten Daten beim Exportieren in eine separate Datei geschrieben werden.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="textdateien" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="textdateien"><span class="header-section-number">9.2</span> Textdateien</h2>
+<div id="def-textformat" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 9.6 </strong></span>Eine Textformat legt fest, dass alle Werte in einer Datei als Zeichenkettensymbole interpretiert werden müssen.</p>
+</div>
+<p>Die Bits einer Textdatei sind nach einem festgelegten Standard kodiert (s. <a href="../01-information/kapitel.html#sec-zeichenkodierung"><span>Kapitel&nbsp;3.5</span></a>). Dadurch kann der Inhalt einer Textdatei immer zuverlässig gelesen und interpretiert werden. Inzwischen verwenden alle modernen Betriebssysteme einheitlich den Kodierungsstandard UTF-8 <span class="citation" data-cites="isoiec_jtc_1sc_2_information_2020 the_unicode_consortium_unicode_2022">(<a href="../../references.html#ref-isoiec_jtc_1sc_2_information_2020" role="doc-biblioref">ISO/IEC JTC 1/SC 2, 2020</a>; <a href="../../references.html#ref-the_unicode_consortium_unicode_2022" role="doc-biblioref">The Unicode Consortium, 2022</a>)</span>.</p>
+<p>Textdateien haben den grossen Vorteil, dass die Dekodierung der Bits automatisch erfolgt. Eine Programm oder eine Funktion kann also direkt auf die kodierten Symbole zugreifen.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Textkodierungen
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Ältere Datenerfassungs- oder Steuerungssysteme sind noch heute im Einsatz. Einige dieser Systeme verwenden für Textdaten einen älteren Kodierungsstandard. In solchen Fällen muss beim Zugriff auf die Daten die abweichende Kodierung explizit angegeben werden.</p>
+<p>Eine abweichende Textkodierung wird oft an merkwürdigen Zeichenfolgen in den Daten erkannt. Nicht immer ist die verwendete Kodierung dokumentiert. Oft lässt sich die Textkodierung aus dem kulturellen Kontext der Daten ableiten. Die folgende Tabelle gibt für Europa und die USA eine Orientierung, welche Textkodierungen in welchen Zeiträumen verwendet wurden.</p>
+<table class="table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 20%">
+<col style="width: 62%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">&nbsp;Land/Region</th>
+<th style="text-align: center;">Zeitraum</th>
+<th style="text-align: left;">Wahrscheinliche Kodierung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Weltweit</td>
+<td style="text-align: center;">seit ca. 2012</td>
+<td style="text-align: left;">UTF-8 <span class="citation" data-cites="isoiec_jtc_1sc_2_information_2020">(<a href="../../references.html#ref-isoiec_jtc_1sc_2_information_2020" role="doc-biblioref">ISO/IEC JTC 1/SC 2, 2020</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">West-Europa</td>
+<td style="text-align: center;">2000-2012</td>
+<td style="text-align: left;">iso-8859-15 <span class="citation" data-cites="isoiec_jtc_1sc_2wg_3_isoiec_1998">(<a href="../../references.html#ref-isoiec_jtc_1sc_2wg_3_isoiec_1998" role="doc-biblioref">ISO/IEC JTC 1/SC 2/WG 3, 1998b</a>)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">USA</td>
+<td style="text-align: center;">2000 - 2012</td>
+<td style="text-align: left;">iso-8859-1 <span class="citation" data-cites="isoiec_jtc_1sc_2wg_3_dis_1998">(<a href="../../references.html#ref-isoiec_jtc_1sc_2wg_3_dis_1998" role="doc-biblioref">ISO/IEC JTC 1/SC 2/WG 3, 1998a</a>)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">West-Europa</td>
+<td style="text-align: center;">1990 - 2000</td>
+<td style="text-align: left;">iso-8859-1 <span class="citation" data-cites="isoiec_jtc_1sc_2wg_3_dis_1998">(<a href="../../references.html#ref-isoiec_jtc_1sc_2wg_3_dis_1998" role="doc-biblioref">ISO/IEC JTC 1/SC 2/WG 3, 1998a</a>)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">USA</td>
+<td style="text-align: center;">vor 2000</td>
+<td style="text-align: left;">ANSI/ASCII <span class="citation" data-cites="american_national_standards_institute_code_1977">(<a href="../../references.html#ref-american_national_standards_institute_code_1977" role="doc-biblioref">American National Standards Institute, 1977</a>)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="festkodierung" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="festkodierung"><span class="header-section-number">9.3</span> Festkodierung</h2>
+<p>Bei der Festkodierung werden die Werte in einer festen Reihenfolge und festen Symbol- oder Bitlängen in den Datenstrom geschrieben. Bei der Festkodierung ist die Reihenfolge der Werte und die Länge der Werte festgelegt.</p>
+<p>Festkodierungen erlauben sehr effizientes speichern und lesen von Daten. Damit festkodierte Daten verarbeitet können müssen die Datenfelder in einem gemeinsamen Schema festgelegt sein, dass beim Kodieren und Dekodieren verwendet wird.</p>
+<blockquote class="blockquote">
+<div id="exm-festkodierung" class="theorem example">
+<p><span class="theorem-title"><strong>Beispiel 9.1 (Kodierung der IBAN) </strong></span>Die IBAN ist ein festkodiertes Datenformat mit vier Werten. Die Kodierung ist international einheitlich festgelegt <span class="citation" data-cites="isotc_68sc_8_financial_2020">(<a href="../../references.html#ref-isotc_68sc_8_financial_2020" role="doc-biblioref">ISO/TC 68/SC 8, 2020</a>)</span>.</p>
+<ul>
+<li>Länderkennung (2 Buchstaben)</li>
+<li>Prüfzahl (2 Ziffern)</li>
+<li>Bankkennung (5 Symbole)</li>
+<li>Kontonummer (6-25 Symbole)</li>
+</ul>
+<p>Die Prüfzahl erlaubt die Überprüfung der anderen Werte. Dadurch lassen sich Zahlendreher oder fehlerhafte Eingaben erkennen.</p>
+<p>Die Länge des letzten Felds wird durch nationale Gremien vereinheitlicht. In Deutschland ist die Kontonummer 10-stellig, in der Schweiz 9-stellig und in Österreich 8-stellig. Die restlichen Stellen bis zur Maximallänge 25 werden mit Leerzeichen aufgefüllt.</p>
+<p>Oft werden IBANs mit Leerzeichen gruppiert, um die Lesbarkeit zu erhöhen. Die Leerzeichen werden bei der Verarbeitung gelöscht.</p>
+</div>
+</blockquote>
+</section>
+<section id="zeilenbasierte-textdateien" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="zeilenbasierte-textdateien"><span class="header-section-number">9.4</span> Zeilenbasierte Textdateien</h2>
+<p>Normalerweise sind Textdateien unstrukturiert und die verwendeten Symbole dienen nur der Anzeige und haben keine eigene Bedeutung. Das ist nicht immer praktisch, um Daten zu strukturieren. Hier greifen sog. zeilenbasierte Textformate. Diese Textformate sind eine einfache Form der Datenorganisation, wobei alle Symbole in der gleichen Zeile zusammengehören und von den Symbolen in den anderen Zeilen abzugrenzen sind.</p>
+<p>Zeilenbasierte Textdateien sind eine spezielle Form der <em>Listenkodierung</em>, wobei das Symbol für den Zeilenumbruch als Listentrennzeichen behandelt wird.</p>
+<p>Eine typische Anwendung der zeilenbasierten Textkodierung sind sog. <em>Log-Dateien</em>, mit denen Systemereignisse protokolliert werden.</p>
+</section>
+<section id="sec-mengen-und-baeume" class="level2" data-number="9.5">
+<h2 data-number="9.5" class="anchored" data-anchor-id="sec-mengen-und-baeume"><span class="header-section-number">9.5</span> Mengen und Bäume</h2>
+<p>Die Werte lassen sich auf verschiedene Arten in Datenströmen kodieren. Die einfachste Form ist die <strong>Mengenkodierung</strong>. Bei der Mengenkodierung werden die Werte in einer festen Reihenfolge in den Datenstrom geschrieben. Dabei werden die Werte als eine zusammenhängende <em>Menge</em> behandelt.</p>
+<p>Die verbreitesten Formen der Mengenkodierung sind die <em>Listenkodierung</em> und die <em>Tabellenkodierung</em>. Bei der Listenkodierung werden die einzelnen Werte nacheinander in den Datenstrom geschrieben. Dabei ist die Reihenfolge der Werte nich von Bedeutung. Bei der Tabellenkodierung werden die Werte in einer tabellarisch organisiert. Dabei werden die Werte in Zeilen und Spalten organisiert, wobei jede Zeile und jede Spalte als eine Teilmenge behandelt wird. Die Reihenfolge der Zeilen und Spalten ist dabei nicht von Bedeutung, solange die Zeilen- und Spaltenteilmengen erhalten bleiben.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hinweis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Die Mengenkodierung ist gleichzeitig die Grundlage für <em>Datenbanken</em> und <em>tabellarischen Dateien</em>. In Datenbanken werden die Werte tabellenartig in sog. <em>Relationen</em> organisiert.</p>
+</div>
+</div>
+<p>Die Mengenkodierung ist einfach und effizient. Sie hat aber den Nachteil, dass die Werte nicht leicht hierarchisch organisiert werden können, weil jede Hierarchieebene eine eigene Menge erfordert und damit von den anderen Ebenen abgegrenzt wäre. Dieses Problem löst die <strong>Baumkodierung</strong>. Die Baumkodierung kodiert Werte in einer Hierarchie. Dadurch lassen sich komplex-geschachtelte Datenstrukturen in einer Datei abbilden.</p>
+<p>In einer Baumkodierung werden die Werte auf einer Hierarchiestufe zusammegefasst. Eine Hierarchiestufe wird als <em>Knoten</em> bezeichnet. In einer solchen Kodierung hat jeder Knoten eine Vorgängerstufe. Diese Vorgängerstufe wird <em>Elternknoten</em> genannt. Die Knoten auf der gleichen Hierachiestufe haben immer den gleichen Elternknoten. Diese Knoten heissen <em>Geschwisterknoten</em>. Die Knoten ohne Nachfolger nennt man <em>Blattknoten</em>. Die eigentlichen Werte finden sich nur in Blattknoten.</p>
+<p>Mit der Baumkodierung lassen sich beliebig komplexe Datenstrukturen abbilden. Für die Kodierung von Datenstrukturen mit <em>höchstens zwei</em> Hierarchiestufen und <em>vielen Werten</em> ist die Baumkodierung weniger effizient als die Mengenkodierung.</p>
+</section>
+<section id="sec-separator-strukturierte-textdateien" class="level2" data-number="9.6">
+<h2 data-number="9.6" class="anchored" data-anchor-id="sec-separator-strukturierte-textdateien"><span class="header-section-number">9.6</span> Separator-strukturierte Textdateien</h2>
+<p>Eine besondere Klasse der zeilenbasierten Textdateien sind die sog. “<em>Separator-strukturierten</em>” Dateien. Diese Dateiformate sind eine einfache Form der <em>Tabellenkodierung</em>, bei der die Werte in der gleichen Zeile durch ein zusätzlichens <em>Trennzeichen</em> voneinander abgegrenzt werden.</p>
+<p>Separator-strukturierte Dateien sind zeilenbasierte Textdateien, bei denen die Werte in einer Zeile durch ein <em>Trennzeichen</em> voneinander abgegrenzt werden. Dadurch lassen sich die Werte in einer Zeile leichter als bei einer Festkodierung kodieren und dekodieren. Für die Trennung der Werte muss nur das verwendete Trennzeichen bekannt sein. Die Position und die Länge der Werte wird durch das Trennzeichen festgelegt und muss nicht vorab definiert werden.</p>
+<p>Die verbreitetsten Separator-strukturierten Dateiformate sind:</p>
+<ul>
+<li><em>Tab-separated values</em> (TSV)</li>
+<li><em>Comma-separated values</em> (CSV)</li>
+<li><em>Pipe-separated values</em> (PSV)</li>
+</ul>
+<p>Der Unterschied zwischen diesen Formaten ist das verwendete Trennzeichen. TSV-Dateien werden durch ein Tabulatorzeichen getrennt, CSV-Dateien durch ein Komma und bei PSV-Dateien durch ein Pipe-Symbol.</p>
+<p>Das einfachste Trennzeichen wäre das <em>Leerzeichen</em>. Das Leerzeichen ist als Trennzeichen nur dann geeignet, wenn es als Symbol in den Werten <em>nicht</em> vorkommen kann. Das ist bei vielen Daten nicht der Fall. Deshalb wird häufig das Tabulator-Symbol (<code>\t</code>) als Alternative zum Leerzeichen verwendet. Das Tabulator-Symbol ist ein nicht-druckbares Zeichen, das dem Leerzeichen ähnelt, aber seltener in Werten vorkommt. Dieses einfache Format wird als <em>Tab-separated values</em> (TSV) bezeichnet <span class="citation" data-cites="lindner_definition_1993">(<a href="../../references.html#ref-lindner_definition_1993" role="doc-biblioref">Lindner, 1993</a>)</span>.</p>
+<div id="exm-tsv-file" class="theorem example">
+<p><span class="theorem-title"><strong>Beispiel 9.2 (TSV-Daten) </strong></span>&nbsp;</p>
+<pre class="csv"><code>Name    Vorname Geburtsdatum    Geburtsort  Grösse
+Müller  Hans 01.01.1990  Berlin   1.76
+Untermayr Peter   01.01.1980  Wien 1.82
+Osterwalder Urs    01.01.1970   Bern  1.78</code></pre>
+</div>
+<p>Die Basis für die meisten anderen Separator-strukturierten Dateiformate ist das standardisierte CSV-Format <span class="citation" data-cites="shafranovich_common_2005">(<a href="../../references.html#ref-shafranovich_common_2005" role="doc-biblioref">Shafranovich, 2005</a>)</span>. Die Trennzeichen der CSV Spezifikation sind das Komma (<code>,</code>) und der Zeilenumbruch. Zusätzlich können die Werte in Anführungszeichen gesetzt werden, um die Werte zu schützen, falls diese ein Komma enthalten.</p>
+<div id="exm-csv-file" class="theorem example">
+<p><span class="theorem-title"><strong>Beispiel 9.3 (CSV-Daten) </strong></span>&nbsp;</p>
+<pre class="csv"><code>Name,Vorname,Geburtsdatum,Geburtsort,Grösse
+Müller,Hans,01.01.1990,Berlin,1.76
+Untermayr,Peter,01.01.1980,Wien,1.82
+Osterwalder,Urs,01.01.1970,Bern,1.78</code></pre>
+</div>
+<p>Im deutschsprachigen Raum wird die CSV-Spezifikation oft abgewandelt. Dabei wird das Komma durch ein Semikolon (<code>;</code>) ersetzt. Dadurch kann das Komma als Dezimaltrennzeichen verwendet werden, ohne es zusätzlich durch Anführungszeichen geschützt zu werden. Diese Abwandlung wird als <em>Semikolon-separierte Werte</em> bezeichnet und ebenfalls als <code>CSV</code> abgekürzt.</p>
+<div id="exm-semikolon-csv-file" class="theorem example">
+<p><span class="theorem-title"><strong>Beispiel 9.4 (Semikolon-Daten) </strong></span>&nbsp;</p>
+<pre class="csv"><code>Name;Vorname;Geburtsdatum;Geburtsort;Grösse
+Müller;Hans;01.01.1990;Berlin;1,76
+Untermayr;Peter;01.01.1980;Wien;1,82
+Osterwalder;Urs;01.01.1970;Bern;1,78</code></pre>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Achtung
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Weil beim <code>CSV</code>-Format zwei unterschiedliche Trennzeichen verwendet werden, treten beim Importieren oft Fehler auf, weil der Parser für das falsche Trennzeichen verwendet wurde. Bei der Arbeit mit <code>CSV</code>-Dateien sollte deshalb eine Datendatei auf das verwendete Trennzeichen geprüft werden. Diese Überprüfung kann entfallen, wenn das Trennzeichen dokumentiert wurde.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Achtung
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Beim Importieren von CSV-Dateien in der Schweiz muss zusätzlich das Dezimaltrennzeichen geprüft werden. Werden die Daten aus einer Excel-Version mit <em>deutschen Regionseinstellungen</em> exportiert, dann wird das Semikolon als Feldtrennzeichen und das Komma als Dezimaltrennzeichen verwendet. Werden die Daten aus einer Excel-Version mit <em>englischen Regionseinstellungen</em> exportiert, dann wird das Komma als Feldtrennzeichen und der Punkt als Dezimaltrennzeichen verwendet.</p>
+<p>In der Schweiz wird als Dezimaltrennzeichen wie im Englischen meistens ein Punkt verwendet. Werden Daten aus einer Excel-Version mit <em>schweizer Regionseinstellungen</em> werden die Trennzeichen gemischt: Als Feldtrennzeichen wird das Semikolon und als Dezimaltrennzeichen der Punkt verwendet. Das kann beim Import der Daten zu Fehlern führen, wenn das Dezimaltrennzeichen von einem Parser nicht angepasst wurde oder werden kann.</p>
+</div>
+</div>
+<p>Das PSV-Format verwendet das Pipe-Symbol (<code>|</code>) als Trennzeichen. Während im CSV-Format Überschriften und Werte nicht klar unterschieden werden können, ist beim PSV-Format möglich. Dazu wird nach dem Überschriften eine Zeile mit Minuszeichen (<code>-</code>) und Trennzeichen eingefügt, um die Überschriften von den Werten abzugrenzen. Das PSV-Format wird oft als eingebettetes Format in Markdown-Dateien verwendet.</p>
+<div id="exm-psv-file" class="theorem example">
+<p><span class="theorem-title"><strong>Beispiel 9.5 (PSV-Daten mit Überschriften) </strong></span>&nbsp;</p>
+<pre class="csv"><code>Name|Vorname|Geburtsdatum|Geburtsort|Grösse
+----|-------|------------|----------|------
+Müller|Hans|01.01.1990|Berlin|1.76
+Untermayr|Peter|01.01.1980|Wien|1.82
+Osterwalder|Urs|01.01.1970|Bern|1.78</code></pre>
+</div>
+<p>Eine Erweiterung des PSV-Formats ist das sog. <em>Markdown-Tabellenformat</em>. Dieses Format erlaubt Zellenformatierungen für die Spalten. Dazu wird im Überschriftentrenner (<code>-</code>) ein Doppelpunkt (<code>:</code>) verwendet. Die Position des Doppelpunkts legt die Ausrichtung der Spalte fest. Fehlt ein Doppelpunkt oder steht ein Doppelpunkt am Anfang der Spalte formatiert die Spalte linksbündig, ein Doppelpunkt am Ende der Spalte formatiert die Spalte rechtsbündig und ein Doppelpunkt am Anfang und Ende der Spalte formatiert die Spalte zentriert.</p>
+<div id="exm-markdown-table" class="theorem example">
+<p><span class="theorem-title"><strong>Beispiel 9.6 (Markdown-Tabellenformat) </strong></span>&nbsp;</p>
+<pre class="csv"><code>Name|Vorname|Geburtsdatum|Geburtsort|Grösse
+:---|:---:|---:|---|---:
+Müller|Hans|01.01.1990|Berlin|1.76
+Untermayr|Peter|01.01.1980|Wien|1.82
+Osterwalder|Urs|01.01.1970|Bern|1.78</code></pre>
+<p>Das Ergebnis wird wie folgt dargestellt.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Name</th>
+<th style="text-align: center;">Vorname</th>
+<th style="text-align: right;">Geburtsdatum</th>
+<th>Geburtsort</th>
+<th style="text-align: right;">Grösse</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Müller</td>
+<td style="text-align: center;">Hans</td>
+<td style="text-align: right;">01.01.1990</td>
+<td>Berlin</td>
+<td style="text-align: right;">1.76</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Untermayr</td>
+<td style="text-align: center;">Peter</td>
+<td style="text-align: right;">01.01.1980</td>
+<td>Wien</td>
+<td style="text-align: right;">1.82</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Osterwalder</td>
+<td style="text-align: center;">Urs</td>
+<td style="text-align: right;">01.01.1970</td>
+<td>Bern</td>
+<td style="text-align: right;">1.78</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="excel-arbeitsmappen" class="level2" data-number="9.7">
+<h2 data-number="9.7" class="anchored" data-anchor-id="excel-arbeitsmappen"><span class="header-section-number">9.7</span> Excel-Arbeitsmappen</h2>
+<p>Excel-Arbeitsmappen (<code>xlsx</code>) fassen mehrere Tabellen zusammen. Excel-Arbeitsmappen werden als komprimiertes Dateiarchiv gespeichert. Deshalb wird das Format von EXCEL-Arbeitsmappen als <em>Binärformat</em> bezeichnet.</p>
+<p>Anders als bei Textdateien in denen nur die Werte und deren Struktur kodiert wird, werden bei EXCEL-Arbeitsmappen auch <em>komplexe Formatierungen</em>, <em>Grafiken</em> und die <em>Berechnungen</em> kodiert <span class="citation" data-cites="carpenter_ms-xlsx_2023">(<a href="../../references.html#ref-carpenter_ms-xlsx_2023" role="doc-biblioref">Carpenter, 2023</a>)</span>. Die einzelnen Arbeitsblätter werden zwar als Mengenkodierung behandelt, das eigentliche Dateiformat folgt einer Baumstruktur.</p>
+<p>Excel-Arbeitsmappen fassen mehrere benannte Arbeitsblätter zusammen. Ein Arbeitsblatt ist eine Struktur aus Zeilen und Spalten, die <em>tabellarisch</em> organisiert ist. Dadurch ist es möglich, dass mehrere <em>Tabellen</em> auf einem Arbeitsblatt vorhanden sind. Falls diese Tabellen nicht explizit als Datentyp <code>Tabelle</code> markiert wurden, muss diese Kodierung separat dokumentiert werden.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Praxis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Um Excel-Arbeitsmappen mit anderen Programmiersprachen zu verarbeiten muss die Struktur der Arbeitsmappe berücksichtigt werden. Daten sind immer nur über das Arbeitsblatt zugreifbar. Deshalb muss immer zuerst ein Arbeitsblatt ausgewählt werden, bevor auf die Daten zugegriffen werden kann.</p>
+<p>Arbeitsblätter haben immer zwei Modi: Den <em>Wertemodus</em> und den <em>Formelmodus</em>. Der gewünschte Moduls muss programmatisch festgelegt werden.</p>
+<p>Im Wertemodus werden die Werte der Zellen angezeigt. Im Formelmodus werden die Formeln der Zellen angezeigt. Wenn eine Zelle nur einen Wert aber keine Formel enthält, wird auch im Formelmodus der Wert bereitgestellt.</p>
+</div>
+</div>
+</section>
+<section id="markup-formate" class="level2" data-number="9.8">
+<h2 data-number="9.8" class="anchored" data-anchor-id="markup-formate"><span class="header-section-number">9.8</span> Markup-Formate</h2>
+<p>Separator-strukturierte Textdateien sind eine einfache Form der <em>Tabellenkodierung</em>. Diese Kodierung ist nur für einfache Datenstrukturen geeignet. Für komplexere Datenstrukturen reichen diese Formate nicht aus.</p>
+<p>Ein Ansatz zur Speicherung von komplexen Datenstrukturen als Textdateien sind die sog. <em>Markup-Sprachen</em>. Markup-Sprachen sind Textdateien, mit denen Datenstrukturen durch Markierungen beschrieben werden. Sie sind als Datenbeschreibung eine Form der <em>Baumkodierung</em>. Dadurch lassen sich beliebig komplexe Datenstrukturen abbilden.</p>
+<p>Die zwei am häufigsten benutzten Markupsprachen sind <em>XML</em> <span class="citation" data-cites="bray_extensible_2008">(<a href="../../references.html#ref-bray_extensible_2008" role="doc-biblioref">Bray et al., 2008</a>)</span> und <em>HTML</em> <span class="citation" data-cites="hickson_html_nodate">(<a href="../../references.html#ref-hickson_html_nodate" role="doc-biblioref">Hickson et al., o.&nbsp;J.</a>)</span>. Beide Markupsprachen basieren auf dem gemeinsamen <em>SGML</em>-Standard <span class="citation" data-cites="isoiec_jtc_1sc_34_information_1999">(<a href="../../references.html#ref-isoiec_jtc_1sc_34_information_1999" role="doc-biblioref">ISO/IEC JTC 1/SC 34, 1999</a>)</span>. XML schränkt Datenorganisation ein, so dass Daten immer eindeutig abgebildet werden können. HTML stellt die Syntax für die Strukturierung von Webseiten bereit. Bei HTML stehen deshalb die Abbildung von Datenstrukturen nicht im Vordergrund.</p>
+<p>Beide Formate verwenden sog. <em>Tags</em> als Markierungen im Text. Ein Tag wird durch eine öffnende spitze Klammer eingeleitet und eine schliessende spitze Klammer beendet. Das Tag hat einen Namen, welcher unmittelbar der öffnenden Klammer folgt. Tags können abgeschlossen werden, indem ein Schrägstrich (<code>/</code>) dem Tag-Namen vorangestellt wird.</p>
+<div id="exm-markup-tag" class="theorem example">
+<p><span class="theorem-title"><strong>Beispiel 9.7 (Markup-Tag) </strong></span>&nbsp;</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode xml code-with-copy"><code class="sourceCode xml"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">tag-name</span>&gt;&lt;/<span class="kw">tag-name</span>&gt;</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Tags können ausserdem <em>Attribute</em> enthalten. Attribute sind Schlüssel-Wert-Paare, die dem Tag zugeordnet sind. Die Werte von Attributen werden in der Regel in Anführungszeichen gesetzt.</p>
+<div id="exm-markup-tag-mit-attribut" class="theorem example">
+<p><span class="theorem-title"><strong>Beispiel 9.8 (Markup-Tag mit einem Attribut) </strong></span>&nbsp;</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode xml code-with-copy"><code class="sourceCode xml"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">tag-name</span><span class="ot"> name=</span><span class="st">"Wert"</span>&gt;&lt;/<span class="kw">tag-name</span>&gt;</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Tags können <em>geschachtelt</em> werden, wobei die Schachtelung durch die Reihenfolge der Tags festgelegt wird.</p>
+<div id="exm-markup-tag-nested" class="theorem example">
+<p><span class="theorem-title"><strong>Beispiel 9.9 (Geschachtelte Tags) </strong></span>&nbsp;</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode xml code-with-copy"><code class="sourceCode xml"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">tag-name</span>&gt;&lt;<span class="kw">unter-tag</span>&gt;Wert&lt;/<span class="kw">unter-tag</span>&gt;&lt;/<span class="kw">tag-name</span>&gt;</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Beide Markup-Sprachen ignorieren Leerzeichen und Zeilenumbrüche. Dadurch können die Daten in einer Markup-Sprache beliebig formatiert werden, ohne die Bedeutung der Daten zu verändern. Entsprechend sind <a href="#exm-markup-tag-nested">Beispiel&nbsp;<span>9.9</span></a> und <a href="#exm-markup-tag-nested-format">Beispiel&nbsp;<span>9.10</span></a> gleichwertig.</p>
+<div id="exm-markup-tag-nested-format" class="theorem example">
+<p><span class="theorem-title"><strong>Beispiel 9.10 (Geschachtelte Tags mit Zeilenumbrüchen und Leerzeichen) </strong></span>&nbsp;</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode xml code-with-copy"><code class="sourceCode xml"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">tag-name</span>&gt;</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>   &lt;<span class="kw">unter-tag</span>&gt;</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>      Wert</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>   &lt;/<span class="kw">unter-tag</span>&gt;</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">tag-name</span>&gt;</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Die Flexibilität von Markup-Sprachen hat die Folge, dass sie meistens sehr komplex sind und sich nicht direkt in die Datenstrukturen von Programmiersprachen übersetzen lassen. Deshalb wird für Markup-Sprachen ein sog. <em>Document-Object-Model</em> (DOM) definiert, damit die Daten in die für Programmiersprachen üblichen Datenstrukturen übersetzt werden können.</p>
+<section id="xml" class="level3" data-number="9.8.1">
+<h3 data-number="9.8.1" class="anchored" data-anchor-id="xml"><span class="header-section-number">9.8.1</span> XML</h3>
+<p>XML wurde als flexibles Datenbeschreibungsformat konzipiert, dass an die Anforderungen unterschiedlicher Anwendungen angepasst werden kann. XML gibt die Formatierung von Datenserialisierungen vor. Die eigentlichen Datenstrukturen müssen über ein separates Schema spezifiziert werden. Deshalb ist XML eine <em>Metasprache</em> und keine Markup-Sprache im eigentlichen Sinn.</p>
+<p>Ein XML-Tag steht dabei für eine Datenstruktur. Bei geschachtelten Strukturen erfordert XML, das die hierarchischen Abhängigkeiten explizit im Format markiert werden. Deshalb müssen geschachtelte Tags immer in der umgekehrten Reihenfolge geschlossen werden, in der sie geöffnet wurden.</p>
+<p>Die Namen für XML-Tags dürfen frei gewählt werden, wobei Leerzeichen im Namen von Tags und Attributen verboten sind.</p>
+<p>XML kann Werte als <em>Attribut</em> oder als <em>Inhalt</em> eines Tags kodieren. Die Wahl der Kodierung ist abhängig vom vorgegebenen Datenschema. Für neue Datenschema hat sich eingebürgert, Werte als Inhalte in hierarchischer Form zu kodieren.</p>
+<div id="exm-xml-format-meta-attribute" class="theorem example">
+<p><span class="theorem-title"><strong>Beispiel 9.11 (XML-Format einer tabellarischen Struktur in hierarchischer Form) </strong></span>&nbsp;</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode xml code-with-copy"><code class="sourceCode xml"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">daten</span>&gt;</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">person</span>&gt;</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>   &lt;<span class="kw">name</span>&gt;Müller&lt;/<span class="kw">name</span>&gt; </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>   &lt;<span class="kw">vorname</span>&gt;Hans&lt;/<span class="kw">vorname</span>&gt; </span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>   &lt;<span class="kw">geburtsort</span>&gt;Berlin&lt;/<span class="kw">geburtsort</span>&gt; </span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>   &lt;<span class="kw">geburtsdatum</span>&gt;01.01.1990&lt;/<span class="kw">geburtsdatum</span>&gt;</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>   &lt;<span class="kw">grösse</span>&gt;1.76&lt;/<span class="kw">grösse</span>&gt;</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  &lt;/<span class="kw">person</span>&gt;</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">person</span>&gt;</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>   &lt;<span class="kw">name</span>&gt;Untermayr&lt;/<span class="kw">name</span>&gt; </span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>   &lt;<span class="kw">vorname</span>&gt;Peter&lt;/<span class="kw">vorname</span>&gt; </span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>   &lt;<span class="kw">geburtsort</span>&gt;Wien&lt;/<span class="kw">geburtsort</span>&gt; </span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>   &lt;<span class="kw">geburtsdatum</span>&gt;01.01.1980&lt;/<span class="kw">geburtsdatum</span>&gt;</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>   &lt;<span class="kw">grösse</span>&gt;1.82&lt;/<span class="kw">grösse</span>&gt;</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>  &lt;/<span class="kw">person</span>&gt;</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">person</span>&gt;</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>   &lt;<span class="kw">name</span>&gt;Osterwalder&lt;/<span class="kw">name</span>&gt; </span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>   &lt;<span class="kw">vorname</span>&gt;Urs&lt;/<span class="kw">vorname</span>&gt; </span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>   &lt;<span class="kw">geburtsort</span>&gt;Bern&lt;/<span class="kw">geburtsort</span>&gt; </span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>   &lt;<span class="kw">geburtsdatum</span>&gt;01.01.1970&lt;/<span class="kw">geburtsdatum</span>&gt;</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>   &lt;<span class="kw">grösse</span>&gt;1.78&lt;/<span class="kw">grösse</span>&gt;</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>  &lt;/<span class="kw">person</span>&gt;</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">daten</span>&gt;</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Attribute sollten nur für die Kodierung von ergänzenden Daten verwendet. Zu solchen Daten ghört beispielsweise der Datentyp eines Wertes, weil XML alle Werte nur als Zeichenketten abbildet.</p>
+<div id="exm-xml-format-meta-attribute" class="theorem example">
+<p><span class="theorem-title"><strong>Beispiel 9.12 (XML-Format einer tabellarischen Struktur mit ergänzenden Attributen) </strong></span>&nbsp;</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode xml code-with-copy"><code class="sourceCode xml"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">daten</span>&gt;</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">person</span>&gt;</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>   &lt;<span class="kw">name</span><span class="ot"> typ=</span><span class="st">"text"</span>&gt;Müller&lt;/<span class="kw">name</span>&gt; </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>   &lt;<span class="kw">vorname</span><span class="ot"> typ=</span><span class="st">"text"</span>&gt;Hans&lt;/<span class="kw">vorname</span>&gt; </span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>   &lt;<span class="kw">geburtsort</span><span class="ot"> typ=</span><span class="st">"text"</span>&gt;Berlin&lt;/<span class="kw">geburtsort</span>&gt; </span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>   &lt;<span class="kw">geburtsdatum</span><span class="ot"> typ=</span><span class="st">"datum"</span>&gt;01.01.1990&lt;/<span class="kw">geburtsdatum</span>&gt;</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>   &lt;<span class="kw">grösse</span><span class="ot"> typ=</span><span class="st">"zahl"</span>&gt;1.76&lt;/<span class="kw">grösse</span>&gt;</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  &lt;/<span class="kw">person</span>&gt;</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">person</span>&gt;</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>   &lt;<span class="kw">name</span><span class="ot"> typ=</span><span class="st">"text"</span>&gt;Untermayr&lt;/<span class="kw">name</span>&gt; </span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>   &lt;<span class="kw">vorname</span><span class="ot"> typ=</span><span class="st">"text"</span>&gt;Peter&lt;/<span class="kw">vorname</span>&gt; </span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>   &lt;<span class="kw">geburtsort</span><span class="ot"> typ=</span><span class="st">"text"</span>&gt;Wien&lt;/<span class="kw">geburtsort</span>&gt; </span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>   &lt;<span class="kw">geburtsdatum</span><span class="ot"> typ=</span><span class="st">"datum"</span>&gt;01.01.1980&lt;/<span class="kw">geburtsdatum</span>&gt;</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>   &lt;<span class="kw">grösse</span><span class="ot"> typ=</span><span class="st">"zahl"</span>&gt;1.82&lt;/<span class="kw">grösse</span>&gt;</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>  &lt;/<span class="kw">person</span>&gt;</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">person</span>&gt;</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>   &lt;<span class="kw">name</span><span class="ot"> typ=</span><span class="st">"text"</span>&gt;Osterwalder&lt;/<span class="kw">name</span>&gt; </span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>   &lt;<span class="kw">vorname</span><span class="ot"> typ=</span><span class="st">"text"</span>&gt;Urs&lt;/<span class="kw">vorname</span>&gt; </span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>   &lt;<span class="kw">geburtsort</span><span class="ot"> typ=</span><span class="st">"text"</span>&gt;Bern&lt;/<span class="kw">geburtsort</span>&gt; </span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>   &lt;<span class="kw">geburtsdatum</span><span class="ot"> typ=</span><span class="st">"datum"</span>&gt;01.01.1970&lt;/<span class="kw">geburtsdatum</span>&gt;</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>   &lt;<span class="kw">grösse</span><span class="ot"> typ=</span><span class="st">"zahl"</span>&gt;1.78&lt;/<span class="kw">grösse</span>&gt;</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>  &lt;/<span class="kw">person</span>&gt;</span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">daten</span>&gt;</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Die Kodierung von Werten als Attribute findet sich nur noch in älteren XML-Dokumenten.</p>
+<div id="exm-xml-format-werte-attribute" class="theorem example">
+<p><span class="theorem-title"><strong>Beispiel 9.13 (XML-Format einer tabellarischen Struktur mit Werten als Attribute) </strong></span>&nbsp;</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode xml code-with-copy"><code class="sourceCode xml"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>&lt;<span class="kw">daten</span>&gt;</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">person</span><span class="ot"> name=</span><span class="st">"Müller"</span><span class="ot"> vorname=</span><span class="st">"Hans"</span><span class="ot"> geburtsort=</span><span class="st">"Berlin"</span> </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="ot">          geburtsdatum=</span><span class="st">"01.01.1990"</span><span class="ot"> grösse=</span><span class="st">"1.76"</span>&gt;&lt;/<span class="kw">person</span>&gt;</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">person</span><span class="ot"> name=</span><span class="st">"Untermayr"</span><span class="ot"> vorname=</span><span class="st">"Peter"</span><span class="ot"> geburtsort=</span><span class="st">"Wien"</span> </span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="ot">          geburtsdatum=</span><span class="st">"01.01.1980"</span><span class="ot"> grösse=</span><span class="st">"1.82"</span>&gt;&lt;/<span class="kw">person</span>&gt;</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  &lt;<span class="kw">person</span><span class="ot"> name=</span><span class="st">"Osterwalder"</span><span class="ot"> vorname=</span><span class="st">"Urs"</span><span class="ot"> geburtsort=</span><span class="st">"Bern"</span> </span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="ot">          geburtsdatum=</span><span class="st">"01.01.1970"</span><span class="ot"> grösse=</span><span class="st">"1.78"</span>&gt;&lt;/<span class="kw">person</span>&gt;</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>&lt;/<span class="kw">daten</span>&gt;</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Aus den Beispielen wird deutlich, dass die Kodierung im XML-Format zwar sehr flexibel ist, aber auch sehr komplex werden kann und wenig speichereffizient ist. Das kann ein Problem werden, wenn viele Daten zwischen Rechnern übertragen werden müssen. Deshalb wird XML heute nur noch für Anwendungen verwendet, bei denen die Flexibilität der Kodierung wichtiger ist als die Speichereffizienz.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hinweis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Eine Anwendung, die alle Daten im XML-Format speichert ist <em>Excel</em>. Diese Daten werden aber hinter den Kulissen in einem Binärformat gespeichert. Deshalb ist es nicht möglich, Excel-Arbeitsmappen direkt als XML-Dateien zu öffnen.</p>
+</div>
+</div>
+</section>
+<section id="html" class="level3" data-number="9.8.2">
+<h3 data-number="9.8.2" class="anchored" data-anchor-id="html"><span class="header-section-number">9.8.2</span> HTML</h3>
+<p>HTML wurde als Format für die Strukturierung von Webseiten entwickelt. Deshalb ist HTML eine echte <em>Markup-Sprache</em>, bei der die Namen der zulässigen Tags vorgegeben ist. Bei HTML steht dabei die Strukturierung von Webseiten im Vordergrund.</p>
+<p>HTML ist für die Datenkodierung nur von Bedeutung, wenn Daten als Webseiten dargestellt werden sollen. Tabellarische Daten können auf Webseiten leicht identifiziert werden, weil es dafür spezielle HTML-Tags gibt.</p>
+<div id="exm-html-table" class="theorem example">
+<p><span class="theorem-title"><strong>Beispiel 9.14 (HTML-Format einer tabellarischen Struktur) </strong></span>&nbsp;</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;table&gt;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;tr&gt;</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;th&gt;</span>Name<span class="kw">&lt;/th&gt;</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;th&gt;</span>Vorname<span class="kw">&lt;/th&gt;</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;th&gt;</span>Geburtsdatum<span class="kw">&lt;/th&gt;</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;th&gt;</span>Geburtsort<span class="kw">&lt;/th&gt;</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;th&gt;</span>Grösse<span class="kw">&lt;/th&gt;</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;/tr&gt;</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;tr&gt;</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;td&gt;</span>Müller<span class="kw">&lt;/td&gt;</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;td&gt;</span>Hans<span class="kw">&lt;/td&gt;</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;td&gt;</span>01.01.1990<span class="kw">&lt;/td&gt;</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;td&gt;</span>Berlin<span class="kw">&lt;/td&gt;</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;td&gt;</span>1.76<span class="kw">&lt;/td&gt;</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;/tr&gt;</span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;tr&gt;</span></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;td&gt;</span>Untermayr<span class="kw">&lt;/td&gt;</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;td&gt;</span>Peter<span class="kw">&lt;/td&gt;</span></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;td&gt;</span>01.01.1980<span class="kw">&lt;/td&gt;</span></span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;td&gt;</span>Wien<span class="kw">&lt;/td&gt;</span></span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;td&gt;</span>1.82<span class="kw">&lt;/td&gt;</span></span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;/tr&gt;</span></span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;tr&gt;</span></span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;td&gt;</span>Osterwalder<span class="kw">&lt;/td&gt;</span></span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;td&gt;</span>Urs<span class="kw">&lt;/td&gt;</span></span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;td&gt;</span>01.01.1970<span class="kw">&lt;/td&gt;</span></span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;td&gt;</span>Bern<span class="kw">&lt;/td&gt;</span></span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;td&gt;</span>1.78<span class="kw">&lt;/td&gt;</span></span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;/tr&gt;</span></span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/table&gt;</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Praxis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Der Datenaustausch über HTML-Tabellen ist inzwischen vernachlässigbar. HTML-Tabellen werden fast ausschliesslich für die Darstellung von Daten innerhalb von Anwendungen verwendet. Es gibt praktische keine Datenquellen mehr, deren Daten ausschliesslich als HTML-Tabellen vorliegen. Häufig werden Mess-Daten auch nicht mehr auf Web-Seiten bereitgestellt, sondern nur über Dateien in einem einem effizienteren Format verlinkt.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="json" class="level2" data-number="9.9">
+<h2 data-number="9.9" class="anchored" data-anchor-id="json"><span class="header-section-number">9.9</span> JSON</h2>
+<p>Mit der wachsenden Popularität des WWW wurde eine effizientere Form zur Kodierung komplexer Datenstrukturen erforderlich, um die Komplexität von Markupsprachen zu umgehen. Deshalb wurde die <em>JavaScript Object Notation</em> (JSON) entwickelt. JSON ist eine einfache Form der <em>Baumkodierung</em>. JSON ist eine <em>Untermenge</em> der JavaScript-Syntax und umfasst nur die Elemente zur Beschreibung von Datenstrukturen. Ein JSON-Dokument beschreibt deshalb immer eine gültige JavaScript-Datenstruktur. Deshalb kann JSON von JavaScript-Programmen in die üblichen Datenstrukturen überführt werden. Das vereinfacht die Programmierung und die Interaktivität von Anwendungen, die in Webbrowsern ausgeführt werden.</p>
+<p>JSON ist ein standardisiertes Datenformat <span class="citation" data-cites="bray_javascript_2017">(<a href="../../references.html#ref-bray_javascript_2017" role="doc-biblioref">Bray, 2017</a>)</span> und wird inzwischen von allen wichtigen Programmiersprachen unterstützt. Auch JSON ist ein <em>Markup-Format</em>, bei dem die Markierungen der JavaScript-Syntax folgen.</p>
+<p>JSON kennt nur sechs Datentypen, wodurch die Kodierung sehr einfach umzusetzen ist. Die Datentypen sind:</p>
+<ul>
+<li>Zahlen</li>
+<li>Zeichenketten</li>
+<li>Boole’sche Werte</li>
+<li>Listen</li>
+<li>Objekte</li>
+<li><code>null</code> (undefiniert)</li>
+</ul>
+<p>Zeichenketten müssen immer durch doppelte Anführungszeichen (<code>"</code>) eingeleitet und abgeschlossen werden.</p>
+<p>Der Listendatentyp wird durch Block-Klammern (<code>[</code> und <code>]</code>) markiert.</p>
+<p>Der Objekt-Datentyp gibt dem Format seinen Namen. Objekte werden durch geschweifte Klammern (<code>{</code> und <code>}</code>) markiert und sind eine <em>Menge</em> von <em>Schlüssel-Wert-Paaren</em>. Die Schlüssel sind Zeichenketten, wobei jeder Schlüssel nur einmal pro Objekt vorkommen darf. Die Werte können von beliebigen JSON-Datentypen sein. Schlüssel und Werte sind immer durch einen Doppelpunkt getrennt.</p>
+<p>Tabellarische Strukturen lassen sich in JSON auf zwei Arten abbilden:</p>
+<ul>
+<li>Als Liste von Objekten</li>
+<li>Als Objekt mit Listen</li>
+</ul>
+<p>Die erste Variante ist die gebräuchlichste, weil beim die Bedeutung der zusammenhängenden Werte durch die Schlüssel meistens einfacher verarbeitet werden kann.</p>
+<div id="exm-json-liste-von-objekten" class="theorem example">
+<p><span class="theorem-title"><strong>Beispiel 9.15 (Tabellenstruktur im JSON-Format als Liste von Objekten) </strong></span>&nbsp;</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ot">[</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"Müller"</span><span class="fu">,</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"vorname"</span><span class="fu">:</span> <span class="st">"Hans"</span><span class="fu">,</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"geburtsdatum"</span><span class="fu">:</span> <span class="st">"01.01.1990"</span><span class="fu">,</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"geburtsort"</span><span class="fu">:</span> <span class="st">"Berlin"</span><span class="fu">,</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"grösse"</span><span class="fu">:</span> <span class="fl">1.76</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"Untermayr"</span><span class="fu">,</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"vorname"</span><span class="fu">:</span> <span class="st">"Peter"</span><span class="fu">,</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"geburtsdatum"</span><span class="fu">:</span> <span class="st">"01.01.1980"</span><span class="fu">,</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"geburtsort"</span><span class="fu">:</span> <span class="st">"Wien"</span><span class="fu">,</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"grösse"</span><span class="fu">:</span> <span class="fl">1.82</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"Osterwalder"</span><span class="fu">,</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"vorname"</span><span class="fu">:</span> <span class="st">"Urs"</span><span class="fu">,</span></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"geburtsdatum"</span><span class="fu">:</span> <span class="st">"01.01.1970"</span><span class="fu">,</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"geburtsort"</span><span class="fu">:</span> <span class="st">"Bern"</span><span class="fu">,</span></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"grösse"</span><span class="fu">:</span> <span class="fl">1.78</span></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a><span class="ot">]</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Die Objekt-mit-Listen Strukturierung eignet sich, wenn die Vektorstruktur der Daten im Vordergrund steht. In diesem Fall werden die Werte in einer Liste zusammengefasst und die Schlüssel werden als Index verwendet.</p>
+<div id="exm-json-objekt-mit-listen" class="theorem example">
+<p><span class="theorem-title"><strong>Beispiel 9.16 (Tabellenstruktur im JSON-Format als Objekt mit Listen) </strong></span>&nbsp;</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"name"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"Müller"</span><span class="ot">,</span> <span class="st">"Untermayr"</span><span class="ot">,</span> <span class="st">"Osterwalder"</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"vorname"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"Hans"</span><span class="ot">,</span> <span class="st">"Peter"</span><span class="ot">,</span> <span class="st">"Urs"</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"geburtsdatum"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"01.01.1990"</span><span class="ot">,</span> <span class="st">"01.01.1980"</span><span class="ot">,</span> <span class="st">"01.01.1970"</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"geburtsort"</span><span class="fu">:</span> <span class="ot">[</span><span class="st">"Berlin"</span><span class="ot">,</span> <span class="st">"Wien"</span><span class="ot">,</span> <span class="st">"Bern"</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"grösse"</span><span class="fu">:</span> <span class="ot">[</span><span class="fl">1.76</span><span class="ot">,</span> <span class="fl">1.82</span><span class="ot">,</span> <span class="fl">1.78</span><span class="ot">]</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warnung
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Die Objekt-mit-Listen-Strukturierung ist weniger verbreitet, weil diese Strukturierung den Erhalt der Zusammenhänge zwischen den Werten nicht sicherstellt. Es wäre also denkbar, die Werte einer Liste in einer anderen Reihenfolge neu anzuordnen, ohne dass über die Positionen zusammenhängenden Werte ebenfalls angepasst werden.</p>
+<p>Dieses Problem besteht bei der Liste-von-Objekten-Strukturierung nicht.</p>
+</div>
+</div>
+</section>
+<section id="yaml" class="level2" data-number="9.10">
+<h2 data-number="9.10" class="anchored" data-anchor-id="yaml"><span class="header-section-number">9.10</span> YAML</h2>
+<p>In den letzten Jahren findet eine weitere Formatierung immer häufigere Verwendung: YAML <span class="citation" data-cites="ben-kiki_yaml_2021">(<a href="../../references.html#ref-ben-kiki_yaml_2021" role="doc-biblioref">Ben-Kiki et al., 2021</a>)</span>. YAML ist eine einfache “menschenfreundliche” Formatierung, die auf der Einrückung von Textblöcken basiert. YAML ist ein Obermenge von JSON und deshalb ist jedes JSON-Format gleichzeitig ein gültiges YAML-Format. Das Ziel des YAML-Formats ist das vereinfachte Erstellen und Bearbeiten von strukturierten Datendokumenten durch Menschen.</p>
+<p>YAML hat die gleichen Datentypen wie JSON und folgt den gleichen Prinzipien zur Datenkodierung. Dadurch hat YAML die gleichen Vorteile wie JSON. YAML erlaubt zusätzlich die Verwendung von Kommentaren, die in JSON nicht vorgesehen sind. Solche Kommentare dienen nur der Dokumentation für die menschliche Interaktion und werden beim Laden eines YAML-Dokuments ignoriert.</p>
+<p>Der Aufälligste Unterschied zwischen YAML und JSON ist die Verwendung von Einrückungen zur Strukturierung von Daten. Dadurch ist YAML für Menschen etwas leichter lesbar und verständlich. Auch müssen Zeichenketten meistens nicht explizit markiert werden. YAML legt Regeln zur automatischen Erkennung des Datentyps fest. So müssen nur in Ausnahmefällen Zeichenketten explizit markiert werden, was bspw. zur Unterscheidung von Wahrheitswerten und Zeichenketten müssen Zeichenketten explizit markiert werden, wenn eine Zeichenkette nur aus einem Schlüsselwort für einen Boole’schen Wert besteht. Zeichenketten müssen auch mit doppelten Anführungszeichen (<code>"</code>) markiert werden, wenn die Zeichenkette einen Doppelpunkt enhält.</p>
+<div id="exm-yaml-format-specialstring" class="theorem example">
+<p><span class="theorem-title"><strong>Beispiel 9.17 (Zeichenkettenmarkierung in YAML) </strong></span>&nbsp;</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Zeichenkette mit Doppelpunkt</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="st">"Müller: Hans"</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Objekt mit Schlüssel "Müller" und Wert "Hans"</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">Müller</span><span class="kw">:</span><span class="at"> Hans</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Zeichenkette mit Wahrheitswert</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="st">"true"</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="st">"no"</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&nbsp;Wahrheitswerte werden intern in Wahr und Falsch umgewandelt</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="ch">no</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Weil YAML die Objektstruktur visuell unterstützt, erfolgt eine Datenkodierung von tabellarischen Strukturen in der Regel über Listen von Objekten.</p>
+<div id="exm-yaml-liste-von-objekten" class="theorem example">
+<p><span class="theorem-title"><strong>Beispiel 9.18 (Tabellenstruktur im YAML-Format als Liste von Objekten) </strong></span>&nbsp;</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Müller</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">vorname</span><span class="kw">:</span><span class="at"> Hans</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">geburtsdatum</span><span class="kw">:</span><span class="at"> </span><span class="fl">01.01.1990</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">geburtsort</span><span class="kw">:</span><span class="at"> Berlin</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">grösse</span><span class="kw">:</span><span class="at"> </span><span class="fl">1.76</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Untermayr</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">vorname</span><span class="kw">:</span><span class="at"> Peter</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">geburtsdatum</span><span class="kw">:</span><span class="at"> </span><span class="fl">01.01.1980</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">geburtsort</span><span class="kw">:</span><span class="at"> Wien</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">grösse</span><span class="kw">:</span><span class="at"> </span><span class="fl">1.82</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Osterwalder</span></span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">vorname</span><span class="kw">:</span><span class="at"> Urs</span></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">geburtsdatum</span><span class="kw">:</span><span class="at"> </span><span class="fl">01.01.1970</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">geburtsort</span><span class="kw">:</span><span class="at"> Bern</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">grösse</span><span class="kw">:</span><span class="at"> </span><span class="fl">1.78</span></span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="dateiformate-und-versionierung" class="level2" data-number="9.11">
+<h2 data-number="9.11" class="anchored" data-anchor-id="dateiformate-und-versionierung"><span class="header-section-number">9.11</span> Dateiformate und Versionierung</h2>
+<p>Bei der Versionierung von Daten spielt das Dateiformat eine zentrale Rolle.</p>
+<p>Daten in separator-strukturierte Textdateien oder im YAML-Format lassen sich besonders einfach versionieren, weil sie als zeilenorientierte Formate direkt von den Versionierungssystemen unterstützt werden.</p>
+<p>Bei XML- und JSON-Daten ist die Situation etwas komplexer: Diese Formate sind nicht zeilenorientiert und die gleiche Struktur kann auf unterschiedliche Arten im gleichen Format serialisiert werden. Dadurch wird die Versionierung dieser Dateiformate erschwert.</p>
+<p>Die Versionierung von Binärformaten ist noch komplexer, weil Versionierungssystem diese Formate nicht auf der Inhaltsebene unterstützen. Deshalb ist es üblich, Daten in diesem Formaten vor der Versionierung in ein zeilenorientiertes Format überführt werden. Das betrifft sehr häufig Excel-Arbeitsmappen, weil sich die Binärdaten bei jedem <em>Zugriff</em> ändern, ohne dass die Daten selbst verändert wurden.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Praxis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Es ist üblich Daten anstatt in Excel-Arbeitsmappen in CSV-Dateien zu speichern, um die Daten versionieren zu können. Die CSV-Dateien werden dann in Excel als externe Daten importiert.</p>
+</div>
+</div>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="list" style="display: none">
+<div id="ref-american_national_standards_institute_code_1977" class="csl-entry" role="listitem">
+American National Standards Institute. (1977). <em>Code for Information Interchange</em> (<span>ANSI</span> X3.4-1977). <a href="https://nvlpubs.nist.gov/nistpubs/Legacy/FIPS/fipspub1-2-1977.pdf">https://nvlpubs.nist.gov/nistpubs/Legacy/FIPS/fipspub1-2-1977.pdf</a>
+</div>
+<div id="ref-ben-kiki_yaml_2021" class="csl-entry" role="listitem">
+Ben-Kiki, O., Evans, C., &amp; Net, I. döt. (2021). <em><span>YAML</span> Ain’t Markup Language</em> (Version v1.2.2). <a href="https://yaml.org/spec/1.2.2/">https://yaml.org/spec/1.2.2/</a>
+</div>
+<div id="ref-bray_javascript_2017" class="csl-entry" role="listitem">
+Bray, T. (2017). <em>The <span>JavaScript</span> Object Notation (<span>JSON</span>) Data Interchange Format</em> (<span>RFC</span> 8259). <a href="https://datatracker.ietf.org/doc/html/rfc8259">https://datatracker.ietf.org/doc/html/rfc8259</a>
+</div>
+<div id="ref-bray_extensible_2008" class="csl-entry" role="listitem">
+Bray, T., Paoli, J., Sperberg-McQueen, C. M., Maler, E., &amp; Yergeau, F. (2008). <em>Extensible Markup Language (<span>XML</span>) 1.0 (Fifth Edition)</em> (Version 1.0). <a href="https://www.w3.org/TR/xml/">https://www.w3.org/TR/xml/</a>
+</div>
+<div id="ref-carpenter_ms-xlsx_2023" class="csl-entry" role="listitem">
+Carpenter, M. (2023). <em>[<span>MS</span>-<span>XLSX</span>]: Excel (.xlsx) Extensions to the Office Open <span>XML</span> <span>SpreadsheetML</span> File Format</em> (Version v23.4). <a href="https://learn.microsoft.com/en-us/openspecs/office_standards/ms-xlsx/2c5dee00-eff2-4b22-92b6-0738acd4475e">https://learn.microsoft.com/en-us/openspecs/office_standards/ms-xlsx/2c5dee00-eff2-4b22-92b6-0738acd4475e</a>
+</div>
+<div id="ref-hickson_html_nodate" class="csl-entry" role="listitem">
+Hickson, I., Pieters, S., Kesteren, A. van, Jägenstedt, P., &amp; Denicola, D. (o.&nbsp;J.). <em><span>HTML</span></em> (Version 5). <a href="https://html.spec.whatwg.org/multipage/">https://html.spec.whatwg.org/multipage/</a>
+</div>
+<div id="ref-isoiec_jtc_1sc_2_information_2020" class="csl-entry" role="listitem">
+ISO/IEC JTC 1/SC 2. (2020). <em>Information technology — Universal coded character set (<span>UCS</span>)</em> (<span>ISO</span>/<span>IEC</span> 10646:2020). <a href="https://www.iso.org/standard/76835.html">https://www.iso.org/standard/76835.html</a>
+</div>
+<div id="ref-isoiec_jtc_1sc_2wg_3_dis_1998" class="csl-entry" role="listitem">
+ISO/IEC JTC 1/SC 2/WG 3. (1998a). <em><span>DIS</span> 8859-1, 8-bit single-byte coded graphic character sets – Part 1: Latin alphabet No.1</em> (N 411). <a href="https://www.open-std.org/JTC1/sc2/wg3/docs/n411.pdf">https://www.open-std.org/JTC1/sc2/wg3/docs/n411.pdf</a>
+</div>
+<div id="ref-isoiec_jtc_1sc_2wg_3_isoiec_1998" class="csl-entry" role="listitem">
+ISO/IEC JTC 1/SC 2/WG 3. (1998b). <em><span>ISO</span>/<span>IEC</span> <span>FCD</span> 8859-15 Information technology – 8 –bit singlebyte coded graphic character sets – Part 15 : Latin Alphabet 0 (Covering the <span>EURO</span> symbol and full support for the French and Finish languages</em> (N 404). <a href="https://www.open-std.org/JTC1/SC2/WG3/docs/n404.pdf">https://www.open-std.org/JTC1/SC2/WG3/docs/n404.pdf</a>
+</div>
+<div id="ref-isoiec_jtc_1sc_34_information_1999" class="csl-entry" role="listitem">
+ISO/IEC JTC 1/SC 34. (1999). <em>Information processing — Text and office systems — Standard Generalized Markup Language (<span>SGML</span>)</em> (<span>ISO</span> 8879:1986). <a href="https://www.iso.org/standard/16387.html">https://www.iso.org/standard/16387.html</a>
+</div>
+<div id="ref-isotc_68sc_8_financial_2020" class="csl-entry" role="listitem">
+ISO/TC 68/SC 8. (2020). <em>Financial services — International bank account number (<span>IBAN</span>) — Part 1: Structure of the <span>IBAN</span></em> (<span>ISO</span> 13616-1:2020). <a href="https://www.iso.org/standard/81090.html">https://www.iso.org/standard/81090.html</a>
+</div>
+<div id="ref-lindner_definition_1993" class="csl-entry" role="listitem">
+Lindner, P. (1993). <em>Definition of tab-separated-values (tsv)</em>. <a href="https://www.iana.org/assignments/media-types/text/tab-separated-values">https://www.iana.org/assignments/media-types/text/tab-separated-values</a>
+</div>
+<div id="ref-shafranovich_common_2005" class="csl-entry" role="listitem">
+Shafranovich, Y. (2005). <em>Common Format and <span>MIME</span> Type for Comma-Separated Values (<span>CSV</span>) Files</em> (<span>RFC</span> 4180). <a href="https://datatracker.ietf.org/doc/html/rfc4180">https://datatracker.ietf.org/doc/html/rfc4180</a>
+</div>
+<div id="ref-the_unicode_consortium_unicode_2022" class="csl-entry" role="listitem">
+The Unicode Consortium. (2022). <em>Unicode</em>. <a href="https://www.unicode.org/versions/latest/">https://www.unicode.org/versions/latest/</a>
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Kopiert");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Kopiert");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../kapitel/05-datentypen/kapitel.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Datentypen</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../kapitel/06-variablen/kapitel.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Variablen, Funktionen und Operatoren</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

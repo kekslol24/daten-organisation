@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Daten und Information - 14&nbsp; Matrix-Operationen</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../kapitel/11-daten-kodieren/kapitel.html" rel="next">
+<link href="../../kapitel/09-vektor-operationen/kapitel.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "Keine Treffer",
+    "search-matching-documents-text": "Treffer",
+    "search-copy-link-title": "Link in die Suche kopieren",
+    "search-hide-matches-text": "Zusätzliche Treffer verbergen",
+    "search-more-match-text": "weitere Treffer in diesem Dokument",
+    "search-more-matches-text": "weitere Treffer in diesem Dokument",
+    "search-clear-button-title": "Zurücksetzen",
+    "search-detached-cancel-button-title": "Abbrechen",
+    "search-submit-button-title": "Abschicken",
+    "search-label": "Suchen"
+  }
+}</script>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../kapitel/06-variablen/kapitel.html">Mathematik der Daten</a></li><li class="breadcrumb-item"><a href="../../kapitel/10-matrix-operationen/kapitel.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Matrix-Operationen</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">Daten und Information</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Suchen"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vorwort</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Ausgangslage und Vorbereitung</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/01-einleitung/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Einleitung</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/01-tool-chain/tastatur.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Tastatur und Tastaturkürzel</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/01-information/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Informationstheorie</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Datenquellen</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/01-tool-chain/project_doc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Dokumentation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/02-daten-sammeln/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Daten sammeln</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/03-daten-organisieren/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Daten organisieren</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/01-tool-chain/git_github.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Versionierung mit Git und GitHub</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/05-datentypen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Datentypen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/04-dateiformate/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Dateiformate</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Mathematik der Daten</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/06-variablen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Variablen, Funktionen und Operatoren</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/05-zeichenketten/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Zeichenketten</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/08-boolsche-operationen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Boole’sche Operationen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/09-vektor-operationen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Vektor-Operationen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/10-matrix-operationen/kapitel.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Matrix-Operationen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/11-daten-kodieren/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Daten kombinieren und kodieren</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/11-indizieren-gruppieren/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Indizieren und Gruppieren</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/12-daten-formen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Daten formen</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Deskriptive Datenanalyse</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/13-daten-beschreiben/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Daten beschreiben</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/14-daten-visualisieren/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Daten visualisieren</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Referenzen</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Inhaltsverzeichnis</h2>
+   
+  <ul>
+  <li><a href="#grundbegriffe" id="toc-grundbegriffe" class="nav-link active" data-scroll-target="#grundbegriffe"><span class="header-section-number">14.1</span> Grundbegriffe</a></li>
+  <li><a href="#matrixaddition" id="toc-matrixaddition" class="nav-link" data-scroll-target="#matrixaddition"><span class="header-section-number">14.2</span> Matrixaddition</a></li>
+  <li><a href="#vektoraddition" id="toc-vektoraddition" class="nav-link" data-scroll-target="#vektoraddition"><span class="header-section-number">14.3</span> Vektoraddition</a></li>
+  <li><a href="#skalarmultiplikation-punktprodukt" id="toc-skalarmultiplikation-punktprodukt" class="nav-link" data-scroll-target="#skalarmultiplikation-punktprodukt"><span class="header-section-number">14.4</span> Skalarmultiplikation (Punktprodukt)</a></li>
+  <li><a href="#matrixmultiplikation-kreuzprodukt" id="toc-matrixmultiplikation-kreuzprodukt" class="nav-link" data-scroll-target="#matrixmultiplikation-kreuzprodukt"><span class="header-section-number">14.5</span> Matrixmultiplikation/ Kreuzprodukt</a>
+  <ul class="collapse">
+  <li><a href="#kreuzprodukt-für-vektoren" id="toc-kreuzprodukt-für-vektoren" class="nav-link" data-scroll-target="#kreuzprodukt-für-vektoren"><span class="header-section-number">14.5.1</span> Kreuzprodukt für Vektoren</a></li>
+  <li><a href="#inverse-matrix" id="toc-inverse-matrix" class="nav-link" data-scroll-target="#inverse-matrix"><span class="header-section-number">14.5.2</span> Inverse Matrix</a></li>
+  <li><a href="#anwendungen-des-kreuzprodukts" id="toc-anwendungen-des-kreuzprodukts" class="nav-link" data-scroll-target="#anwendungen-des-kreuzprodukts"><span class="header-section-number">14.5.3</span> Anwendungen des Kreuzprodukts</a></li>
+  </ul></li>
+  <li><a href="#das-äussere-matrixprodukt" id="toc-das-äussere-matrixprodukt" class="nav-link" data-scroll-target="#das-äussere-matrixprodukt"><span class="header-section-number">14.6</span> Das äussere Matrixprodukt</a></li>
+  <li><a href="#co-occurence-matrizen-erzeugen" id="toc-co-occurence-matrizen-erzeugen" class="nav-link" data-scroll-target="#co-occurence-matrizen-erzeugen"><span class="header-section-number">14.7</span> Co-Occurence-Matrizen erzeugen</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="sec-chapter-matrix-operationen" class="quarto-section-identifier"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Matrix-Operationen</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Matrizen sind für die Datenwissenschaften eine besondere Datenstruktur. In diesem Kapitel wird <a href="../05-datentypen/kapitel.html#def-matrix-structure">Definition&nbsp;<span>8.19</span></a> erweitert, um die wichtigsten Matrixoperationen zu behandeln.</p>
+<p>Für Matrizen gelten etwas andere Regeln als für einzelne Werte. Bei genauer Betrachtung lässt sich feststellen, dass es sich dabei um Verallgemeinerungen der bekannten Rechenregeln handelt.</p>
+<p>Dazu stellen wir uns vor, dass ein einzelner Wert auch als eine 1x1-Matrix dargestellt werden kann. 1x1-Matrizen sind gleichzeitig die kleinsten quadratischen Matrizen.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hinweis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Für alle Rechenregeln muss beachtet werden, dass die Grösse aller verwendeten Matrizen für die jeweilige Operation entscheidend ist.</p>
+</div>
+</div>
+<section id="grundbegriffe" class="level2" data-number="14.1">
+<h2 data-number="14.1" class="anchored" data-anchor-id="grundbegriffe"><span class="header-section-number">14.1</span> Grundbegriffe</h2>
+<div id="def-matrix-hauptdiagonale" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 14.1 </strong></span>Die <strong>Hauptdiagonale</strong> einer Matrix sind alle Positionen mit gleichen Zeilen- und Spaltenindizes.</p>
+</div>
+<div id="def-symmetrische-matrix" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 14.2 </strong></span>Eine <strong>symmetrische Matrix</strong> ist eine quadratische Matrix, die bezüglich der Hauptdiagonalen symmetrisch ist.</p>
+</div>
+<p>Daraus folgt, dass die Werte einer symmetrischen Matrix an einer Position <span class="math inline">(i, j)</span> gleich den Werten an der Position <span class="math inline">(j, i)</span> sind.</p>
+<div id="exm-symmetrische-matrix" class="theorem example">
+<p><span class="theorem-title"><strong>Beispiel 14.1 (Symmetrische Matrix) </strong></span><span class="math display">
+\begin{bmatrix}
+1 &amp; 0 &amp; 6 &amp; 4 &amp; 9 \\
+0 &amp; 2 &amp; 2 &amp; 6 &amp; 14 \\
+6 &amp; 2 &amp; 3 &amp; 7 &amp; 8 \\
+4 &amp; 6 &amp; 7 &amp; 4 &amp; 9 \\
+9 &amp; 14 &amp; 8 &amp; 9 &amp; 5
+\end{bmatrix}
+</span></p>
+</div>
+<div id="def-diagonalmatrix" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 14.3 </strong></span>Eine <strong>Diagonalmatrix</strong> hat nur Werte auf der Hauptdiagonalen. Alle anderen Werte sind <code>0</code>.</p>
+</div>
+<div id="def-einheitsmatrix" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 14.4 </strong></span>Die <strong>Einheitsmatrix</strong> ist eine Diagonalmatrix mit <code>1</code> entlang der Hauptdiagonalen.</p>
+</div>
+<div id="exm-einheitsmatrix-3-6" class="theorem example">
+<p><span class="theorem-title"><strong>Beispiel 14.2 (Einheitsmatrix mit 3 Zeilen und 6 Spalten) </strong></span><span class="math display">
+\begin{bmatrix}
+1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 &amp; 0
+\end{bmatrix}
+</span></p>
+</div>
+<div id="def-identitaetsmatrix" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 14.5 </strong></span>Die <strong>Identitätsmatrix</strong> ist eine quadratische Einheitsmatrix.</p>
+</div>
+<p>Die Identitätsmatrix wird in Formeln als <span class="math inline">I</span> gekennzeichnet.</p>
+<div id="exm-identitätsmatrix" class="theorem example">
+<p><span class="theorem-title"><strong>Beispiel 14.3 (Identitätsmatrix) </strong></span><span class="math display">
+\begin{bmatrix}
+1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 1
+\end{bmatrix}
+</span></p>
+</div>
+<div id="def-dreiecksmatrix" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 14.6 </strong></span>Eine <strong>Dreiecksmatrix</strong> ist eine Matrix, die nur Werte unterhalb oder oberhalb der Hauptdiagonalen hat.</p>
+</div>
+<p>Die Hauptdiagonale einer Dreiecks-Matrix wird nicht immer zum Wertebereich hinzugezählt. Je nach Anforderung, muss dieser Wertebereich entsprechend ein- oder ausgeschlossen werden.</p>
+<div id="exm-untere-dreiecksmatrix" class="theorem example">
+<p><span class="theorem-title"><strong>Beispiel 14.4 (Untere Dreiecksmatrix) </strong></span><span class="math display">
+\begin{bmatrix}
+1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+11 &amp; 2 &amp; 0 &amp; 0 &amp; 0 \\
+6 &amp; 2 &amp; 3 &amp; 0 &amp; 0 \\
+4 &amp; 6 &amp; 7 &amp; 4 &amp; 0 \\
+9 &amp; 14 &amp; 8 &amp; 9 &amp; 5
+\end{bmatrix}
+</span></p>
+</div>
+<div id="exm-obere-dreiecksmatrix" class="theorem example">
+<p><span class="theorem-title"><strong>Beispiel 14.5 (Obere Dreiecksmatrix) </strong></span><span class="math display">
+\begin{bmatrix}
+1 &amp; 11 &amp; 6 &amp; 4 &amp; 9 \\
+0 &amp; 2 &amp; 2 &amp; 6 &amp; 14 \\
+0 &amp; 0 &amp; 3 &amp; 7 &amp; 8 \\
+0 &amp; 0 &amp; 0 &amp; 4 &amp; 9 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 5
+\end{bmatrix}
+</span></p>
+</div>
+<div id="def-sparse-matrix" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 14.7 </strong></span>Eine <strong>dünnbesetzte Matrix</strong> (oder <em>Sparse Matrix</em>) ist eine Matrix, die überwiegend <code>0</code>-Werte enthält.</p>
+</div>
+<div id="exm-sparse-matrix" class="theorem example">
+<p><span class="theorem-title"><strong>Beispiel 14.6 (Sparse Matrix) </strong></span><span class="math display">
+\begin{bmatrix}
+0 &amp; 1 &amp; 0 &amp; 0 &amp; 9 \\
+0 &amp; 0 &amp; 2 &amp; 6 &amp; 0 \\
+6 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 7 &amp; 0 \\
+0 &amp; 4 &amp; 0 &amp; 3 &amp; 0
+\end{bmatrix}
+</span></p>
+</div>
+<div id="def-transponierte-matrix" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 14.8 </strong></span>Eine Matrix, welche die Werte einer anderen Matrix <span class="math inline">A</span> mit vertauschten Zeilen- und Spaltenindizes enthält, wird <strong>transponierte Matrix</strong> von <span class="math inline">A</span> genannt.</p>
+</div>
+<p>Für die <em>transponierte Matrix von <span class="math inline">A</span></em> wird <span class="math inline">A^T</span> geschrieben.</p>
+<div id="exm-transponierte-matrix" class="theorem example">
+<p><span class="theorem-title"><strong>Beispiel 14.7 (Transponierte Matrix) </strong></span><span class="math display">
+\begin{aligned}
+A &amp;= \begin{bmatrix}
+1 &amp; 0 \\
+0 &amp; 2 \\
+6 &amp; 2  \\
+4 &amp; 6  \\
+9 &amp; 7
+\end{bmatrix} \\\
+\\
+A^T &amp;= \begin{bmatrix}
+1 &amp; 0 &amp; 6 &amp; 4 &amp; 9 \\
+0 &amp; 2 &amp; 2 &amp; 6 &amp; 7
+\end{bmatrix}
+\end{aligned}
+</span></p>
+</div>
+<p>Wir beachten, dass per Konvention der Zeilenindex immer als Erstes und der Spaltenindex immer als Zweites angegeben wird. Anstelle der mathematischen Schreibweise trennen wir die beiden Indizes. Auf diese Weise können wir auf jeden Wert in einer Matrix zugreifen.</p>
+</section>
+<section id="matrixaddition" class="level2" data-number="14.2">
+<h2 data-number="14.2" class="anchored" data-anchor-id="matrixaddition"><span class="header-section-number">14.2</span> Matrixaddition</h2>
+<p>Die Matrizenaddition addiert die Elemente zweier Matrizen <em>paarweise</em>. Damit die Addition funktioniert, muss es für jeden Wert in Matrix A einen Partnerwert in Matrix B mit gleichem Zeilenindex i und Spaltenindex j geben. Daraus folgt direkt, dass die Matrixaddition nur für Matrizen mit gleichen Dimensionen m und n definiert ist.</p>
+</section>
+<section id="vektoraddition" class="level2" data-number="14.3">
+<h2 data-number="14.3" class="anchored" data-anchor-id="vektoraddition"><span class="header-section-number">14.3</span> Vektoraddition</h2>
+<p>Die Vektoraddition funktioniert etwas anders als die Matrixaddition. In diesem Fall liegt uns eine m x n-Matrix und ein m-Vektor vor.</p>
+<p>Die Vektoraddition ist nur dann definiert, wenn die Matrix und der Vektor die gleiche Anzahl an Zeilen haben.</p>
+<p>Bei der Vektoraddition wird der Vektor zu jeder Spalte in der Matrix addiert. Dabei werden die Werte <em>paarweise</em> zusammengezählt.</p>
+<p>::: {#exm-matrix-vektoraddition} ## Vektoraddition eines 2-Vektor und eine 2 x 3-Matrix.</p>
+<p><span class="math display">
+\begin{aligned}
+v + M &amp;= \begin{bmatrix}
+v_{1}  \\
+v_{2}
+\end{bmatrix} + \begin{bmatrix}
+m_{11} &amp; m_{12}  &amp; m_{13}  \\
+m_{21} &amp; m_{22} &amp; m_{23}  
+\end{bmatrix} \\\
+\\
+&amp;= \begin{bmatrix}
+v_1 + m_{11} &amp; v_1 + m_{12}  &amp; v_1 + m_{13}  \\
+v_2 + m_{21} &amp; v_2 + m_{22} &amp; v_2 + m_{23}  
+\end{bmatrix}
+\end{aligned}
+</span></p>
+</section>
+<section id="skalarmultiplikation-punktprodukt" class="level2" data-number="14.4">
+<h2 data-number="14.4" class="anchored" data-anchor-id="skalarmultiplikation-punktprodukt"><span class="header-section-number">14.4</span> Skalarmultiplikation (Punktprodukt)</h2>
+<p>Die Skalarmultiplikation oder das Punktprodukt multipliziert einen Wert a mit einer Matrix (oder Vektor) M. Dabei wird \( a \) als <strong>Skalar</strong> bezeichnet, weil dieser alle Werte um den gegebenen Wert <em>skaliert</em>. Bei der Skalarmultiplikation wird jeder Wert in der Matrix mit dem Skalar multipliziert.</p>
+<p><span class="math display">
+\begin{aligned}
+a \cdot M &amp;= a \cdot \begin{bmatrix}
+m_{11} &amp; m_{12}  &amp; m_{13}  \\
+m_{21} &amp; m_{22} &amp; m_{23}  
+\end{bmatrix} \\\ \\\
+&amp;= \begin{bmatrix}
+a \cdot m_{11} &amp; a \cdot m_{12}  &amp; a \cdot m_{13}  \\
+a \cdot m_{21} &amp; a \cdot m_{22} &amp; a \cdot m_{23}  
+\end{bmatrix}
+\end{aligned}
+</span></p>
+<p>Dieses Konzept lässt sich auf Vektoren übertragen. Dabei ist der Skalar a ein Vektor mit der gleichen Anzahl an Zeilen für den Vektor und die Matrix. Danach funktioniert die Skalarmultiplikation analog zur Vektoraddition.</p>
+<p><span class="math display">
+\begin{aligned}
+a \cdot M &amp;= \begin{bmatrix}
+a_1\\
+a_2
+\end{bmatrix} \cdot \begin{bmatrix}
+m_{11} &amp; m_{12}  &amp; m_{13}  \\
+m_{21} &amp; m_{22} &amp; m_{23}  
+\end{bmatrix} \\\ \\\
+&amp;= \begin{bmatrix}
+a_1 \cdot m_{11} &amp; a_1 \cdot m_{12}  &amp; a_1 \cdot m_{13}  \\
+a_2 \cdot m_{21} &amp; a_2 \cdot m_{22} &amp; a_2 \cdot m_{23}  
+\end{bmatrix}
+\end{aligned}
+</span></p>
+</section>
+<section id="matrixmultiplikation-kreuzprodukt" class="level2" data-number="14.5">
+<h2 data-number="14.5" class="anchored" data-anchor-id="matrixmultiplikation-kreuzprodukt"><span class="header-section-number">14.5</span> Matrixmultiplikation/ Kreuzprodukt</h2>
+<p>Das Kreuzprodukt ist eine andere Variante zwei Matrizen zu multiplizieren. Dabei werden zwei Matrizen A und B über Kreuz multipliziert. Dazu muss gegeben sein, dass die Matrix A gleich viel Spalten hat, wie Matrix B Zeilen. Es muss also gelten, dass wir eine m x n-Matrix mit einer n x p-Matrix multiplizieren, wobei n für beide Matrizen gleich sein muss. Sind diese Voraussetzungen nicht erfüllt, kann das Kreuzprodukt nicht gebildet werden.</p>
+<p>Das Kreuzprodukt ist wie folgt definiert:</p>
+<p><span class="math display">
+\begin{aligned}
+A \times B &amp;= \begin{bmatrix}
+a_{11} &amp; a_{12} &amp; \cdots &amp; a_{1n} \\
+a_{21} &amp; a_{22} &amp; \cdots &amp; a_{2n} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+a_{m1} &amp; a_{m2} &amp; \cdots &amp; a_{mn} \\
+\end{bmatrix}
+\times
+\begin{bmatrix}
+b_{11} &amp; b_{12} &amp; \cdots &amp; b_{1p} \\
+b_{21} &amp; b_{22} &amp; \cdots &amp; b_{2p} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+b_{n1} &amp; b_{n2} &amp; \cdots &amp; b_{np} \\
+\end{bmatrix} \\\
+\\\
+&amp;= \begin{bmatrix}
+\sum_{i=1}^{n}{a_{1i} \cdot b_{i1}} &amp; \sum_{i=1}^{n}{a_{1i} \cdot b_{i2}} &amp; \cdots &amp; \sum_{i=1}^{n}{a_{1i} \cdot b_{ip}} \\
+\sum_{i=1}^{n}{a_{2i} \cdot b_{i1}} &amp; \sum_{i=1}^{n}{a_{2i} \cdot b_{i2}} &amp; \cdots &amp; \sum_{i=1}^{n}{a_{2i} \cdot b_{ip}} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+\sum_{i=1}^{n}{a_{mi} \cdot b_{i1}} &amp; \sum_{i=1}^{n}{a_{mi} \cdot b_{i2}} &amp; \cdots &amp; \sum_{i=1}^{n}{a_{mi} \cdot b_{ip}} \\
+\end{bmatrix}
+\end{aligned}
+</span></p>
+<p>Das Ergebnis eines Kreuzprodukts ist immer eine Matrix mit m-Zeilen und p-Spalten.</p>
+<p>Aus der Definition des Kreuzprodukts zeigt sich, dass die Operanden beim Kreuzprodukt nur vertauscht werden können, wenn beide Matrizen quadratisch sind. Dabei gilt für beliebige Matrizen ausserdem <a href="#eq-kreuzprodukt-nicht-kommutativ">Formel&nbsp;<span>14.1</span></a>.</p>
+<p><span id="eq-kreuzprodukt-nicht-kommutativ"><span class="math display">
+A \times B \ne B \times A
+\tag{14.1}</span></span></p>
+<p>Das Kreuzprodukt hat ein <em>neutrales Element</em>: Die <strong>Identitätsmatrix</strong> <span class="math inline">I</span>. Die Identitätsmatrix ist eine quadratische Matrix, die an den Positionen der abfallenden Diagonalen den Wert 1 und sonst den Wert 0 hat.</p>
+<div id="exm-3d-id-matrix" class="theorem example">
+<p><span class="theorem-title"><strong>Beispiel 14.8 (3-dimensionale Einheitsmatrix) </strong></span><span class="math display">
+\begin{bmatrix}
+1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{bmatrix}
+</span></p>
+</div>
+<p>Für die Identitätsmatrix gilt <a href="#eq-id-matrix-kreuzprodukt">Formel&nbsp;<span>14.2</span></a>.</p>
+<p><span id="eq-id-matrix-kreuzprodukt"><span class="math display">
+A \times I = I \times A = A
+\tag{14.2}</span></span></p>
+<section id="kreuzprodukt-für-vektoren" class="level3" data-number="14.5.1">
+<h3 data-number="14.5.1" class="anchored" data-anchor-id="kreuzprodukt-für-vektoren"><span class="header-section-number">14.5.1</span> Kreuzprodukt für Vektoren</h3>
+<p>Aus der Anforderung für das Kreuzprodukt folgt direkt das Kreuzprodukt für Vektoren, die wir als m x 1- sowie als 1 x p-Matrizen verstehen können. Es gilt also: n = 1. Deshalb mussten wir für das Einmaleins-Beispiel den zweiten Vektor <em>transponieren</em>. Dadurch vereinfacht sich die komplizierte Formel des Kreuzprodukts auf die paarweise-überkreuzte Multiplikation.</p>
+</section>
+<section id="inverse-matrix" class="level3" data-number="14.5.2">
+<h3 data-number="14.5.2" class="anchored" data-anchor-id="inverse-matrix"><span class="header-section-number">14.5.2</span> Inverse Matrix</h3>
+<div id="def-inverse-matrix" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 14.9 </strong></span>Die <strong>inverse Matrix</strong> <span class="math inline">A^{-1}</span> ist die Matrix, die mit der Matrix <span class="math inline">A</span> multipliziert die Identitätsmatrix <span class="math inline">I</span> ergibt. Es gilt also <a href="#eq-inverse-matrix">Formel&nbsp;<span>14.3</span></a>.</p>
+</div>
+<p><span id="eq-inverse-matrix"><span class="math display">
+A \times A^{-1} = A^{-1} \times A = I
+\tag{14.3}</span></span></p>
+<p>Die inverse Matrix kann nicht für beliebige Matrizen gebildet werden, sondern ist nur für bestimme quadratische Matrizen definiert. Die Inverse Matrix wird für verschiedene Anwendungen benötigt und wird deshalb von den meisten Softwarepaketen bereitgestellt. Es ist deshalb selten notwendig, eine inverse Matrix selbst zu berechnen.</p>
+</section>
+<section id="anwendungen-des-kreuzprodukts" class="level3" data-number="14.5.3">
+<h3 data-number="14.5.3" class="anchored" data-anchor-id="anwendungen-des-kreuzprodukts"><span class="header-section-number">14.5.3</span> Anwendungen des Kreuzprodukts</h3>
+<section id="zeilen--und-spaltensummen-berechnen" class="level4" data-number="14.5.3.1">
+<h4 data-number="14.5.3.1" class="anchored" data-anchor-id="zeilen--und-spaltensummen-berechnen"><span class="header-section-number">14.5.3.1</span> Zeilen- und Spaltensummen berechnen</h4>
+<p>Für Zeilen- bzw. Spaltensummen werden drei Eigenschaften ausgenutzt:</p>
+<ol type="1">
+<li>Vektoren lassen sich als <span class="math inline">1 \times n</span>- bzw. <span class="math inline">n \times 1</span>-Matrizen verstehen.</li>
+<li>Das Ergebnis des Kreuzpodukts ist immer eine Matrix mit <span class="math inline">m \times p</span>-Dimensionen.</li>
+<li>Das neutrale Element der Multiplikation ist <code>1</code>.</li>
+</ol>
+<p>Weil für jede Ergebnisposition des Kreuzprodukts <a href="#eq-pos-summe-matrixprod">Formel&nbsp;<span>14.4</span></a> gilt.</p>
+<p><span id="eq-pos-summe-matrixprod"><span class="math display">
+\sum_{i=1}^{n}{a_{ji} \cdot b_{ik}}
+\tag{14.4}</span></span></p>
+<p>Wird einer der beiden Parameter <span class="math inline">a_{ji}</span> oder <span class="math inline">b_{ik}</span> eins, dann reduziert sich dieser Term auf eine einfache Summe entsprechend <a href="#eq-pos-summe-matrixprod-eins">Formel&nbsp;<span>14.5</span></a>.</p>
+<p><span id="eq-pos-summe-matrixprod-eins"><span class="math display">
+\sum_{i=1}^{n}{a_{ji} \cdot b_{ik}} = \sum_{i=1}^{n}{a_{ji} \cdot 1} = \sum_{i=1}^{n}{a_{ji}}
+\tag{14.5}</span></span></p>
+<p>Für die Spalten- bzw. Zeilensumme soll jeweils ein Vektor bestimmt werden, der die Summe der Werte in der jeweiligen Zeile bzw. Spalte enthält. Dazu wird die Matrix mit einem geeigneten Einsvektor multipliziert.</p>
+<p>Für die Spaltensumme, muss dieser Einsvektor die Länge der Anzahl der Zeilen haben. Für die Zeilensumme muss der Einsvektor die Länge der Anzahl der Spalten haben.</p>
+<div id="exm-spalten-summe" class="theorem example">
+<p><span class="theorem-title"><strong>Beispiel 14.9 (Spaltensumme für eine <span class="math inline">3 \times 4</span>-Matrix) </strong></span><span class="math display">
+\begin{bmatrix}
+1 &amp; 1 &amp; 1
+\end{bmatrix}
+\times \begin{bmatrix}
+3 &amp; 6 &amp; 2  &amp;1 \\
+4 &amp; 3 &amp; 2 &amp; 1 \\
+1 &amp; 2 &amp; 3 &amp; 4
+\end{bmatrix} =
+\begin{bmatrix}
+8 &amp; 11 &amp; 7 &amp; 6
+\end{bmatrix}
+</span></p>
+</div>
+<div id="exm-zeilen-summe" class="theorem example">
+<p><span class="theorem-title"><strong>Beispiel 14.10 (Zeilensumme für eine <span class="math inline">3 \times 4</span>-Matrix) </strong></span><span class="math display">
+\begin{bmatrix}
+3 &amp; 6 &amp; 2  &amp;1 \\
+4 &amp; 3 &amp; 2 &amp; 1 \\
+1 &amp; 2 &amp; 3 &amp; 4
+\end{bmatrix} \times \begin{bmatrix}
+1 \\
+1 \\
+1 \\
+1
+\end{bmatrix}=
+\begin{bmatrix}
+12 \\ 10 \\ 10
+\end{bmatrix}
+</span></p>
+</div>
+</section>
+<section id="vorgänger--und-nachfolgersummen" class="level4" data-number="14.5.3.2">
+<h4 data-number="14.5.3.2" class="anchored" data-anchor-id="vorgänger--und-nachfolgersummen"><span class="header-section-number">14.5.3.2</span> Vorgänger- und Nachfolgersummen</h4>
+<p>Wird ein Vektor mit einer Dreiecks-Matrix multipliziert, dann werden die Vorgänger- bzw. Nachfolgerwerte addiert.</p>
+<div id="exm-nachfolger-summe" class="theorem example">
+<p><span class="theorem-title"><strong>Beispiel 14.11 (Nachfolgersumme für einen Vektor der Länge 4) </strong></span><span class="math display">
+\begin{bmatrix}3 &amp;6 &amp;2 &amp;1\end{bmatrix} \times \begin{bmatrix}
+1 &amp; 0 &amp; 0 &amp; 0 \\
+1 &amp; 1 &amp; 0 &amp; 0 \\
+1 &amp; 1 &amp; 1 &amp; 0 \\
+1 &amp; 1 &amp; 1 &amp; 1
+\end{bmatrix} = \begin{bmatrix}12 &amp; 9 &amp; 3 &amp; 1\end{bmatrix}
+</span></p>
+</div>
+<p>Diese Logik lässt sich auch auf Matrizen erweitern. Dabei werden die Vorgänger- bzw. Nachfolgerwerte für jede Zeile berechnet.</p>
+<div id="exm-nachfolger-summe" class="theorem example">
+<p><span class="theorem-title"><strong>Beispiel 14.12 (Nachfolgersumme für eine <span class="math inline">2 \times 4</span>-Matrix) </strong></span><span class="math display">
+\begin{bmatrix}
+3 &amp; 6&amp; 2  &amp;1 \\
+4 &amp; 3 &amp; 2 &amp; 1
+\end{bmatrix}
+\times \begin{bmatrix}
+1 &amp; 0 &amp; 0 &amp; 0 \\
+1 &amp; 1 &amp; 0 &amp; 0 \\
+1 &amp; 1 &amp; 1 &amp; 0 \\
+1 &amp; 1 &amp; 1 &amp; 1
+\end{bmatrix} =
+\begin{bmatrix}
+12&amp; 9&amp; 3 &amp;1 \\
+10 &amp; 6 &amp; 3 &amp; 1
+\end{bmatrix}
+</span></p>
+</div>
+</section>
+</section>
+</section>
+<section id="das-äussere-matrixprodukt" class="level2" data-number="14.6">
+<h2 data-number="14.6" class="anchored" data-anchor-id="das-äussere-matrixprodukt"><span class="header-section-number">14.6</span> Das äussere Matrixprodukt</h2>
+<p>Bei den Vektoren und Matrizen haben wir bereits das Kreuzprodukt kennengelernt, mit dem wir aus zwei Vektoren eine Matrix konstruieren können. Das Kreuzprodukt ist allerdings nur für die Multiplikation als paarweiser Operator definiert. Neben dem Kreuzprodukt gibt es noch eine zweite und flexiblere Möglichkeit, um aus zwei Vektoren eine Matrix zu generieren: Das sog. äussere Produkt.</p>
+<p>Beim <strong>äusseren Produkt</strong> oder <em>dyadischen Produkt</em> werden die Werte zweier <em>Vektoren</em> <em>paarweise</em> miteinander verknüpft, wodurch eine Matrix erzeugt wird, bei der die Anzahl der Zeilen entsprechend der Länge des linken und die Anzahl der Spalten mit der Länge des rechten Vektors übereinstimmt.</p>
+<p>Wenn also zwei Vektoren x mit der Länge m und y mit der Länge n gegeben sind, dann können wir das äussere Produkt wie folgt schreiben:</p>
+<p><span class="math display">
+x \otimes y = M^{m \times n }
+</span></p>
+<p>Das Ergebnis des äusseren Produkts ist also immer eine Matrix. Wir beachten, dass die Definition nur eine Verknüpfung fordert, aber nicht festlegt, welche Verknüpfung verwendet werden soll. Wir können also <em>beliebige Operationen</em> zur Verknüpfung verwenden.</p>
+<p>Wird als Verknüpfungsoperator für das äussere Produkt die Multiplikation gewählt, dann entspricht das Ergebnis des äusseren Produkts für zwei Vektoren dem Kreuzprodukt zwischen Vektoren.</p>
+<p>Anders als beim Kreuzprodukt, können beim äusseren Matrixprodukt beliebige Operatoren verwendet werden. In der Praxis werden sehr oft Vergleichsoperatoren für die Verknüpfung verwendet.</p>
+<blockquote class="blockquote">
+<div id="exm-dreiecks-matrix-erzeugen" class="theorem example">
+<p><span class="theorem-title"><strong>Beispiel 14.13 (Eine Dreiecks-Matrix mit dem äusseren Produkt erzeugen.) </strong></span>Eine Dreiecks-Matrix eine wichtige Matrix, weil durch die <code>0</code> ober- bzw. unterhalb der Hauptdigonalen bei der Matrixmultiplikation viele Rechenoperationen eingespart werden können. Diese Einsparung kommt in der Praxis immer dann zum Tragen, wenn nur Vorgänger- oder Nachfolgerwerte berückstichtigt werden müssen. Dafür ist es oft sinnvoll, eine Dreiecks-Matrix zu erzeugen, die nur die Werte <code>1</code> und <code>0</code> enthält.</p>
+<p>Eine Dreiecksmatrix lässt sich mit dem äusseren Produkt aus zwei Sequenzen erzeugen. Dazu wird in zwei Schritten vorgegangen.</p>
+<ol type="1">
+<li>Eine Sequenz wird mit der gewünschten Länge erzeugt.</li>
+<li>Die Sequenz wird mit sich selbst multipliziert. Als Operator wird ein Vergleichsoperator verwendet, der die Werte der Sequenz paarweise vergleicht.</li>
+</ol>
+<p>Eine Dreiecks-Matrix entsteht, wenn ein grösser- oder kleiner-Vergleich durchgeführt wird. Soll die Hauptdiagonale einbezogen werden, dann jeweils ein grösser-oder-gleich- bzw. kleiner-oder-gleich-Vergleich durchgeführt werden.</p>
+<p>Um eine <span class="math inline">3\times 3</span>-Matrix zu erzeugen, wird eine Sequenz mit der Länge 3 benötigt.</p>
+<p><span class="math display">
+\{1;2;3\}
+</span></p>
+<p>Diese Sequenz wird mit sich selbst multipliziert. Als Operator wird ein grösser-Vergleich verwendet.</p>
+<p><span class="math display">
+\{1;2;3\} \otimes_{&gt;} \{1;2;3\} = \begin{bmatrix}
+0 &amp; 0 &amp; 0 \\
+1 &amp; 0 &amp; 0 \\
+1 &amp; 1 &amp; 0
+\end{bmatrix}
+</span></p>
+</div>
+</blockquote>
+<p>Weil das äussere Produkt beliebige Operatoren erlaubt, lassen sich mit der gleichen Technik wie für die Dreiecks-Matrix auch andere Strukturen systematisch erzeugen. Falls dabei komplexe logische Ausdrücke verwendet werden, ist es sinnvoll, diese in einer Funktion zu kapseln.</p>
+<blockquote class="blockquote">
+<div id="exm-komplex-structure-erzeugen" class="theorem example">
+<p><span class="theorem-title"><strong>Beispiel 14.14 (Eine komplexe Struktur mit dem äusseren Produkt erzeugen.) </strong></span>Es soll eine <span class="math inline">6 \times 6</span>-Matrix erzeugt werden, die entlang Hauptdiagonalen und der direkt benachbarten Nebendiagonalen den Wert <code>1</code> enthält. Alle anderen Werte sollen <code>0</code> sein.</p>
+<p>Dazu wird Sequenz der Länge <code>6</code> als Basis für das äussere Produkt verwendet.</p>
+<p><span class="math display">
+\{1;2;3;4;5;6\}
+</span></p>
+<p>Weil diese Struktur nicht durch einen direkten Vergleich erzeugt werden kann, wird eine Funktion <span class="math inline">f</span> für den logischen Ausdruch erstellt. Daraus ergibt sich das folgende äussere Produkt.</p>
+<p><span class="math display">
+\{1;2;3;4;5;6\} \otimes_{f} \{1;2;3;4;5;6\}
+</span></p>
+<p>Um die gewünschte Struktur zu erzeugen, bedarf es eines komplexen logischen Ausdrucks mit zwei Vergleichen. Zum einen muss für die Struktur der eine Index kleiner oder gleich dem um eins erhöhten anderen Index sein. Zum anderen darf die Differenz zwischen den beiden Indizes nicht grösser als eins sein. Daraus ergibt sich die folgende Definition für die Funktion <span class="math inline">f</span>.</p>
+<p><span class="math display">
+f(i, j) \to (i \le j+1) \land (j - i \le 1)
+</span></p>
+<p>Das Ergebnis des äusseren Produkts mit dieser Funktion als Operator ist die gewünschte Matrix.</p>
+<p><span class="math display">
+\begin{bmatrix}
+1 &amp;  1 &amp;  0 &amp;  0 &amp;  0 &amp;  0 \\
+1 &amp;  1 &amp;  1 &amp;  0 &amp;  0 &amp;  0 \\
+0 &amp;  1 &amp;  1 &amp;  1 &amp;  0 &amp;  0 \\
+0 &amp;  0 &amp;  1 &amp;  1 &amp;  1 &amp;  0\\
+0 &amp;  0 &amp;  0 &amp;  1 &amp;  1 &amp;  1 \\
+0 &amp;  0 &amp;  0 &amp;  0 &amp;  1 &amp;  1
+\end{bmatrix}
+</span></p>
+</div>
+</blockquote>
+<p>Das äussere Produkt erlaubt beliebige Operatoren für die Multiplikation und ist deshalb sehr flexibel. Weil Operatoren nur spezielle Funktionen sind, lassen sich komplexe Operatoren z.B. mittels logischer Ausdrücke erzeugen.</p>
+<blockquote class="blockquote">
+<div id="exm-werte-markieren" class="theorem example">
+<p><span class="theorem-title"><strong>Beispiel 14.15 (Werte in einem Vektor markieren) </strong></span>Häufig ist es notwendig, bestimmte Werte in einem Vektor zu markieren, damit sie von nachfolgenden Matrix-Operationen berücksichtigt werden können. Ein typisches Beispiel für solche Markierungen ist das Markieren der einzelnen Werte eines diskreten Wertebereichs.</p>
+<p>Dazu wird zuerst ein Hilfsvektor erstellt, der alle (vorkommenden) Werte des Wertebereichs enthält. Anschliessend wird das äussere Produkt zwischen dem originalen Vektor und dem Hilfsvektor mit einem Vergleichsoperator durchgeführt.</p>
+<p>Hier soll der Wertebereich die Werte 1 bis 5 enthalten. Daraus ergibt sich der Hilfsvektor <span class="math inline">v_h = \{1;2;3;4;5\}</span>. Der Vektor <span class="math inline">v</span> soll markiert werden. Dieser Vektor enthält die Werte <span class="math inline">\{1;3; 2; 3; 4; 5; 3; 2; 4; 4; 5; 1; 4\}</span>.</p>
+<p>Als Vergleichsoperator wird die Gleichheit verwendet, um die Werte zu markieren. Das Ergebnis ist die folgende Matrix.</p>
+<p><span class="math display">
+v \otimes_{=} v_h = \begin{bmatrix}
+1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\
+0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\
+1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 1 &amp; 0
+\end{bmatrix}
+</span></p>
+<p>Nun lässt sich bspw. die Spaltensumme entsprechend von <a href="#exm-spalten-summe">Beispiel&nbsp;<span>14.9</span></a> mithilfe eines Einsvektors <span class="math inline">v_1</span> der Länge <code>13</code> berechnen, um die Häufigkeit der einzelnen Werte zu bestimmen.</p>
+<p><span class="math display">
+v_1 \times \begin{bmatrix}
+1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\
+0 &amp; 0 &amp; 1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 \\
+1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 1 &amp; 0
+\end{bmatrix} = \begin{bmatrix} 2 &amp; 2 &amp; 3 &amp; 4 &amp; 2 \end{bmatrix}
+</span></p>
+</div>
+</blockquote>
+</section>
+<section id="co-occurence-matrizen-erzeugen" class="level2" data-number="14.7">
+<h2 data-number="14.7" class="anchored" data-anchor-id="co-occurence-matrizen-erzeugen"><span class="header-section-number">14.7</span> Co-Occurence-Matrizen erzeugen</h2>
+<p>Co-Occurance Matrizen helfen beim Feststellen der Häufigkeiten des gemeinsamen Auftretens von Werten in zwei Vektoren. Das Ergebnis zeigt an den einzelnen Positionen jeweils die Anzahl steht mit der die korrespondierenden Werte der jeweiligen Spalte bzw. Zeilen gleichzeitig vorkommen. Bei der Erstellung einer Co-Occurrence-Matrix müssen zuerst die zählbaren Elemente identifiziert werden. Das wird durch das äussere Produkt erreicht. Das erfolgt in drei Schritten.</p>
+<ol type="1">
+<li>Es werden zwei Vektoren erstellt, in dem die Werte aus den Vektoren genau einmal vorkommen.</li>
+<li>Es werden zwei Matrizen über das äussere Produkt des jeweiligen original Vektors und dem zugehörigen eindeutigen Vektor aus Schritt 1 erstellt. Der Operator für das äussere Produkt ist in diesem Fall der Gleichheitsoperator.</li>
+<li>Mit den beiden Matrizen aus Schritt 2 wird das Kreuzprodukt gebildet. Dazu muss eine der beiden Matrizen transponiert werden. Dieses Kreuzprodukt ist immer zulässig, weil beide Matrizen die gleiche Anzahl an Zeilen haben, wenn sie aus dem gleichen Datenrahmen gebildet wurden.</li>
+</ol>
+<p>Die Schritte 1 und 2 sind eine direkte Anwendung von <a href="#exm-werte-markieren">Beispiel&nbsp;<span>14.15</span></a>.</p>
+<p>Das Ergebnis ist eine Matrix mit der Anzahl der gemeinsamen Vorkommen der Werte aus den beiden eindeutigen Vektoren aus Schritt ein. Die Werte lassen sich über das Kreuzprodukt zuordnen:</p>
+<ul>
+<li>Die Spalten entsprechen den eindeutigen Werten der linken (nicht transponierten) Matrix.</li>
+<li>Die Zeilen entsprechen den eindeutigen Werten der rechten (transponierten) Matrix.</li>
+</ul>
+<p>Alternativ zur Position der Werte kann auch ein <em>Sekundärindex</em> (s.<a href="../11-indizieren-gruppieren/kapitel.html">Kapitel&nbsp;<span>16</span></a>) für das äussere Produkt verwendet werden.</p>
+<p>Eine Co-occurance-Matrix ist immer symmetrisch. Durch eine Skalarmultiplikation mit einer Dreiecks-Matrix aus <a href="#exm-dreiecks-matrix-erzeugen">Beispiel&nbsp;<span>14.13</span></a> kann die Matrix in eine untere oder obere Dreiecksmatrix umgewandelt werden.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Kopiert");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Kopiert");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../kapitel/09-vektor-operationen/kapitel.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Vektor-Operationen</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../kapitel/11-daten-kodieren/kapitel.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Daten kombinieren und kodieren</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

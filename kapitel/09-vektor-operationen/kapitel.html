@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Daten und Information - 13&nbsp; Vektor-Operationen</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../kapitel/10-matrix-operationen/kapitel.html" rel="next">
+<link href="../../kapitel/08-boolsche-operationen/kapitel.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "Keine Treffer",
+    "search-matching-documents-text": "Treffer",
+    "search-copy-link-title": "Link in die Suche kopieren",
+    "search-hide-matches-text": "Zusätzliche Treffer verbergen",
+    "search-more-match-text": "weitere Treffer in diesem Dokument",
+    "search-more-matches-text": "weitere Treffer in diesem Dokument",
+    "search-clear-button-title": "Zurücksetzen",
+    "search-detached-cancel-button-title": "Abbrechen",
+    "search-submit-button-title": "Abschicken",
+    "search-label": "Suchen"
+  }
+}</script>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../kapitel/06-variablen/kapitel.html">Mathematik der Daten</a></li><li class="breadcrumb-item"><a href="../../kapitel/09-vektor-operationen/kapitel.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Vektor-Operationen</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">Daten und Information</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Suchen"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vorwort</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Ausgangslage und Vorbereitung</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/01-einleitung/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Einleitung</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/01-tool-chain/tastatur.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Tastatur und Tastaturkürzel</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/01-information/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Informationstheorie</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Datenquellen</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/01-tool-chain/project_doc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Dokumentation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/02-daten-sammeln/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Daten sammeln</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/03-daten-organisieren/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Daten organisieren</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/01-tool-chain/git_github.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Versionierung mit Git und GitHub</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/05-datentypen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Datentypen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/04-dateiformate/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Dateiformate</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Mathematik der Daten</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/06-variablen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Variablen, Funktionen und Operatoren</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/05-zeichenketten/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Zeichenketten</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/08-boolsche-operationen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Boole’sche Operationen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/09-vektor-operationen/kapitel.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Vektor-Operationen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/10-matrix-operationen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Matrix-Operationen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/11-daten-kodieren/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Daten kombinieren und kodieren</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/11-indizieren-gruppieren/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Indizieren und Gruppieren</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/12-daten-formen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Daten formen</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Deskriptive Datenanalyse</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/13-daten-beschreiben/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Daten beschreiben</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/14-daten-visualisieren/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Daten visualisieren</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Referenzen</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Inhaltsverzeichnis</h2>
+   
+  <ul>
+  <li><a href="#sec-sequenzen" id="toc-sec-sequenzen" class="nav-link active" data-scroll-target="#sec-sequenzen"><span class="header-section-number">13.1</span> Sequenzen</a>
+  <ul class="collapse">
+  <li><a href="#besondere-sequenzen" id="toc-besondere-sequenzen" class="nav-link" data-scroll-target="#besondere-sequenzen"><span class="header-section-number">13.1.1</span> Besondere Sequenzen</a></li>
+  </ul></li>
+  <li><a href="#sec-konkatenation" id="toc-sec-konkatenation" class="nav-link" data-scroll-target="#sec-konkatenation"><span class="header-section-number">13.2</span> Konkatenation</a></li>
+  <li><a href="#tranformationen" id="toc-tranformationen" class="nav-link" data-scroll-target="#tranformationen"><span class="header-section-number">13.3</span> Tranformationen</a>
+  <ul class="collapse">
+  <li><a href="#transformationen-mit-einem-skalar" id="toc-transformationen-mit-einem-skalar" class="nav-link" data-scroll-target="#transformationen-mit-einem-skalar"><span class="header-section-number">13.3.1</span> Transformationen mit einem Skalar</a></li>
+  <li><a href="#transformationen-mit-einem-vektor" id="toc-transformationen-mit-einem-vektor" class="nav-link" data-scroll-target="#transformationen-mit-einem-vektor"><span class="header-section-number">13.3.2</span> Transformationen mit einem Vektor</a></li>
+  </ul></li>
+  <li><a href="#aggregationen" id="toc-aggregationen" class="nav-link" data-scroll-target="#aggregationen"><span class="header-section-number">13.4</span> Aggregationen</a></li>
+  <li><a href="#zählen" id="toc-zählen" class="nav-link" data-scroll-target="#zählen"><span class="header-section-number">13.5</span> Zählen</a>
+  <ul class="collapse">
+  <li><a href="#zählen-durch-summieren" id="toc-zählen-durch-summieren" class="nav-link" data-scroll-target="#zählen-durch-summieren"><span class="header-section-number">13.5.1</span> Zählen durch Summieren</a></li>
+  <li><a href="#zählen-durch-filtern" id="toc-zählen-durch-filtern" class="nav-link" data-scroll-target="#zählen-durch-filtern"><span class="header-section-number">13.5.2</span> Zählen durch Filtern</a></li>
+  <li><a href="#zählen-durch-nummerieren" id="toc-zählen-durch-nummerieren" class="nav-link" data-scroll-target="#zählen-durch-nummerieren"><span class="header-section-number">13.5.3</span> Zählen durch Nummerieren</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Vektor-Operationen</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Im <a href="../05-datentypen/kapitel.html">Kapitel&nbsp;<span>8</span></a> wurden Vektoren unter der allgemeinen <a href="../05-datentypen/kapitel.html#def-vektor">Definition&nbsp;<span>8.15</span></a> eingeführt.</p>
+<div id="def-vektor-element" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 13.1 </strong></span>Die Werte eines Vektors heissen <strong>Elemente</strong>.</p>
+</div>
+<p>Ein Vektor ist eine Datenstruktur mit mehreren Werten, wobei die Anzahl der Werte eine ganze Zahl <span class="math inline">\ge 0</span> ist. Dieser Wert entspricht der Länge des Vektors.</p>
+<div id="def-vektor-index" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 13.2 </strong></span>Jedes Element hat eine eindeutige Position im Vektor. Diese Position heisst <strong>Index</strong>.</p>
+</div>
+<p>Vektoren sind bezüglich des Datentyps <em>homogen</em>. D.h. alle Elemente eines Vektors haben den gleichen Datentyp.</p>
+<div id="def-leerer-vektor" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 13.3 </strong></span>Ein Vektor der Länge <code>0</code> heisst <strong>leerer Vektor</strong>.</p>
+</div>
+<p>Der leere Vektor wird endweder als <span class="math inline">\varnothing</span> oder als <span class="math inline">\{\}</span> geschrieben. Beide Schreibweisen sind gleichwertig.</p>
+<p>Der leere Vektor ist eine besondere Datenstruktur, die keine Elemente enthält. Der leere Vektor kann als <em>Startwert</em> für die Konstruktion von Vektoren verwendet werden oder als <em>Ergebnis</em> von Operationen auf Vektoren vorkommen.</p>
+<section id="sec-sequenzen" class="level2" data-number="13.1">
+<h2 data-number="13.1" class="anchored" data-anchor-id="sec-sequenzen"><span class="header-section-number">13.1</span> Sequenzen</h2>
+<p>Eine besondere Gruppe von Vektoren sind Sequenzen. Sequenzen sind Vektoren deren Werte der Ordnung des Wertebereichs folgen.</p>
+<p><span id="eq-sequenz-sortiert-bedingung"><span class="math display">
+v_i &lt; v_{i+1}, \text{wenn aufsteigende Reihenfolge} \\\
+v_i &gt; v_{i+1}, \text{wenn absteigende Reihenfolge}
+\tag{13.1}</span></span></p>
+<p>Eine Sequenz erfordert also immer einen <em>ordinalen Wertebereich</em>.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Sequenzen in den Life Sciences
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In den Life Sciences werden <em>zusammenhängende Abfolgen von Werten</em> als Sequenzen bezeichnet. In diesen Sequenzen ist die <em>Reihenfolge</em> der Werte in diesen Sequenzen von Interesse. Solche Sequenzen haben nicht zwingend einen ordinalen Wertebereich und werden in der Regel als eigenständige Werte und nicht als Vektoren behandelt.</p>
+</div>
+</div>
+<p>Nachfolgend werden nur Sequenzen vom Datentyp <em>Zahl</em> behandelt.</p>
+<div id="def-lineare-sequenz" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 13.4 </strong></span>Eine <strong>lineare Sequenz</strong> ist ein Vektor, bei dem die Werte aufeinanderfolgender Indizes immer den gleichen Abstand haben.</p>
+</div>
+<p>Deshalb gilt für lineare Sequenzen <a href="#eq-sequenz-diff">Formel&nbsp;<span>13.2</span></a>.</p>
+<p><span id="eq-sequenz-diff"><span class="math display">
+v_{i+1} - v_i = v_{j+1} - v_j
+\tag{13.2}</span></span></p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Konvention
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Für die praktische Anwendung sind lineare Sequenzen von zentraler Bedeutung. Deshalb wird im Folgenden der Begriff <em>Sequenz</em> synonym für <em>lineare Sequenz</em> verwendet. Alle anderen Sequenzen werden als Reihenfolgen bezeichnet oder explizit hervorgehoben.</p>
+</div>
+</div>
+<div id="def-schrittweite" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 13.5 </strong></span>Der <em>Abstand einer Sequenz</em> wird als <strong>Schrittweite</strong> bezeichnet. Wird keine Schrittweite für eine Sequenz angegeben, wird die Schrittweite <code>1</code> angenommen.</p>
+</div>
+<div id="def-anfangswert" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 13.6 </strong></span>Der <strong>Anfangswert</strong> einer Sequenz wird auch <strong>Startwert</strong> oder <strong>Initialwert</strong> genannt. Wird kein Anfangswert für eine Sequenz angegeben, dann wird der Wert <code>1</code> angenommen.</p>
+</div>
+<div id="exm-festelänge" class="theorem example">
+<p><span class="theorem-title"><strong>Beispiel 13.1 (Anfangswert) </strong></span>Eine Sequenz mit der Länge 5 entspricht dem Vektor <code>{1,2,3,4,5}</code>.</p>
+</div>
+<div id="exm-länge-schrittweite" class="theorem example">
+<p><span class="theorem-title"><strong>Beispiel 13.2 (Länge und Schrittweite) </strong></span>Eine Sequenz mit der Schrittweite 3 und der Länge 4 entspricht dem Vektor <code>{1,4,7,10}</code>.</p>
+</div>
+<div id="exm-startwert-länge" class="theorem example">
+<p><span class="theorem-title"><strong>Beispiel 13.3 (Startwert und Länge) </strong></span>Eine Sequenz mit dem Startwert 3 und der Länge 6 entspricht dem Vektor <code>{3,4,5,6,7,8}</code>.</p>
+</div>
+<div id="exm-startwert-schrittweite-länge" class="theorem example">
+<p><span class="theorem-title"><strong>Beispiel 13.4 (Startwert, Schrittweite und Länge) </strong></span>Eine Sequenz mit dem Startwert 3, der Schrittweite 3 und der Länge 10 entspricht dem Vektor <code>{3,6,9,12,15,18,21,24,27,30}</code>.</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Merke
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Eine Sequenz mit gleichem Anfangswert und Schrittweite entspricht der jeweiligen Multiplikationsreihe. Der Startwert und die Indizes der Sequenz sind hierbei den Multiplikatoren.</p>
+</div>
+</div>
+<section id="besondere-sequenzen" class="level3" data-number="13.1.1">
+<h3 data-number="13.1.1" class="anchored" data-anchor-id="besondere-sequenzen"><span class="header-section-number">13.1.1</span> Besondere Sequenzen</h3>
+<div id="def-einheitsvektor" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 13.7 </strong></span>Der <strong>Einheitsvektor</strong> ist ein Vektor mit der geometrischen Länge 1.</p>
+</div>
+<p>Der <em>Einheitsvektor</em> ist <em>keine</em> Sequenz, weil die Werte der Indizes nicht mit der gleichen Schrittweite ansteigen.</p>
+<div id="def-nullvektor" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 13.8 </strong></span>Ein Vektor mit beliebiger Länge heisst <strong>Nullvektor</strong>, wenn an allen Indizes der Wert <code>0</code> steht.</p>
+</div>
+<p>Der <em>Nullvektor</em> ist damit eine besondere Sequenz, bei der der Startwert und die Schrittweite <code>0</code> ist.</p>
+<p>Ein zweiter Vektor mit der Schrittweite <code>0</code> ist der <em>Einsvektor</em>.</p>
+<div id="def-einsvektor" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 13.9 </strong></span>Der <strong>Einsvektor</strong> ist ein Vektor mit beliebiger Länge mit dem Wert <code>1</code> bei jedem Index.</p>
+</div>
+<p>Der <em>Einsvektor</em> ist damit eine besondere Sequenz, mit dem Startwert <code>1</code> und der Schrittweite <code>0</code>.</p>
+<p>In der mathematischen Literatur wird der <em>Einsvektor</em> oft nicht benannt. Wegen der besonderen Bedeutung dieses Vektors für verschiedene Operationen, wird diese Sequenz hier benannt.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Wichtig
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Der <strong>Einsvektor</strong> darf nicht mit dem <strong>Einheitsvektor</strong> verwechselt werden. Im Gegensatz zum Einsvektor hat der <em>Einheitsvektor</em> die geometrische Länge <span class="math inline">1</span>. Der Einsvektor der Länge <code>3</code> hat etwa die geometrische Länge von <span class="math inline">\sqrt{3} \approx 1.7321</span></p>
+</div>
+</div>
+</section>
+</section>
+<section id="sec-konkatenation" class="level2" data-number="13.2">
+<h2 data-number="13.2" class="anchored" data-anchor-id="sec-konkatenation"><span class="header-section-number">13.2</span> Konkatenation</h2>
+<p>Datenvektoren können zu neuen Vektoren zusammengefügt werden. Dieser Vorgang heisst <strong>Konkatenation</strong>. Dabei werden zwei Vektoren vom <strong>gleichen Datentyp</strong> <em>hintereinander</em> aneinandergehängt.</p>
+<p>Bei der Konkatenation muss die Bedingung des <strong>gleichen Datentyps</strong> zwingend erfüllt sein. Eine Konkatenation von Vektoren mit unterschiedlichen Datentypen ist unzulässig, weil die resultierende Datenstruktur kein Vektor mehr wäre.</p>
+<blockquote class="blockquote">
+<div id="exm-konkatenation" class="theorem example">
+<p><span class="theorem-title"><strong>Beispiel 13.5 (Konkatenation) </strong></span>Die Konkatenation der Vektoren <span class="math inline">v = \{1;2;3\}</span> und <span class="math inline">w = \{4;5;6\}</span> ergibt einen neunen Vektor <span class="math inline">v \circ w.</span> Es gilt dabei die folgende Vorgehensweise:</p>
+<p><span class="math display">
+v\circ w = \{1;2;3\} \circ \{4;5;6\} = \{1;2;3;4;5;6\}
+</span></p>
+</div>
+</blockquote>
+<p>Der leere Vektor ist das neutrale Element der Konkatenation. D.h. die Konkatenation eines Vektors mit dem leeren Vektor ergibt den ursprünglichen Vektor. Es gilt als <a href="#eq-konkatenation-leerer-vektor">Formel&nbsp;<span>13.3</span></a>.</p>
+<p><span id="eq-konkatenation-leerer-vektor"><span class="math display">
+v \circ \varnothing = \varnothing \circ v = v
+\tag{13.3}</span></span></p>
+<p>Ein Skalar kann als Vektor mit der Länge <code>1</code> aufgefasst werden. Die Konkatenation eines Vektors mit einem Skalart ergibt einen Vektor, der um <code>1</code> länger als der ursprüngliche Vektor ist. Es gilt also <a href="#eq-konkatenation-einzelner-wert">Formel&nbsp;<span>13.4</span></a>.</p>
+<p><span class="math display">
+v \circ a \Leftrightarrow v \circ \{ a \}
+</span></p>
+<p><span id="eq-konkatenation-einzelner-wert"><span class="math display">
+\begin{aligned}
+v \circ a &amp;= \{v_1; v_2; \dots; v_n\} \circ a \\
+&amp;= \{v_1; v_2; \dots; v_n\} \circ \{a\} \\
+&amp;= \{v_1; v_2; \dots; v_n; a\}
+\end{aligned}
+\tag{13.4}</span></span></p>
+<p>Weil die Reihenfolge der Konkatenation bedeutungsvoll ist, kann ein einzelner Wert auch <em>vor</em> einem Vektor angefügt werden.</p>
+<p><span class="math display">
+\begin{aligned}
+a \circ v &amp;= a \circ \{v_1; v_2; \dots; v_n\} \\
+&amp;= \{a\} \circ \{v_1; v_2; \dots; v_n\}  \\
+&amp;= \{a; v_1; v_2; \dots; v_n\}
+\end{aligned}
+</span></p>
+</section>
+<section id="tranformationen" class="level2" data-number="13.3">
+<h2 data-number="13.3" class="anchored" data-anchor-id="tranformationen"><span class="header-section-number">13.3</span> Tranformationen</h2>
+<div id="def-transformation" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 13.10 </strong></span>Eine <strong>Transformation</strong> bezeichnet eine Umformung der Element eines Vektors, wobei die Länge des Vektors unverändert bleibt.</p>
+</div>
+<p>Eine Transformation erfordert also immer eine Funktion, die auf die Elemente des Vektors angewandt wird. Diese Funktion wird für jedes Element des Vektors separat ausgeführt. Dadurch ist sichergestellt, dass es für jedes Element des Vektors genau ein Ergebnis gibt.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Merke
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Beim Transformieren sind alle Operationen auf die Elemente eines Vektors <strong>unabhängig</strong> voneinander und die Ergebnisse beeinflussen sich nicht gegenseitig.</p>
+</div>
+</div>
+<p>Beim Transformieren kann der Datentyp eines Vektors verändert werden.</p>
+<section id="transformationen-mit-einem-skalar" class="level3" data-number="13.3.1">
+<h3 data-number="13.3.1" class="anchored" data-anchor-id="transformationen-mit-einem-skalar"><span class="header-section-number">13.3.1</span> Transformationen mit einem Skalar</h3>
+<p>Eine Transformation mit einem Skalar wird auch als <strong>Skalierung</strong> bezeichnet.</p>
+<p>Für die Skalierung eines Vektors ist eine Transformationsfunktion mit zwei Parametern erforderlich. Beim Skalieren wird die Transformationsfunktion mit dem Skalar mit jedem Element des Vektors separat durchgeführt.</p>
+<p>Es gilt also die Logik der <a href="#eq-transformation-mit-skalar">Formel&nbsp;<span>13.5</span></a>. Der Operator <span class="math inline">\circ</span> ist hier der Platzhalter für die Transformationsfunktion.</p>
+<p><span id="eq-transformation-mit-skalar"><span class="math display">
+\begin{aligned}
+s \circ v &amp;= s \circ \{v_1; v_2; \dots; v_n\} \\
+&amp;= \{s \circ v_1; s \circ v_2; \dots; s \circ v_n\}
+\end{aligned}
+\tag{13.5}</span></span></p>
+<blockquote class="blockquote">
+<div id="exm-skalierung-mit-zahlen" class="theorem example">
+<p><span class="theorem-title"><strong>Beispiel 13.6 (Skalierung mit Zahlen) </strong></span>Die Skalierung eines Vektors <span class="math inline">v = \{1;2;3\}</span> mit dem Skalar <span class="math inline">s = 2</span> ergibt den Vektor <span class="math inline">v' = \{3;4;5\}</span>. Es gilt dabei die folgende Vorgehensweise:</p>
+<p><span class="math display">
+\begin{aligned}
+s + v &amp;= 2 + \{1;2;3\} \\
+&amp;= \{2 + 1; 2 + 2; 2 + 3\} \\
+&amp;= \{3; 4; 5\}
+\end{aligned}
+</span></p>
+<p>Diese Vorgehensweise wird als Skalaraddition bezeichnet. Die Skalaraddition ist eine Transformation mit einem Skalar und der Addition als Transformationsfunktion.</p>
+<p>Analog zur Skalaraddition gibt es die Skalarmultiplikation. Bei der Skalarmultiplikation wird die Multiplikation als Transformationsfunktion verwendet. Die Skalarmultiplikation wird wie folgt durchgeführt.</p>
+<p><span class="math display">
+\begin{aligned}
+s \cdot v &amp;= 2 \cdot \{1;2;3\} \\
+&amp;= \{2 \cdot 1; 2 \cdot 2; 2 \cdot 3\} \\
+&amp;= \{2; 4; 6\}
+\end{aligned}
+</span></p>
+</div>
+</blockquote>
+</section>
+<section id="transformationen-mit-einem-vektor" class="level3" data-number="13.3.2">
+<h3 data-number="13.3.2" class="anchored" data-anchor-id="transformationen-mit-einem-vektor"><span class="header-section-number">13.3.2</span> Transformationen mit einem Vektor</h3>
+<p>Die Transformation mit einem Skalar kann auf Vektoren erweitert werden. Dabei wird die Transformationsfunktion mit den Elementen eines zweiten Vektors anstelle des Skalars durchgeführt. Eine solche Transformation erfordert, dass die Werte der beiden Vektoren <em>paarweise</em> durch die Transformationsfunktion verknüpft werden. Damit solche paarweisen Operationen möglich sind, müssen die beiden Vektoren die <em>gleiche Länge</em> haben.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Merke
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Die Skalar-Transformation kann nur mit einem Vektor der Länge 1 <em>oder</em> mit einem Vektor mit der gleichen Länge wie der zu transformierende Vektor durchgeführt werden.</p>
+</div>
+</div>
+<p>Dann gilt die Logik der <a href="#eq-transformation-mit-vektor">Formel&nbsp;<span>13.6</span></a>. Der Operator <span class="math inline">\circ</span> ist hier der Platzhalter für die Transformationsfunktion.</p>
+<p><span id="eq-transformation-mit-vektor"><span class="math display">
+\begin{aligned}
+v \circ w &amp;= \{v_1; v_2; \dots; v_n\} \circ \{w_1; w_2; \dots; w_n\} \\
+&amp;= \{v_1 \circ w_1; v_2 \circ w_2; \dots; v_n \circ w_n\}
+\end{aligned}
+\tag{13.6}</span></span></p>
+<blockquote class="blockquote">
+<div id="exm-vektoraddition" class="theorem example">
+<p><span class="theorem-title"><strong>Beispiel 13.7 (Vektoraddition) </strong></span>Für die beiden gleichlangen Vektoren <span class="math inline">v = \{1;2;3\}</span> und <span class="math inline">w = \{4;5;6\}</span> wird die Vektoraddition paarweise durchgeführt.</p>
+<p><span class="math display">
+\begin{aligned}
+v + w &amp;= \{v_1; v_2; v_3\} + \{w_1; w_2; w_3\} \\
+&amp;= \{1;2;3\} + \{4; 5; 6\} \\
+&amp;= \{1 + 4; 2 + 5; 3 + 6\} \\
+&amp;= \{5; 7; 9\}
+\end{aligned}
+</span></p>
+<p>Deutlicher wird diese Mechanik, wenn die Vektoren als Spaltenvektoren geschrieben werden.</p>
+<p><span class="math display">
+\begin{aligned}
+v + w &amp;= \begin{pmatrix} v_1 \\ v_2 \\ v_3 \end{pmatrix} + \begin{pmatrix} w_1 \\ w_2 \\ w_3 \end{pmatrix} \\ \\
+&amp;= \begin{pmatrix} 1 \\ 2 \\ 3 \end{pmatrix} + \begin{pmatrix} 4 \\ 5 \\ 6 \end{pmatrix} \\&nbsp;\\
+&amp;= \begin{pmatrix} 1 + 4 \\ 2 + 5 \\ 3 + 6 \end{pmatrix} \\ \\
+&amp;= \begin{pmatrix} 5 \\ 7 \\ 9 \end{pmatrix}
+\end{aligned}
+</span></p>
+</div>
+</blockquote>
+</section>
+</section>
+<section id="aggregationen" class="level2" data-number="13.4">
+<h2 data-number="13.4" class="anchored" data-anchor-id="aggregationen"><span class="header-section-number">13.4</span> Aggregationen</h2>
+<div id="def-aggregation" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 13.11 </strong></span>Eine <strong>Aggregation</strong> ist eine <em>Funktion</em>, die Elemente eines Vektors zusammenfasst. Durch aggregieren kann sich die Länge des Vektors verändern.</p>
+</div>
+<p>Eine Aggregationsfunktion heisst <em>Aggregator</em>. Aggregatoren haben in der Regel nur einen Parameter, der ein Vektor ist. Ein Aggregator wendet eine zweite Funktion auf die Elemente des Vektors an. Diese zweite Funktion heisst <em>Reduktionsfunktion</em>. Die Reduktionsfunktion legt fest, <em>wie</em> die Elemente des Vektors zusammengefasst werden.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Merke
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Beim Aggregieren hängen die Operationen von der jeweiligen vorangehenden Operation ab. Die einzelnen Operationen sind voneinander <strong>abhängig</strong> und die Ergebnisse beeinflussen sich gegenseitig.</p>
+</div>
+</div>
+<blockquote class="blockquote">
+<div id="exm-aggregation-reduktion" class="theorem example">
+<p><span class="theorem-title"><strong>Beispiel 13.8 (Aggregation und Reduktion beim Summieren) </strong></span>Der <span class="math inline">\sum{}</span>-Operator ist ein Aggregator. Die dem Operator nachfolgenden Terme legen die zu aggregierenden Vektorelement fest. Die Reduktionsfunktion ist die Addition (<code>+</code>).</p>
+<p>Für den Vektor <span class="math inline">v = \{1;2;3;4;5\}</span> kann die die Summe der Quadrate wie folgt geschrieben werden.</p>
+<p><span class="math display">
+\sum_{i=1}^5 v_i^2
+</span></p>
+<p>Diese Schreibweise legt fest, dass die Vektorelemente quadriert werden müssen. Dabei handelt es sich um eine Transformation mit einem Skalar (<code>2</code>) und der Potenz als Transformationsfunktion. Diese vorgelagerte Transformation erzeugt einen impliziten Vektor mit den quadrierten Elementen <span class="math inline">\{1, 4, 9, 16, 25\}</span>.</p>
+<p>Die Reduktionsfunktion der Summe ist die Addition (<code>+</code>). Beim Reduzieren werden die Elemente des impliziten Vektors nacheinander addiert. Dabei wird das Element mit dem bisherigen Ergebnis <em>reduziert</em>. Beim ersten Schritt liegt noch kein Ergenis vor, weshalb das Element direkt übernommen wird. Dadurch ergeben sich in diesem Beispiel die folgenden Reduktionsschritte.</p>
+<p><span class="math display">
+\begin{aligned}
+\sum{v^2} = \sum_{i=1}^5 v_i^2 &amp;= 1 + 4 + 9 + 16 + 25 \\
+&amp;= 5 + 9 + 16 + 25 \\
+&amp;= 14 + 16 + 25 \\
+&amp;= 30 + 25 \\
+&amp;= 55
+\end{aligned}
+</span></p>
+<p>Die Summe der Quadrate des Vektors <span class="math inline">v</span> ist also <span class="math inline">55</span>.</p>
+</div>
+</blockquote>
+<p>Im <a href="../08-boolsche-operationen/kapitel.html#sec-filtern"><span>Kapitel&nbsp;12.5</span></a> wurden Filter als Funktionen eingeführt, die Werte aus Vektoren mithilfe eines logischen Ausdrucks auswählen. Das Filtern ist eine spezielle Aggregation, bei dem die ursprünglichen Werte unverändert bleiben, aber die Länge des Vektors verändert wird. Anders als die Summe, liefert das Filtern einen Vektor und keinen einzelnen Wert als Ergebnis. Beim Filtern wird die Reduktionsfunktion als <em>Selektionsfunktion</em> bezeichnet. Die Selektionsfunktion fügt einen Wert dem Ergebnisvektor durch <em>Konkatenation</em> hinzu, wenn der logische Ausdruck <code>Wahr</code> ergibt. Der Startwert für die Reduktion ist beim Filtern der <em>leere Vektor</em>.</p>
+</section>
+<section id="zählen" class="level2" data-number="13.5">
+<h2 data-number="13.5" class="anchored" data-anchor-id="zählen"><span class="header-section-number">13.5</span> Zählen</h2>
+<div id="def-umfang" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 13.12 </strong></span>Als <strong>Umfang</strong> bezeichnen wir die Anzahl der Elemente eines Vektors oder einer Liste.</p>
+</div>
+<div id="def-zählen" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 13.13 </strong></span><strong>Zählen</strong> bezeichnet das Bestimmen der Anzahl von Elementen eines Vektors oder einer Liste.</p>
+</div>
+<p>Die Anzahl der Elemente eines Vektors ist immer gleich der Länge des Vektors. Deshalb kann der Umfang eines Vektors direkt aus der Länge des Vektors abgelesen werden.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Mathematik vs.&nbsp;Datenwisssenschaft
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In der Mathematik (Mengenlehre) existiert das Konzept der <strong>Abzählbarkeit</strong>. Dieses Konzept wird auf <em>beliebige</em> und insbesondere unendliche Mengen angewandt, um deren abstrakte Umfänge zu vergleichen.</p>
+<p>Beim Rechnen und Problemlösen mit Computern liegen <strong>immer</strong> mit <strong>speziellen, endlichen</strong> Strukturen vor. Damit muss beim Zählen immer die Frage nach dem <em>konkreten Umfang</em> der vorliegenden Elemente beantwortet werden.</p>
+</div>
+</div>
+<p>Nicht immer muss der Umfang des gesamten Vektors bestimmt werden. Stattdessen sollen einzelne Elemente eines Vektors gezählt werden, die bestimmte Bedingungen erfüllen. Eine solche Bedingung wird immer als <strong>logischer Ausdruck</strong> formuliert.</p>
+<div id="def-zählbare-einheit" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 13.14 </strong></span>Eine <strong>zählbare Einheit</strong> bezeichnet ein Element, für das eine Zählbedingung <code>Wahr</code> ergibt. Eine <strong>nicht zählbare Einheit</strong> bezeichnet ein Element, für das eine Zählbedingung <code>Falsch</code> ergibt.</p>
+</div>
+<ul>
+<li>Eine <strong>zählbare Einheit</strong> wird durch den Wert <code>1</code> (oder <code>Wahr</code>) repräsentiert. Ein zählbares Element wird gezählt.</li>
+<li>Eine <strong>nicht-zählbare Einheit</strong> wird durch den Wert <code>0</code> (oder <code>Falsch</code>) repräsentiert. Diese Elemente werden nicht gezählt.</li>
+</ul>
+<section id="zählen-durch-summieren" class="level3" data-number="13.5.1">
+<h3 data-number="13.5.1" class="anchored" data-anchor-id="zählen-durch-summieren"><span class="header-section-number">13.5.1</span> Zählen durch Summieren</h3>
+<p>Beim Zählen durch Summieren geht eine Transformation in die Werte <code>0</code> und <code>1</code> mithilfe eines logischen Ausdurcks einer Summen-Aggregation unmittelbar voraus.</p>
+<p>Gelegentlich werden nicht alle Elemente einer Datenstruktur gezählt, sondern nur diejenigen, die bestimmte Bedingungen erfüllen.</p>
+<div id="def-abzählen" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 13.15 </strong></span>Es wird vom <strong>Abzählen</strong> gesprochen, wenn zum Zählen eine <strong>Summe über die zählbaren Einheiten</strong> gebildet wird.</p>
+</div>
+<p>Dabei wird ausgenutzt, dass die Summe über einen Vektor von <code>0</code> und <code>1</code> die Anzahl der <code>1</code>-Werte ergibt.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Merke
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Immer wenn eine Summe über einen Vektor von <code>0</code> und <code>1</code> gebildet wird, wird eine Zählen-Operation vorbereitet.</p>
+</div>
+</div>
+<p>Die Transformation in die Werte <code>0</code> und <code>1</code> durch einen logischen Ausdruck wird als <strong>Indikatorfunktion</strong> bezeichnet. Die Indikatorfunktion ist eine Transformation mit einem logischen Ausdruck. Eine solche Funktion kann für nachgelagerte arithmetische Transformations-Operationen als Ersatz für eine vorgelagerte Entscheidung verwendet werden. In solchen Fällen wird das Ergebnis der Indikatorfunktion über eine Skalar-Multiplikation mit der nachgelagerten Operation verknüpft. Dabei stellt die Indikatorfunktion sicher, dass der Vektor die gleiche Länge wie die nachgelagerte Operation hat.</p>
+</section>
+<section id="zählen-durch-filtern" class="level3" data-number="13.5.2">
+<h3 data-number="13.5.2" class="anchored" data-anchor-id="zählen-durch-filtern"><span class="header-section-number">13.5.2</span> Zählen durch Filtern</h3>
+<p>Beim Zählen durch Filtern wird die Summe über die zählbaren Einheiten durch eine Filter-Aggregation zusammegefasst. Nach dem Filtern bleibt ein Vektor mit den zählbaren Einheiten übrig, der keine nicht-zählbaren Elemente enthält. Die Länge dieses Vektors entspricht der Anzahl der zählbaren Einheiten.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Merke
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Werden die zählbaren Einheiten durch einen Filter ausgewählt, dann entspricht die Summe der zählbaren Einheiten der Länge des gefilterten Vektors.</p>
+</div>
+</div>
+<p>Weil das Filtern die Länge des Vektors verändert, kann das Filtern <strong>nicht</strong> als <em>Indikatorfunktion</em> verwendet werden.</p>
+</section>
+<section id="zählen-durch-nummerieren" class="level3" data-number="13.5.3">
+<h3 data-number="13.5.3" class="anchored" data-anchor-id="zählen-durch-nummerieren"><span class="header-section-number">13.5.3</span> Zählen durch Nummerieren</h3>
+<p>Beim Nummerieren wird eine Sequenz erzeugt, die für jede zählbare Einheit einen Wert enthält. Die Länge dieser Sequenz entspricht der Anzahl der zählbaren Einheiten. Gleichzeigit entspricht der Maximal-Wert der Sequenz ebenfalls der Anzahl der zählbaren Einheiten.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Merke
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Wenn die zählbaren Einheiten durchnummeriert werden, dann entspricht der Umfang dieser Einheiten der grössten Nummerierung (dem Maximum).</p>
+</div>
+</div>
+<p>Nummerierungen werden häufig verwendet, um einzelnen Datensätzen eindeutige Identifikatoren zuzuweisen. Diese Nummerierungen können zum Zählen leicht benutzt werden.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Kopiert");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Kopiert");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../kapitel/08-boolsche-operationen/kapitel.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Boole’sche Operationen</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../kapitel/10-matrix-operationen/kapitel.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Matrix-Operationen</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

@@ -1,0 +1,1938 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Daten und Information - 3&nbsp; Informationstheorie</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../kapitel/01-tool-chain/project_doc.html" rel="next">
+<link href="../../kapitel/01-tool-chain/tastatur.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "Keine Treffer",
+    "search-matching-documents-text": "Treffer",
+    "search-copy-link-title": "Link in die Suche kopieren",
+    "search-hide-matches-text": "Zusätzliche Treffer verbergen",
+    "search-more-match-text": "weitere Treffer in diesem Dokument",
+    "search-more-matches-text": "weitere Treffer in diesem Dokument",
+    "search-clear-button-title": "Zurücksetzen",
+    "search-detached-cancel-button-title": "Abbrechen",
+    "search-submit-button-title": "Abschicken",
+    "search-label": "Suchen"
+  }
+}</script>
+<script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../kapitel/01-einleitung/kapitel.html">Ausgangslage und Vorbereitung</a></li><li class="breadcrumb-item"><a href="../../kapitel/01-information/kapitel.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Informationstheorie</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">Daten und Information</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Suchen"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vorwort</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Ausgangslage und Vorbereitung</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/01-einleitung/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Einleitung</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/01-tool-chain/tastatur.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Tastatur und Tastaturkürzel</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/01-information/kapitel.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Informationstheorie</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Datenquellen</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/01-tool-chain/project_doc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Dokumentation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/02-daten-sammeln/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Daten sammeln</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/03-daten-organisieren/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Daten organisieren</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/01-tool-chain/git_github.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Versionierung mit Git und GitHub</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/05-datentypen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Datentypen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/04-dateiformate/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Dateiformate</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Mathematik der Daten</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/06-variablen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Variablen, Funktionen und Operatoren</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/05-zeichenketten/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Zeichenketten</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/08-boolsche-operationen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Boole’sche Operationen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/09-vektor-operationen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Vektor-Operationen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/10-matrix-operationen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Matrix-Operationen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/11-daten-kodieren/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Daten kombinieren und kodieren</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/11-indizieren-gruppieren/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Indizieren und Gruppieren</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/12-daten-formen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Daten formen</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Deskriptive Datenanalyse</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/13-daten-beschreiben/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Daten beschreiben</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/14-daten-visualisieren/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Daten visualisieren</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Referenzen</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Inhaltsverzeichnis</h2>
+   
+  <ul>
+  <li><a href="#shannons-informationsproblem" id="toc-shannons-informationsproblem" class="nav-link active" data-scroll-target="#shannons-informationsproblem"><span class="header-section-number">3.1</span> Shannon’s Informationsproblem</a>
+  <ul class="collapse">
+  <li><a href="#das-shannon-limit" id="toc-das-shannon-limit" class="nav-link" data-scroll-target="#das-shannon-limit"><span class="header-section-number">3.1.1</span> Das Shannon Limit</a></li>
+  </ul></li>
+  <li><a href="#sec-infotheorie-datascience" id="toc-sec-infotheorie-datascience" class="nav-link" data-scroll-target="#sec-infotheorie-datascience"><span class="header-section-number">3.2</span> Informationstheorie in den Datenwissenschaften</a></li>
+  <li><a href="#zahlensysteme" id="toc-zahlensysteme" class="nav-link" data-scroll-target="#zahlensysteme"><span class="header-section-number">3.3</span> Zahlensysteme</a>
+  <ul class="collapse">
+  <li><a href="#die-wichtigsten-zahlensysteme" id="toc-die-wichtigsten-zahlensysteme" class="nav-link" data-scroll-target="#die-wichtigsten-zahlensysteme"><span class="header-section-number">3.3.1</span> Die wichtigsten Zahlensysteme</a></li>
+  <li><a href="#binärzahlen" id="toc-binärzahlen" class="nav-link" data-scroll-target="#binärzahlen"><span class="header-section-number">3.3.2</span> Binärzahlen</a></li>
+  <li><a href="#winkelangaben-als-irrationales-zahlensystem" id="toc-winkelangaben-als-irrationales-zahlensystem" class="nav-link" data-scroll-target="#winkelangaben-als-irrationales-zahlensystem"><span class="header-section-number">3.3.3</span> Winkelangaben als irrationales Zahlensystem</a></li>
+  <li><a href="#prinzip-eines-zahlensystems" id="toc-prinzip-eines-zahlensystems" class="nav-link" data-scroll-target="#prinzip-eines-zahlensystems"><span class="header-section-number">3.3.4</span> Prinzip eines Zahlensystems</a></li>
+  </ul></li>
+  <li><a href="#sec-wissenschaftliche-schreibweise" id="toc-sec-wissenschaftliche-schreibweise" class="nav-link" data-scroll-target="#sec-wissenschaftliche-schreibweise"><span class="header-section-number">3.4</span> Wissenschaftliche Schreibweise von Zahlen</a>
+  <ul class="collapse">
+  <li><a href="#sec-serialisierung" id="toc-sec-serialisierung" class="nav-link" data-scroll-target="#sec-serialisierung"><span class="header-section-number">3.4.1</span> Serialisierung</a></li>
+  </ul></li>
+  <li><a href="#sec-zeichenkodierung" id="toc-sec-zeichenkodierung" class="nav-link" data-scroll-target="#sec-zeichenkodierung"><span class="header-section-number">3.5</span> Zeichenkodierung</a>
+  <ul class="collapse">
+  <li><a href="#ziffernkodierung" id="toc-ziffernkodierung" class="nav-link" data-scroll-target="#ziffernkodierung"><span class="header-section-number">3.5.1</span> Ziffernkodierung</a></li>
+  </ul></li>
+  <li><a href="#symbole-und-kompression" id="toc-symbole-und-kompression" class="nav-link" data-scroll-target="#symbole-und-kompression"><span class="header-section-number">3.6</span> Symbole und Kompression</a></li>
+  <li><a href="#merksatz-der-informationskodierung" id="toc-merksatz-der-informationskodierung" class="nav-link" data-scroll-target="#merksatz-der-informationskodierung"><span class="header-section-number">3.7</span> Merksatz der Informationskodierung</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="sec-chapter-informationstheorie" class="quarto-section-identifier"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Informationstheorie</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Die Arbeit mit Daten schliesst immer die Frage ein, ob diese Daten relevante Information verbergen. Dazu müssen zwei Konzepte erfasst werden:</p>
+<ol type="1">
+<li>Daten</li>
+<li>Information</li>
+</ol>
+<p>Beide Konzepte sind für den Alltag fast überall von Bedeutung und ein intuitives Verständnis der beiden Konzepte sollte jedem vertraut sein. Beim intuitiven Umgang mit Daten und Information fällt auf, dass die beiden Begriffe häufig synonym gebraucht werden. Hier stellt sich ein erstes Problem:</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Problem
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Wenn die Begriffe <em>Daten</em> und <em>Information</em> im Kern identisch sind, warum werden dann zwei Begriffe verwendet?</p>
+</div>
+</div>
+<p>Um dieses Problem zu verstehen, werden die beiden Begriffe auf ihren wörtlichen Ursprung zurückgeführt:</p>
+<ul>
+<li><em>Daten</em>: Pluralform von Datum, das sich auf das lateinische Verb <em>dare</em> zurückgeführt werden kann. <em>Dare</em> bedeutet <em>gegeben</em> und das zugehörige Substantiv bedeutet <em>das Gegebene</em> oder <em>die Gabe</em>.</li>
+<li><em>Information</em>: lässt sich ebenfalls auf das Lateinische zurückführen, wobei dieses Wort unverändert in den deutschen Wortschatz eingegangen ist. Die Bedeutung dieses Begriffs steht für <em>Auskunft</em> oder <em>Benachrichtigung</em>.</li>
+</ul>
+<p>Mit diesen beiden Ursprüngen können die beiden Begriffe für Anwendungen vorläufig unterscheiden werden:</p>
+<ul>
+<li><em>Daten</em> bezeichnen konkrete Werte.</li>
+<li><em>Information</em> bezeichnet die <em>Bedeutung</em> der Daten.</li>
+</ul>
+<section id="shannons-informationsproblem" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="shannons-informationsproblem"><span class="header-section-number">3.1</span> Shannon’s Informationsproblem</h2>
+<p>Claude Shannon befasste sich in den 1940er Jahren mit den Herausforderungen der (damals) modernen Kommunikationstechnologien Telegraphie und Telefon. Diese Technologien übertragen Nachrichten über einen Nachrichten<em>kanal</em>. Ein solcher Kanal kann ein Kabel oder auch eine Funkfrequenz sein. Dieser Nachrichtenkanal wird als <em>Medium</em> bezeichnet.</p>
+<div id="def-kommunikation" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 3.1 </strong></span>Als <em>Kommunikation</em> wird das Übertragen von Informationen über ein Medium bezeichnet.</p>
+</div>
+<p>Diese analogen Technologien haben das Problem, dass sich Signale über längere Distanzen abschwächen. Dieser Effekt ergibt sich aus dem “Medium”, dass für eine Kommunikation verwendet wird. Ein Kabel hat z.B. eine Dämpfung, die mit der Länge des Kabels steigt. Je länger ein Kabel wird, desto grösser wird die Dämpfung. Die Dämpfung hat zur Folge, dass ein Signal leiser wird. Dadurch geht ein Teil des ursprünglichen Signals verloren. Dieser Prozess wird als “Equivocation” bezeichnet.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Merke
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Durch <em>Equivokation</em> gehen Informationen beim Übertragen verloren.</p>
+</div>
+</div>
+<p>Ein zweites Problem analoger Kommunikationstechnologien sind äussere Störungen des Mediums. Wird z.B. ein Magnet an ein Kabel gehalten, werden die über das Kabel übertragenen Signale verzerrt. Solche Veränderungen des Signals werden als Rauschen (engl. <em>Noise</em>) bezeichnet. Rauschen entsteht auch zufällig mit zunehmender Länge eines Mediums.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Merke
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Durch Rauschen wird fehlerhafte Information den Daten hinzugefügt.</p>
+</div>
+</div>
+<p>Shannon hat vor diesem Hintergrund die folgende Fragestellung untersucht:</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Problem
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Wie kann eine Nachricht ein Ziel erreichen, wenn die Daten durch Rauschen und Equivocation verändert werden?</p>
+</div>
+</div>
+<p><span class="citation" data-cites="shannon_mathematical_1948">Shannon (<a href="../../references.html#ref-shannon_mathematical_1948" role="doc-biblioref">1948</a>)</span> gliedert diese Problemstellung in Teilprobleme, indem der Kommunikationsprozess in Teilschritte gegliedert wird. Dabei ist die “geschickte” Gliederung von Bedeutung. Shannon hat den Kommunikationsprozess in sieben Komponenten unterteilt, indem er die bekannten Störungen der Nachrichtenübertragungen verbunden hat.</p>
+<ul>
+<li>Eine Informationsquelle, die Information erzeugt</li>
+<li>Kodieren der Information in eine Nachricht für ein Medium</li>
+<li>Das Übertragen der Nachricht über einen Kanal</li>
+<li>Das Empfangen und Dekodieren der Nachricht</li>
+<li>Ein Informationsziel, die Information aufnimmt</li>
+</ul>
+<p>Zusätzlich muss das <em>Rauschen</em> des Kanals berücksichtigt werden. Später wurde das Modell um die <em>Equivokation</em> erweitert <span class="citation" data-cites="shannon_communication_1949">(<a href="../../references.html#ref-shannon_communication_1949" role="doc-biblioref">Shannon, 1949</a>)</span>. Sowohl das Rauschen als auch die Equivokation müssen eigenständig berücksichtigt werden, weil diese die Kommunikation unkontrolliert beeinflussen. Aus diese Überlegungen ergibt sich das Kommunikationschema in <a href="#fig-shannon-model">Abbildung&nbsp;<span>3.1</span></a>.</p>
+<div class="cell" data-fig-width="100%">
+<div class="cell-output-display">
+<div id="fig-shannon-model" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<div>
+<pre class="mermaid mermaid-js" data-label="fig-shannon-model">flowchart LR
+  a(Information) --&gt; b(Kodieren)
+  b --&gt; c(Medium)
+  c --&gt; f(Dekodieren)
+  
+  c --&gt; e(Equivokation)
+  r(Rauschen) --&gt; c
+
+  f --&gt; g(Information)
+
+</pre>
+</div>
+<figcaption class="figure-caption">Abbildung&nbsp;3.1: Integriertes Kommunikationsmodell <span class="citation" data-cites="shannon_mathematical_1948 shannon_communication_1949">(<a href="../../references.html#ref-shannon_mathematical_1948" role="doc-biblioref">Shannon, 1948</a>; <a href="../../references.html#ref-shannon_communication_1949" role="doc-biblioref">Shannon, 1949</a>)</span></figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Shannon’s besondere Leistung war, dass er diese Elemente als mathematische Funktionen über Wahrscheinlichkeiten (d.h. Werte zwischen <code>0</code> und <code>1</code>) formuliert und erkannt hat, dass Kommunikation dem Prinzip der <strong>Entropie</strong> folgt. Dieses Prinzip besagt, dass ein System mit einer niedrigen Entropie (d.h. einer geordneten Struktur) nur zu einer gleichbleibenden oder grösseren Entropie (d.h. zu mehr Unordnung) tendiert. Die Entropie vergrössert sich durch die Fehler bei der Kommunikation.</p>
+<p>Daraus ergibt sich für Shannon’s Theorie <span class="citation" data-cites="shannon_communication_1949">(<a href="../../references.html#ref-shannon_communication_1949" role="doc-biblioref">Shannon, 1949</a>)</span> als direkte Konsequenz, dass Information und Daten über die folgende Funktion verbunden sind:</p>
+<p><span class="math display">
+I(D) = P(D) - \epsilon
+</span></p>
+<ul>
+<li><code>D</code> steht dabei für die empfangenen Daten und</li>
+<li><span class="math inline">\epsilon</span> ist die Summe der Wahrscheinlichkeiten aller Störungen im Kommunikationsprozess.</li>
+</ul>
+<p><span class="math display">
+\epsilon = P(S) + P(E) + P(N) + P(R) = \sum_{a} P(n_a)
+</span></p>
+<p>Mit</p>
+<ul>
+<li>S = Senden/Kodieren</li>
+<li>E = Equivocation</li>
+<li>N = Rauschen (Noise)</li>
+<li>R = Empfangen/Dekodieren (Receiving)</li>
+</ul>
+<p>Umgangssprachlich lassen sich diese Terme folgenderweise umschreiben:</p>
+<div id="prp-information" class="theorem proposition">
+<p><span class="theorem-title"><strong>Satz 3.1 </strong></span>Information ergibt sich aus Daten nachdem alle Fehler und Störungen in den Daten entfernt wurden.</p>
+</div>
+<section id="das-shannon-limit" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="das-shannon-limit"><span class="header-section-number">3.1.1</span> Das Shannon Limit</h3>
+<p>Weil <span class="math inline">P(D)</span> ebenfalls eine Wahrscheinlichkeit ist, ergibt sich, dass Kommunikation nur dann möglich ist, solange die folgende Ungleichung gilt:</p>
+<p><span class="math display">
+P(D) \ge \epsilon
+</span></p>
+<p>Entsprechend wird <span class="math inline">\epsilon</span> in der Datenverarbeitung auch als <strong>Shannon Limit</strong> bezeichnet, weil dieser Term die absolute Grenze beschreibt, bis zu der eine fehlerfreie Kommunikation möglich ist.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hinweis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Diese Ungleichung besagt umgangssprachlich, dass Kommunikation nur möglich ist, solange weniger Fehler und Störungen als Daten übertragen werden.</p>
+</div>
+</div>
+<p>Shannon hat nachgewiesen, dass jeder Kanal eine Grenze hat, ab der keine Datenübertragung mehr möglich ist.</p>
+</section>
+</section>
+<section id="sec-infotheorie-datascience" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="sec-infotheorie-datascience"><span class="header-section-number">3.2</span> Informationstheorie in den Datenwissenschaften</h2>
+<p>Claude Shannon hat sich mit der technischen Kommunikation beschäftigt. Die Datenwissenschaften befassen sich mit dem Kodieren, dem Organisieren und dem Auswerten von Daten mit dem Ziel der Informationsgewinnung. Diese Schritte sind im Kern ein Kommunikationsprozess: Durch das Messen bestimmter Eigenschaften wird die Information der Realität als Daten erfasst. Anschliessend werden die gemessenen Daten zusammengefasst und strukturiert, damit sie abschliessend ausgewertet werden können. Das Messen entspricht dem Kodiere beim Senden, das Organisieren entspricht dem Daten<em>medium</em> und die Auswertung entspricht dem Dekodieren.</p>
+</section>
+<section id="zahlensysteme" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="zahlensysteme"><span class="header-section-number">3.3</span> Zahlensysteme</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hinweis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Als <strong>Zahlensystem</strong> wird die Schreibweise für Zahlenwerte bezeichnet.</p>
+</div>
+</div>
+<p>In der Regel verwenden wir das sog. Dezimalsystem, um Zahlen darzustellen. Das Dezimalsystem hat 10 mögliche Symbole, um Zahlenwerte abzubilden. Diese Symbole sind <code>1</code>, <code>2</code>, <code>3</code>, <code>4</code>, <code>5</code>, <code>6</code>, <code>7</code>, <code>8</code>, <code>9</code> und <code>0</code>. Damit können wir mit einem Symbol Zahlenwerte zwischen <code>0</code> und <code>9</code> abbilden.</p>
+<p>Gelegentlich lassen sich bestimmte Phänomene nicht gut im Dezimalsystem abbilden. Dadurch lassen sich Werte nur schwer interpretieren. In solchen Fällen hilft der Wechsel in ein anderes Zahlensystem.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Merke
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Durch den Wechsel des Zahlensystems ändert sich nur die Darstellung, aber nicht der Wert einer Zahl!</p>
+</div>
+</div>
+<div id="def-basis-zahlensystem" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 3.2 </strong></span>Die Zahl, die als Grundlage für ein Zahlensystem dient, wird als <strong>Basis</strong> des Zahlensystems bezeichnet.</p>
+</div>
+<p>Beim in der Schulmathematik üblichen Dezimalsystem ist die Basis <code>10</code>.</p>
+<div id="def-zahlensystem" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 3.3 </strong></span><strong>Zahlensysteme</strong> kodieren Zahlenwerte zu einer gegebenen Basis.</p>
+</div>
+<section id="die-wichtigsten-zahlensysteme" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="die-wichtigsten-zahlensysteme"><span class="header-section-number">3.3.1</span> Die wichtigsten Zahlensysteme</h3>
+<table class="table">
+<caption>Namen und Beispiele von Zahlensystemen</caption>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Basis</th>
+<th style="text-align: left;">Symbole</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Binärsystem</td>
+<td style="text-align: left;"><code>2</code>&nbsp;</td>
+<td style="text-align: left;"><code>0</code>, <code>1</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Oktalsystem</td>
+<td style="text-align: left;"><code>8</code></td>
+<td style="text-align: left;">&nbsp;<code>0</code>, <code>1</code>, <code>2</code>, <code>3</code>, <code>4</code>, <code>5</code>, <code>6</code>, <code>7</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">&nbsp;Dezimalsystem</td>
+<td style="text-align: left;"><code>10</code></td>
+<td style="text-align: left;"><code>0</code>, <code>1</code>, <code>2</code>, <code>3</code>, <code>4</code>, <code>5</code>, <code>6</code>, <code>7</code>, <code>8</code>, <code>9</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">&nbsp;Duodezimalsystem</td>
+<td style="text-align: left;"><code>12</code></td>
+<td style="text-align: left;"><code>0</code>, <code>1</code>, <code>2</code>, <code>3</code>, <code>4</code>, <code>5</code>, <code>6</code>, <code>7</code>, <code>8</code>, <code>9</code>, <code>A</code>, <code>B</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">&nbsp;Hexadezimalsystem</td>
+<td style="text-align: left;"><code>16</code></td>
+<td style="text-align: left;"><code>0</code>, <code>1</code>, <code>2</code>, <code>3</code>, <code>4</code>, <code>5</code>, <code>6</code>, <code>7</code>, <code>8</code>, <code>9</code>, <code>A</code>, <code>B</code>, <code>C</code>, <code>D</code>, <code>E</code>, <code>F</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Sexagesimalsystem</td>
+<td style="text-align: left;"><code>60</code></td>
+<td style="text-align: left;">-</td>
+</tr>
+</tbody>
+</table>
+<p>Das Duodezimalsystem und das Sexagesimalsystem treffen wir im Alltag bei Datums- und Zeitwerten, bei Winkeln sowie in der Musik an. Im Deutschen lässt sich das Duodezimalsystem noch an den Zahlworten elf (<code>11</code>) und zwölf (<code>12</code>) erkennen.</p>
+<p>Das binäre Zahlensystem stellt die Grundlage für digitale Computer dar, weil es nur zwei Werte für die Darstellung von Zahlen benötigt. D.h. alle Werte lassen sich als Vielfache von zweier-Potenzen abbilden. Claude Shannon hat bereits 1938 erkannt, dass diese Darstellung sich direkt die Zustände “ein” und “aus” von Schaltern übersetzen lässt, sodass sich alle Berechnungen mit Hilfe der <a href="@08-boolsche-algebra"><em>Boolschen Algebra</em></a> mit einfachen Schaltungen realisieren lassen. Daraus ergibt sich, dass das kleinste Bit der Informationstheorie sich im Binären-Zahlensystem abbilden lässt.</p>
+<p>Die Zahlensysteme Oktal und Hexadezimal sind für die Abbildung von Werten in Digitalcomputern von besonderer Bedeutung, weil es sich jeweils um ganzzahlige 2er Potenzen handelt.</p>
+<table class="table">
+<caption>2er-Potenzen der wichtigsten Zahlensysteme digitaler Systeme</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Basis</th>
+<th style="text-align: left;">2er-Potenz</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Binär</td>
+<td style="text-align: left;"><code>2</code>&nbsp;</td>
+<td style="text-align: left;"><span class="math inline">2^1</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Oktal</td>
+<td style="text-align: left;"><code>8</code>&nbsp;</td>
+<td style="text-align: left;"><span class="math inline">2^3</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Hexadezimal</td>
+<td style="text-align: left;"><code>16</code>&nbsp;</td>
+<td style="text-align: left;"><span class="math inline">2^4=2^{2^2}</span></td>
+</tr>
+</tbody>
+</table>
+<p>Der Exponent der 2er-Potenz der Basis zeigt an, wie viele Stellen im Binärsystem (Bits) mit dem jeweiligen System abgebildet werden können. Ein Byte bildet per Konvention zwei Stellen im Hexadezimalsystem oder 8 Bit ab.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hinweis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Hexadezimal-Werte werden recht häufig beim Programmieren verwendet, wie z.B. für das Kodieren von Buchstaben und Satzzeichen. Damit diese Werte leichter von Werten im Dezimalsystem unterschieden werden können, werden Werten im Hexadezimalsystem per Konvention die beiden Symbole <code>0x</code> vorangestellt.</p>
+</div>
+</div>
+<p><strong>Beispiele</strong></p>
+<table class="table">
+<caption>Darstellung von Zahlenwerten im Dezimal- und Hexadezimalsystem</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Dezimal</th>
+<th style="text-align: right;">Hexadezimal</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><code>0</code></td>
+<td style="text-align: right;"><code>0x0</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>1</code></td>
+<td style="text-align: right;">&nbsp;<code>0x1</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>2</code></td>
+<td style="text-align: right;"><code>0x2</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>3</code></td>
+<td style="text-align: right;"><code>0x3</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>4</code></td>
+<td style="text-align: right;"><code>0x4</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">&nbsp;<code>8</code></td>
+<td style="text-align: right;">&nbsp;<code>0x8</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">&nbsp;<code>9</code></td>
+<td style="text-align: right;">&nbsp;<code>0x9</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>10</code></td>
+<td style="text-align: right;">&nbsp;<code>0xA</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">&nbsp;<code>15</code></td>
+<td style="text-align: right;">&nbsp;<code>0xF</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>16</code></td>
+<td style="text-align: right;">&nbsp;<code>0x10</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="binärzahlen" class="level3" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="binärzahlen"><span class="header-section-number">3.3.2</span> Binärzahlen</h3>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hinweis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Binärzahlen kodieren Zahlenwerte zur Basis 2.</p>
+</div>
+</div>
+<p>Daraus folgt, dass für jede Ziffer genau zwei Symbole (Ziffern) zur Verfügung stehen: <code>0</code> und <code>1</code>.</p>
+<p>Wie in anderen Zahlensystemen entspricht eine Stelle im Binärsystem einer Potenz zur gegebenen Basis. Das ist bei Binärwerten <code>2</code>. Jede Stelle für eine Ziffer kann also einer 2er-Potenz gleichgesetzt werden.</p>
+<p>Die Besonderheit des Binärsystems ist, dass alle Werte als Summe von 2er-Potenzen dargestellt werden können. Diese Summe wird als <em>additive Darstellung</em> bezeichnet.</p>
+<table class="table">
+<caption>Binärzahlen und ihre additive Darstellung</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Wert</th>
+<th style="text-align: right;">Binärwert</th>
+<th style="text-align: center;">Additive Darstellung</th>
+<th style="text-align: right;">Hexadezimal</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><code>0</code></td>
+<td style="text-align: right;"><code>0000</code></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: right;"><code>0</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>1</code></td>
+<td style="text-align: right;"><code>0001</code></td>
+<td style="text-align: center;"><span class="math inline">2^0</span></td>
+<td style="text-align: right;"><code>1</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>2</code></td>
+<td style="text-align: right;"><code>0010</code></td>
+<td style="text-align: center;"><span class="math inline">2^1</span></td>
+<td style="text-align: right;"><code>2</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>3</code></td>
+<td style="text-align: right;"><code>0011</code></td>
+<td style="text-align: center;"><span class="math inline">2^1 + 2^0</span></td>
+<td style="text-align: right;"><code>3</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>4</code></td>
+<td style="text-align: right;"><code>0100</code></td>
+<td style="text-align: center;"><span class="math inline">2^2</span></td>
+<td style="text-align: right;"><code>4</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>5</code></td>
+<td style="text-align: right;"><code>0101</code></td>
+<td style="text-align: center;"><span class="math inline">2^2 + 2^0</span></td>
+<td style="text-align: right;"><code>5</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>6</code></td>
+<td style="text-align: right;"><code>0110</code></td>
+<td style="text-align: center;"><span class="math inline">2^2 + 2^1</span></td>
+<td style="text-align: right;"><code>6</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>7</code></td>
+<td style="text-align: right;"><code>0111</code></td>
+<td style="text-align: center;"><span class="math inline">2^2 + 2^1 + 2^0</span></td>
+<td style="text-align: right;"><code>7</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>8</code></td>
+<td style="text-align: right;"><code>1000</code></td>
+<td style="text-align: center;"><span class="math inline">2^3</span></td>
+<td style="text-align: right;"><code>8</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>9</code></td>
+<td style="text-align: right;"><code>1001</code></td>
+<td style="text-align: center;"><span class="math inline">2^3 + 2^0</span></td>
+<td style="text-align: right;"><code>9</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>10</code></td>
+<td style="text-align: right;"><code>1010</code></td>
+<td style="text-align: center;"><span class="math inline">2^3 + 2^1</span></td>
+<td style="text-align: right;"><code>A</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>11</code></td>
+<td style="text-align: right;"><code>1011</code></td>
+<td style="text-align: center;"><span class="math inline">2^3 + 2^1 + 2^0</span></td>
+<td style="text-align: right;"><code>B</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>12</code></td>
+<td style="text-align: right;"><code>1100</code></td>
+<td style="text-align: center;"><span class="math inline">2^3 + 2^2</span></td>
+<td style="text-align: right;"><code>C</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>13</code></td>
+<td style="text-align: right;"><code>1101</code></td>
+<td style="text-align: center;"><span class="math inline">2^3 + 2^2 + 2^0</span></td>
+<td style="text-align: right;"><code>D</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>14</code></td>
+<td style="text-align: right;"><code>1110</code></td>
+<td style="text-align: center;"><span class="math inline">2^3 + 2^2 + 2^1</span></td>
+<td style="text-align: right;"><code>E</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>15</code></td>
+<td style="text-align: right;"><code>1111</code></td>
+<td style="text-align: center;"><span class="math inline">2^3 + 2^2 + 2^1 + 2^0</span></td>
+<td style="text-align: right;"><code>F</code></td>
+</tr>
+</tbody>
+</table>
+<p>Aus dieser Tabelle kann man ablesen, dass die Ziffer <code>1</code> im Binärsystem bedeutet, dass die 2er-Potenz an der entsprechenden Stelle aktiv ist.</p>
+<p>Jede Ziffer im Binärsystem kann ausserdem als eigenständiges Symbol einer Nachricht verstanden werden. Weil im Binärsystem nur die beiden Ziffern <code>0</code> und <code>1</code> möglich sind, müssen beim Dekodieren nur diese Beiden Werte unterschieden werden. Jedes andere Zahlensystem kodiert Zahlen mit mehr als zwei Ziffern.</p>
+<section id="er-potenzen-und-speichergrössen" class="level4" data-number="3.3.2.1">
+<h4 data-number="3.3.2.1" class="anchored" data-anchor-id="er-potenzen-und-speichergrössen"><span class="header-section-number">3.3.2.1</span> 2er-Potenzen und Speichergrössen</h4>
+<p>Nach diesem Prinzip werden auch die Kapazitäten von Datenspeichern als 2er-Potenzen beschrieben.</p>
+<table class="table">
+<caption>Speichergrössen in 2er-Potenzen</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Abkürzung</th>
+<th style="text-align: left;">gespeicherte Byte</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">&nbsp;Byte</td>
+<td style="text-align: left;">&nbsp;B</td>
+<td style="text-align: left;"><span class="math inline">2^0 = 1</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Kilobyte</td>
+<td style="text-align: left;">KB</td>
+<td style="text-align: left;"><span class="math inline">2^{10} = 1024^1</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Megabyte</td>
+<td style="text-align: left;">MB</td>
+<td style="text-align: left;"><span class="math inline">2^{20} = 1024^2 = 1048576</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gigabyte</td>
+<td style="text-align: left;">GB</td>
+<td style="text-align: left;"><span class="math inline">2^{30} = 1024^3 = 1073741824</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Terabyte</td>
+<td style="text-align: left;">TB</td>
+<td style="text-align: left;"><span class="math inline">2^{40} = 1024^4 = 1099511627776</span></td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warnung
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Die <em>wissenschaftliche Schreibweise</em> ist <strong>kein eigenes Zahlensystem</strong>. Sie ist nur eine <em>Vereinheitlichung</em> der Schreibweise im Dezimalsystem, um sehr grosse und/oder sehr kleine Zahlen kompakt darstellen zu können.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="winkelangaben-als-irrationales-zahlensystem" class="level3" data-number="3.3.3">
+<h3 data-number="3.3.3" class="anchored" data-anchor-id="winkelangaben-als-irrationales-zahlensystem"><span class="header-section-number">3.3.3</span> Winkelangaben als irrationales Zahlensystem</h3>
+<p>Winkelangaben werden oft als Vielfache von <span class="math inline">\pi</span> angegeben. Diese Werte werden auch als <em>Radiant</em> anstatt als Grad bezeichnet. Dabei handelt es sich um ein Zahlensystem zur Basis <span class="math inline">\pi</span>.</p>
+<ul>
+<li><span class="math inline">\frac{\pi}{6}</span> = 30°</li>
+<li><span class="math inline">\frac{\pi}{4}</span> = 45°</li>
+<li><span class="math inline">\frac{\pi}{3}</span> = 60°</li>
+<li><span class="math inline">\frac{\pi}{2}</span>= 90°</li>
+<li><span class="math inline">\frac{2\pi}{3}</span>= 120°</li>
+<li><span class="math inline">\pi</span>= 180°</li>
+<li><span class="math inline">\frac{3\pi}{2}</span>= 270°</li>
+<li><span class="math inline">2\pi</span>= 360°</li>
+</ul>
+</section>
+<section id="prinzip-eines-zahlensystems" class="level3" data-number="3.3.4">
+<h3 data-number="3.3.4" class="anchored" data-anchor-id="prinzip-eines-zahlensystems"><span class="header-section-number">3.3.4</span> Prinzip eines Zahlensystems</h3>
+<p>Die in der Mathematik verwendeten Zahlensysteme sind sog. <em>additive Zahlensysteme</em>. Die Schreibweise wird durch Addition und Multiplikation mit der jeweiligen Basis bestimmt.</p>
+<p>Das Zählen funktioniert dabei wie folgt:</p>
+<ol type="1">
+<li>Es wird bei <code>0</code> gestartet.</li>
+<li>Die nächste Ganzzahl wird durch Addition mit <code>1</code> erreicht.</li>
+<li>Es wird das nächste Ziffernsymbol ausgewählt.</li>
+<li>Gibt es für die jeweilige Basis keine Ziffernsymbole für die Ganzzahl mehr, wird die nächsthöhere Stelle um <code>1</code> erhöht.</li>
+</ol>
+<p><strong>Beispiele</strong></p>
+<table class="table">
+<caption>Darstellung von Zahlenwerten in verschiedenen Zahlensystemen</caption>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Dezimal</th>
+<th style="text-align: right;">Binär</th>
+<th style="text-align: right;">Oktal</th>
+<th style="text-align: right;">Hexadezimal</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;"><code>0</code></td>
+<td style="text-align: right;"><code>0</code></td>
+<td style="text-align: right;"><code>0</code></td>
+<td style="text-align: right;"><code>0x0</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>1</code></td>
+<td style="text-align: right;">&nbsp;<code>1</code></td>
+<td style="text-align: right;">&nbsp;<code>1</code></td>
+<td style="text-align: right;">&nbsp;<code>0x1</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>2</code></td>
+<td style="text-align: right;"><code>10</code></td>
+<td style="text-align: right;"><code>2</code></td>
+<td style="text-align: right;"><code>0x2</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>3</code></td>
+<td style="text-align: right;">&nbsp;<code>11</code></td>
+<td style="text-align: right;"><code>3</code></td>
+<td style="text-align: right;"><code>0x3</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>4</code></td>
+<td style="text-align: right;"><code>100</code></td>
+<td style="text-align: right;"><code>4</code></td>
+<td style="text-align: right;"><code>0x4</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">&nbsp;<code>8</code></td>
+<td style="text-align: right;">&nbsp;<code>1000</code></td>
+<td style="text-align: right;"><code>10</code></td>
+<td style="text-align: right;">&nbsp;<code>0x8</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">&nbsp;<code>9</code></td>
+<td style="text-align: right;">&nbsp;<code>1001</code></td>
+<td style="text-align: right;"><code>11</code></td>
+<td style="text-align: right;">&nbsp;<code>0x9</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>10</code></td>
+<td style="text-align: right;">&nbsp;<code>1010</code></td>
+<td style="text-align: right;"><code>12</code></td>
+<td style="text-align: right;">&nbsp;<code>0xA</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">&nbsp;<code>15</code></td>
+<td style="text-align: right;">&nbsp;<code>1111</code></td>
+<td style="text-align: right;">&nbsp;<code>17</code></td>
+<td style="text-align: right;">&nbsp;<code>0xF</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>16</code></td>
+<td style="text-align: right;">&nbsp;<code>10000</code></td>
+<td style="text-align: right;"><code>100</code></td>
+<td style="text-align: right;">&nbsp;<code>0x10</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;"><code>255</code></td>
+<td style="text-align: right;">&nbsp;<code>11111111</code></td>
+<td style="text-align: right;"><code>377</code></td>
+<td style="text-align: right;"><code>0xFF</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: right;"><code>256</code></td>
+<td style="text-align: right;">&nbsp;<code>100000000</code></td>
+<td style="text-align: right;"><code>400</code></td>
+<td style="text-align: right;"><code>0x100</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="sec-wissenschaftliche-schreibweise" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="sec-wissenschaftliche-schreibweise"><span class="header-section-number">3.4</span> Wissenschaftliche Schreibweise von Zahlen</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hinweis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Als <strong>wissenschaftliche Notation</strong> wird die Schreibweise von Zahlen mit Hilfe von Potenzen zur Basis 10 bezeichnet.</p>
+</div>
+</div>
+<p>Bei der wissenschaftlichen Notation wird die erste Ziffer einer Zahl vor ein Komma gesetzt und alle restlichen Ziffern nach dem Komma. Anschliessend werden die restlichen Ziffern gezählt und als 10er-Potenz angegeben.</p>
+<p>Bei kleinen Zahlen wird ähnlich vorgegangen: Die erste Ziffer ungleich <code>0</code> wird vor ein Komma gesetzt und alle folgenden Stellen danach. Anschliessend werden alle Nullen und die Ziffer vor dem Komma gezählt und als negative 10er-Potenz angegeben.</p>
+<p>Neben der ausführlichen wissenschaftlichen Schreibweise wird regelmässig eine abgekürzte Notation verwendet. In dieser Notation wird der Teil <span class="math inline">\cdot 10</span> durch ein <code>e</code> oder <code>E</code> ersetzt. Dieses <code>E</code> steht für <em>Exponent</em>.</p>
+<p><strong>Beispiele:</strong></p>
+<table class="table">
+<caption>Beispiele für die wissenschaftliche Notation verschiedener Zahlenwerte</caption>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Normale Notation</th>
+<th style="text-align: right;">&nbsp;Wissenschaftliche Notation</th>
+<th style="text-align: right;">Kurze wissenschaftliche Notation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">1</td>
+<td style="text-align: right;"><span class="math inline">1 \cdot 10^0</span></td>
+<td style="text-align: right;">1e0</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10</td>
+<td style="text-align: right;"><span class="math inline">1 \cdot 10^1</span></td>
+<td style="text-align: right;">1e1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">100</td>
+<td style="text-align: right;"><span class="math inline">1 \cdot 10^2</span></td>
+<td style="text-align: right;">1e2</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">523140000</td>
+<td style="text-align: right;"><span class="math inline">5.2314 \cdot 10^8</span></td>
+<td style="text-align: right;">5.2314e8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">0.00000000007234</td>
+<td style="text-align: right;"><span class="math inline">7.234 \cdot 10^-11</span></td>
+<td style="text-align: right;">7.234e-11</td>
+</tr>
+</tbody>
+</table>
+<p>Die Stärke der wissenschaftlichen Notation ist die Darstellung sehr grosser oder sehr kleiner Zahlen</p>
+<p>Mit dieser Schreibweise lassen sich auch schnell Grössenunterschiede zwischen Werten abschätzen: Dazu wird die Differenz der 10er-Potenzen zweier Zahlen gebildet. Dazu wird die kleinere 10er-Potenz von der grösseren subtrahiert. Das Ergebnis ist wieder eine 10er-Potenz.</p>
+<p><strong>Beispiel</strong></p>
+<ul>
+<li>Eine Differenz von 1 entspricht einem ungefähr 10-fachen Grössenunterschied.</li>
+<li>Eine Differenz von 5 entspricht einem ungefähr 100000-fachen Grössenunterschied.</li>
+</ul>
+<section id="sec-serialisierung" class="level3" data-number="3.4.1">
+<h3 data-number="3.4.1" class="anchored" data-anchor-id="sec-serialisierung"><span class="header-section-number">3.4.1</span> Serialisierung</h3>
+<div id="def-serialisierung" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 3.4 </strong></span>Ein Zahlenwert kann bei einer Darstellung zu einer Basis in mehreren Ziffern erfolgen. Diese Zifferndarstellung wird als <strong>Serialisierung</strong> bezeichnet.</p>
+</div>
+<p><em>Serialisierung</em> bedeutet, dass die Ziffern eines Werts <em>in einer bestimmten Reihenfolge</em> dargestellt werden. Jede Ziffer einer solchen Darstellung können wir uns als ein <em>Symbol</em> einer Nachricht vorstellen.</p>
+<p>Weil ein Zahlenwert in verschiedenen Zahlensystemen dargestellt werden kann, ergibt sich daraus der folgende Merksatz:</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Merke
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Ein Zahlenwert kann <em>mehrere</em> zulässige Serialisierungen haben.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="sec-zeichenkodierung" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="sec-zeichenkodierung"><span class="header-section-number">3.5</span> Zeichenkodierung</h2>
+<p>Wir schreiben Texte nicht mit Zahlen, sondern mit Buchstaben, Satz- und Steuerzeichen. Im Computer werden Texte als Zahlen abgebildet. Dazu werden die einzelnen Zeichen eines Textes in Zahlenwerte übersetzt. Diese Übersetzung wird als <strong>Zeichenkodierung</strong> bezeichnet und wird per Konvention festgelegt.</p>
+<p>Weil sich Buchstaben und andere Zeichen nicht direkt als Zahlen übersetzen lassen, bedarf es eines Tricks. Dazu werden alle zu kodierenden Zeichen in einer Liste aufgeschrieben und anschliessend werden alle Zeichen durchnummeriert. Die Nummer des Zeichens wird als Zahlenwert stellvertretend für das jeweilige Zeichen.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Merke
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Mit dem Nummerieren von Symbolen lassen sich beliebige Symbole als Zahlenwerte kodieren.</p>
+</div>
+</div>
+<p>Bei den meisten Zeichenkodierungen werden die einzelnen Zeichen so aufgereiht, dass die alphabetische und nummerische Reihenfolge in der Regel erhalten bleibt. Zeichenkodierungen sind standardisiert und müssen nicht mehr selbst entwickelt werden. Es gibt allerdings mehrere Standards, die sich in der Kodierung unterscheiden. Deshalb ist es notwendig, die verwendete Zeichenkodierung zu dokumentieren.</p>
+<p>Historisch sind vier Kodierungen für die Praxis im deutschsprachigen Raum von Bedeutung.</p>
+<ul>
+<li>ASCII - kodiert das Anglo-amerikanische Alphabet mit Ziffern und Satzzeichen in 7 Bit (Zahlen mit max. 7 Stellen binär), <span class="citation" data-cites="american_national_standards_institute_code_1977">(<a href="../../references.html#ref-american_national_standards_institute_code_1977" role="doc-biblioref">American National Standards Institute, 1977</a>)</span>.</li>
+<li>ANSI - kodiert das Anglo-amerikanische Alphabet mit Ziffern und Satzzeichen in 8 Bit (Zahlen mit max. 8 Stellen binär).</li>
+<li>ISO-8859 - kodiert verschiedene Schriftsysteme in 8 Bit (Zahlen mit max. 8 Stellen binär).
+<ul>
+<li>ISO-8859-1 (oder ISO Latin 1) - kodiert das westeuropäische Alphabet mit deutschen und französischen Umlauten <span class="citation" data-cites="isoiec_jtc_1sc_2wg_3_dis_1998">(<a href="../../references.html#ref-isoiec_jtc_1sc_2wg_3_dis_1998" role="doc-biblioref">ISO/IEC JTC 1/SC 2/WG 3, 1998a</a>)</span>.</li>
+<li>ISO-8859-15 (oder ISO Latin 9) - Kodiert das westeuropäische Alphabet wie ISO-8859-1 aber mit dem Euro Symbol (€) <span class="citation" data-cites="isoiec_jtc_1sc_2wg_3_isoiec_1998">(<a href="../../references.html#ref-isoiec_jtc_1sc_2wg_3_isoiec_1998" role="doc-biblioref">ISO/IEC JTC 1/SC 2/WG 3, 1998b</a>)</span></li>
+</ul></li>
+<li>UTF-8 - kodiert alle gängigen und viele historische Schriftsysteme inkl. Emojis dynamisch mit 8 bis zu 32 Bit <span class="citation" data-cites="isoiec_jtc_1sc_2_information_2020 the_unicode_consortium_unicode_2022">(<a href="../../references.html#ref-isoiec_jtc_1sc_2_information_2020" role="doc-biblioref">ISO/IEC JTC 1/SC 2, 2020</a>; <a href="../../references.html#ref-the_unicode_consortium_unicode_2022" role="doc-biblioref">The Unicode Consortium, 2022</a>, Section 3.9)</span>.</li>
+</ul>
+<p>Diese Kodierungen sind bis zum Code 01111111 (oder 0x7F) identisch. Die Symbole in diesem Bereich werden deshalb als <em>ASCII-Codes</em> bezeichnet.</p>
+<div id="tbl-ascii-codes" class="anchored">
+<table class="table">
+<caption>Tabelle&nbsp;3.1: Vollständige ASCII-Kodierungstabelle <span class="citation" data-cites="american_national_standards_institute_code_1977">(<a href="../../references.html#ref-american_national_standards_institute_code_1977" role="doc-biblioref">American National Standards Institute, 1977, S. 8</a>)</span></caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: center;">0</th>
+<th style="text-align: center;">1</th>
+<th style="text-align: center;">2</th>
+<th style="text-align: center;">3</th>
+<th style="text-align: center;">4</th>
+<th style="text-align: center;">5</th>
+<th style="text-align: center;">6</th>
+<th style="text-align: center;">7</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">0</td>
+<td style="text-align: center;"><strong><em>NUL</em></strong></td>
+<td style="text-align: center;"><strong><em>DEL</em></strong></td>
+<td style="text-align: center;"><strong><em>SPC</em></strong></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">@</td>
+<td style="text-align: center;">P</td>
+<td style="text-align: center;">`</td>
+<td style="text-align: center;">p</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">1</td>
+<td style="text-align: center;">SOH</td>
+<td style="text-align: center;">DC1</td>
+<td style="text-align: center;">!</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">A</td>
+<td style="text-align: center;">Q</td>
+<td style="text-align: center;">a</td>
+<td style="text-align: center;">q</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2</td>
+<td style="text-align: center;">STX</td>
+<td style="text-align: center;">DC2</td>
+<td style="text-align: center;">”</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">B</td>
+<td style="text-align: center;">R</td>
+<td style="text-align: center;">b</td>
+<td style="text-align: center;">r</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">3</td>
+<td style="text-align: center;">ETX</td>
+<td style="text-align: center;">DC3</td>
+<td style="text-align: center;">#</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">C</td>
+<td style="text-align: center;">S</td>
+<td style="text-align: center;">c</td>
+<td style="text-align: center;">s</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">4</td>
+<td style="text-align: center;">EOT</td>
+<td style="text-align: center;">DC4</td>
+<td style="text-align: center;">$</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">D</td>
+<td style="text-align: center;">T</td>
+<td style="text-align: center;">d</td>
+<td style="text-align: center;">t</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">5</td>
+<td style="text-align: center;">ENQ</td>
+<td style="text-align: center;">NAK</td>
+<td style="text-align: center;">%</td>
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">E</td>
+<td style="text-align: center;">U</td>
+<td style="text-align: center;">e</td>
+<td style="text-align: center;">u</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">6</td>
+<td style="text-align: center;">ACK</td>
+<td style="text-align: center;">SYN</td>
+<td style="text-align: center;">&amp;</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">f</td>
+<td style="text-align: center;">v</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">7</td>
+<td style="text-align: center;">BEL</td>
+<td style="text-align: center;">ETB</td>
+<td style="text-align: center;">’</td>
+<td style="text-align: center;">7</td>
+<td style="text-align: center;">G</td>
+<td style="text-align: center;">W</td>
+<td style="text-align: center;">g</td>
+<td style="text-align: center;">w</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">8</td>
+<td style="text-align: center;"><strong><em>BS</em></strong></td>
+<td style="text-align: center;">CAN</td>
+<td style="text-align: center;">(</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">H</td>
+<td style="text-align: center;">X</td>
+<td style="text-align: center;">h</td>
+<td style="text-align: center;">x</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">9</td>
+<td style="text-align: center;"><strong><em>HT</em></strong></td>
+<td style="text-align: center;">EM</td>
+<td style="text-align: center;">)</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">I</td>
+<td style="text-align: center;">Y</td>
+<td style="text-align: center;">i</td>
+<td style="text-align: center;">y</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">A</td>
+<td style="text-align: center;"><strong><em>LF</em></strong></td>
+<td style="text-align: center;">SUB</td>
+<td style="text-align: center;">*</td>
+<td style="text-align: center;">:</td>
+<td style="text-align: center;">J</td>
+<td style="text-align: center;">Z</td>
+<td style="text-align: center;">j</td>
+<td style="text-align: center;">z</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">B</td>
+<td style="text-align: center;">VT</td>
+<td style="text-align: center;"><strong><em>ESC</em></strong></td>
+<td style="text-align: center;">+</td>
+<td style="text-align: center;">;</td>
+<td style="text-align: center;">K</td>
+<td style="text-align: center;">[</td>
+<td style="text-align: center;">k</td>
+<td style="text-align: center;">{</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C</td>
+<td style="text-align: center;">FF</td>
+<td style="text-align: center;">FS</td>
+<td style="text-align: center;">,</td>
+<td style="text-align: center;">&lt;</td>
+<td style="text-align: center;">L</td>
+<td style="text-align: center;">\</td>
+<td style="text-align: center;">l</td>
+<td style="text-align: center;">|</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">D</td>
+<td style="text-align: center;"><strong><em>CR</em></strong></td>
+<td style="text-align: center;">GS</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">=</td>
+<td style="text-align: center;">M</td>
+<td style="text-align: center;">]</td>
+<td style="text-align: center;">m</td>
+<td style="text-align: center;">}</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">E</td>
+<td style="text-align: center;">SO</td>
+<td style="text-align: center;">RS</td>
+<td style="text-align: center;">.</td>
+<td style="text-align: center;">&gt;</td>
+<td style="text-align: center;">N</td>
+<td style="text-align: center;">^</td>
+<td style="text-align: center;">n</td>
+<td style="text-align: center;">~</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">F</td>
+<td style="text-align: center;">SI</td>
+<td style="text-align: center;">US</td>
+<td style="text-align: center;">/</td>
+<td style="text-align: center;">?</td>
+<td style="text-align: center;">O</td>
+<td style="text-align: center;">_</td>
+<td style="text-align: center;">o</td>
+<td style="text-align: center;"><strong><em>DEL</em></strong></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Neben Buchstaben werden auch sog. <em>nicht-druckbare Zeichen</em> wie Buchstaben, Satzzeichen und Ziffern kodiert. Dazu gehören u.a. Leerzeichen, Tabulatoren und Zeilenumbrüche. Viele dieser besonderen Buchstaben haben heute keine Bedeutung mehr. In der folgenden Tabelle sind die aktuell verwendeten nicht-druckbaren Zeichen mit <code>*</code> markiert.</p>
+<div id="tbl-ascii-sonderzeichen" class="anchored">
+<table class="table">
+<caption>Tabelle&nbsp;3.2: ASCII-Sonderzeichen <span class="citation" data-cites="american_national_standards_institute_code_1977">(<a href="../../references.html#ref-american_national_standards_institute_code_1977" role="doc-biblioref">American National Standards Institute, 1977, S. 9</a>)</span></caption>
+<colgroup>
+<col style="width: 35%">
+<col style="width: 35%">
+<col style="width: 28%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Zeichen</th>
+<th style="text-align: center;">ASCII-Code</th>
+<th style="text-align: left;">Bedeutung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><code>NUL*</code></td>
+<td style="text-align: center;"><code>0x00</code></td>
+<td style="text-align: left;">NULL (Nullzeichen, “Kein Wert”, “Ende einer Zeichenkette”)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>SOH</code></td>
+<td style="text-align: center;"><code>0x01</code></td>
+<td style="text-align: left;">Start of Heading</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>STX</code></td>
+<td style="text-align: center;"><code>0x02</code></td>
+<td style="text-align: left;">Start of Text</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>ETX</code></td>
+<td style="text-align: center;"><code>0x03</code></td>
+<td style="text-align: left;">End of Text</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>ENQ</code></td>
+<td style="text-align: center;"><code>0x05</code></td>
+<td style="text-align: left;">Enquiry</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>EOT</code>/<code>EOF</code></td>
+<td style="text-align: center;"><code>0x04</code></td>
+<td style="text-align: left;">End of Transmission/End of File (Dateiende)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>ACK</code></td>
+<td style="text-align: center;"><code>0x06</code></td>
+<td style="text-align: left;">Acknowledgement</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>BEL*</code></td>
+<td style="text-align: center;"><code>0x07</code></td>
+<td style="text-align: left;">Bell (Klingelzeichen, wird meist ignoriert)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>BS</code></td>
+<td style="text-align: center;"><code>0x08</code></td>
+<td style="text-align: left;">Backspace (Rückschritt/Rückwärtslöschen)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>HT*</code></td>
+<td style="text-align: center;"><code>0x09</code></td>
+<td style="text-align: left;">Horizontal Tabulation (Horizontaler Tabulator)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>LF*</code></td>
+<td style="text-align: center;"><code>0x0A</code></td>
+<td style="text-align: left;">Line Feed (Zeilenvorschub, Zeilenumbruch, Zeilenende)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>VT</code></td>
+<td style="text-align: center;"><code>0x0B</code></td>
+<td style="text-align: left;">Vertical Tabulation (Vertikaler Tabulator)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>FF</code></td>
+<td style="text-align: center;"><code>0x0C</code></td>
+<td style="text-align: left;">Form Feed (Seitenvorschub)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>CR*</code></td>
+<td style="text-align: center;"><code>0x0D</code></td>
+<td style="text-align: left;">Carriage Return (Wagenrücklauf, <em>nur Windows</em>)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>SO</code></td>
+<td style="text-align: center;"><code>0x0E</code></td>
+<td style="text-align: left;">Shift Out</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>SI</code></td>
+<td style="text-align: center;"><code>0x0F</code></td>
+<td style="text-align: left;">Shift In</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>DLE</code></td>
+<td style="text-align: center;"><code>0x10</code></td>
+<td style="text-align: left;">Data Link Escape</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>DC1</code></td>
+<td style="text-align: center;"><code>0x11</code></td>
+<td style="text-align: left;">Device Control 1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>DC2</code></td>
+<td style="text-align: center;"><code>0x12</code></td>
+<td style="text-align: left;">Device Control 2</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>DC3</code></td>
+<td style="text-align: center;"><code>0x13</code></td>
+<td style="text-align: left;">Device Control 3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>DC4</code></td>
+<td style="text-align: center;"><code>0x14</code></td>
+<td style="text-align: left;">Device Control 4</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>NAK</code></td>
+<td style="text-align: center;"><code>0x15</code></td>
+<td style="text-align: left;">Negative Acknowledgement</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>SYN</code></td>
+<td style="text-align: center;"><code>0x16</code></td>
+<td style="text-align: left;">Synchronous Idle</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>ETB</code></td>
+<td style="text-align: center;"><code>0x17</code></td>
+<td style="text-align: left;">End of Transmission Block</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>CAN</code></td>
+<td style="text-align: center;"><code>0x18</code></td>
+<td style="text-align: left;">Cancel</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>EM</code></td>
+<td style="text-align: center;"><code>0x19</code></td>
+<td style="text-align: left;">End of Medium</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>SUB</code></td>
+<td style="text-align: center;"><code>0x1A</code></td>
+<td style="text-align: left;">Substitute (Dateiende/Datenende, <em>nur Windows</em>)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>ESC</code></td>
+<td style="text-align: center;"><code>0x1B</code></td>
+<td style="text-align: left;">Escape (Abbruch oder Funktionsänderung)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>FS</code></td>
+<td style="text-align: center;"><code>0x1C</code></td>
+<td style="text-align: left;">File Separator (Dateiende, veraltet)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>GS</code></td>
+<td style="text-align: center;"><code>0x1D</code></td>
+<td style="text-align: left;">Group Separator</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>RS</code></td>
+<td style="text-align: center;"><code>0x1E</code></td>
+<td style="text-align: left;">Record Separator</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>US</code></td>
+<td style="text-align: center;"><code>0x1F</code></td>
+<td style="text-align: left;">Unit Separator</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>SPC*</code></td>
+<td style="text-align: center;"><code>0x20</code></td>
+<td style="text-align: left;">Space (Leerzeichen, Leerschlag)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>DEL</code></td>
+<td style="text-align: center;"><code>0x7F</code></td>
+<td style="text-align: left;">Delete (Vorwärtslöschen)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Die Zeichen für Löschen (<code>BS</code> und <code>DEL</code>) und Funktionsumstellung (<code>ESC</code>) finden sich nicht mehr in Zeichenketten und Dateien. Sie dienen inzwischen nur als Steuerzeichen für die Eingabe mit der Tastatur.</p>
+<p>Das Zeichen für das Dateiende (<code>EOF</code> bzw. unter Windows <code>SUB</code>) ist kein kodiertes Zeichen in einer Zeichenkette, sondern wird vom Betriebssystem gesetzt. Dieses Symbol findet sich nicht in einer Datei und sollte nicht eingefügt werden.</p>
+<p>Normalerweise werden nicht-druckbare Zeichen nicht in Zeichenketten dargestellt, obwohl sie in der Zeichenkette enthalten sind.</p>
+<section id="ziffernkodierung" class="level3" data-number="3.5.1">
+<h3 data-number="3.5.1" class="anchored" data-anchor-id="ziffernkodierung"><span class="header-section-number">3.5.1</span> Ziffernkodierung</h3>
+<p>Arabische Ziffern werden mit den Werten <code>0x30</code> (Ziffer <code>0</code>) bis <code>0x39</code> (Ziffer <code>9</code>) kodiert.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Merke
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Ziffern in Zeichenketten sind nicht gleichwertig mit den Ziffern in Zahlen.</p>
+</div>
+</div>
+<p>Eine Zahl wird als eine Abfolge von Ziffern dargestellt. Wird ein Wert als Zahl dargestellt, dann werden die Ziffern entsprechend der gewählten Basis interpretiert. Werden Ziffern als Zeichenkette kodiert, dann entspricht der <em>Wert</em> der Ziffer der entsprechenden Kodierung. D.h.z.B. die Ziffer <code>"1"</code> in einer Zeichenkette hat nicht den Wert <code>1</code>, sondern den Wert <code>49</code> (<code>0x31</code>). Folgen mehrere Ziffern aufeinander in einer Zeichenkette, dann werden die kodierten Zahlen aneinandergereiht. Die Ziffern <code>"123"</code> entsprechen deshalb nicht dem Wert <code>123</code>, sondern dem Wert <code>3224115</code> (<code>0x313233</code>).</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hinweis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Excel</strong>, <em>R</em> und <em>Python</em> konvertieren Ziffern in Zeichenketten <em>oft</em> automatisch in die richtigen Zahlenwerte, <strong>solange</strong> keine anderen Zeichen in der jeweiligen Zeichenketten kodiert wurden.</p>
+<p>Nicht alle Programmiersprachen konvertieren Ziffern in Zeichenketten automatisch in Zahlenwerte.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="symbole-und-kompression" class="level2" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="symbole-und-kompression"><span class="header-section-number">3.6</span> Symbole und Kompression</h2>
+<p>Das zentrale Element von Shannon’s Informationstheorie sind <em>Nachrichten</em>, die aus Symbolen bestehen. Entsprechend trägt jedes Symbol zur Information einer Nachricht (<code>N</code>) bei. Shannon versteht unter dem Begriff <em>Symbol</em> sowohl Zahlen, Buchstaben, Worte als auch Wortfolgen. Dabei lassen sich Wortfolgen in mehrere Worte und Worte in Buchstaben aufteilen.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hinweis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Ein Symbol, das nicht in einfachere Symbole unterteilt werden kann, wird als (Informations-) <em>Bit</em> bezeichnet.</p>
+</div>
+</div>
+<p>Sich wiederholende Bits oder Bitfolgen können abgekürzt werden, indem die Bitfolge nur einmal zusammen mit Anzahl der Wiederholungen angegeben wird.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hinweis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Das Abkürzen einer Bitfolge wird als <strong>Kompression</strong> bezeichnet.</p>
+</div>
+</div>
+<p>Veranschaulichen wir uns das mit Hilfe der Nachricht <code>"aaaaaaaaaa"</code>. Diese Bitfolge kann als <code>[a]</code><span class="math inline">^{10}</span> abgekürzt werden.</p>
+<p>Der Exponent zeigt uns, wie stark eine Bitfolge komprimiert wurde.</p>
+<p>Mit diesem Wissen können wir die Nachricht <code>"ababababab"</code> komprimieren. Die Kompression ist in diesem Fall <code>[ab]</code><span class="math inline">^5</span>.</p>
+<p>Dieses Spiel können wir weiter treiben: Die Nachricht <code>"aber aber "</code> lässt sich als [aber]<span class="math inline">^2</span> und die Nachricht <code>"aber hallo"</code> lässt sich als <code>[aber hallo]</code> <span class="math inline">^1</span> komprimieren.</p>
+<p>Der <em>Kompressionsgrad</em> (<code>K</code>) ergibt sich aus der Länge der ursprünglichen Nachricht <code>l(N)</code> und der Kompression <code>k</code>:</p>
+<p><span class="math display">
+K = \frac{k}{l(N)}
+</span></p>
+<p>Im Beispiel haben alle Nachrichten die Länge <code>10</code>.</p>
+<p>Daraus ergeben sich die Kompressionsgrade für unterschiedliche, gleich lange Zeichenketten in <a href="#tbl-kompressionsgrade">Tabelle&nbsp;<span>3.3</span></a>.</p>
+<div id="tbl-kompressionsgrade" class="anchored">
+<table class="table">
+<caption>Tabelle&nbsp;3.3: Kompressionsgrade verschiedener Zeichenketten</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Nachricht</th>
+<th style="text-align: left;">Kompressionsgrad</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>"aaaaaaaaaa"</code></td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>"ababababab"</code></td>
+<td style="text-align: left;">.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>"aber aber "</code></td>
+<td style="text-align: left;">.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>"aber hallo"</code></td>
+<td style="text-align: left;">.1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Die Kompressionsgrade stehen im umgekehrten Verhältnis zum Informationsgehalt (<span class="math inline">I_g</span>) einer Nachricht. Es gilt also:</p>
+<p><span class="math display">
+I_g = \frac{1}{K} = \frac{l(N)}{k}
+</span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Merke
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Je stärker eine Nachricht komprimiert werden kann, desto weniger Information enthält sie.</p>
+<p>Eine Nachricht mit dem Kompressionsgrad <code>1</code> wird als <em>informationslos</em> bezeichnet. Sie enthält also <em>keine</em> Information.</p>
+</div>
+</div>
+</section>
+<section id="merksatz-der-informationskodierung" class="level2" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="merksatz-der-informationskodierung"><span class="header-section-number">3.7</span> Merksatz der Informationskodierung</h2>
+<p>Ausgehend von der Informationstheorie bestehen Nachrichten aus Symbolen. Symbole können Sätze, Worte, Wortkombinationen, Buchstaben oder Buchstabenfolgen sein. Ein Symbol repräsentiert einen Teil einer Nachricht.</p>
+<div id="def-bit" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 3.5 </strong></span>Ein Symbol einer Nachricht wird als <strong>Bit</strong> (dt. <em>Teil</em>) bezeichnet.</p>
+</div>
+<p>In den vorherigen Abschnitten haben wir wichtige Erkenntnisse abgeleitet:</p>
+<ol type="1">
+<li>Symbole können aus einfacheren Symbolen zusammengesetzt sein.</li>
+<li>Zahlensysteme <strong>kodieren</strong> Zahlenwerte zu einer Basis.</li>
+<li>Die Basis eines Zahlensystems legt fest, wie viele Ziffern für Zahlenwerte zur Verfügung stehen.</li>
+<li>Die kleinste Basis für ein Zahlensystem ist 2.</li>
+<li>Beliebige Symbole als Zahlenwerte abgebildetet werden können.</li>
+<li>Ziffern sind Symbole.</li>
+</ol>
+<p>Daraus ergibt sich der folgende Merksatz.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Merke
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Das die einfachste Bit-Kodierung für eine Nachricht ist die Unterscheidung zwischen <code>0</code> und <code>1</code>.</p>
+</div>
+</div>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="list" style="display: none">
+<div id="ref-american_national_standards_institute_code_1977" class="csl-entry" role="listitem">
+American National Standards Institute. (1977). <em>Code for Information Interchange</em> (<span>ANSI</span> X3.4-1977). <a href="https://nvlpubs.nist.gov/nistpubs/Legacy/FIPS/fipspub1-2-1977.pdf">https://nvlpubs.nist.gov/nistpubs/Legacy/FIPS/fipspub1-2-1977.pdf</a>
+</div>
+<div id="ref-isoiec_jtc_1sc_2_information_2020" class="csl-entry" role="listitem">
+ISO/IEC JTC 1/SC 2. (2020). <em>Information technology — Universal coded character set (<span>UCS</span>)</em> (<span>ISO</span>/<span>IEC</span> 10646:2020). <a href="https://www.iso.org/standard/76835.html">https://www.iso.org/standard/76835.html</a>
+</div>
+<div id="ref-isoiec_jtc_1sc_2wg_3_dis_1998" class="csl-entry" role="listitem">
+ISO/IEC JTC 1/SC 2/WG 3. (1998a). <em><span>DIS</span> 8859-1, 8-bit single-byte coded graphic character sets – Part 1: Latin alphabet No.1</em> (N 411). <a href="https://www.open-std.org/JTC1/sc2/wg3/docs/n411.pdf">https://www.open-std.org/JTC1/sc2/wg3/docs/n411.pdf</a>
+</div>
+<div id="ref-isoiec_jtc_1sc_2wg_3_isoiec_1998" class="csl-entry" role="listitem">
+ISO/IEC JTC 1/SC 2/WG 3. (1998b). <em><span>ISO</span>/<span>IEC</span> <span>FCD</span> 8859-15 Information technology – 8 –bit singlebyte coded graphic character sets – Part 15 : Latin Alphabet 0 (Covering the <span>EURO</span> symbol and full support for the French and Finish languages</em> (N 404). <a href="https://www.open-std.org/JTC1/SC2/WG3/docs/n404.pdf">https://www.open-std.org/JTC1/SC2/WG3/docs/n404.pdf</a>
+</div>
+<div id="ref-shannon_mathematical_1948" class="csl-entry" role="listitem">
+Shannon, C. E. (1948). A Mathematical Theory of Communication. <em>The Bell System Technical Journal</em>, <em>27</em>, 379–423. <a href="https://doi.org/10.1002/j.1538-7305.1948.tb01338.x">https://doi.org/10.1002/j.1538-7305.1948.tb01338.x</a>
+</div>
+<div id="ref-shannon_communication_1949" class="csl-entry" role="listitem">
+Shannon, C. E. (1949). Communication Theory of Secrecy Systems. <em>Bell System Technical Journal</em>, <em>28</em>(4), 656–715. <a href="https://doi.org/10.1002/j.1538-7305.1949.tb00928.x">https://doi.org/10.1002/j.1538-7305.1949.tb00928.x</a>
+</div>
+<div id="ref-the_unicode_consortium_unicode_2022" class="csl-entry" role="listitem">
+The Unicode Consortium. (2022). <em>Unicode</em>. <a href="https://www.unicode.org/versions/latest/">https://www.unicode.org/versions/latest/</a>
+</div>
+</div>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Kopiert");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Kopiert");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../kapitel/01-tool-chain/tastatur.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Tastatur und Tastaturkürzel</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../kapitel/01-tool-chain/project_doc.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Dokumentation</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

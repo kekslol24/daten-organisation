@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Daten und Information - 6&nbsp; Daten organisieren</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../kapitel/01-tool-chain/git_github.html" rel="next">
+<link href="../../kapitel/02-daten-sammeln/kapitel.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "Keine Treffer",
+    "search-matching-documents-text": "Treffer",
+    "search-copy-link-title": "Link in die Suche kopieren",
+    "search-hide-matches-text": "Zusätzliche Treffer verbergen",
+    "search-more-match-text": "weitere Treffer in diesem Dokument",
+    "search-more-matches-text": "weitere Treffer in diesem Dokument",
+    "search-clear-button-title": "Zurücksetzen",
+    "search-detached-cancel-button-title": "Abbrechen",
+    "search-submit-button-title": "Abschicken",
+    "search-label": "Suchen"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../kapitel/01-tool-chain/project_doc.html">Datenquellen</a></li><li class="breadcrumb-item"><a href="../../kapitel/03-daten-organisieren/kapitel.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Daten organisieren</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">Daten und Information</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Suchen"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vorwort</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Ausgangslage und Vorbereitung</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/01-einleitung/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Einleitung</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/01-tool-chain/tastatur.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Tastatur und Tastaturkürzel</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/01-information/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Informationstheorie</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Datenquellen</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/01-tool-chain/project_doc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Dokumentation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/02-daten-sammeln/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Daten sammeln</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/03-daten-organisieren/kapitel.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Daten organisieren</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/01-tool-chain/git_github.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Versionierung mit Git und GitHub</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/05-datentypen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Datentypen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/04-dateiformate/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Dateiformate</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Mathematik der Daten</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/06-variablen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Variablen, Funktionen und Operatoren</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/05-zeichenketten/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Zeichenketten</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/08-boolsche-operationen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Boole’sche Operationen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/09-vektor-operationen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Vektor-Operationen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/10-matrix-operationen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Matrix-Operationen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/11-daten-kodieren/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Daten kombinieren und kodieren</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/11-indizieren-gruppieren/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Indizieren und Gruppieren</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/12-daten-formen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Daten formen</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Deskriptive Datenanalyse</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/13-daten-beschreiben/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Daten beschreiben</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/14-daten-visualisieren/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Daten visualisieren</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Referenzen</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Inhaltsverzeichnis</h2>
+   
+  <ul>
+  <li><a href="#daten-strukturieren" id="toc-daten-strukturieren" class="nav-link active" data-scroll-target="#daten-strukturieren"><span class="header-section-number">6.1</span> Daten strukturieren</a>
+  <ul class="collapse">
+  <li><a href="#daten-als-tabellen" id="toc-daten-als-tabellen" class="nav-link" data-scroll-target="#daten-als-tabellen"><span class="header-section-number">6.1.1</span> Daten als Tabellen</a></li>
+  <li><a href="#begriffe" id="toc-begriffe" class="nav-link" data-scroll-target="#begriffe"><span class="header-section-number">6.1.2</span> Begriffe</a></li>
+  <li><a href="#daten-normalisieren" id="toc-daten-normalisieren" class="nav-link" data-scroll-target="#daten-normalisieren"><span class="header-section-number">6.1.3</span> Daten normalisieren</a></li>
+  </ul></li>
+  <li><a href="#daten-ablegen" id="toc-daten-ablegen" class="nav-link" data-scroll-target="#daten-ablegen"><span class="header-section-number">6.2</span> Daten ablegen</a>
+  <ul class="collapse">
+  <li><a href="#dateien-und-verzeichnisse" id="toc-dateien-und-verzeichnisse" class="nav-link" data-scroll-target="#dateien-und-verzeichnisse"><span class="header-section-number">6.2.1</span> Dateien und Verzeichnisse</a></li>
+  <li><a href="#daten-repositories" id="toc-daten-repositories" class="nav-link" data-scroll-target="#daten-repositories"><span class="header-section-number">6.2.2</span> Daten-Repositories</a></li>
+  <li><a href="#datenbanken" id="toc-datenbanken" class="nav-link" data-scroll-target="#datenbanken"><span class="header-section-number">6.2.3</span> Datenbanken</a></li>
+  <li><a href="#datenverlust-vermeiden" id="toc-datenverlust-vermeiden" class="nav-link" data-scroll-target="#datenverlust-vermeiden"><span class="header-section-number">6.2.4</span> Datenverlust vermeiden</a></li>
+  </ul></li>
+  <li><a href="#datenmanipulation" id="toc-datenmanipulation" class="nav-link" data-scroll-target="#datenmanipulation"><span class="header-section-number">6.3</span> Datenmanipulation</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Daten organisieren</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Daten sind das wichtigste Gut der Datenwissenschaften. Deshalb sollte sorgsam und systematisch mit ihnen umgegangen werden. Zu diesem Zweck müssen Daten organisiert werden.</p>
+<p>Das Ziel der Datenorganisation ist es, Daten so zu strukturieren, damit sie einfach und effizient verarbeitet werden können. Zur Datenorganisation gehört die Strukturierung, Ablage, Versionierung und Bereitstellung von Daten.</p>
+<section id="daten-strukturieren" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="daten-strukturieren"><span class="header-section-number">6.1</span> Daten strukturieren</h2>
+<p>Im <a href="../02-daten-sammeln/kapitel.html">Kapitel&nbsp;<span>5</span></a> wurde die Bedeutung des Datenschemas für das Sammeln von Daten behandelt. Ein Schema gibt vor, welche Werte einen Datensatz bilden. Dieser Abschnitt konzentriert sich auf die Umsetzung des Datenschemas.</p>
+<section id="daten-als-tabellen" class="level3" data-number="6.1.1">
+<h3 data-number="6.1.1" class="anchored" data-anchor-id="daten-als-tabellen"><span class="header-section-number">6.1.1</span> Daten als Tabellen</h3>
+<p>Daten werden oft als Tabellen präsentiert. Tabellen sind eine einfache und intuitive Form der <em>Datenorganisation</em>. Vorläufig lassen sich Tabellen wie in <a href="#def-tabellenstruktur">Definition&nbsp;<span>6.1</span></a> definieren. Diese Definition wird in <a href="../05-datentypen/kapitel.html#sec-chapter-datenstrukturen">Kapitel&nbsp;<span>8.3</span></a> erweitert, um verschiedene Datenstrukturen zu unterscheiden.</p>
+<div id="def-tabellenstruktur" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 6.1 </strong></span><strong>Tabellen</strong> formen eine Datenstruktur, die Zeilen und Spalten hat und in der alle Zeilen die gleiche Breite und alle Spalten die gleiche Länge haben.</p>
+</div>
+<p>Tabellen organisieren Daten in Zeilen und Spalten, wobei jede Zeile und jede Spalte eine Überschrift haben kann.</p>
+<div id="def-vektornamen" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 6.2 </strong></span>Die Überschriften einer Tabelle werden als <em>Namen</em>, bzw. <em>Spaltennamen</em> und <em>Zeilennamen</em> bezeichnet.</p>
+</div>
+<p>Eine bestimmte Spalte in einer bestimmten Zeile heisst <em>Tabellenzelle</em> oder schlicht <em>Zelle</em>. Eine Zelle enthält genau einen Wert.</p>
+<p><a href="#def-tabellenstruktur">Definition&nbsp;<span>6.1</span></a> legt fest, dass eine <em>Tabelle</em> keine Zellen haben kann, die sich über mehrere Zeilen oder Spalten erstrecken. Viele Publikationen zeigen jedoch Datenstrukturen mit solchen Zellen. Solche Datenstrukturen sind keine Tabellen im Sinne von <a href="#def-tabellenstruktur">Definition&nbsp;<span>6.1</span></a>.</p>
+<div id="def-tabellarisch" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 6.3 </strong></span>Eine tabellenartige Struktur mit Tabellenzellen, die sich über mehr als eine Zeile oder eine Spalte erstrecken heisst <strong>tabellarische Darstellung</strong>.</p>
+</div>
+<p><em>Tabellarische Darstellungen</em> dienen der <em>Präsentation</em> von Daten und Ergebnissen. Sie sind nicht für die <em>Datenorganisation</em> geeignet.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tipp
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In Berichten und Publikationen wird <em>nicht</em> zwischen <em>Tabellen</em> und <em>tabellarischen Darstellungen</em> unterschieden. Beide Strukturen werden unter <em>Tabellen</em> zusammengefasst. Beide Strukturen einheitlich als <em>Tabelle</em> beschriftet und nummeriert.</p>
+<p><strong>Diese Vereinfachung ist nur für die <em>Präsentation</em> von Daten erlaubt.</strong></p>
+</div>
+</div>
+</section>
+<section id="begriffe" class="level3" data-number="6.1.2">
+<h3 data-number="6.1.2" class="anchored" data-anchor-id="begriffe"><span class="header-section-number">6.1.2</span> Begriffe</h3>
+<p>Tabellen dienen zur systematischen Erfassung von Daten. Meist repräsentieren Tabellen Messungen, die später ausgewertet und analysiert werden sollen. Die Datenorganisation in Tabellen strukturiert Daten entlang zwei Dimensionen. Für die Datenerfassung werden die Daten in <em>Zeilen</em> und <em>Spalten</em> organisiert, wobei die Spalten meistens als <em>Merkmale</em> und die Zeilen als <em>Messereignisse</em> bezeichnet werden. Gemeinsam bilden die Merkmale und Messereignisse eine <em>Stichprobe</em> (engl. <em>sample</em>).</p>
+<div id="def-merkmal" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 6.4 </strong></span>Ein <strong>Merkmal</strong> ist eine Eigenschaft, die in einer Messung durch einen <em>Messwert</em> erfasst wird. In der Statistik werden Merkmale in der <em>Statistik</em> als <strong>Variablen</strong> bezeichnet.</p>
+</div>
+<p>Ein Merkmal ist immer als Vektor organisiert. Alle Werte eines Merkmals haben also den gleichen Datentyp und den gleichen Wertebereich.</p>
+<div id="def-messereignis" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 6.5 </strong></span>Ein <strong>Messereignis</strong> fasst ein oder mehrere <em>gemeinsam gemessenen</em> Merkmale zusammen. Ein Messereignis wird auch als <strong>Datensatz</strong> bezeichnet. Bei der Datenvisualisierung werden Messereignisse als <strong>Datenpunkte</strong> bezeichnet.</p>
+</div>
+<p>Ein Datensatz ist immer eine Liste von Werten, deren Datentypen und Wertebereichen voneinander verschieden sein können.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hinweis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Der Begriff <em>Datensatz</em> wird im Deutschen mehrdeutig verwendet. Es ist nicht immer klar, ob ein Datensatz ein Zeile in einer Tabelle oder eine ganze Tabelle bezeichnet. Im Englishen wird der Begriff <em>Datensatz</em> entweder mit <em>data record</em> (etwa Dateneintrag) für eine Zeile in einer Tabelle benutzt. Die Begriffe <em>data set</em> (Datenmenge) oder <em>data frame</em> (Datenraster) bezeichnen eine ganze Tabelle.</p>
+</div>
+</div>
+<p>Die <em>Merkmale</em> beschreiben gemeinsam ein <em>Messereignis</em>. Weil es sich bei den Merkmalen eines Messereignisses um <em>zusammengehörende</em> Werte handelt, wird auch der Begriff <strong>Entität</strong> (gegebene Einheit; eindeutig identifizierbare, zusammenhängende Größe) verwendet.</p>
+<p>Messungen bilden einen Ausschnitt einer <strong>Grundgesamtheit</strong> ab. Eine Grundgesamtheit umfasst alle <em>prinziell</em> messbaren Entitäten. Eine Stichprobe ist eine <em>Teilmenge</em> der Grundgesamtheit, die nur die <em>tatsächlich gemessenen</em> Entitäten enthält.</p>
+<div id="def-grundgesamtheit" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 6.6 </strong></span>Alle prinzipiell messbaren Entitäten bilden eine <strong>Grundgesamtheit</strong>.</p>
+</div>
+<div id="def-stichprobe" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 6.7 </strong></span>Eine <strong>Stichprobe</strong> ist die Gesamtheit der gemessenen Entitäten ab.</p>
+</div>
+<p>Die <strong>Statistik</strong> befasst sich mit den Methoden, um von Stichproben auf die ursprüngliche <strong>Grundgesamtheit</strong> zu schliessen. Aus Sicht der Datenwissenschaft und Datenverarbeitung ist die Grundgesamtheit <em>unerheblich</em>, weil die nicht gemessenen Entitäten nicht in den Daten nicht abgebildet sind und deshalb unbekannt bleiben müssen!</p>
+</section>
+<section id="daten-normalisieren" class="level3" data-number="6.1.3">
+<h3 data-number="6.1.3" class="anchored" data-anchor-id="daten-normalisieren"><span class="header-section-number">6.1.3</span> Daten normalisieren</h3>
+<p>Ein Datensatz kann Werte aus einer oder mehreren Messungen beinhalten. Wenn mehrere <em>unabhängige</em> Messungen in einem Datensatz zusammengefasst werden, dann beschreiben die entsprechenden Vektoren die <em>gleichen Merkmale</em> aus unterschiedliche Messereignissen.</p>
+<div id="def-unabhängige-messungen" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 6.8 </strong></span><strong>Unabhängige Messungen</strong> sind Messungen für die gleichen Merkmale zu unterschiedlichen Zeitpunkten.</p>
+</div>
+<p>Eine Stichprobe mit unabhängigen Messungen für die gleiche Entität ist <em>nicht normalisiert</em>.</p>
+<p><a href="#fig-nicht-normalform">Abbildung&nbsp;<span>6.1</span></a> zeigt einen Ausschnitt einer Stichprobe mit Werten aus mehreren unabhängigen Messungen bzw. Messereignissen. Jeder Vektor in dieser Stichprobe entspricht dabei unabhängigen Messungen.</p>
+<div id="fig-nicht-normalform" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="figures/stichprobe_nicht_normal.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Abbildung&nbsp;6.1: Beispiel einer Stichprobe mit mehreren Messereignissen pro Datensatz</figcaption>
+</figure>
+</div>
+<p>Ein <strong>Messereignis</strong> bezeichnet das gleichzeitige Erheben zusammengehörender Daten. Wenn beispielsweise das gleiche Objekt zu unterschiedlichen Zeitpunkten gemessen wird, dann liegen <em>unabhängige Messereignisse</em> vor.</p>
+<p>Wenn Daten in einer Tabelle jeweils ein Messereignis repräsentieren, dann liegen sie in <strong>Normalform</strong> vor. In der Normalform ist die Tabelle gleichbedeutend mit der zugehörigen Stichprobe. Jede Zeile ist der Datensatz einer beobachteten Entität. Die Spalten repräsentieren die Messungen.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hinweis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Beachten Sie, dass <em>unabhängige Messereignisse</em> nicht mit <em>unabhängigen Variablen</em> in der Statistik verwechselt werden darf.</p>
+</div>
+</div>
+<div id="def-normalform" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 6.9 </strong></span>Die <strong>Normalform</strong> einer Stichprobe ist eine Tabelle, in der jedes Merkmal genau einmal vorkommt und alle Werte in einem Datensatz zum gleichen Messereignis gehören.</p>
+</div>
+<p><a href="#fig-normalform">Abbildung&nbsp;<span>6.2</span></a> zeigt einen Ausschnitt der Normalform der Stichprobe aus <a href="#fig-nicht-normalform">Abbildung&nbsp;<span>6.1</span></a>. Die Normalform einer Stichprobe erscheint auf dem ersten Blick unübersichtlicher als Varianten mit mehreren Messereignissen pro Datensatz. Die Normalform hat jedoch den Vorteil, dass die Stichprobe <em>einfacher</em> verarbeitet werden kann.</p>
+<div id="fig-normalform" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="figures/stichprobe_normalform.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Abbildung&nbsp;6.2: Beispiel einer Stichprobe in der Normalform</figcaption>
+</figure>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Praxis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Weil die Normalform oft schwer lesbar ist, werden Daten für die <em>Präsentation</em> in <em>nicht-normalisierter</em> Form bereitgestellt. Die Grundlage für diese Darstellung der Daten sollte möglichst die Normalform sein.</p>
+<p>Beim Datensammeln sollte möglichst die Normalform eingehalten werden.</p>
+</div>
+</div>
+<div id="exm-room-temp" class="theorem example">
+<p><span class="theorem-title"><strong>Beispiel 6.1 (Raumtemperatur und Helligkeit) </strong></span>Die am Montag um 13 Uhr gemessene Temperatur und Helligkeit gehören zum gleichen Messereignis. Wird die Messung am Dienstag um 8 Uhr wiederholt, dann gehört die Temperatur und Helligkeit ebenfalls zum gleichen Messereignis.</p>
+<p>Die Normalform dieser Daten wäre entsprechend:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Tag</th>
+<th style="text-align: right;">Uhrzeit</th>
+<th style="text-align: right;">Temperatur</th>
+<th style="text-align: right;">Helligkeit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Montag</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">21.5</td>
+<td style="text-align: right;">0.9</td>
+</tr>
+<tr class="even">
+<td>Dienstag</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">22.1</td>
+<td style="text-align: right;">0.5</td>
+</tr>
+</tbody>
+</table>
+<p>Die Temperatur am Montag und 13 Uhr und am Dienstag um 8 Uhr sind <em>unabhängige</em> Messereignisse für die Temperatur. Werden die Werte nicht-normalisiert gegenübergestellt, können Menschen die Werte oft leichter vergleichen. Eine solche Tabelle sähe dann wie folgt aus:</p>
+<table class="table">
+<colgroup>
+<col style="width: 24%">
+<col style="width: 24%">
+<col style="width: 28%">
+<col style="width: 24%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Temperatur Montag, 13h</th>
+<th style="text-align: right;">Temperatur Dienstag, 8h</th>
+<th style="text-align: right;">Helligkeit Montag, 13h</th>
+<th style="text-align: right;">Helligkeit Dienstag, 8h</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">21.5</td>
+<td style="text-align: right;">22.1</td>
+<td style="text-align: right;">0.9</td>
+<td style="text-align: right;">0.5</td>
+</tr>
+</tbody>
+</table>
+<p>Diese zweite Tabelle macht deutlich, dass viele nicht normalisierte Tabellen einen Teil der Daten in Vektornamen kodieren. Diese Daten sind für die Datenverarbeitung nur indirekt zugänglich. Deshalb sollten Daten möglichst in der Normalform vorliegen.</p>
+</div>
+</section>
+</section>
+<section id="daten-ablegen" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="daten-ablegen"><span class="header-section-number">6.2</span> Daten ablegen</h2>
+<section id="dateien-und-verzeichnisse" class="level3" data-number="6.2.1">
+<h3 data-number="6.2.1" class="anchored" data-anchor-id="dateien-und-verzeichnisse"><span class="header-section-number">6.2.1</span> Dateien und Verzeichnisse</h3>
+<p>Datendateien sollten möglichst isoliert und vor versehentlichen überschreiben geschützt werden.</p>
+<p>Daten werden am Besten immer in eigenen Dateien abgelegt. Diese Dateien enthalten nur Werte und keine Umformungen oder Berechnungen. Wenn ein Projekt mehrere Datenerhebungen umfasst, dann sollten die Daten für jede Erhebung in einer eigenen Datei abgelegt werden. Hierzu sollte eine eindeutige Bezeichnung verwendet werden, die auf die Erhebung hinweist. Ein geeignetes Format für Dateinamen ist ein Datum-Kennungs-Format, die die Erhebung eindeutig identifiziert. Dabei wird das Datum in der Form <code>YYYY-MM-DD</code> angegeben, gefolgt von einer kurzen Bezeichnung der Erhebung.</p>
+<div id="exm-datum-kennung" class="theorem example">
+<p><span class="theorem-title"><strong>Beispiel 6.2 (Dateiname im Datum-Kennungsformat) </strong></span>&nbsp;</p>
+<pre><code>2020-10-01-erhebung-1.csv</code></pre>
+</div>
+<p>Durch die inverse Datumsschreibweise dieses Formats lassen sich die Dateien leicht nach Datum sortieren und schneller wiederfinden.</p>
+<p>Damit die Daten von anderen Teilen eines Projekts getrennt werden können, sollten die Daten in einem eigenen Verzeichnis abgelegt werden. Dabei sollte das Verzeichnis einen Namen haben, der anzeigt, dass nur Datendateien in diesem Verzeichnis abgelegt werden. Eine solche Bezeichnung könnte beispielsweise <code>data</code> oder <code>daten</code> sein.</p>
+</section>
+<section id="daten-repositories" class="level3" data-number="6.2.2">
+<h3 data-number="6.2.2" class="anchored" data-anchor-id="daten-repositories"><span class="header-section-number">6.2.2</span> Daten-Repositories</h3>
+<p>Eine deutlichere Trennung der Daten von den Ergebnissen ist mit Hilfe von eigenen <em>Daten-Repositories</em> möglich. Dabei werden die Daten separat von den Ergebnissen gespeichert, versioniert und synchronisiert.</p>
+<p>Ein Daten-Repository sollte immer nur die Daten eines Projekts enthalten. Das Repository sollte einen Namen haben, der anzeigt, dass es sich um ein Daten-Repository handelt.</p>
+<p>Bei der Verwendung eines getrennten Daten-Repositories entfällt die Notwendigkeit, die Daten in einem eigenen Verzeichnis abzulegen. Diese Funktion übernimmt das Repository.</p>
+</section>
+<section id="datenbanken" class="level3" data-number="6.2.3">
+<h3 data-number="6.2.3" class="anchored" data-anchor-id="datenbanken"><span class="header-section-number">6.2.3</span> Datenbanken</h3>
+<p>Datenbanken sind eine weitere Möglichkeit, Daten zu abzulegen. Datenbanken werden über spezielle Software verwaltet. Sie eigenen sich besonders für die Verwaltung von grossen und kontinuierlich wachsenden Datenmengen, die von mehreren Personen bearbeitet werden und die über eine längere Zeit verfügbar sein müssen.</p>
+<p>Datenbanken haben den Vorteil, dass gezielt Teile der Daten für spezielle Analysen geladen werden können. Dadurch können auch sehr grosse Datenmengen effizient verarbeitet werden.</p>
+</section>
+<section id="datenverlust-vermeiden" class="level3" data-number="6.2.4">
+<h3 data-number="6.2.4" class="anchored" data-anchor-id="datenverlust-vermeiden"><span class="header-section-number">6.2.4</span> Datenverlust vermeiden</h3>
+<p>Allein die Organisation von Daten in Tabellen, die in den richtigen Dateien in einem eigenen Verzeichnis abgelegt sind, ist keine Garantie, dass die Daten <em>sicher</em> sind. Daten können durch <em>versehentliches Überschreiben</em> oder <em>Löschen</em> verloren gehen.</p>
+<p>Daten können beispielsweise durch <em>Hardware-Fehler</em> oder einen anderen Verlust der Hardware verloren gehen. Deshalb sollten Daten gesichert werden.</p>
+<p>Die einfachste Form der Sicherung sind getrennte Speicherorte. Dazu werden die Daten an mindestens zwei Orten gespeichert. Diese Art der Sicherung heisst <strong>Datenreplikation</strong>. Wenn die Daten an einem Ort verloren gehen, können sie über den anderen Ort wiederhergestellt werden. Dazu müssen zwei Bedingungen erfüllt sein:</p>
+<ol type="1">
+<li>Die Daten müssen in beiden Daten <em>vollständig</em> vorhanden sein.</li>
+<li>Die Speicherorte müssen <em>unabhängig</em> voneinander sein.</li>
+</ol>
+<p>Zum Beispiel ist eine externe Festplatte für Sicherungen eines Laptops kein geeigneter Speicherort, wenn beide Geräte im gleichen Rucksack transportiert werden. Wenn der Rucksack verloren geht oder gestohlen wird, wären die Daten auf der externen Festplatte ebenfalls verloren.</p>
+<p>Die <strong>Versionierung</strong> der Daten ein wichtiges Instrument zur Vermeidung von Datenverlusten. Moderne Versionierungssysteme arbeiten dabei zweistufig (s. <a href="../01-tool-chain/git_github.html"><span>Kapitel&nbsp;7</span></a>):</p>
+<ol type="1">
+<li>Die Daten werden lokal <em>versioniert</em>, so dass die Daten aus den Versionierungspunkten wiederhergestellt werden können.</li>
+<li>Die Versionen werden in der verteilten Versionsverwaltung <em>synchronisiert</em>. Dadurch werden die Daten automatisch <em>repliziert</em>.</li>
+</ol>
+<p>Durch diese Vorgehensweise sind die Daten an mindestens zwei Orten gespeichert. Wenn die Daten an einem Ort verloren gehen, können sie über den anderen Ort wiederhergestellt werden.</p>
+<p>Die dritte Technik zur Vermeidung von Datenverlusten ist die <strong>Archivierung</strong>. Für die Datenarchivierung werden die Daten gebündelt und in einem <em>Archiv</em> abgelegt. Die Archivierung erfolgt meist nach Abschluss eines Projekts oder einer Studie. Alternativ sollten Daten bereits archiviert werden, sobald die Datenerhebung abgeschlossen wurde.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Praxis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Versionierungssysteme wie git können aus Versionen von Daten <em>automatisch</em> Archivdateien erzeugen. git Hosting-Plattformen bieten hierfür eigene Ablagen. Die Archivdateien können anschliessend an einem sicheren Ort abgelegt werden.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Datenbanken sind kein Ersatz für Sicherungen
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Obwohl Datenbanken eine sehr gute Möglichkeit sind, Daten zu verwalten, sind sie kein Ersatz für Sicherungen. Datenbanken können zwar Daten <em>speichern</em>, aber sie können keine Daten <em>sichern</em>.</p>
+<p>Eine Datenbank kann erst dann einen Datenverlust vorbeugen, wenn die Datenbank selbst gesichert wird. Das bedeutet, dass die Datenbank zumindest repliziert werden muss.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="datenmanipulation" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="datenmanipulation"><span class="header-section-number">6.3</span> Datenmanipulation</h2>
+<p>Nach dem Importieren und vor dem Exportieren muss die <em>Datenintegrität</em> sichergestellt werden. Das bedeutet, dass zwischen allen Werten und Ergebnissen eine systematische Verbindung besteht. Werte dürfen deshalb nicht <em>willkürlich</em> verändert, gelöscht oder hinzugefügt werden.</p>
+<p>Ein grosses Problem bei der Arbeit mit Daten ist die <em>nachträgliche Datenmanipulation</em>. Dabei werden die erhobenen Daten verändert, wobei sich die Veränderung nicht einwandfrei reproduzieren lässt.</p>
+<div id="def-datenmanipulation" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 6.10 </strong></span>Eine <strong>Datenmanipulation</strong> heisst jede Veränderung von Daten bei denen Werte unsystematisch hinzugefügt, beliebige Werte verändert oder gelöscht werden.</p>
+</div>
+<p>Weil nach einer Datenmanipulation die ursprünglichen Daten nicht mehr eindeutig reproduziert werden können, lassen sich die Ergebnisse nicht mehr bestätigen oder wiederlegen. Das kommt einem vollständigen Datenverlust gleich, denn alle vorliegenden Daten können manipuliert worden sein.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Keine Datenreproduktion möglich
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Wird eine Datenmanipulation entdeckt oder ist eine Manipulation sehr wahrscheinlich, dann ist es <strong>nicht mehr möglich</strong>, die ursprünglichen Daten zu reproduzieren. In diesem Fall gelten <strong>alle Daten</strong> eines Datensatzes als <strong>komprimitiert</strong>. Solche Daten dürfen auf keinen Fall für Analysen weiterverwendet werden.</p>
+</div>
+</div>
+<p>Eine Datenmanipulation muss von der systematischen Datenverarbeitung abgegrenzt werden. Bei der systematischen Datenverarbeitung werden Daten mit Hilfe von Werkzeugen und definierten Methoden verarbeitet. Dabei gehen keine Daten verloren, werden neue Werte erzeugt oder bestehende Werte verändert. Bei der systematischen Datenverarbeitung lassen sich alle Ergebnisse aus den ursprünglichen Daten herleiten.</p>
+<p>Falls Werte erzeugt werden, dürfen diese nicht willkürlich mit den ursprünglichen Daten vermischt werden. Stattdessen sind solche neuen Werte von den Daten zu trennen.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Praxis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Generierte Werte dürfen nur über eine Kodierung (<a href="../11-daten-kodieren/kapitel.html"><span>Kapitel&nbsp;15</span></a>) mit den ursprünglichen Daten verknüpft werden. Die Kodierung muss so gestaltet sein, dass die ursprünglichen Daten jederzeit reproduziert werden können.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Merke
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Um eine systematische Datenverarbeitung belegen zu können, müssen <strong>Daten</strong>, <strong>Ergebnisse</strong> und <strong>alle Operationen</strong>, die von den Daten zu den Ergebnissen, vorgehalten werden.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Keine Datenmanipulation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Solange alle Werte im Rahmen des Schemas erhalten bleiben, liegt keine Datenmanipulation vor. Dazu gehören insbesondere:</p>
+<ul>
+<li>Nachvollziehbare logische, methodische und systematische Fehler.</li>
+<li>Korrektur von Vektornamen/Variablen und deren Übersetzung in eine andere Sprache.</li>
+<li>Begründetes Runden, wenn dadurch keine Datenverzerrung entsteht. Als Richtlinie gilt die Messgenauigkeit der verwendeten Instrumente.</li>
+<li>Umbenennen von Dateien und Verzeichnissen.</li>
+<li>Umwandlung von Masseinheiten, z.B. Konvertierung von Grad Fahrenheit in Grad Celsius.</li>
+<li>Anonymisierung von Datensätzen.</li>
+</ul>
+</div>
+</div>
+<p>Es gibt zwei Arten der Datenmanipulation.</p>
+<p>Die <strong>absichtliche Manipulation</strong> von Daten erfordert <em>aktives Eingreifen</em> einer Person mit Zugang zu den Daten. ist ein schweres professionelles Delikt. Diese Art von Manipulation kann das Löschen von unpassenden Daten sein, das Verändern von Werten betreffen bzw. Werte für die Studienergebnisse <em>passend machen</em> oder auch neue Daten <em>erfinden</em>. Solche Datenmanipulationen wiegen wissenschaftlich oft schwerer als Plagiarismus und können bei professionellen Analysen als Urkundenfälschung gewertet werden.</p>
+<p>Die <strong>versehentliche Datenmanipulation</strong> kommt sehr viel häufiger vor als eine absichtliche Datenmanipulation. Die versehentliche Datenmanipulation kann viele Ursachen haben und reicht von der fehlerhaften Bedienung von Tools und Werkzeugen über Software-Fehler bis zum Überschreiben von Daten mit Ergebnissen.</p>
+<p>Eine sehr häufig vorkommende Form der versehentlichen Datenmanipulation ist die automatische Datentyperkennung von Excel. Dabei werden Daten beim Import oder bei der Eingabe in einer Excel-Arbeitsmappe in einen <em>unerwünschten</em> Datentyp geändert, wobei sich auch der Wert der Daten ändert. Wenn durchgehend mit Excel gearbeitet wird, müssen diese Fehler vorgebeugt werden. Diese Praktiken erfordern von allen Beteiligten eine grosse Arbeitsdisziplin, was sich im Alltag nicht immer fordern lässt. Deshalb ist es oft einfacher, die Daten in einem einfacheren Dateiformat (z.B. CSV oder JSON) zu erfassen und anschliessend diese Daten in Excel als externe Daten zu importieren.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Praxis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Um versehentliche Datenmanipulation zu vermeiden, sollte ausser bei Messungen <strong>nie</strong> direkt mit den Daten gearbeitet werden. Stattdessen sollten die Daten <strong>immer</strong> in einer separaten Datei gespeichert und versioniert werden. Aus dieser Datei werden die Daten anschliessend <em>importiert</em> und <em>bearbeitet</em>. Die Ergebnisse können in <em>andere</em> Dateien <em>exportiert</em> werden.</p>
+<p>Durch die Versionierung kann jederzeit auf die ursprünglichen Daten zurückgegriffen und wiederhergestellt werden, selbst wenn sie versehentlich oder absichtlich überschrieben oder gelöscht wurden.</p>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Kopiert");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Kopiert");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../kapitel/02-daten-sammeln/kapitel.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Daten sammeln</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../kapitel/01-tool-chain/git_github.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Versionierung mit Git und GitHub</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

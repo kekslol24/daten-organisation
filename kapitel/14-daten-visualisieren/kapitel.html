@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Daten und Information - 19&nbsp; Daten visualisieren</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../references.html" rel="next">
+<link href="../../kapitel/13-daten-beschreiben/kapitel.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "Keine Treffer",
+    "search-matching-documents-text": "Treffer",
+    "search-copy-link-title": "Link in die Suche kopieren",
+    "search-hide-matches-text": "Zusätzliche Treffer verbergen",
+    "search-more-match-text": "weitere Treffer in diesem Dokument",
+    "search-more-matches-text": "weitere Treffer in diesem Dokument",
+    "search-clear-button-title": "Zurücksetzen",
+    "search-detached-cancel-button-title": "Abbrechen",
+    "search-submit-button-title": "Abschicken",
+    "search-label": "Suchen"
+  }
+}</script>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../kapitel/13-daten-beschreiben/kapitel.html">Deskriptive Datenanalyse</a></li><li class="breadcrumb-item"><a href="../../kapitel/14-daten-visualisieren/kapitel.html"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Daten visualisieren</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">Daten und Information</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Suchen"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vorwort</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Ausgangslage und Vorbereitung</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/01-einleitung/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Einleitung</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/01-tool-chain/tastatur.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Tastatur und Tastaturkürzel</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/01-information/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Informationstheorie</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Datenquellen</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/01-tool-chain/project_doc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Dokumentation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/02-daten-sammeln/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Daten sammeln</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/03-daten-organisieren/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Daten organisieren</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/01-tool-chain/git_github.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Versionierung mit Git und GitHub</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/05-datentypen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Datentypen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/04-dateiformate/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Dateiformate</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Mathematik der Daten</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/06-variablen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Variablen, Funktionen und Operatoren</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/05-zeichenketten/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Zeichenketten</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/08-boolsche-operationen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Boole’sche Operationen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/09-vektor-operationen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Vektor-Operationen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/10-matrix-operationen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Matrix-Operationen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/11-daten-kodieren/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Daten kombinieren und kodieren</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/11-indizieren-gruppieren/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Indizieren und Gruppieren</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/12-daten-formen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Daten formen</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Deskriptive Datenanalyse</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/13-daten-beschreiben/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Daten beschreiben</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/14-daten-visualisieren/kapitel.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Daten visualisieren</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Referenzen</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Inhaltsverzeichnis</h2>
+   
+  <ul>
+  <li><a href="#aufbau-eines-diagramms" id="toc-aufbau-eines-diagramms" class="nav-link active" data-scroll-target="#aufbau-eines-diagramms"><span class="header-section-number">19.1</span> Aufbau eines Diagramms</a>
+  <ul class="collapse">
+  <li><a href="#haupt--und-nebendimensionen" id="toc-haupt--und-nebendimensionen" class="nav-link" data-scroll-target="#haupt--und-nebendimensionen"><span class="header-section-number">19.1.1</span> Haupt- und Nebendimensionen</a></li>
+  <li><a href="#darstellungsbereich" id="toc-darstellungsbereich" class="nav-link" data-scroll-target="#darstellungsbereich"><span class="header-section-number">19.1.2</span> Darstellungsbereich</a></li>
+  <li><a href="#achsen" id="toc-achsen" class="nav-link" data-scroll-target="#achsen"><span class="header-section-number">19.1.3</span> Achsen</a></li>
+  <li><a href="#titel" id="toc-titel" class="nav-link" data-scroll-target="#titel"><span class="header-section-number">19.1.4</span> Titel</a></li>
+  <li><a href="#legende" id="toc-legende" class="nav-link" data-scroll-target="#legende"><span class="header-section-number">19.1.5</span> Legende</a></li>
+  </ul></li>
+  <li><a href="#plots-mit-einer-variablen" id="toc-plots-mit-einer-variablen" class="nav-link" data-scroll-target="#plots-mit-einer-variablen"><span class="header-section-number">19.2</span> Plots mit einer Variablen</a>
+  <ul class="collapse">
+  <li><a href="#histogramme" id="toc-histogramme" class="nav-link" data-scroll-target="#histogramme"><span class="header-section-number">19.2.1</span> Histogramme</a></li>
+  <li><a href="#boxplot" id="toc-boxplot" class="nav-link" data-scroll-target="#boxplot"><span class="header-section-number">19.2.2</span> Boxplot</a></li>
+  <li><a href="#dichtediagramme" id="toc-dichtediagramme" class="nav-link" data-scroll-target="#dichtediagramme"><span class="header-section-number">19.2.3</span> Dichtediagramme</a></li>
+  <li><a href="#violindiagramm" id="toc-violindiagramm" class="nav-link" data-scroll-target="#violindiagramm"><span class="header-section-number">19.2.4</span> Violindiagramm</a></li>
+  </ul></li>
+  <li><a href="#plots-mit-zwei-variablen" id="toc-plots-mit-zwei-variablen" class="nav-link" data-scroll-target="#plots-mit-zwei-variablen"><span class="header-section-number">19.3</span> Plots mit zwei Variablen</a>
+  <ul class="collapse">
+  <li><a href="#funktionsdiagramme" id="toc-funktionsdiagramme" class="nav-link" data-scroll-target="#funktionsdiagramme"><span class="header-section-number">19.3.1</span> Funktionsdiagramme</a></li>
+  <li><a href="#beziehungen" id="toc-beziehungen" class="nav-link" data-scroll-target="#beziehungen"><span class="header-section-number">19.3.2</span> Beziehungen</a></li>
+  <li><a href="#ausgleichsgeraden" id="toc-ausgleichsgeraden" class="nav-link" data-scroll-target="#ausgleichsgeraden"><span class="header-section-number">19.3.3</span> Ausgleichsgeraden</a></li>
+  <li><a href="#sec-viz-versch-skalenniveaus" id="toc-sec-viz-versch-skalenniveaus" class="nav-link" data-scroll-target="#sec-viz-versch-skalenniveaus"><span class="header-section-number">19.3.4</span> Zwei unterschiedliche Skalenniveaus kombinieren</a></li>
+  </ul></li>
+  <li><a href="#plots-mit-mehr-als-zwei-variablen" id="toc-plots-mit-mehr-als-zwei-variablen" class="nav-link" data-scroll-target="#plots-mit-mehr-als-zwei-variablen"><span class="header-section-number">19.4</span> Plots mit mehr als zwei Variablen</a>
+  <ul class="collapse">
+  <li><a href="#farbliche-kodierung" id="toc-farbliche-kodierung" class="nav-link" data-scroll-target="#farbliche-kodierung"><span class="header-section-number">19.4.1</span> Farbliche Kodierung</a></li>
+  <li><a href="#grössenkodierung" id="toc-grössenkodierung" class="nav-link" data-scroll-target="#grössenkodierung"><span class="header-section-number">19.4.2</span> Grössenkodierung</a></li>
+  <li><a href="#form-kodierung" id="toc-form-kodierung" class="nav-link" data-scroll-target="#form-kodierung"><span class="header-section-number">19.4.3</span> Form-Kodierung</a></li>
+  <li><a href="#teildiagramme" id="toc-teildiagramme" class="nav-link" data-scroll-target="#teildiagramme"><span class="header-section-number">19.4.4</span> Teildiagramme</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="sec-chapter-daten-visualisieren" class="quarto-section-identifier"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Daten visualisieren</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Die Datenvisualisierung ist ein wichtiges Werkzeug für die Datenanalyse. Die Datenvisualisierung hilft Systematiken zu erkennen, Beziehungen zu verstehen und Strukturen zu erfassen, die in strukturierten Daten nicht direkt nachvollzogen werden können. Sie ist ein wesentliches Instrument für die Kommunikation von Daten, weil sich graphische Darstellungen leichter erfassen lassen als strukturierte Daten.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Merke
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Die Datenvisualisierung ist ein Hilfsmittel zur Analyse und zur Kommunikation. Sie ist kein Selbstzweck und stellt <em>keine</em> Analyse dar. Die Datenvisualisierung kann helfen, Daten vor einer weiterführenden Analyse zu verstehen.</p>
+</div>
+</div>
+<p>Die Datenvisualisierung kann Informationstheoretisch betrachtet werden. Dabei werden die Werte visuell <em>kodiert</em>. Dieser Vorgang folgt den gleichen informationstheoretischen Prinzipien wie die Datenverarbeitung. Entsprechend muss die Datenvisualisierung als eine Form der Informationskodierung verstanden werden. Aus dieser Einsicht folgt konsequent, dass Information bei der Visualisierung zwangsläufig durch Rauschen und Equivokation verloren geht. Gleichzeitig müssen Visualisierungen nicht nur erstellt sondern auch gelesen und systematisch interpretiert werden. Bei wissenschaftlichen Visualisierungen werden spezielle visuelle Codes verwendet, um Werte und ihre Beziehungen zueinander sichtbar zu machen.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Künstlerische Freiheit
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Bei der Datenvisualisierung sollten ästhetische Elemente ohne Bezug zu den Daten <strong>vermieden</strong> werden, wenn sie das Dekodieren behindern.</p>
+</div>
+</div>
+<section id="aufbau-eines-diagramms" class="level2" data-number="19.1">
+<h2 data-number="19.1" class="anchored" data-anchor-id="aufbau-eines-diagramms"><span class="header-section-number">19.1</span> Aufbau eines Diagramms</h2>
+<p>Eine Visualisierung ist in ein <em>Diagramm</em> eingebettet. Ein Diagramm enthält meist mehr Elemente als die eigentliche Visualisierung. <a href="#fig-labelled-diag">Abbildung&nbsp;<span>19.1</span></a> zeigt die wichtigsten Elemente eines Diagramms.</p>
+<p><strong>Jedes</strong> Diagramm umfasst den <strong>Darstellungsbereich</strong> mit den <strong>Datenpunkten</strong> (s. <a href="../03-daten-organisieren/kapitel.html#def-messereignis">Definition&nbsp;<span>6.5</span></a>), <strong>Achsen</strong> für die <em>Hauptdimensionen</em> mit <strong>Achsmarkierungen</strong> für die Position ausgewählter Werte im Wertebereich der Dimension und <strong>Achsbeschriftungen</strong>, die die <em>Hauptdimensionen</em> kennzeichnen.</p>
+<p><em>Komplexe</em> Diagramme erfordern zusätzlich eine <strong>Legende</strong> für <strong>jede</strong> dargestellte Nebendimension.</p>
+<p><em>Optional</em> können Visualisierungen mit einer erklärenden <strong>Überschrift</strong> versehen werden. Ebenfalls <em>optional</em> sind <strong>Hilfslinien</strong>, die die <em>Orientierung</em> im Wertebereich der <em>Hauptdimensionen</em> erleichtern.</p>
+<div id="fig-labelled-diag" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="figures/plot_example_beschriftet.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Abbildung&nbsp;19.1: Komponenten eines Diagramms am Beispiel eines Ballondiagramms</figcaption>
+</figure>
+</div>
+<section id="haupt--und-nebendimensionen" class="level3" data-number="19.1.1">
+<h3 data-number="19.1.1" class="anchored" data-anchor-id="haupt--und-nebendimensionen"><span class="header-section-number">19.1.1</span> Haupt- und Nebendimensionen</h3>
+<p>Für eine Visualisierung müssen immer zuerst die darzustellenden Merkmale ausgewählt werden.</p>
+<div id="def-dimensionen" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 19.1 </strong></span>Eine <strong>Dimension</strong> eines Diagramms entspricht einem dargestellten <em>Merkmal</em> der verwendeten Stichprobe.</p>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warnung
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Die Merkmale aus unterschiedlichen Stichproben dürfen beim Visualisieren nicht gemischt werden!</p>
+</div>
+</div>
+<p>Beim Visualisieren werden <em>Haupt-</em> und <em>Nebendimensionen</em> unterschieden.</p>
+<div id="def-viz-hauptdimension" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 19.2 </strong></span>Eine <strong>Hauptdimension</strong> eines Diagramms bildet den Wertebereich eines Merkmals als eine <em>horizontale oder vertikale Länge</em> ab.</p>
+</div>
+<p>Die Hauptdimensionen legen die <strong>Position</strong> der <em>Datenpunkte</em> in der Visualisierung fest.</p>
+<p>Jede Visualisierung hat <em>mindestens eine</em> Hauptdimension.</p>
+<div id="def-viz-nebendimension" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 19.3 </strong></span><strong>Nebendimensionen</strong> eines Diagramms bilden den Wertebereich eines Merkmals als <em>visuelle Eigenschaften</em> von Datenpunkten ab.</p>
+</div>
+<p>Visuelle Eigenschaften können <em>Grösse</em>, <em>Form</em> oder <em>Farbe</em> von Datenpunkte sein.</p>
+<p>Nebendimensionen werden nicht in allen Diagrammen verwendet.</p>
+</section>
+<section id="darstellungsbereich" class="level3" data-number="19.1.2">
+<h3 data-number="19.1.2" class="anchored" data-anchor-id="darstellungsbereich"><span class="header-section-number">19.1.2</span> Darstellungsbereich</h3>
+<p>Der Darstellungsbereich enthält die eigentliche Visualisierung der <em>Datenpunkte</em>. Dieser Bereich muss für eine korrekte Darstellung <em>alle gemessenen Werte</em>, aber nicht zwingend den gesamten Wertebereich umfassen. Deshalb ist es nicht erlaubt, das Achsintervall des Darstellungsbereich so zu verändern, dass einzelne Werte nicht mehr dargestellt werden.</p>
+<p>Der Darstellungsbereich wird durch die <em>Hauptdimensionen</em> der Visualisierung aufgespannt.</p>
+</section>
+<section id="achsen" class="level3" data-number="19.1.3">
+<h3 data-number="19.1.3" class="anchored" data-anchor-id="achsen"><span class="header-section-number">19.1.3</span> Achsen</h3>
+<p>Die <strong>Achsen</strong> markieren die <em>Hauptdimensionen</em> eines Diagramms. Es sollten nicht mehr als zwei Hauptdimensionen in einem Diagramm verwendet werden, weil sich aus der Darstellung nicht mehr erkennen lässt, welche Achse zu welchen visuellen Elementen grhört.</p>
+<p>Die horizontale Achse wird per Konvention <strong>x-Achse</strong> und die vertikale Achse <strong>y-Achse</strong> genannt.</p>
+<p>Achsen sollten mit den wichtigsten Werten an <strong>Achsmarkierungen</strong> beschriftet werden und müssen eine aussagekräftige <strong>Achsbeschriftung</strong> haben. Die meisten Analyseumgebungen übernehmen standardmässig den Titel des Datenvektors.</p>
+<p>Für <strong>nominalskalierte Wertebereiche</strong> müssen <strong>alle</strong> dargestellten Werte über eine Achsmarkierung beschriftet werden. Bei sehr vielen Werten kann es vorkommen, dass diese Markierungen unleserlich werden. In diesem Fall sollten die Werte alphabetisch oder nummerisch sortiert werden und nur markannte Werte (z.B. jeden fünften Wert) hervorgehoben werden. In diesem Fall muss auf den vollständigen Wertebereich verwiesen werden, damit die Datenpunkte eindeutig identifiziert werden können.</p>
+<p>Bei <strong>ordinalskalierten Wertebereichen</strong> müssen die <strong>Extreme des Wertebereichs</strong> beschriftet werden. Gegebenenfalls sollte auch der <em>Mittelpunkt</em> des Wertebereichs auf der Achse beschriftet werden.</p>
+<p>Bei <strong>kontinuierlichen Wertebereichen</strong> sollten Werte in <strong>regelmässigen Abständen</strong> markiert und beschriftet werden. Diese genauen Abstände hängen vom Umfang des dargestellten Intervalls ab.</p>
+</section>
+<section id="titel" class="level3" data-number="19.1.4">
+<h3 data-number="19.1.4" class="anchored" data-anchor-id="titel"><span class="header-section-number">19.1.4</span> Titel</h3>
+<p>Der Diagrammtitel ist ein aussagekräftiger Titel über den Inhalt eines Diagramms.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Praxis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Der Diagrammtitel wird oft nicht in ein Diagramm aufgenommen, sondern erst später als Abbildungstitel hinzugefügt.</p>
+</div>
+</div>
+</section>
+<section id="legende" class="level3" data-number="19.1.5">
+<h3 data-number="19.1.5" class="anchored" data-anchor-id="legende"><span class="header-section-number">19.1.5</span> Legende</h3>
+<p>Eine <em>Legende</em> beschreibt die <em>Wertebereiche</em> der <em>Nebendimensionen</em> einer Visualisierung. Ohne eine Legende lassen sich zusätzliche Kodierungen nicht nachvollziehen und dekodieren. Ein Diagramm muss eine Legende haben, sobald Nebendimensionen abgebildet sind. Fehlt eine Legende sind zusätzliche grafische Elemente als künstlerische Ergänzung ohne inhaltlichen Wert zu interpretieren.</p>
+</section>
+</section>
+<section id="plots-mit-einer-variablen" class="level2" data-number="19.2">
+<h2 data-number="19.2" class="anchored" data-anchor-id="plots-mit-einer-variablen"><span class="header-section-number">19.2</span> Plots mit einer Variablen</h2>
+<section id="histogramme" class="level3" data-number="19.2.1">
+<h3 data-number="19.2.1" class="anchored" data-anchor-id="histogramme"><span class="header-section-number">19.2.1</span> Histogramme</h3>
+<div id="def-histogramm" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 19.4 </strong></span>Ein Histogramm zeigt die Häufigkeiten einer Variablen mithilfe von Balken an. Umgangssprachlich werden Histogramme auch als <em>Balkendiagramme</em> bezeichnet.</p>
+</div>
+<p>Die Höhe der Balken entspricht der Häufigkeit der Werte. Ein Histogramm macht die Verteilung einer Variable sichtbar.</p>
+<ul>
+<li>Bei <em>kontinuierlich-skalierten Variablen</em> werden die Werte zu <strong>Intervallen</strong> zusammengefasst. Die Häufigkeit bezieht sich dann auf Anzahl der Werte im entsprechenden Intervall. Die Breite des Balkens entspricht dann der Breite des Intervalls.</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-visual-histogram-cont" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="kapitel_files/figure-html/fig-visual-histogram-cont-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Abbildung&nbsp;19.2: Beispiel für ein Histogramm für einen kontinuierlichen Wertebereich</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li>Bei <em>diskret-skalierten Variablen</em> wird jeder Wert durch einen eigenen Balken repräsentiert. Die Häufigkeit der Werte bezieht sich dann auf die einzelnen Werte. Die Breite der Balken ist dann beliebig.</li>
+</ul>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-visual-histogram-discrete" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="kapitel_files/figure-html/fig-visual-histogram-discrete-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Abbildung&nbsp;19.3: Beispiel für ein Histogramm für einen diskreten Wertebereich</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Die Reihenfolge der Balken ist nicht beliebig. Die Balken werden für alle ordinalskalierten Wertebereiche in der Reihenfolge der Werte bzw. der Intervalle angeordnet. Nominalskalierte Wertebereiche haben keine natürliche Reihenfolgen. Deshalb werden die Balken eines Histogramms für nominalskalierte Wertebereiche in der Reihenfolge der Häufigkeiten angeordnet.</p>
+<p>Eine Sonderform eines Histogramms ist das sog. <em>Kreis-</em> bzw. <em>Tortendiagramm</em>. Ein Tortendiagramm ist ein Histogramm, bei dem die Balken durch Kreissegmente ersetzt werden. Die Grösse der Kreissegmente entspricht dem Anteil der Häufigkeit an der Gesamthäufigkeit.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Merke
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Ein Histogramm ist einem Kreisdiagramm immer vorzuziehen. Kreisdiagramme sollten nur verwendet werden, wenn wenige Kreissegmente vorhanden sind. Dabei sollten entweder ein Kreissegment besonders hervorstechen oder alle Segmente ungefährt <em>gleichverteilt</em> sein.</p>
+</div>
+</div>
+</section>
+<section id="boxplot" class="level3" data-number="19.2.2">
+<h3 data-number="19.2.2" class="anchored" data-anchor-id="boxplot"><span class="header-section-number">19.2.2</span> Boxplot</h3>
+<div id="def-boxplot" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 19.5 </strong></span>Ein <strong>Boxplot</strong> stellt die Grösse der Verteilungsintervalle von Daten als Rechteck und Linien dar. Aussergewöhneliche Werte (Ausreisser) werden als Punkte dargestellt.</p>
+</div>
+<p><strong>Box-Whisker-Diagramm</strong> und <strong>Kastengrafik</strong> sind gebräuchliche Synonyme für Boxplots.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Merke
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Boxplots dürfen nur für ordinal- oder kontinuierlichskalierte Wertebereiche verwendet werden.</p>
+</div>
+</div>
+<p>Ein Boxplot hat nur eine Achse für den Wertebereich der dargestellten Werte. Die zweite Achse in einem einfachen Boxplot ist nur notwendig, um das Rechteck zeichnen zu können und hat sonst keine Bedeutung.</p>
+<p>Ein Boxplot gliedert die vorliegenden Daten in vier gleichgrosse Bereiche. Diese Bereiche heisse Quartile. Jedes Quartil umfasst jeweils ein Viertel der Werte. Die beiden mittleren Quartile werden als zwei Rechtecke dargestellt. Die Länge der beiden Rechtecke heisst <strong>Interquartilsabstand</strong>. Die Linie die am Übergang zwischen den beiden Rechtecken entsteht markiert den <em>Median</em> der Verteilung. Ausreisser sind Werte, die um mehr als das 1.5-fache des Interquartilsabstands von der nächsten Quartilsgrenze entfernt sind.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-visual-boxplot-single" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="kapitel_files/figure-html/fig-visual-boxplot-single-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Abbildung&nbsp;19.4: Beispiel für einen Boxplot</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Weil ein Boxplot die Werte in gleichgrosse Intervalle gliedert, geben sie eine grobe Orientierung über die Verteilung der Werte.</p>
+</section>
+<section id="dichtediagramme" class="level3" data-number="19.2.3">
+<h3 data-number="19.2.3" class="anchored" data-anchor-id="dichtediagramme"><span class="header-section-number">19.2.3</span> Dichtediagramme</h3>
+<p>Boxplots und Histogramme fassen die Werte immer zu Intervallen zusammen. Dadurch lässt sich die genaue Verteilung der Daten nicht genau nachvollziehen. Bei <strong>kontinuierlichen Wertebereichen</strong> zeichen die Intervalle nicht immer ein akkurates Bild der Verteilung. Eine detailliertere Annäherung als ein Histogramm liefert die <em>Dichtefunktion</em> einer Verteilung.</p>
+<p>Die <em>Dichtefunktion</em> liefert die Wahrscheinlichkeiten, mit der Werte in einer Verteilung auftreten, als eine stetige Funktion von Wahrscheinlichkeitswerten. Weil nicht alle Werte in den Daten vorkommen, ist die Dichtefunktion eine <strong><em>Annäherung</em></strong> an die wahrscheinlichste Verteilung der dargestellten Werte.</p>
+<div id="def-dichteplot" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 19.6 </strong></span><strong>Dichtediagramme</strong> sind eine Visualisierung der <em>Dichtefunktion</em> einer Verteilung und zeigen die Wahrscheinlichkeiten mit denen Werte eines <em>kontinuierlichen</em> Wertebereichs in einer Verteilung vorkommen.</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Merke
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Dichtediagramme sind nur für kontinuierliche Wertebereiche erlaubt.</p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-visual-density" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="kapitel_files/figure-html/fig-visual-density-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Abbildung&nbsp;19.5: Beispiel eines Dichtediagramms</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="violindiagramm" class="level3" data-number="19.2.4">
+<h3 data-number="19.2.4" class="anchored" data-anchor-id="violindiagramm"><span class="header-section-number">19.2.4</span> Violindiagramm</h3>
+<p>Ein <strong>Violindiagramm</strong> verbindet die Idee des Box-Plots mit der Dichtefunktion. Für <em>kontinuierliche Wertebereiche</em> zeigen Violindiagramm mehr Details als ein Boxplot.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Merke
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Violindiagramme verwenden die Annäherung der Dichtefunktion für die Visualisierung. Entsprechend werden auch nicht gemessene Werte abgebildet.</p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-visual-violin" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="kapitel_files/figure-html/fig-visual-violin-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Abbildung&nbsp;19.6: Beispiel eines violinplot</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Die zweite Achse eines Violindiagramms hat keine Bedeutung, sondern dient nur der Darstellung der Dichtefunktion. Hierbei ist zu beachten, dass die Kurve der Dichtefunktion <em>gespiegelt</em> ist. Deshalb sollten Violindiagramme nie als Grundlage für eine Schnellanalyse dienen, weil die Flächen leicht falsch interpretiert werden können.</p>
+</section>
+</section>
+<section id="plots-mit-zwei-variablen" class="level2" data-number="19.3">
+<h2 data-number="19.3" class="anchored" data-anchor-id="plots-mit-zwei-variablen"><span class="header-section-number">19.3</span> Plots mit zwei Variablen</h2>
+<section id="funktionsdiagramme" class="level3" data-number="19.3.1">
+<h3 data-number="19.3.1" class="anchored" data-anchor-id="funktionsdiagramme"><span class="header-section-number">19.3.1</span> Funktionsdiagramme</h3>
+<div id="def-funktionsdiagramm" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 19.7 </strong></span>Ein <strong>Funktionsdiagramm</strong> stellt die Parameter und die Ergebnisse einer oder mehrerer (mathematischer) Funktionen gegenüber.</p>
+</div>
+<p>In Funktionsdiagrammen werden die Parameter einer Funktion ihren Ergebnissen gegenübergestellt. Zwischen diesen Werten gibt es eine Beziehung, die durch die verwendete Funktion festgelegt wird.</p>
+<div id="def-funktionale-abhängigkeit" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 19.8 </strong></span>Die Parametern und den Ergebnissen eine Funktion sind <strong><em>funktional abhängig</em></strong>. Für den Spezialfall einer linearen Funktion sind die Werte <strong>linear ahbängig</strong>.</p>
+</div>
+<p>Funktionsdiagramme visualisieren also die funktionale Abhängigkeit zwischen Parametern und Ergenissen von Funktionen.</p>
+<p>Für ein Funktionsdiagramm wird neben der Funktion zusätzlich ein Parameterintervall benötigt. Das Parameterintervall bildet die Grundlage für den Darstellungsbereich. Anschliessend wird eine Wertetabelle für das Parameterintervall erstellt. Diese Tabelle enthält zwei Vektoren:</p>
+<ul>
+<li>Eine <em>Sequenz</em> (s <a href="../09-vektor-operationen/kapitel.html#sec-sequenzen"><span>Kapitel&nbsp;13.1</span></a>) zwischen der Unter- und der Obergrenze des Parameterintervalls.</li>
+<li>Die Funktionsergebnisse für alle Werte gewählten Parameterintervall.</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Praxis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Viele Visualisierungsumgebungen erstellen die Wertetabelle automatich vor der Visualisierung einer Funktion.</p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-visual-math-funcs" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="kapitel_files/figure-html/fig-visual-math-funcs-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Abbildung&nbsp;19.7: Beispiel eines Funktionsplots mit einer linearen und einer quadratischen Funktionen</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Bei der Datenvisualisierung werden Funktionsdiagramme zur Vorhersage oder zum Vergleich der Werte eines Vektors durch die Werte eines anderen Vektors verwendet.</p>
+<div id="def-modell" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 19.9 </strong></span>Ein <strong><em>Modell</em></strong> ist eine Funktion, die eine Beziehung zwischen Variablen als funktionale Anhängigkeit beschreibt.</p>
+</div>
+</section>
+<section id="beziehungen" class="level3" data-number="19.3.2">
+<h3 data-number="19.3.2" class="anchored" data-anchor-id="beziehungen"><span class="header-section-number">19.3.2</span> Beziehungen</h3>
+<p>Werden die Werte von zwei Variablen gegenübergestellt, dann wird die Beziehung zwischen den Variablen sichtbar.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Achtung
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Gelegentlich werden Beziehungen zwischen Variablen mit Balken dargestellt. Diese Darstellung ist unzulässt. Balken sollten ausschliesslich zur Darstellung von Häufigkeiten verwendet werden.</p>
+</div>
+</div>
+<p>Beziehungen zwischen Variablen können auf verschiedene Arten dargestellt werden.</p>
+<section id="streudiagramme" class="level4" data-number="19.3.2.1">
+<h4 data-number="19.3.2.1" class="anchored" data-anchor-id="streudiagramme"><span class="header-section-number">19.3.2.1</span> Streudiagramme</h4>
+<p>Normalerweise werden Beziehungen zwischen zwei Variablen mit einem sog. <em>Streudiagramm</em> dargestellt.</p>
+<div class="&nbsp;{#def-streudiagramm}">
+<p>Ein Streudiagramm stellt die Werte aus zwei Variablen als Punkte dar. Umgangssprachlich werden Streudiagramme als <em>Punktdiagramme</em> bezeichnet.</p>
+</div>
+<p>Die Werte der ersten Variablen werden z.B. auf der x-Achse abgetragen, die Werte der zweiten Variablen auf der y-Achse. Die Punkte werden dann an der entsprechenden Stelle im Koordinatensystem dargestellt. Die Wahl der Achse ist beliebig.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-visual-points" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="kapitel_files/figure-html/fig-visual-points-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Abbildung&nbsp;19.8: Beispiel eines Streudiagramms</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="jitter-diagramme" class="level4" data-number="19.3.2.2">
+<h4 data-number="19.3.2.2" class="anchored" data-anchor-id="jitter-diagramme"><span class="header-section-number">19.3.2.2</span> Jitter-Diagramme</h4>
+<p>Wenn beide Variablen diskrete Wertebereiche haben, haben die Punkte im Streudiagramm die Tendenz, dass sich die Punkte zu überlagern, weil es nur eine begrenzte Anzahl möglichen Wertepaaren gibt. Um dieses Problem zu umgehen, wird eine besondere Variante des Streudiagramms eingesetzt: Das sog. <em>Jitter-Diagramm</em> (etwa <em>Zitterdiagramm</em>). Ein Jitter-Diagramm ist eine Variante von Streudiagrammen.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-visual-points-discrete" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="kapitel_files/figure-html/fig-visual-points-discrete-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Abbildung&nbsp;19.9: Beispiel eines Streudiagramms mit überlagernden Punkten aus zwei diskreten Variablen</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Bei einem Jitter-Diagramm wird um die diskreten Werte ein Bereich festgelegt. <strong>Der eigentliche Wert liegt im Mittelpunkt dieses Bereichs</strong>. Für jeden Messpunkt, wird ein Punkte zufällig innerhalb dieses Bereichs markiert. Durch diese zufällige Positionierung entsteht der Eindruck einer zittrigen Hand.</p>
+<p>Durch das zufällige Positionieren werden die Punkte aufgelockert und die Beziehung der Variablen wird sichtbar. Die Grösse des Bereichs wird so gewählt, dass sich mehrere Bereiche <em>nicht überlappen</em>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-visual-jitter-labelled" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="kapitel_files/figure-html/fig-visual-jitter-labelled-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Abbildung&nbsp;19.10: Beispiel eines Jitter-Diagramms mit zwei diskreten Variablen. Jitter-Bereiche sind Rot hervorgehoben.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Praxis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Bei der Grösse des Jitter-Bereichs sollte etwas Abstand zu den umgebenden Bereichen gelassen werden. Dadurcht entsteht ein Leerraum, welcher keine Punkte enthält, so lassen sich die einzelnen Bereiche optisch leichter voneinander abgrenzen.</p>
+</div>
+</div>
+<p>Beim Lesen eines Jitter-Diagramm muss beachtet werden, dass der Bereich für die Punkte dem zugehörigen diskreten Wert entspricht. Durch die Anordnung der Punkte in einem Jitter-Diagramm kann der Eindruck einer Beziehung zwischen zwei Variablen visuell entstehen, ohne dass diese Beziehung tatsächlich existiert.</p>
+</section>
+<section id="liniendiagramme" class="level4" data-number="19.3.2.3">
+<h4 data-number="19.3.2.3" class="anchored" data-anchor-id="liniendiagramme"><span class="header-section-number">19.3.2.3</span> Liniendiagramme</h4>
+<div id="def-liniendiagramm" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 19.10 </strong></span>Ein <strong><em>Liniendiagramm</em></strong> eine Variante eines Streudiagramms, bei dem aufeinanderfolgende Punkte durch eine Linie verbunden werden.</p>
+</div>
+<p>Liniendiagramme werden verwendet, wenn die Werte einer Variablen in einer bestimmten Reihenfolge zueinander stehen. Die Werte werden dann auf der entsprechenden Achse in der entsprechenden Reihenfolge abgetragen. Die Punkte werden dann durch eine Linie verbunden.</p>
+<p>Liniendiagramme werden häufig verwendet, um die Entwicklung von Variablen über die Zeit darzustellen.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-visual-lines" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="kapitel_files/figure-html/fig-visual-lines-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Abbildung&nbsp;19.11: Beispiel eines Liniendiagramms (DAX Index 1991-1998)</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Achtung
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Wenn die Werte einer Variablen nicht in einer festen Reihenfolge zueinander stehen, dann dürfen die Werte nicht durch eine Linie verbunden werden! In diesem Fall muss ein Streudiagramm verwendet werden.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="ausgleichsgeraden" class="level3" data-number="19.3.3">
+<h3 data-number="19.3.3" class="anchored" data-anchor-id="ausgleichsgeraden"><span class="header-section-number">19.3.3</span> Ausgleichsgeraden</h3>
+<div id="def-liniendiagramm" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 19.11 </strong></span>Eine <strong>Ausgleichsgerade</strong> ist ein Funktionsdiagramm einer Funktion, welche die Ergebnisse einer linearen Funktion zu den tatsächlichen Werten <em>minimiert</em>.</p>
+</div>
+<p><em>Ausgleichsgeraden</em> verwenden <em>lineare Funktionen</em> in der Form <span class="math inline">ax + c</span>. Die Funktion einer Ausgleichsgeraden <em>minimiert</em> die Funktionsergebnisse mit den tatsächlichen Werten.</p>
+<p>Eine Ausgleichsgerade darf nicht willkürlich gezogen werden, sondern muss aus den gemessenen Werten ermittelt werden. Eine Ausgleichsgerade sollte immer gemeinsam mit den tatsächlichen Werten der Variablen dargestellt werden.</p>
+<p>Die <em>Funktion</em> einer Ausgleichsgeraden ist ein <em>einfaches</em> Modell für die gefundenen Daten. Die Beziehung zwischen den Variablen wird in diesem Modell als <em>lineare Abhängigkeit</em> abgebildet.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-bsp-streudiagramm-mit-ausgleich" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="kapitel_files/figure-html/fig-bsp-streudiagramm-mit-ausgleich-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Abbildung&nbsp;19.12: Beispiel einer Ausgleichsgeraden in einem Streudiagramm</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-viz-versch-skalenniveaus" class="level3" data-number="19.3.4">
+<h3 data-number="19.3.4" class="anchored" data-anchor-id="sec-viz-versch-skalenniveaus"><span class="header-section-number">19.3.4</span> Zwei unterschiedliche Skalenniveaus kombinieren</h3>
+<p>Sollen die Werte einer Variable mit diskreten Wertebereich gegen die Werte einer Variablen mit kontinuierlichem Wertebereich abgetragen werden, dann werden die <em>Verteilungen</em> der kontinuierlichen Variablen für die einzelnen Werte eines diskreten Wertebereichs dargestellt. Hierzu werden meist <em>Boxplots</em> oder <em>Violindiagramme</em> verwendet.</p>
+<p>Diese Form von kombinierten Diagrammen tritt sehr häufig in Verbindung mit Sekundärindizes auf. Dabei werden Verteilungen von gruppierten Werten gegenübergestellt.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-visual-boxplot-multiple" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="kapitel_files/figure-html/fig-visual-boxplot-multiple-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Abbildung&nbsp;19.13: Beispiel eines Diagramms mit diskreten und kontinuierlichen Variablen</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="plots-mit-mehr-als-zwei-variablen" class="level2" data-number="19.4">
+<h2 data-number="19.4" class="anchored" data-anchor-id="plots-mit-mehr-als-zwei-variablen"><span class="header-section-number">19.4</span> Plots mit mehr als zwei Variablen</h2>
+<p>Plots sind auf zwei Dimensionen beschränkt. Werden mehr als zwei Variablen dargestellt, dann werden die zusätzlichen Variablen durch verschiedene Darstellungsformen repräsentiert. 3D-Koordinatensysteme sollten vermieden werden, weil die Position der Punkte bei der 2D-Darstellung eines 3D-Koordinatensystems mehrdeutig ist und sich schwer interpretieren lässt.</p>
+<p>Für Beziehungen zwischen mehr als zwei Variablen muss für die zusätzlichen Variablen eine andere Darstellungsform gewählt werden. Die wichtigsten Darstellungsformen sind:</p>
+<ul>
+<li>Farbliche Kodierung</li>
+<li>Grössenkodierung</li>
+<li>Form-Kodierung</li>
+</ul>
+<p>Diese Varianten können kombiniert werden, um zusätzliche Daten in eine Visualisierungzu integrieren.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Wichtig
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Alle zusätzlichen Kodierungen <strong>müssen</strong> in einer <em>Legende</em> erklärt werden.</p>
+</div>
+</div>
+<section id="farbliche-kodierung" class="level3" data-number="19.4.1">
+<h3 data-number="19.4.1" class="anchored" data-anchor-id="farbliche-kodierung"><span class="header-section-number">19.4.1</span> Farbliche Kodierung</h3>
+<p>Bei der farblichen Kodierung werden die dargestellten Werte in Farben oder Farbtöne übersetzt.</p>
+<p>Bei diskreten Wertebereichen sollten für die farbliche Kodierung Farben bzw. Farbtöne verwendet werden, die sich voneinander unterscheiden lassen.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hinweis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Die farblichen Kodierung sollte sparsam eingesetzt werden, weil die menschliche Farbwahrnehmung stark variiert. Eine vermeintlich gut gewählter Farbton lässt möglicherweise von den Adressaten einer Visualisierung nicht von anderen verwendeten Farben unterscheinde. Dadurch kann die Darstellung nicht wie vorgesehen dekodiert werden.</p>
+</div>
+</div>
+<section id="farbliche-kodierung-von-diskreten-wertebereichen" class="level4" data-number="19.4.1.1">
+<h4 data-number="19.4.1.1" class="anchored" data-anchor-id="farbliche-kodierung-von-diskreten-wertebereichen"><span class="header-section-number">19.4.1.1</span> Farbliche Kodierung von diskreten Wertebereichen</h4>
+<p>Bei diskreten Wertebereichen werden Farben verwendet, die einen möglichst grossen Kontrast zueinander haben.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hinweis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Diskrete Farben können Menschen nicht beliebig voneinander unterscheiden. Deshalb sollten der Wertebereich einer so kodierter Daten klein sein.</p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-visual-color-coding-discrete" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="kapitel_files/figure-html/fig-visual-color-coding-discrete-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Abbildung&nbsp;19.14: Beispiel für die Farbkodierung einer dritten diskreten Dimension</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="farbliche-kodierung-von-kontinuierlichen-wertebereichen" class="level4" data-number="19.4.1.2">
+<h4 data-number="19.4.1.2" class="anchored" data-anchor-id="farbliche-kodierung-von-kontinuierlichen-wertebereichen"><span class="header-section-number">19.4.1.2</span> Farbliche Kodierung von kontinuierlichen Wertebereichen</h4>
+<p>Kontinuierliche Wertebereiche werden als sog. Farbgradienten (bzw. Farbverlauf) zwischen zwei Farben kodiert.</p>
+<p>Bei Wertebereichen mit einem definierten Mittelpunkt, wird dieser oft mit einem Übergang über weiss dargestellt. In diesem Fall hat der Gradient 3 Farben. Daraus ergibt sich, dass je heller ein Farbton ist, desto näher ist der Wert am Mittelpunkt. Je nach Färbung ist dann ersichtlich, ob ein Wert ober- oder unterhalb des Mittelpunkts liegt.</p>
+<p>Farbgradienten haben den Nachteil, dass die meisten Menschen farbliche Unterschiede nicht stufenlos unterscheiden können. Deshalb sollten Farbgradienten nur verwendet werden, wenn die exakten Werte für die Visualisierung von untergeordneter Rolle sind.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-visual-color-coding-gradient" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="kapitel_files/figure-html/fig-visual-color-coding-gradient-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Abbildung&nbsp;19.15: Beispiel für die Farbkodierung mit einem Farbgradienten</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="grössenkodierung" class="level3" data-number="19.4.2">
+<h3 data-number="19.4.2" class="anchored" data-anchor-id="grössenkodierung"><span class="header-section-number">19.4.2</span> Grössenkodierung</h3>
+<p>Bei der Grössenkodierung werden die Punkte von Streudiagrammen entsprechend eines dritten Werts vergrössert oder verkleinert.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hinweis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Eine Grössenkodierung eigent sich gut für kontinuierliche Wertebereiche. Obwohl sich ordinalskalierte Wertebereiche ebenfalls so darstellen lassen, sollte das möglichst vermieden werden, weil bei dieser Darstellungsform verborgen wird, dass es sich um diskrete Daten handelt.</p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-visual-size-coding" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="kapitel_files/figure-html/fig-visual-size-coding-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Abbildung&nbsp;19.16: Beispiel für die Grössenkodierung einer dritten diskreten Dimension</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div id="def-bubblechart" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 19.12 </strong></span>Ein <strong>Bubble-Chart</strong> oder <strong>Ballondiagramm</strong> ist ein <em>Streudiagramm</em> mit zusätzlichen grössenkodierten Werten.</p>
+</div>
+</section>
+<section id="form-kodierung" class="level3" data-number="19.4.3">
+<h3 data-number="19.4.3" class="anchored" data-anchor-id="form-kodierung"><span class="header-section-number">19.4.3</span> Form-Kodierung</h3>
+<p>Über die Form von Punkten oder Linien können zuätzliche Werte in Diagrammen abgebildet werden. Formen eignen sich nur für diskrete Wertebereiche.</p>
+<p>Normalerweise wird die Kodierung für Punkte oder für Linien verwendet.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hinweis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Bei der Formkodierung muss auf die Mindestgrösse geachtet werden, weil sehr kleine Formen nur schwer voneinander unterscheidbar sind.</p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-visual-form-coding" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="kapitel_files/figure-html/fig-visual-form-coding-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Abbildung&nbsp;19.17: Beispiel für die Formkodierung für Punkte und Linien</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="teildiagramme" class="level3" data-number="19.4.4">
+<h3 data-number="19.4.4" class="anchored" data-anchor-id="teildiagramme"><span class="header-section-number">19.4.4</span> Teildiagramme</h3>
+<p>Mit Teildiagrammen werden die Werte entlang einer Variablen in Daten-Segmente getrennt und anschliessend werden die die restlichen Variablen für jedes Segment einzeln visualisiert. Diese Teildiagramme heissen <em>Facetten</em>.</p>
+<p>Solche Facetten können nur mithilfe <em>diskreter Daten</em> gebildet werden. Jede Facette <em>muss eine Überschrift</em> haben, die den Wert der Nebendimension zeigt, der die dargestellten Datenpunkte zusammenfasst.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-visual-facets" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="kapitel_files/figure-html/fig-visual-facets-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Abbildung&nbsp;19.18: Beispiel die Gliederung in Teildiagramme mithilfe einer dritten diskreten Dimension</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Teildiagramme haben den Nachteil, dass die Daten über verschiedene Diagramme verteilt dargestellt werden. Das erschwert den direkten Vergleich der dargestellten Werte. Deshalb sollten Teildiagramme gewählt werden, wenn durch die isolierte Darstellung bestimmte Aspekte einer Analyse besser hervorgehoben werden. Dazu gehören beispielsweise Beziehungen von Variablen in Gruppen, die mit trotz visueller Kodierungen leicht übersehen werden können.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Kopiert");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Kopiert");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../kapitel/13-daten-beschreiben/kapitel.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Daten beschreiben</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../references.html" class="pagination-link">
+        <span class="nav-page-text">Referenzen</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Daten und Information - 4&nbsp; Dokumentation</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../kapitel/02-daten-sammeln/kapitel.html" rel="next">
+<link href="../../kapitel/01-information/kapitel.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "Keine Treffer",
+    "search-matching-documents-text": "Treffer",
+    "search-copy-link-title": "Link in die Suche kopieren",
+    "search-hide-matches-text": "Zusätzliche Treffer verbergen",
+    "search-more-match-text": "weitere Treffer in diesem Dokument",
+    "search-more-matches-text": "weitere Treffer in diesem Dokument",
+    "search-clear-button-title": "Zurücksetzen",
+    "search-detached-cancel-button-title": "Abbrechen",
+    "search-submit-button-title": "Abschicken",
+    "search-label": "Suchen"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../kapitel/01-tool-chain/project_doc.html">Datenquellen</a></li><li class="breadcrumb-item"><a href="../../kapitel/01-tool-chain/project_doc.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Dokumentation</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">Daten und Information</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Suchen"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vorwort</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Ausgangslage und Vorbereitung</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/01-einleitung/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Einleitung</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/01-tool-chain/tastatur.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Tastatur und Tastaturkürzel</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/01-information/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Informationstheorie</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Datenquellen</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/01-tool-chain/project_doc.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Dokumentation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/02-daten-sammeln/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Daten sammeln</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/03-daten-organisieren/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Daten organisieren</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/01-tool-chain/git_github.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Versionierung mit Git und GitHub</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/05-datentypen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Datentypen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/04-dateiformate/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Dateiformate</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Mathematik der Daten</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/06-variablen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Variablen, Funktionen und Operatoren</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/05-zeichenketten/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Zeichenketten</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/08-boolsche-operationen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Boole’sche Operationen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/09-vektor-operationen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Vektor-Operationen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/10-matrix-operationen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Matrix-Operationen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/11-daten-kodieren/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Daten kombinieren und kodieren</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/11-indizieren-gruppieren/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Indizieren und Gruppieren</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/12-daten-formen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Daten formen</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Deskriptive Datenanalyse</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/13-daten-beschreiben/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Daten beschreiben</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/14-daten-visualisieren/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Daten visualisieren</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Referenzen</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Inhaltsverzeichnis</h2>
+   
+  <ul>
+  <li><a href="#technische-projektdokumentation" id="toc-technische-projektdokumentation" class="nav-link active" data-scroll-target="#technische-projektdokumentation"><span class="header-section-number">4.1</span> Technische Projektdokumentation</a>
+  <ul class="collapse">
+  <li><a href="#entscheidungen-und-massnahmen" id="toc-entscheidungen-und-massnahmen" class="nav-link" data-scroll-target="#entscheidungen-und-massnahmen"><span class="header-section-number">4.1.1</span> Entscheidungen und Massnahmen</a></li>
+  <li><a href="#projektübersicht" id="toc-projektübersicht" class="nav-link" data-scroll-target="#projektübersicht"><span class="header-section-number">4.1.2</span> Projektübersicht</a></li>
+  <li><a href="#externe-abhängigkeiten" id="toc-externe-abhängigkeiten" class="nav-link" data-scroll-target="#externe-abhängigkeiten"><span class="header-section-number">4.1.3</span> Externe Abhängigkeiten</a></li>
+  <li><a href="#vertraulichkeit-verwendung-und-urheberschaft" id="toc-vertraulichkeit-verwendung-und-urheberschaft" class="nav-link" data-scroll-target="#vertraulichkeit-verwendung-und-urheberschaft"><span class="header-section-number">4.1.4</span> Vertraulichkeit, Verwendung und Urheberschaft</a></li>
+  </ul></li>
+  <li><a href="#labor--und-arbeitsbericht" id="toc-labor--und-arbeitsbericht" class="nav-link" data-scroll-target="#labor--und-arbeitsbericht"><span class="header-section-number">4.2</span> Labor- und Arbeitsbericht</a>
+  <ul class="collapse">
+  <li><a href="#materialliste" id="toc-materialliste" class="nav-link" data-scroll-target="#materialliste"><span class="header-section-number">4.2.1</span> Materialliste</a></li>
+  <li><a href="#versuchsaufbau" id="toc-versuchsaufbau" class="nav-link" data-scroll-target="#versuchsaufbau"><span class="header-section-number">4.2.2</span> Versuchsaufbau</a></li>
+  <li><a href="#durchführung-und-ablauf" id="toc-durchführung-und-ablauf" class="nav-link" data-scroll-target="#durchführung-und-ablauf"><span class="header-section-number">4.2.3</span> Durchführung und Ablauf</a></li>
+  <li><a href="#ergebnisse" id="toc-ergebnisse" class="nav-link" data-scroll-target="#ergebnisse"><span class="header-section-number">4.2.4</span> Ergebnisse</a></li>
+  <li><a href="#fehlerdiskussion" id="toc-fehlerdiskussion" class="nav-link" data-scroll-target="#fehlerdiskussion"><span class="header-section-number">4.2.5</span> Fehlerdiskussion</a></li>
+  <li><a href="#besondere-ereignisse" id="toc-besondere-ereignisse" class="nav-link" data-scroll-target="#besondere-ereignisse"><span class="header-section-number">4.2.6</span> Besondere Ereignisse</a></li>
+  <li><a href="#beobachtungen-und-notizen" id="toc-beobachtungen-und-notizen" class="nav-link" data-scroll-target="#beobachtungen-und-notizen"><span class="header-section-number">4.2.7</span> Beobachtungen und Notizen</a></li>
+  </ul></li>
+  <li><a href="#projektbericht" id="toc-projektbericht" class="nav-link" data-scroll-target="#projektbericht"><span class="header-section-number">4.3</span> Projektbericht</a>
+  <ul class="collapse">
+  <li><a href="#einleitung-und-hintergrund" id="toc-einleitung-und-hintergrund" class="nav-link" data-scroll-target="#einleitung-und-hintergrund"><span class="header-section-number">4.3.1</span> Einleitung und Hintergrund</a></li>
+  <li><a href="#forschungsfrage-oder-arbeitsauftrag" id="toc-forschungsfrage-oder-arbeitsauftrag" class="nav-link" data-scroll-target="#forschungsfrage-oder-arbeitsauftrag"><span class="header-section-number">4.3.2</span> Forschungsfrage oder Arbeitsauftrag</a></li>
+  <li><a href="#methode" id="toc-methode" class="nav-link" data-scroll-target="#methode"><span class="header-section-number">4.3.3</span> Methode</a></li>
+  <li><a href="#ergebnisse-1" id="toc-ergebnisse-1" class="nav-link" data-scroll-target="#ergebnisse-1"><span class="header-section-number">4.3.4</span> Ergebnisse</a></li>
+  <li><a href="#interpretation" id="toc-interpretation" class="nav-link" data-scroll-target="#interpretation"><span class="header-section-number">4.3.5</span> Interpretation</a></li>
+  <li><a href="#ausblick" id="toc-ausblick" class="nav-link" data-scroll-target="#ausblick"><span class="header-section-number">4.3.6</span> Ausblick</a></li>
+  <li><a href="#zitieren-und-quellenverzeichnis" id="toc-zitieren-und-quellenverzeichnis" class="nav-link" data-scroll-target="#zitieren-und-quellenverzeichnis"><span class="header-section-number">4.3.7</span> Zitieren und Quellenverzeichnis</a></li>
+  <li><a href="#management-zusammenfassung" id="toc-management-zusammenfassung" class="nav-link" data-scroll-target="#management-zusammenfassung"><span class="header-section-number">4.3.8</span> Management-Zusammenfassung</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Dokumentation</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="abstract-title">Zusammenfassung</div>
+    <p>Die Arbeit mit Daten erfordert eine genaue Dokumentation der Arbeitsschritte und der Arbeitsorganisation. Diese Dokumentation umfasst in der Regel die <em>technische Projektdokumentation</em>, <em>Labor- und Arbeitsberichte</em> sowie <em>Projektberichte</em>.</p>
+    <p>Die <strong>technische Projektdokumentation</strong> dokumentiert die Organisation und Struktur eines Projekts.</p>
+    <p><strong>Labor- und Arbeitsberichte</strong> dokumentieren den Ablauf und alle Ergebnisse eines Projekts.</p>
+    <p>Ein <strong>Projektbericht</strong> dokumentiert die Ausgangslage, die Methode, die Ergebnisse und die Schlussfolgerungen eines Projekts. Projektberichte greifen oft auf die technische Projektdokumentation und auf Laborberichte zurück.</p>
+    <p>Dieses Kapitel beschreibt die Anforderungen und die Funktion der Projektdokumentation.</p>
+  </div>
+</div>
+
+</header>
+
+<section id="technische-projektdokumentation" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="technische-projektdokumentation"><span class="header-section-number">4.1</span> Technische Projektdokumentation</h2>
+<p>Die technische Projektdokumentation dokumentiert die Organisation und Struktur eines Projekts und enthält alle relevanten Informationen, um die Dateien in einem <code>git</code>-Repository richtig zu interpretieren und die Arbeitsschritte zu reproduzieren.</p>
+<p>Eine vollständige <strong>Projektdokumentation</strong> enthält die folgenden Teile.</p>
+<ul>
+<li>Projekthistorie</li>
+<li>Entscheidungen und Massnahmen</li>
+<li>Projektmotivation bzw. Ausgangslage</li>
+<li>Repository-Organisation</li>
+<li>Technische Information zur Arbeit mit dem Projekt</li>
+<li>Externe Bibliotheken bzw. Abhängigkeiten.</li>
+<li>Vertraulichkeit und Verwendungsrechte</li>
+</ul>
+<p>Die Versionierungsgeschichte wird von <code>git</code> automatisch erstellt. Die <strong>Commit-Meldungen</strong> dokumentieren die Massnahmen, welche in der zugehörenden Version umgesetzt wurden.</p>
+<section id="entscheidungen-und-massnahmen" class="level3" data-number="4.1.1">
+<h3 data-number="4.1.1" class="anchored" data-anchor-id="entscheidungen-und-massnahmen"><span class="header-section-number">4.1.1</span> Entscheidungen und Massnahmen</h3>
+<p>Weil Die Commit-Meldungen nicht viel Platz zu dokumentation bieten, werden <em>Entscheidungen</em> in der Regels als <strong>Issues</strong> und <em>Massnamen</em> als <strong>Pull-Requests</strong> einer <code>git</code>-Hosting-Plattform dokumentiert. Dabei gilt, dass <em>offene</em> Issues oder Pull-Requests noch nicht und <em>geschlossene</em> Issues und Pull-Requests vollständig im Projekt umgesetzt wurden. Commit-Meldungen müssen dann nur noch auf die zugehörigen <em>Issues</em> referenzieren.</p>
+</section>
+<section id="projektübersicht" class="level3" data-number="4.1.2">
+<h3 data-number="4.1.2" class="anchored" data-anchor-id="projektübersicht"><span class="header-section-number">4.1.2</span> Projektübersicht</h3>
+<p>Per Konvention werden in der Datei <code>README.md</code> bzw. <code>README</code> die Ausgangslage und Motivation, technische Informationen sowie die Repository-Organisation dokumentiert. Diese Dokumentation ist notwendig, um mit dem Projekt arbeiten zu können. Zu den technischen Informationen gehören alle Informationen, die benötigt werden, um mit den Daten oder dem Code zu arbeiten.</p>
+<p>Strukturierte Daten müssen in der Projektübersicht dokumentiert werden. Die folgenden Informationen über die Daten sollten angegeben werden.</p>
+<ul>
+<li>die Namen von Variablen</li>
+<li>die Datentypen der Variablen</li>
+<li>die Bedeutung der Variablen</li>
+</ul>
+<p>Für Code ist die Programmiersprache, eine Anleitung, um den Code laufen zu lassen, sowie ein Beispielaufruf anzugeben. Dieser Teil der Dokumentation hilft beim Aufsetzen des Projekts in einer neuen Arbeitsumgebung.</p>
+</section>
+<section id="externe-abhängigkeiten" class="level3" data-number="4.1.3">
+<h3 data-number="4.1.3" class="anchored" data-anchor-id="externe-abhängigkeiten"><span class="header-section-number">4.1.3</span> Externe Abhängigkeiten</h3>
+<p>In Datenprojekten werden oft externe Bibliotheken, Module oder Pakete verwendet, die separat installiert werden müssen. Diese Komponenten bezeichnet man als <strong>externe Abhängigkeiten</strong>, die ebenfalls dokumentieren werden müssen, damit alle externen Abhängigkeiten in einer neuen Arbeitsumgebung korrekt installiert werden können. Dieser Teil der Projektdokumentation benötigt den Namen der verwendeten Bibliothek sowie die erforderliche Versionsnummer. Für meisten modernen Programmiersprachen existieren sog. <em>Packetmanager</em>, welche die externen Abhängigkeiten in einer Datei dokumentieren und installieren können.</p>
+<p>Die folgende Tabelle zeigt Paketmanager und die Datei für externe Abhängigkeiten in ausgewählten Programmiersprachen. Diese Liste ist nicht vollständig. Die Datein für externe Abhängigkeiten erfüllen die Dokumentation der externen Abhängigkeiten und können gleichzeitig für die Installation der externen Abhängigkeiten verwendet werden.</p>
+<table class="table">
+<colgroup>
+<col style="width: 51%">
+<col style="width: 34%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Programmiersprache</th>
+<th>Paketmanager</th>
+<th>Datei für externe Abhängigkeiten</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Python</td>
+<td>pip</td>
+<td><code>requirements.txt</code></td>
+</tr>
+<tr class="even">
+<td>R</td>
+<td>renv</td>
+<td><code>renv.lock</code>, <code>renv/settings.json</code></td>
+</tr>
+<tr class="odd">
+<td>R</td>
+<td>pak</td>
+<td><code>pkg.lock</code></td>
+</tr>
+<tr class="even">
+<td>Julia</td>
+<td>Pkg</td>
+<td><code>Project.toml</code></td>
+</tr>
+<tr class="odd">
+<td>JavaScript</td>
+<td>&nbsp;npm</td>
+<td><code>package.json</code></td>
+</tr>
+<tr class="even">
+<td>Java</td>
+<td>&nbsp;Maven</td>
+<td><code>pom.xml</code></td>
+</tr>
+<tr class="odd">
+<td>PHP</td>
+<td>composer</td>
+<td>&nbsp;<code>composer.json</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="vertraulichkeit-verwendung-und-urheberschaft" class="level3" data-number="4.1.4">
+<h3 data-number="4.1.4" class="anchored" data-anchor-id="vertraulichkeit-verwendung-und-urheberschaft"><span class="header-section-number">4.1.4</span> Vertraulichkeit, Verwendung und Urheberschaft</h3>
+<p>Per Konvention wird die <strong>Vertraulichkeit</strong> und <strong>Verwendungsrechte</strong> in der Datei <code>LICENCE.md</code> oder <code>LICENSE</code> dokumentiert. Dabei handelt es sich um ein rechtliches Dokument, dass oft von einer Organisation oder Auftraggeber vorgegeben wird oder, wie im Fall von Open Source Lizenzen, durch einen Verband erstellt wurden. Die Lizenzdatei wird in aller Regel in einem Projekt nicht oder nur sehr selten geändert.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Achtung
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Fehlt eine Lizenzdatei ist das Projekt nicht lizenzlos, sondern unterliegt dem gesetzlichen Urheberrecht am Wohnsitz der Projektbeteiligten. Damit ein Projekt lizenzlos veröffentlicht werden kann, muss dieses explizit in der Lizenzdatei festgehalten werden. Ein Beispiel für eine solchen Vermerk ist die sog. <a href="https://opensource.org/license/mit/">MIT Lizenz</a>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Achtung
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Die Verwendungsrechte <em>externer Abhängigkeiten</em> können die Verwendung des eigenen Projekts beeinflussen. Möglicherweise sind einzelne Module mit den Projektanforderungen nicht vereinbar und dürfen in diesen Fällen auch nicht im Projekt verwendet werden. Es ist deshlab wichtig, die Lizenzbedingungen <strong>aller</strong> externen Abhängigkeiten auf ihre rechtliche Kompatibilität mit dem eigenen Projekt zu prüfen.</p>
+</div>
+</div>
+<p><code>git</code>-Hosting-Plattformen bieten verschiedene Lizenzen beim Erstellen eines neuen Projekts an.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Achtung
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Projekte, die mit Bezug auf die Daten und/oder die Auswertungsalgorithmen als <em>vertraulich</em> gelten, dürfen nicht in <em>öffentlichen</em> Projektrepositories verwaltet werden. In diesem Fall muss ein <em>privates</em> Repository verwendet werden. Unter Umständen ist eine Verwendung einer öffentlichen Plattform nicht möglich. In diesem Fall muss eine eigene <code>git</code>-Hosting-Plattform genutzt werden.</p>
+</div>
+</div>
+<p>Neben der Verwendung und Vertraulichkeit ist auch die <strong>Urheberschaft</strong> zu dokumentieren. Die Urheberschaft ist die Liste der Personen, die an einem Projekt mitgearbeitet haben. Traditionell wurde die Urheberschaft wird in der Regel in der Datei <code>AUTHORS.md</code> oder <code>AUTHORS</code> dokumentiert.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tipp
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><code>git</code>-Hosting-Plattformen erstellen inzwischen die Autorenliste automatisch aus den Commits. Zusätzlich wird auch der Umfang der Beiträge dokumentiert.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="labor--und-arbeitsbericht" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="labor--und-arbeitsbericht"><span class="header-section-number">4.2</span> Labor- und Arbeitsbericht</h2>
+<p>Ein Laborbericht dokumentiert den Ablauf und alle Ergebnisse eines Experiments oder einer Untersuchung. Ein Laborbericht ist eine <em>technische Dokumentation</em> einer Untersuchung oder eines Experiments. Diese Dokumentation ist der Beleg für die sachgemässe Durchführung einer Untersuchung. Bei Untersuchungen, die mehr als eine Arbeitssitzung oder -Schicht benötigen, sollten Laborberichte pro Sitzung bzw. Schicht erstellt werden.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warnung
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Laborberichte sind Teil von Complience-Anforderungen und werden oft von Auftraggebern oder Behörden verlangt. In diesen Anforderungen werden die zwingend zu dokumentierenden Teile festgelegt. Unterliegen bestimmte Untersuchungen einer Complience-Anforderung, dann müssen diese Anforderungen eingehalten werden, selbst wenn diese nicht explizit gefordert wurde. Stellt sich später heraus, dass ein vorliegender Laborbericht unvollständig ist oder falsche Angaben zur Durchführung enthält, dann kann dies unter Umständen als Urkundenfälschung gewertet werden.</p>
+</div>
+</div>
+<p>Laborberichte sollten am Besten während oder unmittelbar nach einer Untersuchung erstellt werden. Werden regelmässig Laborberichte erstellt, bietet sich die Verwendung einer Versionierung mit <code>git</code> an.</p>
+<p>Bei der Verwendung von Laborberichten wird angenommen, dass undokumentierte Materialien nicht verwendet wurden und nicht dokumentierte Arbeitsschritte oder Ereignisse nicht stattgefunden haben. Ein fehlender oder unvollständiger Laborbericht entspricht einer nicht ordnungsgemäss durchgeführten Untersuchung.</p>
+<p>Ein Laborbericht besteht aus den folgenden Teilen.</p>
+<ul>
+<li>Titel</li>
+<li>Beteiligte Untersucher</li>
+<li>Datum, Uhrzeit und Ort</li>
+<li>Fragestellung bzw. Auftrag</li>
+<li>Materialliste</li>
+<li>Detaillierter Versuchsaufbau</li>
+<li>Versuchsdurchführung bzw. Ablauf</li>
+<li>Ergebnisse</li>
+<li>Fehlerdiskussion</li>
+<li>Beobachtungen</li>
+<li>Besondere Ereignisse</li>
+</ul>
+<section id="materialliste" class="level3" data-number="4.2.1">
+<h3 data-number="4.2.1" class="anchored" data-anchor-id="materialliste"><span class="header-section-number">4.2.1</span> Materialliste</h3>
+<p>Die Materialliste umfasst alle Materialien, die für die Durchführung des Experiments benötigt werden. Grundsätzlich müssen alle Materialien und Geräte, die für die Durchführung einer Untersuchtung verwendet werden, in der Materialliste aufgeführt werden müssen. Zu den Materialien gehören zum Beispiel:</p>
+<ul>
+<li>Chemikalien und Reagenzien</li>
+<li>Proben</li>
+<li>Behälter, Gefässe und Verbindungen</li>
+<li>Messgeräte</li>
+<li>Kabel und Stecker</li>
+<li>Werkzeuge</li>
+<li>Verbrauchsmaterialien</li>
+<li>Schutzkleidung</li>
+<li>Entsorgungsmaterialien</li>
+</ul>
+<p>Falls eine Studie oder ein Experiment nicht in einer kontrollierten Laborumgebung durchgeführt wird, müssen auch die <strong>Umweltbedingungen</strong> am Untersuchungsort dokumentiert werden.</p>
+</section>
+<section id="versuchsaufbau" class="level3" data-number="4.2.2">
+<h3 data-number="4.2.2" class="anchored" data-anchor-id="versuchsaufbau"><span class="header-section-number">4.2.2</span> Versuchsaufbau</h3>
+<p>Der Versuchsaufbau beschreibt die Anordnung der Materialien und Geräte bei der Durchführung eines Experiments. Dieser Abschnitt beschreibt im Detail den Aufbau eines Versuchs oder einer Untersuchung, so dass diese später genau gleich wiederholt werden kann. Für den Versuchsaufbau werden zusätzlich Skizzen und Schaltpläne angegeben. Falls der Versuchsaufbau spezielle Software für die Durchführung benötigt, sind alle Komponenten und Einstellungen ebenfalls im Versuchsaufbau zu dokumentieren.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hinweis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Die Software für die Auswertung ist <em>kein</em> Teil des Versuchsaufbaus.</p>
+</div>
+</div>
+<p>Bei wiederholten Durchführungen mit dem gleichen Versuchsaufbau kann der Versuchsaufbau in einem separaten Dokument oder in einem separaten Abschnitt dokumentiert werden. Dieses Dokument ist dann für alle Versuchsdurchführungen mit dem gleichen Versuchsaufbau gültig und muss in <em>allen zugehörigen Laborberichten</em> referenziert werden.</p>
+</section>
+<section id="durchführung-und-ablauf" class="level3" data-number="4.2.3">
+<h3 data-number="4.2.3" class="anchored" data-anchor-id="durchführung-und-ablauf"><span class="header-section-number">4.2.3</span> Durchführung und Ablauf</h3>
+<p>Der Abschnitt Durchführung beschreibt die genaue Vorgehensweise einer Untersuchung oder eines Experiments. Dabei werden alle <strong><em>durchgeführten</em></strong> Arbeitsschritte in <em>chronologischer</em> Reihenfolge festgehalten. Die Beschreibung der Durchführung muss so genau sein, dass die Untersuchung oder das Experiment später genau gleich wiederholt werden kann.</p>
+<p>Wenn besondere Vorsichtsmassnahmen bei der Durchführung notwendig sind, müssen diese ebenfalls im Abschnitt Durchführung dokumentiert werden.</p>
+<p>Die <strong>Entsorgung</strong> von Nebenprodukten und Abfällen ist Teil der Versuchsdurchführung. Die Entsorgung von Nebenprodukten und Abfällen wird oft in einem separaten Abschnitt dokumentiert.</p>
+<p>Bei manchen Untersuchung ist ein besonderer Rückbau des Versuchsaufbaus notwendig. Der Rückbau des Versuchsaufbaus wird ebenfalls in der Versuchsdurchführung dokumentiert.</p>
+</section>
+<section id="ergebnisse" class="level3" data-number="4.2.4">
+<h3 data-number="4.2.4" class="anchored" data-anchor-id="ergebnisse"><span class="header-section-number">4.2.4</span> Ergebnisse</h3>
+<p>Alle gemessenen Ergebnisse eines Experiments oder einer Untersuchung müssen im Abschnitt <em>Ergebnisse</em> dokumentiert werden. Das gilt auch für Messwerte, die später nicht für die Auswertung verwendet werden. Die Ergebnisse werden in Tabellen <em>und</em> Diagrammen dargestellt. Die Tabellen und Diagramme müssen mit einer Nummer versehen werden und eine aussagekräftige Beschriftung haben. Die Tabellen mit den Messwerten sind immer verpflichtend. Diagramme sind <em>optional</em>.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Achtung
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Die Ergebnisse müssen <em>vollständig</em> dokumentiert werden. Das bedeutet, dass alle Messwerte, die für die Auswertung nicht verwendet werden, trotzdem dokumentiert werden müssen.</p>
+</div>
+</div>
+<p>Weil die Messwerte später ausgewertet werden sollen, können die Tabellen in einer separaten Datei gespeichert werden. Diese Datei wird dann im Abschnitt Ergebnisse als <em>Anhang</em> referenziert. Sollte eine Untersuchung mehrere Tabellen erzeugt haben, dann sollten diese als eigenständige Anhänge geführt werden.</p>
+</section>
+<section id="fehlerdiskussion" class="level3" data-number="4.2.5">
+<h3 data-number="4.2.5" class="anchored" data-anchor-id="fehlerdiskussion"><span class="header-section-number">4.2.5</span> Fehlerdiskussion</h3>
+<p>Die Fehlerdiskussion eines Projektberichts umfasst die bekannten Fehlerquellen und Fehlerabschätzungen einer Studie. Dieser Teil dient zur Bestimmung der Messgüte der Einschätzung der präsentierten Ergebnisse.</p>
+<p>In diesem Teil müssen auch methodische Fehler berichtet werden, falls diese die ordnungsgemässe Messung oder Auswertung beeinflussen.</p>
+<p>Messausfälle oder nicht durchgeführte Messungen sind nicht Teil der Fehlerdiskussion, sondern fallen in die Rubrik <em>besondere Ereignisse</em> und müssen dort berichtet werden.</p>
+</section>
+<section id="besondere-ereignisse" class="level3" data-number="4.2.6">
+<h3 data-number="4.2.6" class="anchored" data-anchor-id="besondere-ereignisse"><span class="header-section-number">4.2.6</span> Besondere Ereignisse</h3>
+<p>In einem Laborbericht werden grundsätzlich alle besonderen Ereignisse dokumentiert. Besondere Ereignisse sind Ereignisse, die nicht zum normalen Ablauf gehören oder für das Experiment nicht zu erwarten waren. Beispiele für besondere Ereignisse sind:</p>
+<ul>
+<li>Ungewöhnliche Messwerte und Messausfälle</li>
+<li>Ungewöhnliche Geräusche, Gerüche oder Verfärbungen</li>
+<li>Verzögerungen und Unterbrechungen</li>
+<li>Ausfall von Geräten</li>
+<li>Warnmeldungen</li>
+<li>Defekte oder fehlerhafte Geräte</li>
+<li>Unfälle und Verletzungen</li>
+<li>Unkontrolliertes oder ungeplantes Austreten von Flüssigkeiten oder Gasen</li>
+</ul>
+<p>Falls keine besonderen Ereignisse aufgetreten sind, können diese Teile weggelassen werden.</p>
+</section>
+<section id="beobachtungen-und-notizen" class="level3" data-number="4.2.7">
+<h3 data-number="4.2.7" class="anchored" data-anchor-id="beobachtungen-und-notizen"><span class="header-section-number">4.2.7</span> Beobachtungen und Notizen</h3>
+<p>Laborberichte sind eine wichtige Quelle für Innovation und Erkenntnisse. Deshalb sollten Beobachtungen, Erfahrungen und andere Notizen in Laborberichten festgehalten werden. Dadurch wird sichergestellt, dass dieser Teil der Dokumentation nicht von der Untersuchtung getrennt und so dekontextualisiert wird.</p>
+</section>
+</section>
+<section id="projektbericht" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="projektbericht"><span class="header-section-number">4.3</span> Projektbericht</h2>
+<p>Ein Projektbericht dokumentiert die Ausgangslage, die Methode, die Ergebnisse und die Schlussfolgerungen eines Projekts.</p>
+<p>Ein Projektbericht besteht <strong><em>immer</em></strong> aus den folgenden Teilen.</p>
+<ul>
+<li>Titel</li>
+<li>Autoren</li>
+<li>Zusammenfassung (Abstract)</li>
+<li>Einleitung und Hintergrund</li>
+<li>Forschungsfrage/Arbeitsauftrag</li>
+<li>Methode</li>
+<li>Ergebnisse</li>
+<li>Interpretation (Diskussion)</li>
+<li>Ausblick</li>
+<li>Quellenverzeichnis</li>
+</ul>
+<p>Bei längeren Projektberichten muss zusätzlich ein Inhaltsverzeichnis, ein Abbildungsverzeichnis, ein Tabellenverzeichnis und ein Abkürzungsverzeichnis sowie eine Managementzusammenfassung erstellt.</p>
+<section id="einleitung-und-hintergrund" class="level3" data-number="4.3.1">
+<h3 data-number="4.3.1" class="anchored" data-anchor-id="einleitung-und-hintergrund"><span class="header-section-number">4.3.1</span> Einleitung und Hintergrund</h3>
+<p>Die Einleitung legt den Kontext des Projekts fest. Dazu gehört die übergeordnete Problemstellung und die bekannten Fakten zum Thema. Die Problemstellung sollte so formuliert sein, dass auch interessierte Personen, die nicht mit dem Thema vertraut sind, die Ausgangslage verstehen können. Die Aufstellung der bekannten Fakten ist eine Zusammenfassung der Literatur zu dieser Problemstellung. Es kommt nicht selten vor, dass Querbezüge zu anderen Themen oder Problemstellungen hergestellt werden müssen. Auch diese Literatur muss in der Einleitung zusammengefasst werden.</p>
+<p>Die Literatur sollte so zusammengefasst werden, dass für die projektrelevante Aspekte, die in der Literatur identifiziert wurden, ein Absatz im Abschnitt gewidmet wird. Dabei müssen die entsprechenden Quellen referenziert werden. Falls mehrere Quellen die gleiche oder sehr ähnlich Aussagen treffen, dann können diese im gleichen Absatz zusammengefasst und gemeinsam referenziert werden.</p>
+</section>
+<section id="forschungsfrage-oder-arbeitsauftrag" class="level3" data-number="4.3.2">
+<h3 data-number="4.3.2" class="anchored" data-anchor-id="forschungsfrage-oder-arbeitsauftrag"><span class="header-section-number">4.3.2</span> Forschungsfrage oder Arbeitsauftrag</h3>
+<p>Der Abschnitt Forschungsfrage oder Arbeitsauftrag legt die konkrete Motivation des Projekts fest. Diese sollte durch den Kontext der bekannten Fakten und der Problemstellung in der Einleitung sachlich begründet sein.</p>
+<p>Als Frage formuliert liefert der Abschnitt Ausblick die Antwort auf diese Frage. Dadurch entsteht eine rhetorische Klammer im Projektbericht. Gleichzeitigt hiflt die Formulierung der Fragestellung bei der kontinuierlichen Überprüfung, ob die durchgeführten Schritte im Projekt auch zur Beantwortung der Fragestellung beitragen. Deshalb sollten auch Arbeitsaufträge, die nicht als Frage präsentiert werden, intern als Frages umformuliert werden.</p>
+</section>
+<section id="methode" class="level3" data-number="4.3.3">
+<h3 data-number="4.3.3" class="anchored" data-anchor-id="methode"><span class="header-section-number">4.3.3</span> Methode</h3>
+<p>Die Methode beschreibt das Vorgehen bei der Erhebung und Auswertung von Daten. Die Beschreibung muss eine Wiederholung oder das systematische Nachvollziehen der Untersuchung ermöglichen. In diesem Abschnitt sind alle Arbeitsschritte zu dokumentieren, die in den Abschnitten Ergebnisse und Interpretation zu den präsentierten Ergebnissen führen.</p>
+<p>Die Methode umfasst nur die systematische Vorgehensweise, aber keine technische Dokumentation der Auswertung. Hierzu sollte auf die technische Projektdokumentation verwiesen werden.</p>
+</section>
+<section id="ergebnisse-1" class="level3" data-number="4.3.4">
+<h3 data-number="4.3.4" class="anchored" data-anchor-id="ergebnisse-1"><span class="header-section-number">4.3.4</span> Ergebnisse</h3>
+<p>Der Abschnitt Ergebnisse fasst alle erhobenen Messungen zusammen. Dabei werden die Messwerte in Tabellen und Diagrammen dargestellt. Alle in diesem Abschnitt präsentierten Daten sollten sich direkt aus Laborberichten ableiten lassen.</p>
+<p>Im Abschnitt Ergebnisse werden selten die gemessenen Rohdaten als Tabelle präsentiert. Sollten die Rohdaten für die Interpretation bedeutsam sein, dann sollten diese Daten in einem Anhang getrennt präsentiert werden.</p>
+<p>Dieser Abschnitt muss alle im Abschnitt <em>Interpretation</em> bzw. <em>Diskussion</em> verwendeten Daten enthalten. Für <em>jede Aussage</em> im Abschnitt Interpretation muss ein Bezug zu den Ergebnissen möglich sein.</p>
+<p>Dieser Abschnitt enthält für empirischen Studien normalerweise <em>keine Referenzen</em> auf externe Quellen.</p>
+</section>
+<section id="interpretation" class="level3" data-number="4.3.5">
+<h3 data-number="4.3.5" class="anchored" data-anchor-id="interpretation"><span class="header-section-number">4.3.5</span> Interpretation</h3>
+<p>Die Interpretation umfasst die <em>Bewertung</em> der Ergebnisse. Dabei werden die Ergebnisse mit den Erwartungen aus der Einleitung verglichen. In diesem Abschnitt werden die Ergebnisse in den in der Einleitung hergestellten Kontext gestellt und die Schlussfolgerungen aus der Auswertung gezogen. In diesem Abschnitt werden die Argumente für die Beantwortung der Forschungsfrage bzw. des Arbeitsauftrags vorbereitet.</p>
+<p>Die Interpretation enthält <em>keine</em> neuen Daten, sondern nur eine <em>Bewertung</em> der Ergebnisse. Die Bewertung der Ergebnisse muss <em>immer</em> mit den Erwartungen aus der Einleitung und Fragestellung verglichen werden.</p>
+</section>
+<section id="ausblick" class="level3" data-number="4.3.6">
+<h3 data-number="4.3.6" class="anchored" data-anchor-id="ausblick"><span class="header-section-number">4.3.6</span> Ausblick</h3>
+<p>Der Ausblick beantwortet die Forschungsfrage bzw. den Arbeitsauftrag. Dabei werden die Ergebnisse der Untersuchung zusammengefasst und die Schlussfolgerungen daraus gezogen. Häufig werden die Schlussfolgerungen als <em>Empfehlungen für die Praxis</em> formuliert.</p>
+<p>Falls in einem Projekt unerwartete Ergebnisse auftraten oder Phänomene beobachtet wurde, die nicht durch as Projekt erklärt werden können, dann sollten Fragen für die weitere Forschung formuliert werden. Diese Fragen sollten als Forschungsfragen analog zum Abschnitt Forschungsfrage formuliert werden.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tipp
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Falls über ein Teilprojekt berichtet wird, dann gelten die nächsten <em>geplanten</em> Projektfragen <em>nicht</em> als Fragen für die weitere Forschung.</p>
+</div>
+</div>
+</section>
+<section id="zitieren-und-quellenverzeichnis" class="level3" data-number="4.3.7">
+<h3 data-number="4.3.7" class="anchored" data-anchor-id="zitieren-und-quellenverzeichnis"><span class="header-section-number">4.3.7</span> Zitieren und Quellenverzeichnis</h3>
+<p>Das Zitieren von Quellen ist ein wichtiger Teil der wissenschaftlichen Arbeit. Das Zitieren von Quellen dient dazu, die Herkunft von Ideen, Aussagen und Ergebnissen zu dokumentieren. Das Referenzieren externer Quellen ist verpflichtend. Im Bericht wird auf die Quellen in einer Kurzform verweisen. Die vollständigen Angaben aller Quellen werden im Quellenverzeichnis aufgeführt.</p>
+<p>Wie Quellen richtig referenziert werden, ist in sog. Zitierstandards festgelegt. Wichtige Zitierstandars sind der APA Styleguide <span class="citation" data-cites="american_psychological_association_publication_2020">(<a href="../../references.html#ref-american_psychological_association_publication_2020" role="doc-biblioref">American Psychological Association, 2020</a>)</span>, der Chicago Styleguide <span class="citation" data-cites="the_university_of_chicago_press_editorial_staff_chicago_2017">(<a href="../../references.html#ref-the_university_of_chicago_press_editorial_staff_chicago_2017" role="doc-biblioref">The University Of Chicago Press Editorial Staff, 2017</a>)</span>, der IEEE Styleguide <span class="citation" data-cites="ieee_ieee_2018">(<a href="../../references.html#ref-ieee_ieee_2018" role="doc-biblioref">IEEE, 2018</a>)</span> oder der ACM Styleguide <span class="citation" data-cites="rodkin_acm_2023">(<a href="../../references.html#ref-rodkin_acm_2023" role="doc-biblioref">Rodkin, 2023</a>)</span>. In einem Projektbericht wird nur ein Zitierstandard verwendet. Es ist nicht vorgesehen, Zitierstandards zu mischen.</p>
+<p>Eine wörtliche Übernahme einer anderen Quelle wird als Zitat bezeichnet. Zitate sollten sehr sparsam in Berichten verwendet werden. Zitate sind oft nur dann notwendig, wenn die wörtliche Übernahme einer Aussage oder eines Ergebnisses für die Argumentation erforderlich ist.</p>
+<p>Werden Ideen, Aussagen oder Ergebnisse aus einer externen Quelle verwendet, dann ist das eine Paraphrase und erfordert wie ein Zitat eine Referenz der Quelle. Bei Paraphrasen ist die Angabe der Seitenzahl nur dann notwendig, wenn die referenzierte Idee sich nicht direkt aus der Quelle ergibt. Das ist zum Beispiel der Fall, wenn die Quelle eine Monographie mit mehreren Studien ist und nur eine bestimmte Studie referenziert wird.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Achtung
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Werden externe Quellen verwendet und <em>nicht referenziert</em>, dann handelt es sich um ein Plagiat. Plagiate sind ein schwerer Verstoss gegen die wissenschaftliche Integrität und das Urheberrecht. Bei Zertifizierungen sind Plagiate ausserdem ein Betrug. Das gilt auch für Paraphrasen ohne Referenz.</p>
+</div>
+</div>
+</section>
+<section id="management-zusammenfassung" class="level3" data-number="4.3.8">
+<h3 data-number="4.3.8" class="anchored" data-anchor-id="management-zusammenfassung"><span class="header-section-number">4.3.8</span> Management-Zusammenfassung</h3>
+<p>Eine Management zusammenfassung ist eine Kurzfassung eines Projektberichts, die sich an die Entscheidungsträger richtet. Sie ist deutlich kürzer als die Zusammenfassung und enthält nur die wichtigsten Informationen des Projektberichts. In der Regel ist die Managementzusammenfassung nicht länger als eine Seite und ist Stichpunktartig formuliert.</p>
+<p>Eine gute Managementzusammenfassung kann direkt in einer Präsentation verwendet werden. Als Richtlinie für eine Managementzusammenfassung sind sieben Punkte. Diese Punkte sollten die folgenden Fragen beantworten.</p>
+<ul>
+<li>Was ist das Problem?</li>
+<li>Wie wurde gemessen?</li>
+<li>Was sind die wichtigsten Ergebnisse?</li>
+<li>Welche Schlussfolgerungen können gezogen werden?</li>
+<li>Welche Massnahmen werden empfohlen? (optional)</li>
+</ul>
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="list" style="display: none">
+<div id="ref-american_psychological_association_publication_2020" class="csl-entry" role="listitem">
+American Psychological Association. (2020). <em>Publication manual of the American Psychological Association (7th ed.).</em> <span>American Psychological Association</span>. <a href="https://doi.org/10.1037/0000165-000">https://doi.org/10.1037/0000165-000</a>
+</div>
+<div id="ref-ieee_ieee_2018" class="csl-entry" role="listitem">
+IEEE. (2018). <em><span>IEEE</span> Reference Guide</em>. <a href="https://ieeeauthorcenter.ieee.org/wp-content/uploads/IEEE-Reference-Guide.pdf">https://ieeeauthorcenter.ieee.org/wp-content/uploads/IEEE-Reference-Guide.pdf</a>
+</div>
+<div id="ref-rodkin_acm_2023" class="csl-entry" role="listitem">
+Rodkin, C. (2023). <em><span>ACM</span> Citation Style and Reference Formats</em>. <a href="https://www.acm.org/publications/authors/reference-formatting">https://www.acm.org/publications/authors/reference-formatting</a>
+</div>
+<div id="ref-the_university_of_chicago_press_editorial_staff_chicago_2017" class="csl-entry" role="listitem">
+The University Of Chicago Press Editorial Staff. (2017). <em>The Chicago Manual of Style, 17th Edition</em>. University of Chicago Press. <a href="https://doi.org/10.7208/cmos17">https://doi.org/10.7208/cmos17</a>
+</div>
+</div>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Kopiert");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Kopiert");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../kapitel/01-information/kapitel.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Informationstheorie</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../kapitel/02-daten-sammeln/kapitel.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Daten sammeln</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

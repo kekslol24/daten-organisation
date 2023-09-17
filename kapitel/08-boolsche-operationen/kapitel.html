@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Daten und Information - 12&nbsp; Boole’sche Operationen</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../kapitel/09-vektor-operationen/kapitel.html" rel="next">
+<link href="../../kapitel/05-zeichenketten/kapitel.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "Keine Treffer",
+    "search-matching-documents-text": "Treffer",
+    "search-copy-link-title": "Link in die Suche kopieren",
+    "search-hide-matches-text": "Zusätzliche Treffer verbergen",
+    "search-more-match-text": "weitere Treffer in diesem Dokument",
+    "search-more-matches-text": "weitere Treffer in diesem Dokument",
+    "search-clear-button-title": "Zurücksetzen",
+    "search-detached-cancel-button-title": "Abbrechen",
+    "search-submit-button-title": "Abschicken",
+    "search-label": "Suchen"
+  }
+}</script>
+<script src="../../site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="../../site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="../../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../kapitel/06-variablen/kapitel.html">Mathematik der Daten</a></li><li class="breadcrumb-item"><a href="../../kapitel/08-boolsche-operationen/kapitel.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Boole'sche Operationen</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">Daten und Information</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Suchen"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vorwort</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Ausgangslage und Vorbereitung</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/01-einleitung/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Einleitung</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/01-tool-chain/tastatur.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Tastatur und Tastaturkürzel</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/01-information/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Informationstheorie</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Datenquellen</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/01-tool-chain/project_doc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Dokumentation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/02-daten-sammeln/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Daten sammeln</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/03-daten-organisieren/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Daten organisieren</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/01-tool-chain/git_github.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Versionierung mit Git und GitHub</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/05-datentypen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Datentypen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/04-dateiformate/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Dateiformate</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Mathematik der Daten</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/06-variablen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Variablen, Funktionen und Operatoren</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/05-zeichenketten/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Zeichenketten</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/08-boolsche-operationen/kapitel.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Boole’sche Operationen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/09-vektor-operationen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Vektor-Operationen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/10-matrix-operationen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Matrix-Operationen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/11-daten-kodieren/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Daten kombinieren und kodieren</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/11-indizieren-gruppieren/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Indizieren und Gruppieren</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/12-daten-formen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Daten formen</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Deskriptive Datenanalyse</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/13-daten-beschreiben/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Daten beschreiben</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/14-daten-visualisieren/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Daten visualisieren</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Referenzen</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Inhaltsverzeichnis</h2>
+   
+  <ul>
+  <li><a href="#mathematische-operationalisierung-der-aussagenlogik" id="toc-mathematische-operationalisierung-der-aussagenlogik" class="nav-link active" data-scroll-target="#mathematische-operationalisierung-der-aussagenlogik"><span class="header-section-number">12.1</span> Mathematische Operationalisierung der Aussagenlogik</a>
+  <ul class="collapse">
+  <li><a href="#belegungstafeln-oder-wahrheitstafeln" id="toc-belegungstafeln-oder-wahrheitstafeln" class="nav-link" data-scroll-target="#belegungstafeln-oder-wahrheitstafeln"><span class="header-section-number">12.1.1</span> Belegungstafeln oder Wahrheitstafeln</a></li>
+  <li><a href="#sec-boole-arithmetik" id="toc-sec-boole-arithmetik" class="nav-link" data-scroll-target="#sec-boole-arithmetik"><span class="header-section-number">12.1.2</span> Boole’sche Arithmetik</a></li>
+  </ul></li>
+  <li><a href="#boolesche-algebra" id="toc-boolesche-algebra" class="nav-link" data-scroll-target="#boolesche-algebra"><span class="header-section-number">12.2</span> Boole’sche Algebra</a>
+  <ul class="collapse">
+  <li><a href="#grundregeln-der-booleschen-algebra" id="toc-grundregeln-der-booleschen-algebra" class="nav-link" data-scroll-target="#grundregeln-der-booleschen-algebra"><span class="header-section-number">12.2.1</span> Grundregeln der Boole’schen Algebra</a></li>
+  </ul></li>
+  <li><a href="#vergleiche" id="toc-vergleiche" class="nav-link" data-scroll-target="#vergleiche"><span class="header-section-number">12.3</span> Vergleiche</a></li>
+  <li><a href="#entscheidungen" id="toc-entscheidungen" class="nav-link" data-scroll-target="#entscheidungen"><span class="header-section-number">12.4</span> Entscheidungen</a></li>
+  <li><a href="#sec-filtern" id="toc-sec-filtern" class="nav-link" data-scroll-target="#sec-filtern"><span class="header-section-number">12.5</span> Filtern</a></li>
+  <li><a href="#sortieren" id="toc-sortieren" class="nav-link" data-scroll-target="#sortieren"><span class="header-section-number">12.6</span> Sortieren</a>
+  <ul class="collapse">
+  <li><a href="#sortieren-für-fortgeschrittene" id="toc-sortieren-für-fortgeschrittene" class="nav-link" data-scroll-target="#sortieren-für-fortgeschrittene"><span class="header-section-number">12.6.1</span> Sortieren für Fortgeschrittene</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="sec-boolesche-operationen" class="quarto-section-identifier"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Boole’sche Operationen</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Boole’sche Operationen sind für das Programmieren von zentraler Bedeutung, weil mit ihnen regelbasierte Entscheidungen umgesetzt werden.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Hinweis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Als <em>Logischer Ausdruck</em> werden alle Funktionsketten bezeichnet, die einen Wahrheitswert als Ergebnis haben.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Merke
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Die einfachsten logischen Ausdsrücke sind die Wahrheitswerte selbst.</p>
+</div>
+</div>
+<p>Die klassische Aussagenlogik ist seit der Antike Teil der Rethorik und der Philosophie. Sie wurde von Aristoteles in seiner Schrift “Peri hermeneias” (Über die Interpretation) beschrieben. Das Ziel der Aussagenlogik ist es, die Struktur von Argumenten zu analysieren und zu bewerten.</p>
+<p>Ein wesentliche Aufgabe der Aussagenlogik ist die Analyse von Argumenten, um sinnvolle und nicht-sinnvolle Aussagen zu unterscheiden. Dazu werden die Argumente in Voraussetzungen (<em>Prämissen</em>) und Schlussfolgerungen (<em>Konklusionen</em>) unterteilt. Die Prämissen sind die Voraussetzungen, die für die Konklusion erfüllt sein müssen.</p>
+<p>Die klassische Aussagenlogik ist eine <em>zweiwertige</em> Logik. Das bedeutet, dass die Aussagen entweder <em>wahr</em> oder <em>falsch</em> sein können. Es gibt keine Zwischenwerte.</p>
+<p>Die klassische Aussagenlogik beschäftigte sich mit der Verknüpfung von Argumenten zu <em>Aussagen</em>. Dabei werden drei Arten von Aussagen unterschieden:</p>
+<ul>
+<li>Die Tautologie bezeichnet Aussagen, die immer wahr sind.</li>
+<li>Die Kontradiktion bezeichnet Aussagen, die immer falsch sind.</li>
+<li>Die Kontingenz ist eine Aussage, die weder eine Tautologie noch eine Kontradiktion ist.</li>
+</ul>
+<p>Aussagen sind also <em>Konklusionen</em>, die sich aus der Verknüpfung von Argumenten (<em>Prämissen</em>) ergeben. Die klassische Aussagenlogik untersucht, wie sich die Wahrheitswerte der Prämissen auf die Wahrheitswerte der Konklusion auswirken. Es handelt sich dabei also um die Analyse der Verknüpfung von Argumenten zu Aussagen in Form von Wenn-Dann-Beziehungen.</p>
+<p>Klassisch, d.h. seit der Antike, werden die folgenden Beziehungen zwischen zwei Aussagen unterschieden <span class="citation" data-cites="rautenberg_einfuhrung_2008">(<a href="../../references.html#ref-rautenberg_einfuhrung_2008" role="doc-biblioref">Rautenberg, 2008</a>)</span>.</p>
+<ul>
+<li>Die Negation (NICHT) kehrt den Wahrheitswert einer Aussage um. Eine wahre Aussage wird falsch und eine falsche Aussage wird wahr.</li>
+<li>Die Konjunktion (UND) ist nur dann wahr, wenn beide Aussagen wahr sind.</li>
+<li>Die Nihilition ist nur dann wahr, wenn beide Aussagen falsch sind.</li>
+<li>Die Inversion ist wahr, wenn die erste Aussage wahr ist oder die zweite Aussage falsch ist.</li>
+<li>Die Äquivalenz ist wahr, wenn beide Aussagen den gleichen Wahrheitswert haben.</li>
+<li>Die Antivalenz (entweder-oder) ist wahr, wenn die beiden Aussagen unterschiedliche Wahrheitswerte haben.</li>
+<li>Die Disjunktion (ODER) ist wahr, wenn mindestens eine der beiden Aussagen wahr ist.</li>
+<li>Die Unverträglichkeit ist wahr, wenn mindestens eine der beiden Aussagen falsch ist.</li>
+<li>Die Implikation ist wahr, wenn die erste Aussage falsch ist oder die zweite Aussage wahr ist.</li>
+</ul>
+<p>Bereits den antiken Philosophen war bekannt, dass die Negation, die Konjunktion und die Disjunktion die Grundlage für die Aussagenlogik bilden. Die anderen Beziehungen lassen sich aus diesen drei Beziehungen ableiten.</p>
+<section id="mathematische-operationalisierung-der-aussagenlogik" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="mathematische-operationalisierung-der-aussagenlogik"><span class="header-section-number">12.1</span> Mathematische Operationalisierung der Aussagenlogik</h2>
+<p>George Boole hat mit seiner Arbeit “The Mathematical Analysis of Logic” <span class="citation" data-cites="boole_mathematical_1847">(<a href="../../references.html#ref-boole_mathematical_1847" role="doc-biblioref">Boole, 1847</a>)</span> die Grundlagen für die moderne Informatik gelegt. Er hat die Grundlagen für die Boole’sche Algebra gelegt, die die Grundlage sowohl für die moderne Kommunikationstechnologie als auch für die Informatik ist. Seine Überlegungen standen im Kontext der industriellen Revolution und der damit verbundenen Entwicklung von Maschinen, die mit Hilfe von mathematischen Gleichungen gesteuert werden. Er erkannte, dass die Sprache und damit die Philosophie der Logik genau wie die Mathematik auf Grundlage von Symbolen basierte. Er fragte sich, ob Sprache und Logik einer mathematischen Analyse unterzogen werden können. Speziell interessierte ihn für seine Analyse der Zweig des <em>Syllogismus</em> in der Logik, der sich mit dem deduktiven Schlussfolgern aus Argumenten beschäftigt.</p>
+<p>Boole wurde durch die Arbeiten von Leibniz beeinflusst, die sich mit der Formalisierung von Argumenten beschäftigten. Leibniz hatte die Idee, dass Argumente in Form von mathematischen Gleichungen dargestellt werden können. Boole hat diese Idee aufgegriffen und weiterentwickelt.</p>
+<p>Boole versuchte, die klassische Aussagenlogik mathematisch zu formalisieren, indem er jeder Aussage einen Wahrheitswert in Form von <code>0</code> für falsch und <code>1</code> für wahr zuordnete. Auf dieser Grundlage untersuchte er, welche mathematischen Operationen zu den bekannten Ergebnissen der klassischen Aussagenlogik führen.</p>
+<p>Ausgehend von den Beziehungsarten der klassischen Aussagenlogik stellte er die <em>Belegungen</em> für die möglichen Kombinationen von Wahrheitswerten in der jeweiligen Beziehung auf. D.h. er stellte die möglichen Kombinationen von Wahrheitswerten der Prämissen den Wahrheitswerten der Konklusion gegenüber. Für jede dieser Belegungen suchte Boole anschliessend nach einer arithmetischen Operation, die alle Belegungen einer Beziheung erzeugt.</p>
+<section id="belegungstafeln-oder-wahrheitstafeln" class="level3" data-number="12.1.1">
+<h3 data-number="12.1.1" class="anchored" data-anchor-id="belegungstafeln-oder-wahrheitstafeln"><span class="header-section-number">12.1.1</span> Belegungstafeln oder Wahrheitstafeln</h3>
+<p>Eine Wahrheitstafel oder Wahrheitstabelle ist eine Tabelle, die alle möglichen Kombinationen von Wahrheitswerten für einen logischen Ausdruck enthält. Weil die klassische Aussagenlogik nur zwei Wahrheitswerte kennt, müssen nur alle Kombinationen dieser beiden Werte für einen logischen Ausdruck gefunden werden.</p>
+<p>Die Wahrheitstafel für die Negation <code>NICHT</code> sieht wie folgt aus:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>a</th>
+<th style="text-align: center;">NICHT a</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td style="text-align: center;">0</td>
+</tr>
+</tbody>
+</table>
+<p>Die in den Wahrheitstafeln aufgeführten Ergebniswerte werden auch als <em>Belegungen</em> bezeichnet. Für die logischen Basisoperationen werden diese Belegungen als <em>Grundbelegung</em> bezeichnet.</p>
+<p>Die Grundbelegungen sind die Basis für die Boole’sche Algebra und Arithmetik.</p>
+<p>Die Wahrheitstafel für die Konjunktion <code>UND</code> sieht wie folgt aus:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>a</th>
+<th>b</th>
+<th style="text-align: center;">a UND b</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td>0</td>
+<td>1</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>0</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>1</td>
+<td style="text-align: center;">1</td>
+</tr>
+</tbody>
+</table>
+<p>Für Wahrheitstafeln ist auch die Matrix-Schreibweise üblich. Dabei werden die Wahrheitswerte als Spaltenvektoren geschrieben. Die Wahrheitstafel für die Konjunktion <code>UND</code> sieht wie folgt aus:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th><span class="math inline">\downarrow</span> b | a <span class="math inline">\to</span></th>
+<th>0</th>
+<th>1</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>Verkürzt werden die Spalten und Zeilenüberschriften weggelassen und können die Belegung als Matrix schreiben:</p>
+<p><span class="math display">
+\begin{matrix}
+0 &amp; 0 \\
+0 &amp; 1
+\end{matrix}
+</span></p>
+<p>Die Wahrheitstafel für die Disjunktion <code>ODER</code> sieht wie folgt aus:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>a</th>
+<th>b</th>
+<th style="text-align: center;">a ODER b</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td>0</td>
+<td>1</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>0</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>1</td>
+<td style="text-align: center;">1</td>
+</tr>
+</tbody>
+</table>
+<p>Oder in der Matrix-Schreibweise:</p>
+<p><span class="math display">
+\begin{matrix}
+0 &amp; 1 \\
+1 &amp; 1
+\end{matrix}
+</span></p>
+<p>Die Wahrheitstafel für die Exklusiv-Oder <code>XODER</code> sieht wie folgt aus:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>a</th>
+<th>b</th>
+<th style="text-align: center;">a XODER b</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td>0</td>
+<td>1</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="odd">
+<td>1</td>
+<td>0</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>1</td>
+<td style="text-align: center;">0</td>
+</tr>
+</tbody>
+</table>
+<p>Die entsprechende Belegung sieht als Matrix wie folgt aus:</p>
+<p><span class="math display">
+\begin{matrix}
+0 &amp; 1 \\
+1 &amp; 0
+\end{matrix}
+</span></p>
+</section>
+<section id="sec-boole-arithmetik" class="level3" data-number="12.1.2">
+<h3 data-number="12.1.2" class="anchored" data-anchor-id="sec-boole-arithmetik"><span class="header-section-number">12.1.2</span> Boole’sche Arithmetik</h3>
+<p>Obwohl die Arbeit von Geoge Boole wegweisend für die Logik als mathematische Disziplin war, konzentrierte sich seine Arbeit auf der Übersetzung von logischen Aussagen in <em>arithmetische</em> Ausdrücke. Die Boole’sche Arithmetik ist eine Erweiterung der Arithmetik. Dabei werden logische Ausdrücke mithilfe der Grundrechenarten in berechenbare Ausdrücke übersetzt.</p>
+<p>Die Boole’schen Arithmetik im engeren Sinn basiert auf der Übersetzung von Wahrheitswerten in Zahlen. Dabei wird <code>WAHR</code> als <code>1</code> und <code>FALSCH</code> als <code>0</code>.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Logische Operation</th>
+<th style="text-align: center;">Arithmetische Operation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><code>NICHT</code></td>
+<td style="text-align: center;"><span class="math inline">1 - a</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>UND</code></td>
+<td style="text-align: center;"><span class="math inline">a \cdot b</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><code>ODER</code></td>
+<td style="text-align: center;"><span class="math inline">a + b - ab</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><code>Entweder-Oder</code> (<code>XODER</code>)</td>
+<td style="text-align: center;"><span class="math inline">a + b - 2ab</span> oder <span class="math inline">(a-b)^2</span></td>
+</tr>
+</tbody>
+</table>
+<p>Weil Wahrheitswerte immer <code>0</code> oder <code>1</code> sein müssen, stellen diese Operationen sicher, dass die Ergebnisse logischer Ausdrücke ebenfalls immer <code>0</code> oder <code>1</code> sind. Das ist vor allem für die beiden Oder-Operationen wichtig, weil die arithmetische Addition einen Wert ausserhalb der erlaubten Werte liefert, wenn beide Operanden <code>Wahr</code> bzw. <code>1</code> sind.</p>
+<p>Boole konnte zeigen, dass die arithmetischen Operationen die gleichen Ergebnisse liefern wie die logischen Operationen der klassischen Aussagenlogik. Ausgehend von den Wahrheitstafeln zeigte Boole auch, dass die Begrenzung aus Wahrheitswerte <code>0</code> und <code>1</code> bei Additionen eine Ausgleichsoperation erfordert, damit das Ergebnis in den gleichen Wertebereich fällt.</p>
+</section>
+</section>
+<section id="boolesche-algebra" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="boolesche-algebra"><span class="header-section-number">12.2</span> Boole’sche Algebra</h2>
+<p>Die Bool’sche Arithmetik ist für regelmässige Aufgaben etwas unhantlich, weil die beiden Operationen <code>ODER</code> und <code>Entweder-Oder</code> sich nicht mit einer arithmetischen Operation ausdrücken lassen. Weil die logischen Operationen einen besonderen Fall der Mengenlehre darstellen, wurden die Symbole für die Konjunktion und Disjunktion der Symbolik der Mengenlehre entlehnt.</p>
+<table class="table">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 19%">
+<col style="width: 19%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Logische Operation</th>
+<th style="text-align: center;">logischer Operator</th>
+<th style="text-align: center;">Mengenoperator</th>
+<th>Mengenoperation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Negation</td>
+<td style="text-align: center;"><span class="math inline">\neg</span></td>
+<td style="text-align: center;"><span class="math inline">\notin</span></td>
+<td>Negation</td>
+</tr>
+<tr class="even">
+<td>Konjunktion (UND)</td>
+<td style="text-align: center;"><span class="math inline">\land</span></td>
+<td style="text-align: center;"><span class="math inline">\cap</span></td>
+<td>Schnittmenge</td>
+</tr>
+<tr class="odd">
+<td>Disjunktion (ODER)</td>
+<td style="text-align: center;"><span class="math inline">\lor</span></td>
+<td style="text-align: center;"><span class="math inline">\cup</span></td>
+<td>Vereinigung</td>
+</tr>
+<tr class="even">
+<td>Antivalenz (XODER)</td>
+<td style="text-align: center;"><span class="math inline">\oplus</span></td>
+<td style="text-align: center;"><span class="math inline">\triangle</span></td>
+<td>Symmetrische Differenz</td>
+</tr>
+</tbody>
+</table>
+<p>Die Antivalenz kann durch die anderen drei Operationen ausgedrückt werden, weshalb sie seltener in logischen Ausdrücken verwendet wird.</p>
+<section id="grundregeln-der-booleschen-algebra" class="level3" data-number="12.2.1">
+<h3 data-number="12.2.1" class="anchored" data-anchor-id="grundregeln-der-booleschen-algebra"><span class="header-section-number">12.2.1</span> Grundregeln der Boole’schen Algebra</h3>
+<p>Grundsätzlich gelten für die Boole’sche Algebra die gleichen Regeln wie für die Arithmetik. D.h. zuerst wird die Negation berechnet, dann <code>UND</code> abschliessend <code>ODER</code>. Diese Reihenfolge ist damit begründet, dass die <code>UND</code>-Operation der Multiplikation und die <code>ODER</code>-Operation der Addition entsprecht. Um die Reihenfolge zu ändern, werden wie üblich Klammern verwendet.</p>
+<p>Logische Ausdrücke werden schnell komplex und unübersichtlich. Die Boole’sche Algebra definiert Regeln, die die Umformung von logischen Ausdrücken vereinfachen. Die wichtigsten Regeln sind in der folgenden Tabelle aufgelistet.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th style="text-align: center;">Gleichung</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Idempotenzgesetz</td>
+<td style="text-align: center;"><span class="math inline">a \land a = a</span></td>
+</tr>
+<tr class="even">
+<td></td>
+<td style="text-align: center;"><span class="math inline">a \lor a = a</span></td>
+</tr>
+<tr class="odd">
+<td>Tautologie</td>
+<td style="text-align: center;"><span class="math inline">a \lor \neg a</span> = 1</td>
+</tr>
+<tr class="even">
+<td>Kontradiktion</td>
+<td style="text-align: center;"><span class="math inline">a \land \neg a</span> = 0</td>
+</tr>
+<tr class="odd">
+<td>Kommutativgesetz</td>
+<td style="text-align: center;"><span class="math inline">a \land b = b \land a</span></td>
+</tr>
+<tr class="even">
+<td></td>
+<td style="text-align: center;"><span class="math inline">a \lor b =b \lor a</span></td>
+</tr>
+<tr class="odd">
+<td>Assoziativgesetz</td>
+<td style="text-align: center;"><span class="math inline">(a \land b) \land c = a \land (b \land c)</span></td>
+</tr>
+<tr class="even">
+<td></td>
+<td style="text-align: center;"><span class="math inline">(a \lor b) \lor c = a \lor (b \lor c)</span></td>
+</tr>
+<tr class="odd">
+<td>Distributivgesetz</td>
+<td style="text-align: center;"><span class="math inline">a \land (b \lor c) = a \land b \lor a \land c</span></td>
+</tr>
+<tr class="even">
+<td></td>
+<td style="text-align: center;"><span class="math inline">a \lor b \land c = (a \lor b) \land (a \lor c)</span></td>
+</tr>
+<tr class="odd">
+<td>Absorptionsgesetz</td>
+<td style="text-align: center;"><span class="math inline">a \land (a \lor b) = a</span></td>
+</tr>
+<tr class="even">
+<td></td>
+<td style="text-align: center;"><span class="math inline">a \lor a \land b = a</span></td>
+</tr>
+<tr class="odd">
+<td>De Morgan’sche Regeln</td>
+<td style="text-align: center;"><span class="math inline">\neg (a \land b) = \neg a \lor \neg b</span></td>
+</tr>
+<tr class="even">
+<td></td>
+<td style="text-align: center;"><span class="math inline">\neg (a \lor b) = \neg a \land \neg b</span></td>
+</tr>
+</tbody>
+</table>
+<p>Viele Programmiersprachen werten logische Ausdrücke von links nach rechts aus und brechen die Auswertung ab, sobald das Ergebnis feststeht. Das ist bei der Boole’schen Algebra eigentlich nicht möglich, weil die Reihenfolge der Auswertung nicht festgelegt ist. Um die Auswertung logischer Ausdrücke in Programmiersprachen zu unterstützen, sollten die Teilaussagen in ihrer Wichtigkeit und Komplexität absteigend angeordnet werden.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Praxis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Logische Ausdrücke haben in der Programmierpraxis eine grosse Bedeutung. Aus diesem Grund verfügen alle Programmiersprachen die Möglichkeit, <em>beliebige</em> Zahlen als Wahrheitswerte zu behandeln. Dabei gilt die Konvention, dass die Zahl <code>0</code> als <code>FALSCH</code> und alle anderen Zahlen als <code>WAHR</code> interpretiert werden.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="vergleiche" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="vergleiche"><span class="header-section-number">12.3</span> Vergleiche</h2>
+<p>Die Vergleichsoperatoren sind in der Programmierung sehr wichtig, weil sie die Grundlage für die Kontrollstrukturen bilden.</p>
+<div id="def-vergleichsoperatoren" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 12.1 </strong></span>Vergleichsoperatoren sind binäre Operatoren, die zwei Operanden miteinander vergleichen. Das Ergebnis ist immer ein Wahrheitswert.</p>
+</div>
+<p>Der zentrale Vergleich ist die Gleichheit (<code>=</code>). Die Gleichheit ist gegeben, wenn beide Operanden des Vergleichs gleich sind. In diesem Fall gibt dieser Vergleich <code>WAHR</code> zurück.</p>
+<p>Für Zahlenwerte und andere sortierbare Werte sind die Vergleiche kleiner als (<code>&lt;</code>) und grösser als (<code>&gt;</code>) definiert. Dabei wird der Vergleich <code>WAHR</code> zurückgegeben, wenn der linke Operand kleiner bzw. grösser als der rechte Operand ist.</p>
+<p>Zusätzlich sind die kombinierten Vergleiche wichtig:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Operation</th>
+<th style="text-align: center;">Symbol</th>
+<th style="text-align: center;">Alternative Schreibweise</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ungleich</td>
+<td style="text-align: center;"><span class="math inline">a \neq b</span></td>
+<td style="text-align: center;"><span class="math inline">\neg(a = b)</span></td>
+</tr>
+<tr class="even">
+<td>kleiner oder gleich</td>
+<td style="text-align: center;"><span class="math inline">a \leq b</span></td>
+<td style="text-align: center;"><span class="math inline">(a &lt; b) \lor (a = b)</span></td>
+</tr>
+<tr class="odd">
+<td>grösser oder gleich</td>
+<td style="text-align: center;"><span class="math inline">a \geq b</span></td>
+<td style="text-align: center;"><span class="math inline">(a &gt; b) \lor (a = b)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Bei Vergleichsoperatoren muss darauf geachtet werden, dass die Operanden vom gleichen Typ sind. Eine Zahl kann nicht mit einer Zeichenkette verglichen werden.</p>
+<p>Für logische Ausdrücke sind direkte Vergleiche zwischen zwei Werten nicht immer geeignet. Immer wenn der gleiche Wert mit mehreren anderen verglichen werden muss werden logische Ausdrücke mit direkten Vergleichen schnell komplex. Für solche Vergleiche ist der <em>Existenz</em>-Vergleich wichtig. Dabei wird der Wert <code>WAHR</code> zurückgegeben, wenn der linke Operand ein Element des rechten Operanden ist.</p>
+<p>Die <em>Existenz</em> wird mithilfe des <span class="math inline">\in</span>-Operators überprüft. Der <span class="math inline">\in</span>-Operator ist ein spezieller Vergleichsoperator, der <code>Wahr</code> zurückgibt, wenn der linke Operand im rechten Operand vorkommt. Dabei steht der linke Operand für den <em>Suchwert</em> und der rechte Operand für den <em>Suchbereich</em>. Der Suchbereich ist dabei immer eine Menge bzw. ein Vektor. Der Vergleich der beiden Operanden wird formal als <span class="math inline">a \in B</span> geschrieben, wobei <span class="math inline">B</span> eine Menge bzw. ein Vektor von Werten ist. Dieser Vergleich entspricht einer <code>ODER</code>-Operation, mit der die Elemente des Vektors <span class="math inline">B</span> einzeln mit dem Wert <span class="math inline">a</span> auf Gleichheit geprüft werden, wie <a href="#eq-in-operator-log-comb">Formel&nbsp;<span>12.1</span></a> zeigt.</p>
+<p><span id="eq-in-operator-log-comb"><span class="math display">
+\begin{aligned}
+&amp; a \in \{ 1, 2, 3, 4, 5 \} \\
+\Leftrightarrow &amp; (a = 1) \lor (a = 2) \lor (a = 3) \lor (a = 4) \lor (a = 5)
+\end{aligned}
+\tag{12.1}</span></span></p>
+<p>In vielen Fällen sind die zu prüfenden Elemente in <span class="math inline">B</span> nicht vorab bekannt oder die Anzahl der Elemente variiert. In diesem Fall ist eine explizite <code>ODER</code>-Operation nicht möglich. Auch in weniger komplexen Fällen, empfielt es sich, die <code>ODER</code>-Operation zu vermeiden und die Existenzprüfung vorzuziehen, weil sie die Lesbarkeit eines logischen Ausdrucks erhöht.</p>
+<p><a href="#eq-in-operator-ex1">Formel&nbsp;<span>12.2</span></a> zeigt die Anwendung des <span class="math inline">\in</span>-Operators.</p>
+<p><span id="eq-in-operator-ex1"><span class="math display">
+    7 \in \{ 1; 2; 3; 4; 5; 6; 7; 8; 9; 10 \}
+\tag{12.2}</span></span></p>
+<p>Dieser Ausdruck ist in diesem Beispiel <code>Wahr</code>.</p>
+<p>Der <span class="math inline">\in</span>-Operator kann für Vektoren als linker Operator verallgemeinert werden. In diesem Fall werden die linken Operanden ebenfalls als Vektor dargestellt. Nun wird für jeden Wert des linken Operators der Vergleich mit der rechten Seite durchgeführt.</p>
+<p><span id="eq-in-op-w-vektor"><span class="math display">
+    \{ 7; 11 \} \in \{ 1; 2; 3; 4; 5; 6; 7; 8; 9; 10 \}
+\tag{12.3}</span></span></p>
+<p>Der Vergleich in <a href="#eq-in-op-w-vektor">Formel&nbsp;<span>12.3</span></a> entspricht also den beiden separaten Vergleichen in <a href="#eq-in-op-vektor-separat">Formel&nbsp;<span>12.4</span></a>.</p>
+<p><span id="eq-in-op-vektor-separat"><span class="math display">
+\begin{aligned}
+    7 &amp;\in \{ 1; 2; 3; 4; 5; 6; 7; 8; 9; 10 \} \\
+    11 &amp;\in \{ 1; 2; 3; 4; 5; 6; 7; 8; 9; 10 \}
+\end{aligned}
+\tag{12.4}</span></span></p>
+<p>Im Beispiel von <a href="#eq-in-op-w-vektor">Formel&nbsp;<span>12.3</span></a> ist das Ergebnis des Vergleichs: <code>{WAHR; FALSCH}</code>.</p>
+</section>
+<section id="entscheidungen" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="entscheidungen"><span class="header-section-number">12.4</span> Entscheidungen</h2>
+<div id="def-entscheidung" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 12.2 </strong></span>Eine <strong>Entscheidung</strong> beschreibt eine Funktion, die mit Hilfe eines <em>logischen Ausdrucks</em> aus eines von zwei alternativen Ergebnissen <em>auswählt</em>.</p>
+</div>
+<p>Bei Entscheidungen werden in der Regel die beiden Fälle des logischen Ausdrucks unterschieden. Dabei wird der Fall, der <code>WAHR</code> ergibt als <em>positiver Fall</em> und der Fall, der <code>FALSCH</code> ergibt als <em>negativer Fall</em> bezeichnet.</p>
+<p>Entscheidungen können nacheinander ausgeführt werden. Dabei führen die beiden Fälle der ersten Entscheidung in jeweils eine weitere Entscheidung. Solche verschachtelten Entscheidungen werden als <strong>Entscheidungsbäume</strong> bezeichnet.</p>
+<div id="def-entscheidungsbaum" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 12.3 </strong></span>Eine Verkettung von Entscheidungen wird als <strong>Entscheidungsbaum</strong> bezeichnet.</p>
+</div>
+<p>Die logischen Ausdrücke eines Entscheidungsbaums sind grundsätzlich <em>unabhängig</em> voneinander. Die einzige Beziehung zwischen den logischen Ausdrücken ist die <em>Reihenfolge</em>, in der sie geprüft werden. <a href="#fig-entscheidungsbaum">Abbildung&nbsp;<span>12.1</span></a> zeigt das Schema eines einfachen Entscheidungsbaum mit zwei aufeinanderfolgenden Entscheidungen.</p>
+<div class="cell" data-fig-width="100%">
+<div class="cell-output-display">
+<div id="fig-entscheidungsbaum" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<div>
+<pre class="mermaid mermaid-js" data-label="fig-entscheidungsbaum">graph TB
+  a([erster logischer Ausdruck]) ---&gt;|Wahr| b
+  a ---&gt;|Falsch| c
+  b([zweiter logischer Ausdruck]) ---&gt;|Wahr| d([Ergebnis Wahr-Wahr])
+  b ---&gt;|Falsch| e([Ergebnis Wahr-Falsch])
+  c([dritter logischer Ausdruck]) ---&gt;|Wahr| f([Ergebnis Falsch-Wahr])
+  c ---&gt;|Falsch| g([Ergebnis Falsch-Falsch])
+</pre>
+</div>
+<figcaption class="figure-caption">Abbildung&nbsp;12.1: Schema eines Entscheidungsbaums mit zwei Entscheidungen</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Ein oft vorkommender Speziallfall von Entscheidungsbäumen sind verschachtelte Entscheidungen, die so arrangiert sind, dass jeder logische Ausdruck genau ein Ergebnis auswählt.</p>
+<div id="def-linearer-entscheidungsbaum" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 12.4 </strong></span>Ein <em>Entscheidungsbaum</em>, der für einen logischen Ausdruck mindestens ein Ergebnis und höchstens einen nachfolgende Entscheidung, heisst <strong>linearer Entscheidungsbaum</strong>.</p>
+</div>
+<p><em>Lineare Entscheidungsbäume</em> können das Ergebnis sowohl für den <code>Wahr</code> oder den <code>Falsch</code>-Fall festlegen. Per Konvention werden die logischen Ausdrücke linearer Entscheidungsbäume so formuliert, dass die Ergebnisse immer für den Fall <code>Wahr</code> und die nachfolgende Entscheidung immer für den Fall <code>Falsch</code> folgen. <a href="#fig-lin-entscheidungsbaum">Abbildung&nbsp;<span>12.2</span></a> zeigt das Schema eines linearen Entscheidungsbaums mit zwei Entscheidungen.</p>
+<div class="cell" data-fig-width="100%">
+<div class="cell-output-display">
+<div id="fig-lin-entscheidungsbaum" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<div>
+<pre class="mermaid mermaid-js" data-label="fig-lin-entscheidungsbaum">graph TB
+  a([erster logischer Ausdruck]) ---&gt;|Wahr| b([Ergebnis Wahr])
+  a ---&gt;|Falsch| c
+  c([zweiter logischer Ausdruck]) ---&gt;|Wahr| f([Ergebnis Falsch-Wahr])
+  c ---&gt;|Falsch| g([Ergebnis Falsch-Falsch])
+  
+</pre>
+</div>
+<figcaption class="figure-caption">Abbildung&nbsp;12.2: Schema eines linearen Entscheidungsbaum mit zwei Entscheidungen</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="sec-filtern" class="level2" data-number="12.5">
+<h2 data-number="12.5" class="anchored" data-anchor-id="sec-filtern"><span class="header-section-number">12.5</span> Filtern</h2>
+<div id="def-filters" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 12.5 </strong></span>Als <strong>Filter</strong> werden Funktionen bezeichnet, die Werte eines Vektors mithilfe eines logischen Ausdrucks auswählen.</p>
+</div>
+<p>Ein Vektor ist gefiltert, wenn der logische Ausdruck für alle Werte <code>Wahr</code> ergibt. Als Konsequenz werden alle Werte aus einem Vektor entfernt, für die der logische Ausdruck <code>Falsch</code> ergibt.</p>
+<!-- BEISPIEL filtern über einen Vektor -->
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Merke
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Durch das Filtern wird die Länge von Vektoren verändert. Das Ergebnis ist immer höchstens so lang wie der ursprüngliche ungefilterte Vektor.</p>
+</div>
+</div>
+<p>Der logische Ausdruck muss sich nicht auf die Werte des Vektors beziehen. Damit Werte mit einem solchen logischen Ausdruck ausgewählt werden können, bedarf es einen Referenzvektor mit gleicher Länge. Ein Wert wird mit dieser Technik ausgewählt, wenn der logische Ausdruck für den Wert an der gleichen Position im Referenzvektor <code>Wahr</code> ergibt.</p>
+<p>Weil die Vektoren von Stichprobenobjekten immer die gleiche Länge haben, lassen sich Filter zum Auswählen von Datensätzen verwenden.</p>
+<!-- BEISPIEL -->
+</section>
+<section id="sortieren" class="level2" data-number="12.6">
+<h2 data-number="12.6" class="anchored" data-anchor-id="sortieren"><span class="header-section-number">12.6</span> Sortieren</h2>
+<div id="def-sorting" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 12.6 </strong></span>Als <strong>Sortieren</strong> werden Funktionen bezeichnet, die Reihenfolge von Werten mittels eines logischen Ausdrucks bestimmen.</p>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Merke
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Durch Sortieren wird die Länge von Vektoren <em>nicht</em> verändert.</p>
+</div>
+</div>
+<p>Die Basis für das Sortieren sind Vektoren. Ein Vektor ist sortiert, wenn der logische Ausdruck für alle Werte paarweise <code>Wahr</code> ergibt. Die einfachsten logischen Ausdrücke zum Sortieren sind die Vergleiche <em>grösser oder gleich</em> und <em>kleiner oder gleich</em>.</p>
+<p>Die Reihenfolge der Werte wird beim Sortieren immer dann vertauscht, wenn der logische Ausdruck <code>Falsch</code> ergibt. Das <code>Falsch</code> bedeutet in diesem Fall, dass die Werte noch nicht in der richtigen Reihenfolge vorliegen.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Merke
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Der Vergleich auf <em>Gleichheit</em> ist zum Sortieren ungeeignet, weil es keine Reihenfolge gibt, so dass die Gleichheit für alle Wertepaar <code>Wahr</code> ergibt.</p>
+</div>
+</div>
+<p>Grundsätzlich werden 2 Sortierreihenfolgen unterschieden. Diese sind für Zahlen, Zeichenketten und Wahrheitswerte definiert:</p>
+<ol type="1">
+<li>Aufsteigende Sortierung (engl. ascending)</li>
+<li>Absteigende Sortierung (engl. descending)</li>
+</ol>
+<p>Die Sortierrichtung basiert auf zwei paarweisen Vergleichen zwischen den Elementen. Um die Sortierung zu ändern, muss nur der logische Vergleichsoperator umgekehrt werden.</p>
+<ul>
+<li>Die aufsteigende Sortierung beginnt mit dem kleinsten Wert des Sortierkriteriums und endet mit dem grössten Wert der Sortierung. Dabei gilt für alle Werte des sortierten Vektors die <a href="#eq-sort-asc">Ungleichung&nbsp;<span>12.5</span></a>.</li>
+</ul>
+<p><span id="eq-sort-asc"><span class="math display">
+v_{Vorgänger} \le v_{Nachfolger}
+\tag{12.5}</span></span></p>
+<ul>
+<li>Die absteigende Sortierung arbeitet genau entgegengesetzt vom grössten Wert des Sortierkriteriums zum kleinsten Wert. Entsprechend gilt für diese Reihenfolge die <a href="#eq-sort-desc">Ungleichung&nbsp;<span>12.6</span></a>.</li>
+</ul>
+<p><span id="eq-sort-desc"><span class="math display">
+v_{Vorgänger} \ge v_{Nachfolger}
+\tag{12.6}</span></span></p>
+<!-- BEISPIEL asc und desc -->
+<section id="sortieren-für-fortgeschrittene" class="level3" data-number="12.6.1">
+<h3 data-number="12.6.1" class="anchored" data-anchor-id="sortieren-für-fortgeschrittene"><span class="header-section-number">12.6.1</span> Sortieren für Fortgeschrittene</h3>
+<p>Wie beim Filtern können sich die logischen Ausdrücke beim Sortieren auf andere Vektoren beziehen. Dabei wird ebenfalls ein Referenzvektor benötigt. Die Sortierung des Vektors erfolgt entsprechend der Positionen im Referenzvektor. Deshalb müssen Referenzvektoren immer die gleiche Länge wie die Sortiervektoren haben.</p>
+<!-- BEISPIEL -->
+<p>Beim Sortieren können komplexe logische Ausdrücke für spezielle Sortiuerungen eingesetzt werden. Dabei muss beachtet werden, dass diese Ausdrücke eine eindeutige Reihenfolge zulassen.</p>
+<!-- BEISPIEL -->
+
+
+<div id="refs" class="references csl-bib-body hanging-indent" data-line-spacing="2" role="list" style="display: none">
+<div id="ref-boole_mathematical_1847" class="csl-entry" role="listitem">
+Boole, G. (1847). <em>The Mathematical Analysis of Logic,Being an Essay Towards a Calculus of Deductive Reasoning</em>. <a href="https://www.gutenberg.org/files/36884/36884-pdf.pdf">https://www.gutenberg.org/files/36884/36884-pdf.pdf</a>
+</div>
+<div id="ref-rautenberg_einfuhrung_2008" class="csl-entry" role="listitem">
+Rautenberg, W. (2008). <em>Einführung in die mathematische Logik: ein Lehrbuch</em> (3., überarb. Aufl). Vieweg + Teubner.
+</div>
+</div>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Kopiert");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Kopiert");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../kapitel/05-zeichenketten/kapitel.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Zeichenketten</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../kapitel/09-vektor-operationen/kapitel.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Vektor-Operationen</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

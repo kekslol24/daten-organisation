@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de" xml:lang="de"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Daten und Information - 11&nbsp; Zeichenketten</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../kapitel/08-boolsche-operationen/kapitel.html" rel="next">
+<link href="../../kapitel/06-variablen/kapitel.html" rel="prev">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "Keine Treffer",
+    "search-matching-documents-text": "Treffer",
+    "search-copy-link-title": "Link in die Suche kopieren",
+    "search-hide-matches-text": "Zusätzliche Treffer verbergen",
+    "search-more-match-text": "weitere Treffer in diesem Dokument",
+    "search-more-matches-text": "weitere Treffer in diesem Dokument",
+    "search-clear-button-title": "Zurücksetzen",
+    "search-detached-cancel-button-title": "Abbrechen",
+    "search-submit-button-title": "Abschicken",
+    "search-label": "Suchen"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../kapitel/06-variablen/kapitel.html">Mathematik der Daten</a></li><li class="breadcrumb-item"><a href="../../kapitel/05-zeichenketten/kapitel.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Zeichenketten</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../../">Daten und Information</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Suchen"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Vorwort</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Ausgangslage und Vorbereitung</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/01-einleitung/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Einleitung</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/01-tool-chain/tastatur.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Tastatur und Tastaturkürzel</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/01-information/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Informationstheorie</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Datenquellen</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/01-tool-chain/project_doc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Dokumentation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/02-daten-sammeln/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Daten sammeln</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/03-daten-organisieren/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Daten organisieren</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/01-tool-chain/git_github.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Versionierung mit Git und GitHub</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/05-datentypen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Datentypen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/04-dateiformate/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Dateiformate</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Mathematik der Daten</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/06-variablen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Variablen, Funktionen und Operatoren</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/05-zeichenketten/kapitel.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Zeichenketten</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/08-boolsche-operationen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Boole’sche Operationen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/09-vektor-operationen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Vektor-Operationen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/10-matrix-operationen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Matrix-Operationen</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/11-daten-kodieren/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Daten kombinieren und kodieren</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/11-indizieren-gruppieren/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Indizieren und Gruppieren</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/12-daten-formen/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Daten formen</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Deskriptive Datenanalyse</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Abschnitt umschalten">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/13-daten-beschreiben/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Daten beschreiben</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../kapitel/14-daten-visualisieren/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Daten visualisieren</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Referenzen</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Inhaltsverzeichnis</h2>
+   
+  <ul>
+  <li><a href="#nicht-druckbare-zeichen" id="toc-nicht-druckbare-zeichen" class="nav-link active" data-scroll-target="#nicht-druckbare-zeichen"><span class="header-section-number">11.1</span> Nicht-druckbare Zeichen</a></li>
+  <li><a href="#die-leere-zeichenkette" id="toc-die-leere-zeichenkette" class="nav-link" data-scroll-target="#die-leere-zeichenkette"><span class="header-section-number">11.2</span> Die leere Zeichenkette</a></li>
+  <li><a href="#symbolvektoren" id="toc-symbolvektoren" class="nav-link" data-scroll-target="#symbolvektoren"><span class="header-section-number">11.3</span> Symbolvektoren</a></li>
+  <li><a href="#texttrennung" id="toc-texttrennung" class="nav-link" data-scroll-target="#texttrennung"><span class="header-section-number">11.4</span> Texttrennung</a></li>
+  <li><a href="#textverkettung" id="toc-textverkettung" class="nav-link" data-scroll-target="#textverkettung"><span class="header-section-number">11.5</span> Textverkettung</a></li>
+  <li><a href="#normalisierung" id="toc-normalisierung" class="nav-link" data-scroll-target="#normalisierung"><span class="header-section-number">11.6</span> Normalisierung</a></li>
+  <li><a href="#gross--und-kleinschreibung" id="toc-gross--und-kleinschreibung" class="nav-link" data-scroll-target="#gross--und-kleinschreibung"><span class="header-section-number">11.7</span> Gross- und Kleinschreibung</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span id="sec-chapter-zeichenketten" class="quarto-section-identifier"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Zeichenketten</span></span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Neben Zahlen gehören Zeichenketten zu den wichtigsten Datentypen für die Datenanalyse. Bei Zeichenketten werden als erstes Worte oder Sätze assoziiert. Im <a href="../01-information/kapitel.html#sec-zeichenkodierung"><span>Kapitel&nbsp;3.5</span></a> wurde die Kodierung von Symbolen als Zahlen vorgestellt und <a href="../05-datentypen/kapitel.html">Kapitel&nbsp;<span>8</span></a> hat Zeichenketten als fundamentalen Datentyp eingeführt. Diese Ideen werden in diesem Kapitel erweitert und durch die wichtigsten Operationen für Zeichenketten ergänzt.</p>
+<div id="def-zeichenkette" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 11.1 </strong></span>Eine Zeichenkette ist eine beliebige Kette von Textsymbolen. Textsymbole können Buchstaben, Ziffern, Satzzeichen sowie nicht-druckbare Zeichen sein.</p>
+</div>
+<p>Zeichenkette sind immer <strong>diskrete Daten</strong>.</p>
+<p>Aus dieser Definition folgt, dass Zeichenketten eine Länge haben müssen.</p>
+<div id="def-zeichenkette-länge" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 11.2 </strong></span>Die <strong>Länge</strong> einer Zeichenkette entspricht der Anzahl aller enthaltenen Symbole.</p>
+</div>
+<p>Zeichenketten sind also <em>Werte</em> und haben gleichzeitig die Eigenschaften eines Vektors.</p>
+<section id="nicht-druckbare-zeichen" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="nicht-druckbare-zeichen"><span class="header-section-number">11.1</span> Nicht-druckbare Zeichen</h2>
+<div id="def-nicht-druckbare-zeichen-zeichenkette" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 11.3 </strong></span><strong>Nicht-druckbare Zeichen</strong> sind Symbole, die bei der Darstellung einer Zeichenkette nicht angezeigt werden können. Die nicht-druckbaren Zeichen zählen zur Länge einer Zeichenkette und verändern den Inhalt einer Zeichenkette.</p>
+</div>
+<p>Beispiel: Die Zeichenkette <code>Hallo</code> unterscheidet sich von der Zeichenkette <code>Hal&lt;0x08&gt;lo</code>.</p>
+<p>Zu den nicht-druckbaren Zeichen gehören auch Leerzeichen, Tabulatoren und Zeilenumbrüche. Diese speziellen nicht-druckbaren Zeichen sind nur dann zu erkennen, wenn sie von druckbaren Zeichen umgeben sind.</p>
+<blockquote class="blockquote">
+<div id="exm-nichtdruckbare-zeichen" class="theorem example">
+<p><span class="theorem-title"><strong>Beispiel 11.1 </strong></span>Deutlich wird das an den folgenden Zeichenketten:</p>
+<ul>
+<li><code>Hallo</code></li>
+<li><code>Hal&lt;0x07&gt;lo</code>, wobei das Symbol <code>0x07</code> für einen Piepton steht</li>
+<li><code>Hal&lt;0x08&gt;lo</code>, wobei das Symbol <code>0x08</code> für einmal Rückwärtslöschen steht.</li>
+</ul>
+<p>Die erste Zeichenkette hat die Länge 5, die zweite Zeichenkette hat die Länge 6 und die dritte Zeichenkette hat ebenfalls die Länge 6.</p>
+</div>
+</blockquote>
+</section>
+<section id="die-leere-zeichenkette" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="die-leere-zeichenkette"><span class="header-section-number">11.2</span> Die leere Zeichenkette</h2>
+<div id="def-leere-zeichenkette" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 11.4 </strong></span>Eine Zeichenkette der Länge 0 enthält keine Symbole. Diese Zeichenkette heisst die <strong>leere Zeichenkette</strong>.</p>
+</div>
+<p>In einigen Umgebungen lässt sich die leere Zeichenkette nicht leicht von Zeichenketten unterscheiden, die aus nicht-druckbaren Zeichen bestehen. Für viele Funktionen ist die leere Zeichenkette problematisch oder als Wert nicht zulässig. In solchen Fällen muss die leere Zeichenkette über die Länge einer Zeichenketten-Variablen explizit kontrolliert werden.</p>
+</section>
+<section id="symbolvektoren" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="symbolvektoren"><span class="header-section-number">11.3</span> Symbolvektoren</h2>
+<p>In einer Zeichenkette sind die Symbole angeordnet, so dass jedes Symbol über dessen Position angesprochen werden kann.</p>
+<p>Wird eine Zeichenkette in die einzelnen Symbole gegliedert, dann ergibt sich in den meisten modernen Programmiersprachen ein <em>Zeichenkettenvektor</em> mit Zeichenketten der Länge <code>1</code>.</p>
+</section>
+<section id="texttrennung" class="level2" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="texttrennung"><span class="header-section-number">11.4</span> Texttrennung</h2>
+<p>Damit Zeichenketten getrennt werden können wird eine spezielle Funktion benötigt. Diese Funktion wird als <em>Texttrennung</em> (engl. <em>split</em>) bezeichnet. Die Funktion hat zwei Parameter: Die Zeichenkette und ein Trennsymbol. Das Trennsymbol ist eine Zeichenkette, die zwei Teile einer Zeichenkette trennt. Beispiele für solche Trennsymbole wurden im <a href="../04-dateiformate/kapitel.html">Kapitel&nbsp;<span>9</span></a> vorgestellt.</p>
+<p>Die Texttrennung teilt eine Zeichenkette so auf, dass für alle Vorkommnisse des Trennsymbols in der Zeichenkette der Teil vor dem Trennsymbol und der Teil nach dem Trennsymbol als zwei separate Zeichenketten vorliegen. Das Trennsymbol wird entfernt. Das Ergebnis der Texttrennung ist ein Zeichenkettenvektor mit den getrennten Zeichenketten.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Merke
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Die Länge des Vektors nach der Texttrennung entspricht der Anzahl der Vorkommnisse des Trennsymbols in der Zeichenkette plus 1.</p>
+</div>
+</div>
+<div id="def-tokens" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 11.5 </strong></span>Die durch die Texttrennung entstehenden Zeichenketten heissen <em>Token</em>.</p>
+</div>
+<p>Token können Sätze, Worte oder auch einzelne Buchstaben sein. Ein Token muss nicht zwingend sprachlich sinnvoll sein.</p>
+<div id="def-tokenvektor" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 11.6 </strong></span>Ein Vektor der Tokens enthält heisst <em>Token-Vektor</em>.</p>
+</div>
+<p>Die Texttrennung hat also einen <em>Token-Vektor</em> als Ergebnis.</p>
+<p>Um die einzelnen Symbole einer Zeichenkette zu erhalten, muss etwas um die Ecke gedacht werden, um die Zeichenkette zu erkennen, die zwischen jedem Symbol steht: Der Abstand zwischen zwei Symbolen in einer Zeichenkette ist immer genau 1. Weil Zeichenketten <em>diskrete Daten</em> sind, muss die Zeichenkette zwischen zwei Symbolen eine Länge von <code>0</code> haben. Die Zeichenkette mit der Länge <code>0</code> ist nach <a href="#def-leere-zeichenkette">Definition&nbsp;<span>11.4</span></a> die leere Zeichenkette.</p>
+<p>Entsprechend enthält der Token-Vektor nach der Texttrennung mit der leeren Zeichenkette den einzelnen Symbolen der ursprünglichen Zeichenkette.</p>
+</section>
+<section id="textverkettung" class="level2" data-number="11.5">
+<h2 data-number="11.5" class="anchored" data-anchor-id="textverkettung"><span class="header-section-number">11.5</span> Textverkettung</h2>
+<p>Die Texttrennung ist umkehrbar. Die Umkehrfunktion der Texttrennung ist die Textverkettung. Die Textverkettung fügt mehrere Zeichenketten zu einer neuen Zeichenkette zusammen.</p>
+<p>Die Textverkettung ist eine spezielle From der Konkatenation von Vektoren (s. <a href="../09-vektor-operationen/kapitel.html#sec-konkatenation">Kapite&nbsp;<span>13.2</span></a>).</p>
+<p>Die Textverkettung hat zwei Parameter:</p>
+<ul>
+<li>Einen Token-Vektor</li>
+<li>Ein Trennsymbol</li>
+</ul>
+<p>Die Textverkettung fügt alle Zeichenketten des Token-Vektors zusammen, indem die erst das vorangehende Token, dann das Trennsymbol und zuletzt die nachfolgende Zeichenkette zusammengefügt werden. Das Ergebnis ist eine neue Zeichenkette.</p>
+<p>Wird der Token-Vektor einer Texttrennung mit dem gleichen Trennsymbol wieder verkettet, dann ist das Ergebnis die ursprüngliche Zeichenkette.</p>
+<p>Die leere Zeichenkette ist das neutrale Element der Textverkettung.</p>
+</section>
+<section id="normalisierung" class="level2" data-number="11.6">
+<h2 data-number="11.6" class="anchored" data-anchor-id="normalisierung"><span class="header-section-number">11.6</span> Normalisierung</h2>
+<div id="def-normalisierung-zeichenkette" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 11.7 </strong></span>Das Entfernen und Vereinheitlichen von Leerzeichen und nicht-druckbaren Zeichen aus einer Zeichenkette heisst <strong>Normalisieren von Zeichenketten</strong>.</p>
+</div>
+<p>Eine <em>normalisierte Zeichenkette</em> enthält keine führenden oder nachfolgenden Leerzeichen, keine nicht-druckbaren Zeichen und keine aufeinanderfolgenden Leerzeichen.</p>
+<p>Die Operation des Normalisieren ist das Suchen und Ersetzen. Beim Suchen und Ersetzen werden Zeichenketten durch andere Zeichenketten ersetzt. Die Basis-Funktion des Suchens und Ersetzens hat drei Parameter:</p>
+<ul>
+<li>Die Zeichenkette, in der gesucht werden soll</li>
+<li>Die gesuchte Zeichenkette (das <em>Suchmuster</em>)</li>
+<li>Die Ersetzungszeichenkette</li>
+</ul>
+<p>Die Funktion sucht in der Zeichenkette nach dem Suchmuster und ersetzt das Suchmuster durch die Ersetzungszeichenkette. Das Ergebnis ist eine neue Zeichenkette, in der das Suchmuster durch die Ersetzungszeichenkette ersetzt wurde.</p>
+<p>Wird als Ersetzung die leere Zeichenkette verwendet, dann wird das Suchmuster aus der Zeichenkette entfernt.</p>
+<p>Wenn das Ergebnis einer Suchen-und-Ersetzen-Funktion die ursprüngliche Zeichenkette ist, wurde keine Ersetzung durchgeführt.</p>
+<p>Beim <em>Normalisieren</em> von Zeichenketten werden Suchen-und-Ersetzen-Funktionen solange angewendet, bis keine Ersetzung mehr vorgenommen wird. Die Zeichenkette ist dann normaliesiert.</p>
+<p>Weil das Normalisieren von Zeichenketten eine sehr häufige Operation ist, gibt es dafür spezielle Funktionen. Die wichtigsten dieser Funktionen sind:</p>
+<ul>
+<li>Die Bereinigung von Leerzeichen am Anfang und Ende einer Zeichenkette (engl. <em>trim</em>)</li>
+<li>Die Bereinigung von aufeinanderfolgenden Leerzeichen.</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Praxis
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Oft müssen Zeichenketten auch von anderen Symbolen bereinigt werden. Dabei handelt es sich um Erweiterungen des Normalisierens.</p>
+</div>
+</div>
+</section>
+<section id="gross--und-kleinschreibung" class="level2" data-number="11.7">
+<h2 data-number="11.7" class="anchored" data-anchor-id="gross--und-kleinschreibung"><span class="header-section-number">11.7</span> Gross- und Kleinschreibung</h2>
+<p>Zeichenketten können in der Gross- oder Kleinschreibung variieren. Die Gross- und Kleinschreibung ist ein <em>semantisches Merkmal</em> von Zeichenketten, kann aber auch auf Tippfehler zurückgehen. Um Varianten der Gross- und Kleinschreibung zu ignorieren, werden alle Symbole einer Zeichenkette in Gross- oder in Kleinbuchstaben umgewandelt, falls es sich um Buchstaben handelt. Alle anderen Symbole bleiben unverändert.</p>
+<p>Die Umwandlung von Gross- in Kleinbuchstaben ist leicht umzusetzen, weil Kleinbuchstaben in der Zeichenkodierung immer um den gleichen Wert (<code>0x20</code>)grösser sind als Grossbuchstaben. Die Umwandlung wird in der Regel mit einer entsprechenden Funktion durchgeführt und muss nicht selbst implementiert werden.</p>
+<p>Satzzeichen, Zahlen und viele Schriften verfügen über keine grossen und kleinen Buchstaben. Die entsprechen Symbole werden nicht umgewandelt.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Kopiert");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Kopiert");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../kapitel/06-variablen/kapitel.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Variablen, Funktionen und Operatoren</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../kapitel/08-boolsche-operationen/kapitel.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Boole’sche Operationen</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>
