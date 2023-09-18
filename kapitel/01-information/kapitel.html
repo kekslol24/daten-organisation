@@ -273,7 +273,7 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../kapitel/12-daten-formen/kapitel.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Daten formen</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Daten umformen</span></span></a>
   </div>
 </li>
       </ul>
@@ -559,8 +559,9 @@ Merke
 </div>
 <section id="die-wichtigsten-zahlensysteme" class="level3" data-number="3.3.1">
 <h3 data-number="3.3.1" class="anchored" data-anchor-id="die-wichtigsten-zahlensysteme"><span class="header-section-number">3.3.1</span> Die wichtigsten Zahlensysteme</h3>
+<div id="tbl-namen-zahlensysteme" class="anchored">
 <table class="table">
-<caption>Namen und Beispiele von Zahlensystemen</caption>
+<caption>Tabelle&nbsp;3.1: Namen und Beispiele von Zahlensystemen</caption>
 <colgroup>
 <col style="width: 33%">
 <col style="width: 33%">
@@ -606,11 +607,13 @@ Merke
 </tr>
 </tbody>
 </table>
+</div>
 <p>Das Duodezimalsystem und das Sexagesimalsystem treffen wir im Alltag bei Datums- und Zeitwerten, bei Winkeln sowie in der Musik an. Im Deutschen lässt sich das Duodezimalsystem noch an den Zahlworten elf (<code>11</code>) und zwölf (<code>12</code>) erkennen.</p>
 <p>Das binäre Zahlensystem stellt die Grundlage für digitale Computer dar, weil es nur zwei Werte für die Darstellung von Zahlen benötigt. D.h. alle Werte lassen sich als Vielfache von zweier-Potenzen abbilden. Claude Shannon hat bereits 1938 erkannt, dass diese Darstellung sich direkt die Zustände “ein” und “aus” von Schaltern übersetzen lässt, sodass sich alle Berechnungen mit Hilfe der <a href="@08-boolsche-algebra"><em>Boolschen Algebra</em></a> mit einfachen Schaltungen realisieren lassen. Daraus ergibt sich, dass das kleinste Bit der Informationstheorie sich im Binären-Zahlensystem abbilden lässt.</p>
 <p>Die Zahlensysteme Oktal und Hexadezimal sind für die Abbildung von Werten in Digitalcomputern von besonderer Bedeutung, weil es sich jeweils um ganzzahlige 2er Potenzen handelt.</p>
+<div id="tbl-bin-hex-oct" class="anchored">
 <table class="table">
-<caption>2er-Potenzen der wichtigsten Zahlensysteme digitaler Systeme</caption>
+<caption>Tabelle&nbsp;3.2: 2er-Potenzen der wichtigsten Zahlensysteme digitaler Systeme</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">Name</th>
@@ -636,6 +639,7 @@ Merke
 </tr>
 </tbody>
 </table>
+</div>
 <p>Der Exponent der 2er-Potenz der Basis zeigt an, wie viele Stellen im Binärsystem (Bits) mit dem jeweiligen System abgebildet werden können. Ein Byte bildet per Konvention zwei Stellen im Hexadezimalsystem oder 8 Bit ab.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -651,8 +655,9 @@ Hinweis
 </div>
 </div>
 <p><strong>Beispiele</strong></p>
+<div id="tbl-dec-hex-bountaries" class="anchored">
 <table class="table">
-<caption>Darstellung von Zahlenwerten im Dezimal- und Hexadezimalsystem</caption>
+<caption>Tabelle&nbsp;3.3: Darstellung von Zahlenwerten im Dezimal- und Hexadezimalsystem</caption>
 <thead>
 <tr class="header">
 <th style="text-align: right;">Dezimal</th>
@@ -702,6 +707,7 @@ Hinweis
 </tr>
 </tbody>
 </table>
+</div>
 </section>
 <section id="binärzahlen" class="level3" data-number="3.3.2">
 <h3 data-number="3.3.2" class="anchored" data-anchor-id="binärzahlen"><span class="header-section-number">3.3.2</span> Binärzahlen</h3>
@@ -721,8 +727,9 @@ Hinweis
 <p>Daraus folgt, dass für jede Ziffer genau zwei Symbole (Ziffern) zur Verfügung stehen: <code>0</code> und <code>1</code>.</p>
 <p>Wie in anderen Zahlensystemen entspricht eine Stelle im Binärsystem einer Potenz zur gegebenen Basis. Das ist bei Binärwerten <code>2</code>. Jede Stelle für eine Ziffer kann also einer 2er-Potenz gleichgesetzt werden.</p>
 <p>Die Besonderheit des Binärsystems ist, dass alle Werte als Summe von 2er-Potenzen dargestellt werden können. Diese Summe wird als <em>additive Darstellung</em> bezeichnet.</p>
+<div id="tbl-binary-additiv" class="anchored">
 <table class="table">
-<caption>Binärzahlen und ihre additive Darstellung</caption>
+<caption>Tabelle&nbsp;3.4: Binärzahlen und ihre additive Darstellung</caption>
 <thead>
 <tr class="header">
 <th style="text-align: right;">Wert</th>
@@ -830,13 +837,15 @@ Hinweis
 </tr>
 </tbody>
 </table>
+</div>
 <p>Aus dieser Tabelle kann man ablesen, dass die Ziffer <code>1</code> im Binärsystem bedeutet, dass die 2er-Potenz an der entsprechenden Stelle aktiv ist.</p>
 <p>Jede Ziffer im Binärsystem kann ausserdem als eigenständiges Symbol einer Nachricht verstanden werden. Weil im Binärsystem nur die beiden Ziffern <code>0</code> und <code>1</code> möglich sind, müssen beim Dekodieren nur diese Beiden Werte unterschieden werden. Jedes andere Zahlensystem kodiert Zahlen mit mehr als zwei Ziffern.</p>
 <section id="er-potenzen-und-speichergrössen" class="level4" data-number="3.3.2.1">
 <h4 data-number="3.3.2.1" class="anchored" data-anchor-id="er-potenzen-und-speichergrössen"><span class="header-section-number">3.3.2.1</span> 2er-Potenzen und Speichergrössen</h4>
 <p>Nach diesem Prinzip werden auch die Kapazitäten von Datenspeichern als 2er-Potenzen beschrieben.</p>
+<div id="tbl-speichergroessen" class="anchored">
 <table class="table">
-<caption>Speichergrössen in 2er-Potenzen</caption>
+<caption>Tabelle&nbsp;3.5: Speichergrössen in 2er-Potenzen</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">Name</th>
@@ -872,6 +881,7 @@ Hinweis
 </tr>
 </tbody>
 </table>
+</div>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -912,8 +922,9 @@ Warnung
 <li>Gibt es für die jeweilige Basis keine Ziffernsymbole für die Ganzzahl mehr, wird die nächsthöhere Stelle um <code>1</code> erhöht.</li>
 </ol>
 <p><strong>Beispiele</strong></p>
+<div id="tbl-darstellung-zahenwerte" class="anchored">
 <table class="table">
-<caption>Darstellung von Zahlenwerten in verschiedenen Zahlensystemen</caption>
+<caption>Tabelle&nbsp;3.6: Darstellung von Zahlenwerten in verschiedenen Zahlensystemen</caption>
 <thead>
 <tr class="header">
 <th style="text-align: right;">Dezimal</th>
@@ -997,6 +1008,7 @@ Warnung
 </tr>
 </tbody>
 </table>
+</div>
 </section>
 </section>
 <section id="sec-wissenschaftliche-schreibweise" class="level2" data-number="3.4">
@@ -1018,8 +1030,9 @@ Hinweis
 <p>Bei kleinen Zahlen wird ähnlich vorgegangen: Die erste Ziffer ungleich <code>0</code> wird vor ein Komma gesetzt und alle folgenden Stellen danach. Anschliessend werden alle Nullen und die Ziffer vor dem Komma gezählt und als negative 10er-Potenz angegeben.</p>
 <p>Neben der ausführlichen wissenschaftlichen Schreibweise wird regelmässig eine abgekürzte Notation verwendet. In dieser Notation wird der Teil <span class="math inline">\cdot 10</span> durch ein <code>e</code> oder <code>E</code> ersetzt. Dieses <code>E</code> steht für <em>Exponent</em>.</p>
 <p><strong>Beispiele:</strong></p>
+<div id="tbl-wiss-notation" class="anchored">
 <table class="table">
-<caption>Beispiele für die wissenschaftliche Notation verschiedener Zahlenwerte</caption>
+<caption>Tabelle&nbsp;3.7: Beispiele für die wissenschaftliche Notation verschiedener Zahlenwerte</caption>
 <colgroup>
 <col style="width: 33%">
 <col style="width: 33%">
@@ -1060,6 +1073,7 @@ Hinweis
 </tr>
 </tbody>
 </table>
+</div>
 <p>Die Stärke der wissenschaftlichen Notation ist die Darstellung sehr grosser oder sehr kleiner Zahlen</p>
 <p>Mit dieser Schreibweise lassen sich auch schnell Grössenunterschiede zwischen Werten abschätzen: Dazu wird die Differenz der 10er-Potenzen zweier Zahlen gebildet. Dazu wird die kleinere 10er-Potenz von der grösseren subtrahiert. Das Ergebnis ist wieder eine 10er-Potenz.</p>
 <p><strong>Beispiel</strong></p>
@@ -1121,7 +1135,7 @@ Merke
 <p>Diese Kodierungen sind bis zum Code 01111111 (oder 0x7F) identisch. Die Symbole in diesem Bereich werden deshalb als <em>ASCII-Codes</em> bezeichnet.</p>
 <div id="tbl-ascii-codes" class="anchored">
 <table class="table">
-<caption>Tabelle&nbsp;3.1: Vollständige ASCII-Kodierungstabelle <span class="citation" data-cites="american_national_standards_institute_code_1977">(<a href="../../references.html#ref-american_national_standards_institute_code_1977" role="doc-biblioref">American National Standards Institute, 1977, S. 8</a>)</span></caption>
+<caption>Tabelle&nbsp;3.8: Vollständige ASCII-Kodierungstabelle <span class="citation" data-cites="american_national_standards_institute_code_1977">(<a href="../../references.html#ref-american_national_standards_institute_code_1977" role="doc-biblioref">American National Standards Institute, 1977, S. 8</a>)</span></caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;"></th>
@@ -1318,7 +1332,7 @@ Merke
 <p>Neben Buchstaben werden auch sog. <em>nicht-druckbare Zeichen</em> wie Buchstaben, Satzzeichen und Ziffern kodiert. Dazu gehören u.a. Leerzeichen, Tabulatoren und Zeilenumbrüche. Viele dieser besonderen Buchstaben haben heute keine Bedeutung mehr. In der folgenden Tabelle sind die aktuell verwendeten nicht-druckbaren Zeichen mit <code>*</code> markiert.</p>
 <div id="tbl-ascii-sonderzeichen" class="anchored">
 <table class="table">
-<caption>Tabelle&nbsp;3.2: ASCII-Sonderzeichen <span class="citation" data-cites="american_national_standards_institute_code_1977">(<a href="../../references.html#ref-american_national_standards_institute_code_1977" role="doc-biblioref">American National Standards Institute, 1977, S. 9</a>)</span></caption>
+<caption>Tabelle&nbsp;3.9: ASCII-Sonderzeichen <span class="citation" data-cites="american_national_standards_institute_code_1977">(<a href="../../references.html#ref-american_national_standards_institute_code_1977" role="doc-biblioref">American National Standards Institute, 1977, S. 9</a>)</span></caption>
 <colgroup>
 <col style="width: 35%">
 <col style="width: 35%">
@@ -1580,10 +1594,10 @@ Hinweis
 K = \frac{k}{l(N)}
 </span></p>
 <p>Im Beispiel haben alle Nachrichten die Länge <code>10</code>.</p>
-<p>Daraus ergeben sich die Kompressionsgrade für unterschiedliche, gleich lange Zeichenketten in <a href="#tbl-kompressionsgrade">Tabelle&nbsp;<span>3.3</span></a>.</p>
+<p>Daraus ergeben sich die Kompressionsgrade für unterschiedliche, gleich lange Zeichenketten in <a href="#tbl-kompressionsgrade">Tabelle&nbsp;<span>3.10</span></a>.</p>
 <div id="tbl-kompressionsgrade" class="anchored">
 <table class="table">
-<caption>Tabelle&nbsp;3.3: Kompressionsgrade verschiedener Zeichenketten</caption>
+<caption>Tabelle&nbsp;3.10: Kompressionsgrade verschiedener Zeichenketten</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">Nachricht</th>

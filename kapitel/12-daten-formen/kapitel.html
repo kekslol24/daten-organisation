@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Daten und Information - 17&nbsp; Daten formen</title>
+<title>Daten und Information - 17&nbsp; Daten umformen</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -62,6 +62,22 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
 
 </head>
 
@@ -74,7 +90,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../kapitel/06-variablen/kapitel.html">Mathematik der Daten</a></li><li class="breadcrumb-item"><a href="../../kapitel/12-daten-formen/kapitel.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Daten formen</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../kapitel/06-variablen/kapitel.html">Mathematik der Daten</a></li><li class="breadcrumb-item"><a href="../../kapitel/12-daten-formen/kapitel.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Daten umformen</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -235,7 +251,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../kapitel/12-daten-formen/kapitel.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Daten formen</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Daten umformen</span></span></a>
   </div>
 </li>
       </ul>
@@ -279,8 +295,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Inhaltsverzeichnis</h2>
    
   <ul>
-  <li><a href="#pivot" id="toc-pivot" class="nav-link active" data-scroll-target="#pivot"><span class="header-section-number">17.1</span> Pivot</a></li>
-  <li><a href="#nest---einbetten" id="toc-nest---einbetten" class="nav-link" data-scroll-target="#nest---einbetten"><span class="header-section-number">17.2</span> Nest - Einbetten</a></li>
+  <li><a href="#transponieren" id="toc-transponieren" class="nav-link active" data-scroll-target="#transponieren"><span class="header-section-number">17.1</span> Transponieren</a></li>
+  <li><a href="#hierarchisieren" id="toc-hierarchisieren" class="nav-link" data-scroll-target="#hierarchisieren"><span class="header-section-number">17.2</span> Hierarchisieren</a></li>
   </ul>
 </nav>
     </div>
@@ -289,7 +305,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-chapter-daten-formen" class="quarto-section-identifier"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Daten formen</span></span></h1>
+<h1 class="title"><span id="sec-chapter-daten-formen" class="quarto-section-identifier"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Daten umformen</span></span></h1>
 </div>
 
 
@@ -304,12 +320,120 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="pivot" class="level2" data-number="17.1">
-<h2 data-number="17.1" class="anchored" data-anchor-id="pivot"><span class="header-section-number">17.1</span> Pivot</h2>
+<p>Viele Operationen der vorangegangenen Kapitel setzen eine vektorisierte Datenstruktur voraus. Echte Daten liegen aber meistens nicht in einem Vektor vor, sondern sind über mehrere Vektoren verteilt. Dadurch erscheinen viele Operationen komplexer als sie eigentlich sind. Durch das Umformen von Daten lassen sich viele Operationen stark vereinfachen und in der Ausführung beschleunigen. Die Grundlage vieler komplexer Algorithmen bilden Primär- und Sekundärindizes (<a href="../11-indizieren-gruppieren/kapitel.html"><span>Kapitel&nbsp;16</span></a>). Das Ziel des Umformens ist es, Daten in eine Form zu bringen, die die effiziente Verwendung von Indizes und Gruppierungen ermöglicht.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Merke
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Das Umformen von Daten dient der Vereinfachung und Beschleunigung von Operationen.</p>
+</div>
+</div>
+<p>Oft werden nur einzelne Vektoren einer Datenstruktur und nicht die gesamte Datenstruktur umgeformt.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Wichtig
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Alle Umformungen müssen umkehrbar sein, so dass für eine Datenstruktur <span class="math inline">D</span> die <a href="#eq-umformen-umkehrbar">Gleichung&nbsp;<span>17.1</span></a> gilt.</p>
+</div>
+</div>
+<p><span id="eq-umformen-umkehrbar"><span class="math display">
+f_u(D) \triangleright f^{-1}_u() = f_{id}(D) = D
+\tag{17.1}</span></span></p>
+<p>Lässt sich durch wiederholtes Umformen die ursprüngliche Datenstruktur nicht erzeugen, dann liegt eine <strong>partielle Umformung</strong> vor.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Merke
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Jede <em>partielle Umformung</em> führt zu Informationsverlusst durch <em>Equivokation</em>.</p>
+</div>
+</div>
+<section id="transponieren" class="level2" data-number="17.1">
+<h2 data-number="17.1" class="anchored" data-anchor-id="transponieren"><span class="header-section-number">17.1</span> Transponieren</h2>
+<div id="def-transponieren" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 17.1 </strong></span><strong>Transponieren</strong> ist eine Operation, die eine Datenstruktur um 90-Grad dreht.</p>
+</div>
+<p>Es gibt zwei Arten des Transponierens.</p>
+<ol type="1">
+<li>Das Transponieren von Matrizen, bei dem die Zeilen und Spalten vertauscht werden. Dabei bleibt die grundsätzliche Struktur der Daten erhalten.</li>
+<li>Das Transponieren von Daten, bei mehrere Vektoren zu einem Vektor zusammengefasst werden oder ein Vektor in mehrere Vektoren aufgegliedert wird. Weil sich die Struktur der Daten verändert, wird diese Operation auch als <strong>Reshaping</strong> oder <strong>Pivoting</strong> bezeichnet.</li>
+</ol>
+<p><a href="../10-matrix-operationen/kapitel.html"><span>Kapitel&nbsp;14</span></a> zeigt das Transponieren von Matrizen. Diese Operation wird nur verwendet, wenn eine Matrix mit einer zweiten Matrix multipliziert werden soll und die Orientierung der Matrix nicht für das Kreuzprodukt geeignet ist.</p>
+<p>Das Transponieren von Daten entspricht dem Überführen einer Matrix in eine ihrer <strong>Vektorformen</strong> (s. <a href="../05-datentypen/kapitel.html#sec-matrix-vektor-formen">Abschnitt&nbsp;<span>8.4</span></a>). Das Transponieren ist jedoch nicht auf Matrizen beschränkt, sondern ist für Vektoren mit beliebeigen Datentyp definiert. Hat eine Datenstruktur aus geschachtelten Vektoren für alle Werte den gleichen Datentyp und haben alle Vektoren die gleiche Länge, dann wird die Datenstruktur <strong>Matrixform</strong> genannt und kann transponiert werden.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Merke
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Vektoren können nur transponiert werden, wenn alle Vektoren vom gleichen Datentyp sind.</p>
+</div>
+</div>
+<p>Beim Transponieren wird zwischen der <strong>Vektorform</strong> bzw. <em>Langform</em> und der <strong>Matrixform</strong> bzw. <em>Breitform</em> unterschieden. Ein Primärindex der <em>Matrixform</em> wird zum Sekundärindex der <em>Vektorform</em> und umgekehrt. Weil aus der <em>Vektorform</em> nicht eindeutig hervorgeht wie die <em>Matrixform</em> aufgebaut ist, benötigt das Transponieren einen <em>zusätzlichen</em> Sekundärindex, der die Struktur der <em>Matrixform</em> beschreibt.</p>
+<p>Die <em>Vektorform</em> muss nicht zwingend die gleiche Anzahl Werte haben, wie die <em>Matrixform</em>. Die <em>Vektorform</em> kann auch <em>weniger Werte</em> als die <em>Matrixform</em> haben.</p>
+<div id="def-kurze-vektorform" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 17.2 </strong></span>Enthält eine Vektorform weniger Werte als ihre Matrixform, dann wird sie als <strong>kurze Vektorform</strong> bezeichnet.</p>
+</div>
+<p>Beim Transponieren einer <em>Vektorform</em> mit weniger Werten als die <em>Matrixform</em>, werden die fehlenden Werte aufgefüllt. Dadurch werden neue Werte erzeugt, die nicht in den ursprünglichen Daten enthalten waren.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Merke
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Das Transponieren einer kurzen Vektorform in ihre Matrixform erzeugt neue Werte und führt zu Informationsverlust durch <em>Rauschen</em>.</p>
+</div>
+</div>
+<p>Dieses Rauschen ist jedoch kontrollierbar, wenn diese Eigenschaft bei der Umformung berücksichtigt wird.</p>
 </section>
-<section id="nest---einbetten" class="level2" data-number="17.2">
-<h2 data-number="17.2" class="anchored" data-anchor-id="nest---einbetten"><span class="header-section-number">17.2</span> Nest - Einbetten</h2>
-<p>Das Einbetten von Daten ist eine wichtige Operation, um Daten zu strukturieren und zu organisieren. Es bildet die Grundlage für <strong>komplexe Datenstrukturen</strong> mit baumartigen Strukturen (s. <a href="../04-dateiformate/kapitel.html#sec-mengen-und-baeume"><span>Kapitel&nbsp;9.5</span></a>).</p>
+<section id="hierarchisieren" class="level2" data-number="17.2">
+<h2 data-number="17.2" class="anchored" data-anchor-id="hierarchisieren"><span class="header-section-number">17.2</span> Hierarchisieren</h2>
+<p>Nicht immer sind alle umzuformenden Vektoren vom gleichen Datentyp. In diesem Fall können die Werte nicht transponiert werden. Stattdessen müssen die Vektoren in eine hierarchische Datenstruktur überführt werden.</p>
+<div id="def-hierarchisieren" class="theorem definition">
+<p><span class="theorem-title"><strong>Definition 17.3 </strong></span>Das Hierarchisieren ist eine Operation, bei der Daten in eine hierarchische Datenstruktur überführt werden.</p>
+</div>
+<p>Die wichtigste Operation beim Hierarchisieren ist das <strong>Einbetten</strong> von Daten. Das Einbetten von Daten ist eine wichtige Operation, um Daten zu strukturieren und zu organisieren. Es bildet die Grundlage für <strong>komplexe Datenstrukturen</strong> mit baumartigen Datenstrukturen (s. <a href="../04-dateiformate/kapitel.html#sec-mengen-und-baeume"><span>Kapitel&nbsp;9.5</span></a>). Diese Umformung ist auch als <strong>nesting</strong> bekannt.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Merke
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Beim Einbetten können die umgeformten Vektoren unterschiedliche Datentypen haben.</p>
+</div>
+</div>
+<p>Beim Einbetten werden die umgeformten Vektoren entlang eines Sekundärindex gruppiert. Anschliessend werden die gruppierten Vektoren in Teilstichproben getrennt und aus der ursprünglichen Datenstruktur entfernt. Die Teilstichproben enthalten nur die umzuformenden Vektoren. Weil die resultierende Datenstrukturen für alle Gruppen gleich sind, können die Teilstichproben zu einem Vektor zusammengefasst werden.</p>
+<p>Weil alle Einträge des Sekundärindex in den neuen Vektor mit den Teilstichproben verlagert wurde, kann der Sekundärindex so reduziert werden, dass jeder <em>Hash</em> genau einmal vorkommt. Dadurch hat der Vektor des Sekundärindex die gleiche Länge wie der Vektor mit den Teilstichproben. Die beiden Vektoren können zu einem Datenrahmen zusammengefasst werden, so dass jeder Indexwert mit der zugehörigen Teilstichprobe einen Datensatz bildet.</p>
+<p>Die resultierende Datenstruktur ist eine hierarchische Datenstruktur, die aus einem Vektor von Datenrahmen besteht. In der neuen, eingebetteten Struktur kommen die Indexwerte nur noch einmal vor. Daraus folgt, dass der Sekundärindex in einen Primärindex überführt wurde.</p>
 
 
 </section>
