@@ -319,6 +319,8 @@ a_{m1} & a_{m2} &  \cdots &  a_{mn}
 \end{bmatrix}
 $$ 
 
+## Vektorformen von Matrizen {#sec-matrix-vektor-formen}
+
 Neben der üblichen Schreibweise von Matrizen, können Matrizen auch als *Vektoren* dargestellt werden. Dabei handelt es sich um eine besondere Schreibweise der Matrix, die *Vektorform einer Matrix* genannt wird. Für jede Matrix gibt es immer *zwei* Vektorformen. Die eine Vektorform fügt die Werte einer Matrix *spaltenweise* aneinander, die andere Vektorform fügt die Werte *zeilenweise* aneinander.
 
 Die Vektorform einer Matrix kann nur gebildet werden, weil wegen @def-matrix-structure die Datentypen aller Werte in einer Matrix gleich sind. Deshalb wird die Bedingung aus @def-vektor für die Vektorform einer Matrix erfüllt.
