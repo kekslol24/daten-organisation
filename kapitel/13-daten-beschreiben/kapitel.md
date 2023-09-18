@@ -13,37 +13,54 @@ execute:
 
 Wir haben das Zählen mit R und Excel kennengelernt. Diese Operation wenden wir an, um die zwei universellen Kennzahlen von Stichproben zu bestimmen. 
 
-> **Definition:** Mit **universellen Kennzahlen** sind abgeleitete Werte gemeint, die wir für *alle* Stichproben bestimmen können. 
+::: {#def-universelle-kennzahlen} 
+Mit **universellen Kennzahlen** sind abgeleitete Werte gemeint, die wir für *alle* Stichproben bestimmen können. 
+:::
 
 Die beiden universellen Kennzahlen für Stichproben sind: 
 
 - Der *Stichprobenumfang*, d.h. die Anzahl der Datensätze 
 - Die *Anzahl der Variablen*
 
-> Wir erkennen sofort, dass es sich bei der Bestimmung der beiden Kennwerte um ein **(Ab-) Zählproblem** handelt. 
+Wir erkennen sofort, dass es sich bei der Bestimmung der beiden Kennwerte um ein **(Ab-) Zählproblem** handelt. 
 
-> In **jeder** wissenschaftlichen Arbeit, in der Sie Daten präsentieren, **müssen** Sie **immer** die beiden Kennwerte angeben. 
+::: {.callout-note}
+## Merke
+In **jeder** wissenschaftlichen Arbeit, in der Sie Daten präsentieren, **müssen** Sie **immer** die beiden Kennwerte angeben. 
+:::
 
 Für die Anzahl der Variablen könnten wir im Prinzip auf die Dokumentation einer Stichprobe zurückgreifen. Wir bestimmen trotzdem *beide* Kennzahlen, um sicherzustellen, dass wir wirklich alle Variablen in einer Stichprobe berichten und nicht versehentlich Variablen unterschlagen, die in der Dokumentation nur implizit festgehalten werden.
 
-> **Konvention**: Stichprobenumfänge werden in wissenschaftlichen Arbeiten mit dem Buchstaben `n` gekennzeichnet. 
+::: {.callout-tip}
+## Konvention
+Stichprobenumfänge werden in wissenschaftlichen Arbeiten mit dem Buchstaben `n` gekennzeichnet. 
+:::
 
-> **Konvention**: In **Fragebogenstudien** wird die Anzahl der Vektoren als Anzahl der **Items** bezeichnet. Damit sind die unabhängig festgehaltenen Antwortmöglichkeiten gemeint. 
+::: {.callout-tip}
+## Konvention
+In **Fragebogenstudien** wird die Anzahl der Vektoren als Anzahl der **Items** bezeichnet. Damit sind die unabhängig festgehaltenen Antwortmöglichkeiten gemeint. 
+:::
 
-> **Konvention**: In **technischen Studien** wird die Anzahl der Vektoren als Anzahl der **Parameter**, **Vektoren** *oder* **Variablen** bezeichnet. Damit sind die unabhängigen, gemessenen Werte gemeint.
+::: {.callout-tip}
+## Konvention
+In **technischen Studien** wird die Anzahl der Vektoren als Anzahl der *Parameter*, *Vektoren* **oder** *Variablen* bezeichnet. Damit sind die unabhängigen, gemessenen Merkmale gemeint.
+:::
 
 Bei beiden Kennzahlen müssen wir eine Anzahl bestimmen.  Beim **Stichprobenumfang** bestimmen wir die Anzahl der Datensätze. Für die **Anzahl der Variablen** müssen wir die Vektoren zählen. 
 
-> **Merke:** Stichprobenobjekte sind immer **rechteckig**. Alle Variablen sind immer in allen Datensätzen vorhanden (horizontaler Umfang) und alle Datensätze haben für jede Variable einen Wert (vertikaler Umfang).  Wir erhalten die Kennwerte, indem wir horizontal und vertikal zählen.
+::: {.callout-note}
+## Merke
+Stichprobenobjekte sind immer **rechteckig**. Alle Variablen sind immer in allen Datensätzen vorhanden (horizontaler Umfang) und alle Datensätze haben für jede Variable einen Wert (vertikaler Umfang).  Wir erhalten die Kennwerte, indem wir horizontal und vertikal zählen.
+:::
 
-<img src="https://github.com/dxiai/ct-resourcen/raw/main/bilder/stichprobenkennwerte.png" width="60%">
+![Universelle Stichprobenkennwerte](figures/stichprobenkennwerte.png){#fig-stichprobenkennwerte}
 
 
-<div class="alert alert-info" markdown=1> 
+::: {.callout-note}
 Die Aufgabe der Deskriptivstatistik ist es, Daten prägnant zusammenzufassen. 
 
-Sauer, 2019, S. 103.
-</div>
+@sauer_moderne_2019, S. 103
+:::
 
 Die deskriptive Statistik wird oft mit wenigen Sätzen in der Literatur abgehandelt und auf die folgenden Punkte beschränkt. 
 
@@ -57,9 +74,9 @@ Das Zitat von Bortz & Schuster deutet bereits an, dass jeder *schliessenden Stat
 2. Indikatoren
 3. Variablen
 
-<p class="alert alert-warning" markdown="1">
-Nur die <b>Variablenvektoren</b> können unsere Stichprobe beschreiben, weil Sie <i>gemessene Merkmalsausprägungen</i> unser Entitäten enthalten. 
-</p>
+::: {.callout-note}
+Nur die **Variablenvektoren** können unsere Stichprobe beschreiben, weil Sie *gemessene Merkmalsausprägungen* unser Entitäten enthalten. 
+:::
 
 Im folgenden arbeiten wir mit einer Beispielstichprobe. Diese Stichprobe ist ein Ausschnitt aus einer Studie zur Relevanz von digitalen Kompetenzen bei Dozierenden während des ersten COVID-Lockdowns im FS2020. 
 
@@ -109,7 +126,10 @@ Unsere Beispielstichprobe hat 53 Vektoren. Diese Vektoren sind vier Variablengru
   * `q16` hat die Skalierung von `0` und `1`. 
 3. `q10` sind ordinalskalierte Variablen mit der Skalierung von `0`-`10` in ganzzahligen Schritten. Die Messungen stammen von sog. Likert-Skalen.
 
-<p class="alert alert-info"><b>Praxis</b>: Bestimmen Sie alle Vektorennamen in der Beispielstichprobe.</p>
+::: {.callout-tip}
+## Übung 
+Bestimmen Sie alle Vektorennamen in der Beispielstichprobe.
+:::
 
 Für die Variable `q10` es 6 Untermerkmale und für die Variable `q16` gibt es 19 Untermerkmale. Für alle Merkmale in `q10` und `q16` wurden jeweils zwei Aspekte (`0` und `1`) erhoben. Diese Aspekte können für das jeweilige Untermerkmal direkt verglichen werden. Wir haben also im Vektor `q16_13_1` den zweiten Aspekt des 13. Untermerkmals der Variable q16 erfasst. 
 
@@ -173,9 +193,10 @@ stichprobe %>%
 
 Damit erhalten wir die prozentualen Anteile für alle beobachteten Merkmalsausprägungen. 
 
-<p class="alert alert-warning" markdown="1">
-**Achtung:** Beachten Sie hier, dass `n` den Vektor `n` bezeichnet, der durch den Aufruf der `count()`-Funktion erzeugt wird. Sie dürfen diesen Vektor nicht mit der Funktion `n()` verwechseln! Die `n()`-Funktion liefert die Anzahl der Datensätze einer Stichprobe. Nachdem wir `count()` aufgerufen haben, ist das Ergebnis von `n()` in diesem Beispiel gleich `2`. 
-</p>
+::: {.callout-warning}
+## Achtung
+Beachten Sie hier, dass `n` den Vektor `n` bezeichnet, der durch den Aufruf der `count()`-Funktion erzeugt wird. Sie dürfen diesen Vektor nicht mit der Funktion `n()` verwechseln! Die `n()`-Funktion liefert die Anzahl der Datensätze einer Stichprobe. Nachdem wir `count()` aufgerufen haben, ist das Ergebnis von `n()` in diesem Beispiel gleich `2`. 
+:::
 
 Wir können nun leicht den **Modus** der Variable mit Hilfe der `max`-Aggregation bestimmen. Anstelle der `summerise()`-Funktion verwenden wir jedoch besser die `filter()`-Funktion, um auch das zugehörige Skalenniveau zu erhalten.
 
@@ -196,9 +217,9 @@ stichprobe %>%
 </tbody>
 </table>
 
-<p class="alert alert-success" markdown="1">
+::: {.callout-tip}
 Der **Modus** ist in der deskriptiven Statistik  nur in Ausnahmefällen von Bedeutung. Eine solche Ausnahme liegt vor, wenn aus mehreren Merkmalsausprägungen der Modus den stark überwiegenden Anteil in der Stichprobe ausmacht. Dieser Anteil ist ungefähr ab einer relativen Häufigkeit von `.75` oder grösser gegeben. In solchen  Fällen sollten Sie trotzdem die Häufigkeiten der anderen Merkmalsausprägungen berichten.
-</p>
+:::
 
 ### Lagemasse für metrische Skalenniveaus
 
@@ -230,33 +251,30 @@ stichprobe %>%
     )
 ```
 
-<div class="alert alert-warning" markdown=1>
+::: {.callout-note}
+## Merke
 Diese Ergebnisse werden nicht interpretiert! 
-</div>
+:::
 
-<div class="alert alert-primary" markdown=1>
-Es handelt sich bei diesen Ergebnisse um sog. **á priori Fakten**. Es sind also Fakten, die sich direkt aus den Messungen und der Definition (der Logik) der Lagemasse ergeben. 
-</div>
-
-<div class="alert alert-success" markdown=1>
-Es gibt [ein Rezept](), um schnell alle ordinal- und metrischskalierten Varaiblen zu beschreiben.
-</div>
+::: {.callout-note}
+## Merke
+Es handelt sich bei diesen Ergebnisse um sog. **á priori Fakten**. Es sind Fakten, die sich direkt aus den Messungen und der Definition der Lagemasse ergeben und keiner weiteren Begründung bedürfen.
+:::
 
 ### Lagemasse für ordinale Skalenniveaus
 
 Im Unterschied zu den metrischen Skalenniveaus ist der Mittelwert und die Standardabweichung für *ordianle Skalenniveaus* **nicht definiert**. Ausserdem werden Quartilsgrenzen und die davon abhängigen Variablen *etwas* anders berechnet als bei metrischskalierten Variablen. Damit wir keine Folgefehler für die spätere Analyse erhalten müssen wir für ordinalskalierte Variablen die entsprechenden Kennwerte richtig berechnen. 
 
-<p class="alert alert-warning" markdown="1">
-**Achtung!** In vielen Fällen ergeben die verschiedenen Berechnungsarten die *gleichen Ergebnisse*. Das bedeutet nicht, dass die Ergebnisse in *allen* Fällen gleich und damit austauschbar sind!
-</p>
+::: {.callout-warning}
+## Achtung
+In vielen Fällen ergeben die verschiedenen Berechnungsarten die *gleichen Ergebnisse*. Das bedeutet nicht, dass die Ergebnisse in *allen* Fällen gleich und damit austauschbar sind!
+:::
 
-<p class="alert alert-secondary" markdown="1">
-Die Berechnungsart wird mit dem Parameter `type` festgelegt. Dieser Parameter können wir die Ganzzahlen von `1` bis `8` übergeben. Der Standardwert für diesen Parameter ist `7`. Die Werte `1`, `2` und `3` sind für die Berechnung bei ordinalen Skalenniveaus gedacht. Die anderen Werte beschreiben verschiedene Varianten für metrische Skalenniveaus. 
-</p>
+> Die Berechnungsart wird mit dem Parameter `type` festgelegt. Dieser Parameter können wir die Ganzzahlen von `1` bis `8` übergeben. Der Standardwert für diesen Parameter ist `7`. Die Werte `1`, `2` und `3` sind für die Berechnung bei ordinalen Skalenniveaus gedacht. Die anderen Werte beschreiben verschiedene Varianten für metrische Skalenniveaus. 
 
-<p class="alert alert-success" markdown="1">
+::: {.callout-note}
 Verwenden Sie nur die Werte `1` für ordinale Skalenniveaus und `7` für metrische Skalenniveaus. Weil `7` der Vorgabewert ist, wird dieser bei metrischen Skalenniveaus einfach weggelassen. 
-</p>
+:::
 
 Alle anderen Werte für den `type`-Parameter sind für besondere Fälle, wenn Ergebnisse aus anderen Quellen kontrolliert werden müssen. 
 

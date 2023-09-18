@@ -175,7 +175,7 @@ Beim in der Schulmathematik üblichen Dezimalsystem ist die Basis `10`.
 | Hexadezimalsystem | `16` |  `0`, `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `A`, `B`, `C`, `D`, `E`, `F` |
 | Sexagesimalsystem | `60` | - |
 
-: Namen und Beispiele von Zahlensystemen
+: Namen und Beispiele von Zahlensystemen {#tbl-namen-zahlensysteme}
 
 Das Duodezimalsystem und das Sexagesimalsystem treffen wir im Alltag bei Datums- und Zeitwerten, bei Winkeln sowie in der Musik an. Im Deutschen lässt sich das Duodezimalsystem noch an den Zahlworten elf (`11`) und zwölf (`12`) erkennen.
 
@@ -189,7 +189,7 @@ Die Zahlensysteme Oktal und Hexadezimal sind für die Abbildung von Werten in Di
 | Oktal | `8` |$2^3$|
 | Hexadezimal | `16` |$2^4=2^{2^2}$|
 
-: 2er-Potenzen der wichtigsten Zahlensysteme digitaler Systeme
+: 2er-Potenzen der wichtigsten Zahlensysteme digitaler Systeme {#tbl-bin-hex-oct}
 
 Der Exponent der 2er-Potenz der Basis zeigt an, wie viele Stellen im Binärsystem (Bits) mit dem jeweiligen System abgebildet werden können. Ein Byte bildet per Konvention zwei Stellen im Hexadezimalsystem oder 8 Bit ab. 
 
@@ -213,7 +213,7 @@ Hexadezimal-Werte werden recht häufig beim Programmieren verwendet, wie z.B. f�
 | `15` | `0xF` | 
 | `16` | `0x10` |
 
-: Darstellung von Zahlenwerten im Dezimal- und Hexadezimalsystem
+: Darstellung von Zahlenwerten im Dezimal- und Hexadezimalsystem {#tbl-dec-hex-bountaries}
 
 ### Binärzahlen
 
@@ -247,7 +247,7 @@ Die Besonderheit des Binärsystems ist, dass alle Werte als Summe von 2er-Potenz
 | `14` | `1110` | $2^3 + 2^2 + 2^1$ | `E` |
 | `15` | `1111` | $2^3 + 2^2 + 2^1 + 2^0$ | `F` |
 
-: Binärzahlen und ihre additive Darstellung
+: Binärzahlen und ihre additive Darstellung {#tbl-binary-additiv}
 
 Aus dieser Tabelle kann man ablesen, dass die Ziffer `1` im Binärsystem bedeutet, dass die 2er-Potenz an der entsprechenden Stelle aktiv ist. 
 
@@ -265,7 +265,7 @@ Nach diesem Prinzip werden auch die Kapazitäten von Datenspeichern als 2er-Pote
 | Gigabyte | GB |$2^{30} = 1024^3 = 1073741824$|
 | Terabyte | TB |$2^{40} = 1024^4 = 1099511627776$|
 
-: Speichergrössen in 2er-Potenzen
+: Speichergrössen in 2er-Potenzen {#tbl-speichergroessen}
 
 ::: {.callout-warning}
 Die *wissenschaftliche Schreibweise* ist **kein eigenes Zahlensystem**.  Sie ist nur eine *Vereinheitlichung* der Schreibweise im Dezimalsystem, um sehr grosse und/oder sehr kleine Zahlen kompakt darstellen zu können. 
@@ -312,7 +312,7 @@ Das Zählen funktioniert dabei wie folgt:
 | `255` | `11111111` | `377` | `0xFF` |
 | `256` | `100000000` | `400` | `0x100` |
 
-: Darstellung von Zahlenwerten in verschiedenen Zahlensystemen
+: Darstellung von Zahlenwerten in verschiedenen Zahlensystemen {#tbl-darstellung-zahenwerte}
 
 ## Wissenschaftliche Schreibweise von Zahlen {#sec-wissenschaftliche-schreibweise}
 
@@ -336,7 +336,7 @@ Neben der ausführlichen wissenschaftlichen Schreibweise wird regelmässig eine 
 | 523140000 | $5.2314 \cdot 10^8$ | 5.2314e8 |
 | 0.00000000007234 | $7.234 \cdot 10^-11$ | 7.234e-11 |
 
-: Beispiele für die wissenschaftliche Notation verschiedener Zahlenwerte
+: Beispiele für die wissenschaftliche Notation verschiedener Zahlenwerte {#tbl-wiss-notation}
 
 Die Stärke der wissenschaftlichen Notation ist die Darstellung sehr grosser oder sehr kleiner Zahlen
 
