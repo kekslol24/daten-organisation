@@ -162,7 +162,7 @@ Im Gegensatz zu Papierfromularen können digitale Formulare die Eingaben überpr
 
 Es lassen sich zwei Arten von Diensten für online Formulare unterschieden: 
 
-1. Formular-Dienste, wie z.B. MS-Forms oder Google Forms. REFERENCE
+1. Formulardienste, wie z.B. MS-Forms [@microsoft_office_2023] oder Google Forms [@google_google_2023].
 2. Umfrage- bzw. Survey-Dienste, wie z.B. Survey Monkey oder Lime Survey.
 
 Der wesentliche Unterschied zwischen diesen Diensten sind zusätzliche Funktionen zur Datenerhebung. Survey-Dienste bieten zusätzliche Funktionen, wie die Anonymisierung der Daten, zusätzliche Daten über die Ausführung, Fragebogendokumentation oder die Unterstützung von wiederholten Befragungen.
