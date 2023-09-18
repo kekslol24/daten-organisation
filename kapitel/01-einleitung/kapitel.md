@@ -49,10 +49,50 @@ Dieses Buch kann auf zwei Arten gelesen und verwendet werden:
 | Daten beschreiben | x | x |
 | Daten visualisieren | bis und mit [Abschnitt @sec-viz-versch-skalenniveaus] | x |
 
+## Farbcodes und andere wichtige Hinweise
+
+Dieses Buch verwendet Hervorhebungen und Farbcodes, um die verschiedenen Arten von Informationen zu unterscheiden. 
+
+::: {#def-beispiel .unnumbered}
+Eine Defintion eines Konzepts oder Begriffs.
+:::
+
+> Einrückungen kennzeichnen Anmerkungen und Exkurse.
+
+> ::: {#exm-beispiel}
+> ## Beispiel eines Beispiels
+> Ein ausführliches Beispiel, das die Anwendung eines Konzepts zeigt.
+> :::
+
+::: {.callout-note}
+Beschreiben allgemeine Hinweise zur Verwendung eines Konzepts.
+:::
+
+::: {.callout-note}
+## Merke
+
+Kennzeichnet wichtige Konzepte als Merksätze. 
+:::
+
+::: {.callout-tip}
+## Praxis
+
+Kennzeichnet die praktische Anwendung eines Konzepts.
+:::
+
+::: {.callout-warning}
+Weist auf häufige Missverständnisse und Fehler hin.
+:::
+
+::: {.callout-important}
+Weist auf zentrale Konzepte und Informationen hin.
+:::
+
+
 ## Begleitmaterial
 
 Zu diesem Buch gibt es die folgenden Begleitmaterialien mit Details und Anwendungsbeispielen für einzelne Programmiersprachen. Diese Begleitmaterialien sind so aufgebaut, dass sie direkt an die Inhalte dieses Buchs anknüpfen und die Abschnitte für die eine gewünschte Programmiersprache ergänzen und konkretisieren.
 
-- [Daten und Information - Data Sciece Grundlagen mit Excel]()
-- [Daten und Information - Data Sciece Grundlagen mit R]()
+- [Daten und Information - Data Sciece Grundlagen mit Excel](https://dxi.ai/dxi-excel/)
+- [Daten und Information - Data Sciece Grundlagen mit R](https://dxi.ai/dxi-r/)
 
