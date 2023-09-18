@@ -93,6 +93,6 @@ Weist auf zentrale Konzepte und Informationen hin.
 
 Zu diesem Buch gibt es die folgenden Begleitmaterialien mit Details und Anwendungsbeispielen für einzelne Programmiersprachen. Diese Begleitmaterialien sind so aufgebaut, dass sie direkt an die Inhalte dieses Buchs anknüpfen und die Abschnitte für die eine gewünschte Programmiersprache ergänzen und konkretisieren.
 
-- [Daten und Information - Data Sciece Grundlagen mit Excel](https://dxi.ai/dxi-excel/)
-- [Daten und Information - Data Sciece Grundlagen mit R](https://dxi.ai/dxi-r/)
+- [Daten und Information - Einführung in die Datenwissenschaft mit Excel](https://dxi.ai/dxi-excel/)
+- [Daten und Information - Einführung in die Datenwissenschaft mit R](https://dxi.ai/dxi-r/)
 
