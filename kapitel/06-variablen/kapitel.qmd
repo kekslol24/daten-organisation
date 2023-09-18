@@ -254,6 +254,8 @@ Die Division kann in zwei Unteroperationen gegliedert werden:
 - Der **Ganzzahldivision** 
 - Dem **Modulo**
 
+Für beide Operationen gilt, dass das Ergebnis von gleichem Zahlentyp ist, wie die Operanden. 
+
 Die *Ganzzahldivision* hat den ganzzahligen Anteil einer Division als Ergebnis. Damit ist der Wert vor dem Komma gemeint. Diese Operation ähnelt dem Runden, allerdings wird nur der Nachkommateil entfernt.
 
 Die Ganzzahldivision eignet sich zur Gruppierung von Werten in gleich grosse Blöcke. Ein *Block* ist dabei ein Intervall im Wertebereich der Variablen. Die Grösse eines Blocks wird durch den Divisor festgelegt.
