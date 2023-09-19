@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Daten und Information - 16&nbsp; Indizieren und Gruppieren</title>
+<title>Daten und Information - 15&nbsp; Indizieren und Gruppieren</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../kapitel/12-daten-formen/kapitel.html" rel="next">
-<link href="../../kapitel/11-daten-kodieren/kapitel.html" rel="prev">
+<link href="../../kapitel/11-daten-kodieren/kapitel.html" rel="next">
+<link href="../../kapitel/10-matrix-operationen/kapitel.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -108,7 +108,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../kapitel/06-variablen/kapitel.html">Mathematik der Daten</a></li><li class="breadcrumb-item"><a href="../../kapitel/11-indizieren-gruppieren/kapitel.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Indizieren und Gruppieren</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../kapitel/06-variablen/kapitel.html">Mathematik der Daten</a></li><li class="breadcrumb-item"><a href="../../kapitel/11-indizieren-gruppieren/kapitel.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Indizieren und Gruppieren</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Seitenleiste umschalten" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -259,14 +259,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../kapitel/11-daten-kodieren/kapitel.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Daten kombinieren und kodieren</span></span></a>
+  <a href="../../kapitel/11-indizieren-gruppieren/kapitel.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Indizieren und Gruppieren</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../kapitel/11-indizieren-gruppieren/kapitel.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Indizieren und Gruppieren</span></span></a>
+  <a href="../../kapitel/11-daten-kodieren/kapitel.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Daten kombinieren und kodieren</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -316,15 +316,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Inhaltsverzeichnis</h2>
    
   <ul>
-  <li><a href="#indizieren" id="toc-indizieren" class="nav-link active" data-scroll-target="#indizieren"><span class="header-section-number">16.1</span> Indizieren</a>
+  <li><a href="#indizieren" id="toc-indizieren" class="nav-link active" data-scroll-target="#indizieren"><span class="header-section-number">15.1</span> Indizieren</a>
   <ul class="collapse">
-  <li><a href="#existierende-indexvektoren." id="toc-existierende-indexvektoren." class="nav-link" data-scroll-target="#existierende-indexvektoren."><span class="header-section-number">16.1.1</span> Existierende Indexvektoren.</a></li>
-  <li><a href="#fehlende-indexvektoren" id="toc-fehlende-indexvektoren" class="nav-link" data-scroll-target="#fehlende-indexvektoren"><span class="header-section-number">16.1.2</span> Fehlende Indexvektoren</a></li>
-  <li><a href="#hashing-zur-identifikation" id="toc-hashing-zur-identifikation" class="nav-link" data-scroll-target="#hashing-zur-identifikation"><span class="header-section-number">16.1.3</span> Hashing zur Identifikation</a></li>
-  <li><a href="#hashing-zum-gruppieren" id="toc-hashing-zum-gruppieren" class="nav-link" data-scroll-target="#hashing-zum-gruppieren"><span class="header-section-number">16.1.4</span> Hashing zum Gruppieren</a></li>
-  <li><a href="#hashing-für-querverweise" id="toc-hashing-für-querverweise" class="nav-link" data-scroll-target="#hashing-für-querverweise"><span class="header-section-number">16.1.5</span> Hashing für Querverweise</a></li>
+  <li><a href="#existierende-indexvektoren." id="toc-existierende-indexvektoren." class="nav-link" data-scroll-target="#existierende-indexvektoren."><span class="header-section-number">15.1.1</span> Existierende Indexvektoren.</a></li>
+  <li><a href="#fehlende-indexvektoren" id="toc-fehlende-indexvektoren" class="nav-link" data-scroll-target="#fehlende-indexvektoren"><span class="header-section-number">15.1.2</span> Fehlende Indexvektoren</a></li>
+  <li><a href="#hashing-zur-identifikation" id="toc-hashing-zur-identifikation" class="nav-link" data-scroll-target="#hashing-zur-identifikation"><span class="header-section-number">15.1.3</span> Hashing zur Identifikation</a></li>
+  <li><a href="#hashing-zum-gruppieren" id="toc-hashing-zum-gruppieren" class="nav-link" data-scroll-target="#hashing-zum-gruppieren"><span class="header-section-number">15.1.4</span> Hashing zum Gruppieren</a></li>
+  <li><a href="#hashing-für-querverweise" id="toc-hashing-für-querverweise" class="nav-link" data-scroll-target="#hashing-für-querverweise"><span class="header-section-number">15.1.5</span> Hashing für Querverweise</a></li>
   </ul></li>
-  <li><a href="#datensätze-randomisieren" id="toc-datensätze-randomisieren" class="nav-link" data-scroll-target="#datensätze-randomisieren"><span class="header-section-number">16.2</span> Datensätze randomisieren</a></li>
+  <li><a href="#datensätze-randomisieren" id="toc-datensätze-randomisieren" class="nav-link" data-scroll-target="#datensätze-randomisieren"><span class="header-section-number">15.2</span> Datensätze randomisieren</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/dxiai/daten-organisation/issues/new" class="toc-action">Problem melden</a></p></div></div></nav>
     </div>
@@ -333,7 +333,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-chapter-indizieren-gruppieren" class="quarto-section-identifier"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Indizieren und Gruppieren</span></span></h1>
+<h1 class="title"><span id="sec-chapter-indizieren-gruppieren" class="quarto-section-identifier"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Indizieren und Gruppieren</span></span></h1>
 </div>
 
 
@@ -361,13 +361,13 @@ Work in Progress
 
 </div>
 </div>
-<section id="indizieren" class="level2" data-number="16.1">
-<h2 data-number="16.1" class="anchored" data-anchor-id="indizieren"><span class="header-section-number">16.1</span> Indizieren</h2>
+<section id="indizieren" class="level2" data-number="15.1">
+<h2 data-number="15.1" class="anchored" data-anchor-id="indizieren"><span class="header-section-number">15.1</span> Indizieren</h2>
 <div id="def-index" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 16.1 </strong></span>Ein <strong>Index</strong> bezeichnet Werte, mit denen sich ein oder mehrere Datensätze von anderen Datensätzen unterscheiden lassen.</p>
+<p><span class="theorem-title"><strong>Definition 15.1 </strong></span>Ein <strong>Index</strong> bezeichnet Werte, mit denen sich ein oder mehrere Datensätze von anderen Datensätzen unterscheiden lassen.</p>
 </div>
 <div id="def-indizieren" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 16.2 </strong></span>Mit <strong>Indizieren</strong> wird die Arbeitsweise von Algorithmen bezeichnet, mit der Datensätze <em>identifiziert</em> werden.</p>
+<p><span class="theorem-title"><strong>Definition 15.2 </strong></span>Mit <strong>Indizieren</strong> wird die Arbeitsweise von Algorithmen bezeichnet, mit der Datensätze <em>identifiziert</em> werden.</p>
 </div>
 <p>Es werden drei Arten von Indizes unterschieden:</p>
 <ol type="1">
@@ -377,19 +377,19 @@ Work in Progress
 </ol>
 <p>Weil ein Index Werte über einen Datensatz enthält, gehört ein Index zum jeweiligen Datensatz und wird über einen <em>Indexvektor</em> in einer Stichprobe abgebildet.</p>
 <div id="def-indexvektor" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 16.3 </strong></span>Ein <strong>Indexvektor</strong> bezeichnet einen Vektor, mit dessen Werten Datensätze identifiziert werden können.</p>
+<p><span class="theorem-title"><strong>Definition 15.3 </strong></span>Ein <strong>Indexvektor</strong> bezeichnet einen Vektor, mit dessen Werten Datensätze identifiziert werden können.</p>
 </div>
 <div id="def-hash" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 16.4 </strong></span>Ein <strong>Hash</strong> bezeichnet einen Wert in einem Indexvektor.</p>
+<p><span class="theorem-title"><strong>Definition 15.4 </strong></span>Ein <strong>Hash</strong> bezeichnet einen Wert in einem Indexvektor.</p>
 </div>
-<section id="existierende-indexvektoren." class="level3" data-number="16.1.1">
-<h3 data-number="16.1.1" class="anchored" data-anchor-id="existierende-indexvektoren."><span class="header-section-number">16.1.1</span> Existierende Indexvektoren.</h3>
+<section id="existierende-indexvektoren." class="level3" data-number="15.1.1">
+<h3 data-number="15.1.1" class="anchored" data-anchor-id="existierende-indexvektoren."><span class="header-section-number">15.1.1</span> Existierende Indexvektoren.</h3>
 <p>Häufig liegen Indexvektoren bereits in einer Stichprobe vor.</p>
-<section id="beispiel-bestehende-primär--und-sekundärindizes" class="level4" data-number="16.1.1.1">
-<h4 data-number="16.1.1.1" class="anchored" data-anchor-id="beispiel-bestehende-primär--und-sekundärindizes"><span class="header-section-number">16.1.1.1</span> Beispiel bestehende Primär- und Sekundärindizes</h4>
+<section id="beispiel-bestehende-primär--und-sekundärindizes" class="level4" data-number="15.1.1.1">
+<h4 data-number="15.1.1.1" class="anchored" data-anchor-id="beispiel-bestehende-primär--und-sekundärindizes"><span class="header-section-number">15.1.1.1</span> Beispiel bestehende Primär- und Sekundärindizes</h4>
 <div id="tbl-mtcars-index" class="anchored">
 <table class="table">
-<caption>Tabelle&nbsp;16.1: Ausschnit der <code>mtcars</code>-Stichprobe mit Primär- und Sekundärindizes</caption>
+<caption>Tabelle&nbsp;15.1: Ausschnit der <code>mtcars</code>-Stichprobe mit Primär- und Sekundärindizes</caption>
 <thead>
 <tr class="header">
 <th style="text-align: left;">modell</th>
@@ -496,24 +496,24 @@ Work in Progress
 <p>Die Vektoren <code>cyl</code> (Zylinder), <code>vs</code> (Motortyp) und <code>am</code> (Automatikschaltung) sind <em>Sekundärindizes</em> und <em>Gruppenindizes</em>, die Modelle nach verschiedenen Kriterien zusammenfassen.</p>
 </section>
 </section>
-<section id="fehlende-indexvektoren" class="level3" data-number="16.1.2">
-<h3 data-number="16.1.2" class="anchored" data-anchor-id="fehlende-indexvektoren"><span class="header-section-number">16.1.2</span> Fehlende Indexvektoren</h3>
+<section id="fehlende-indexvektoren" class="level3" data-number="15.1.2">
+<h3 data-number="15.1.2" class="anchored" data-anchor-id="fehlende-indexvektoren"><span class="header-section-number">15.1.2</span> Fehlende Indexvektoren</h3>
 <p>Gelegentlich liegen in einer Stichprobe keine Primär- oder Sekundärindizes vor oder die vorhandenen Indizes erlauben keine Zusammenfassungen für eine konkrete Fragestellung. In solchen Fällen muss ein entsprechender Index erzeugt werden.</p>
 <div id="def-hashing-funktion" class="theorem definition">
-<p><span class="theorem-title"><strong>Definition 16.5 </strong></span>Eine Funktion, die <em>Hashes</em> für Indexvektoren erzeugt, heisst <strong>Hashing-Funktion</strong>.</p>
+<p><span class="theorem-title"><strong>Definition 15.5 </strong></span>Eine Funktion, die <em>Hashes</em> für Indexvektoren erzeugt, heisst <strong>Hashing-Funktion</strong>.</p>
 </div>
 <p>Hashing-Funktionen werden in der Industrie als Unterstützung zur Suche von Datensätzen in Datenbanken eingesetzt. Durch die geschickte Berechnung von Hashes beschleunigen diese Funktionen die Suche einzelner Werte um ein Vielfaches, indem sie den Bereich für die Suche einschränken. Deshalb haben viele Hashing-Funktionen ein anderes <strong>Anwendungsziel</strong> als die hier beschriebenen Hashing-Funktionen.</p>
 </section>
-<section id="hashing-zur-identifikation" class="level3" data-number="16.1.3">
-<h3 data-number="16.1.3" class="anchored" data-anchor-id="hashing-zur-identifikation"><span class="header-section-number">16.1.3</span> Hashing zur Identifikation</h3>
+<section id="hashing-zur-identifikation" class="level3" data-number="15.1.3">
+<h3 data-number="15.1.3" class="anchored" data-anchor-id="hashing-zur-identifikation"><span class="header-section-number">15.1.3</span> Hashing zur Identifikation</h3>
 <p>Die einfachste Technik zur eindeutigen Indizierung ist das <strong><em>Durchnummerieren</em></strong> der Datensätze einer Stichprobe. Bei dieser Technik wird jedem Datensatz eine Nummer zugewiesen. In R verwenden wir dazu die Funktion <code>row_number()</code>. Diese Funktion ist einer <em>Sequenz</em> vorzuziehen, weil diese Funktion auch bei leeren Stichproben fehlerfrei arbeitet.</p>
 <p>In Excel muss zum Durchnummerieren die <code>SEQUENZ()</code>-Funktion verwendet werden. Das erreichen wir mit der folgenden Operation: <code>=SEQUENZ(ZEILEN(StichprobenBereich))</code>, wobei <code>StichprobenBereich</code> eine Excel-Adresse sein muss. Weil mit Excel keine leeren Stichproben erzeugt werden dürfen, gibt es mit Excel nicht das gleiche Problem wie mit R. Wegen dieser Eigenschaft muss ein entsprechender Bereich mindestens einen Stichprobenumfang von eins haben. Diese Eigenschaft gilt auch für Tabellen, die nur aus Überschriften bestehen.</p>
 <blockquote class="blockquote">
 <p><strong>Fingerübung:</strong> Nummerieren Sie die Stichprobe <code>mtcars</code> und speichern Sie die Nummern im Vektor <code>nr</code>.</p>
 </blockquote>
 </section>
-<section id="hashing-zum-gruppieren" class="level3" data-number="16.1.4">
-<h3 data-number="16.1.4" class="anchored" data-anchor-id="hashing-zum-gruppieren"><span class="header-section-number">16.1.4</span> Hashing zum Gruppieren</h3>
+<section id="hashing-zum-gruppieren" class="level3" data-number="15.1.4">
+<h3 data-number="15.1.4" class="anchored" data-anchor-id="hashing-zum-gruppieren"><span class="header-section-number">15.1.4</span> Hashing zum Gruppieren</h3>
 <p>Beim Hashing zum Gruppieren müssen wir Werte erzeugen, die eine Zuordnung zu einer Gruppe oder einen Wert in einer anderen Stichprobe ermöglichen. Die Hashing-Funktion orientiert sich dabei an den konkreten Analyseanforderungen.</p>
 <p>Vier gängige Techniken können dabei unterschieden werden:</p>
 <ul>
@@ -522,8 +522,8 @@ Work in Progress
 <li>Reihenfolgen bilden durch Modulo-Operation (nur Zahlen)</li>
 <li>Reihenfolgen durch Anfangsbuchstaben (nur Zeichenketten)</li>
 </ul>
-<section id="beispiel-hashing-zum-gruppieren." class="level4" data-number="16.1.4.1">
-<h4 data-number="16.1.4.1" class="anchored" data-anchor-id="beispiel-hashing-zum-gruppieren."><span class="header-section-number">16.1.4.1</span> Beispiel Hashing zum Gruppieren.</h4>
+<section id="beispiel-hashing-zum-gruppieren." class="level4" data-number="15.1.4.1">
+<h4 data-number="15.1.4.1" class="anchored" data-anchor-id="beispiel-hashing-zum-gruppieren."><span class="header-section-number">15.1.4.1</span> Beispiel Hashing zum Gruppieren.</h4>
 <p>Das folgende Beispiel bildet einen Index, um die Motorisierung der Fahrzeugtypen in der Stichprobe <code>mtcars</code> zu bestimmen. Dabei sollen die Modelle in schwach-, mittel-, stark- und sehr starkmotorisierte Typen unterschieden werden. Die Motorisierung richtet sich dabei zum einen nach der Leistung (<code>hp</code>). Zum anderen richtet sich die Motorisierung nach dem Fahrzeuggewicht (<code>wt</code>), weil für ein schweres Fahrzeug mehr Leistung zum Bewegen benötigt wird als für ein leichtes. Um beide Werte zu berücksichtigen, wird das Verhältnis der beiden Werte bestimmt. Ein Verhältnis ist eine <em>Division</em>. In diesem Fall wird das Gewicht als Nenner verwendet und die Leistung als Zähler. So ergeben sich immer Werte grösser als 1, weil die Leistung immer viel grösser als das Gewicht ist.</p>
 <p>In diesem Beispiel besteht die Hashing-Funktion aus zwei Teilen:</p>
 <ol type="1">
@@ -545,14 +545,14 @@ Work in Progress
 </blockquote>
 </section>
 </section>
-<section id="hashing-für-querverweise" class="level3" data-number="16.1.5">
-<h3 data-number="16.1.5" class="anchored" data-anchor-id="hashing-für-querverweise"><span class="header-section-number">16.1.5</span> Hashing für Querverweise</h3>
+<section id="hashing-für-querverweise" class="level3" data-number="15.1.5">
+<h3 data-number="15.1.5" class="anchored" data-anchor-id="hashing-für-querverweise"><span class="header-section-number">15.1.5</span> Hashing für Querverweise</h3>
 <p>Beim Hashing für Querverweise gibt es zwei Stichproben. Die erste Stichprobe ist die Hauptstichprobe mit den eigentlichen Werten. Die zweite Stichprobe ist die Referenzstichprobe, die zusätzliche Informationen enthält. Ein Indexvektor für Querverweise in der ersten Stichprobe bezieht sich immer auf einen Primärindex aus der zweiten Stichprobe.</p>
 <p>Die Hashing-Funktion muss deshalb einen Verweis zur zweiten Stichprobe herstellen. Diese Verbindung kann mit der gleichen Strategie erzeugt werden, wie beim Gruppieren. Dabei muss jedoch darauf geachtet werden, dass alle Zuordnungen des Primärvektors korrekt abgebildet sind.</p>
 </section>
 </section>
-<section id="datensätze-randomisieren" class="level2" data-number="16.2">
-<h2 data-number="16.2" class="anchored" data-anchor-id="datensätze-randomisieren"><span class="header-section-number">16.2</span> Datensätze randomisieren</h2>
+<section id="datensätze-randomisieren" class="level2" data-number="15.2">
+<h2 data-number="15.2" class="anchored" data-anchor-id="datensätze-randomisieren"><span class="header-section-number">15.2</span> Datensätze randomisieren</h2>
 <p>Wenn wir mit Teilstichproben arbeiten und diese mit anderen teilen, müssen wir vermeiden, dass zwei Stichproben leicht zusammengesetzt werden können und so Rückschlüsse über die Probanden möglich werden.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -575,24 +575,24 @@ Wichtig
 <li>zufälliges Mischen,</li>
 <li>Entfernen der eindeutigen Vektoren und exportieren der Daten.</li>
 </ol>
-<section id="schritt-1-auswahl-der-vektoren" class="level4" data-number="16.2.0.1">
-<h4 data-number="16.2.0.1" class="anchored" data-anchor-id="schritt-1-auswahl-der-vektoren"><span class="header-section-number">16.2.0.1</span> Schritt 1: Auswahl der Vektoren</h4>
+<section id="schritt-1-auswahl-der-vektoren" class="level4" data-number="15.2.0.1">
+<h4 data-number="15.2.0.1" class="anchored" data-anchor-id="schritt-1-auswahl-der-vektoren"><span class="header-section-number">15.2.0.1</span> Schritt 1: Auswahl der Vektoren</h4>
 <p>Wie üblich wählen wir die Vektoren mit der <code>select()</code>-Funktion aus.</p>
 </section>
-<section id="schritt-2-erzeugung-eines-eindeutigen-vektors" class="level4" data-number="16.2.0.2">
-<h4 data-number="16.2.0.2" class="anchored" data-anchor-id="schritt-2-erzeugung-eines-eindeutigen-vektors"><span class="header-section-number">16.2.0.2</span> Schritt 2: Erzeugung eines eindeutigen Vektors</h4>
+<section id="schritt-2-erzeugung-eines-eindeutigen-vektors" class="level4" data-number="15.2.0.2">
+<h4 data-number="15.2.0.2" class="anchored" data-anchor-id="schritt-2-erzeugung-eines-eindeutigen-vektors"><span class="header-section-number">15.2.0.2</span> Schritt 2: Erzeugung eines eindeutigen Vektors</h4>
 <p>Alle unsere Werte müssen zusammengehalten werden, weil unsere Analyse sonst nicht mehr nachvollziehbar ist. Wir nummerieren dazu unsere Datensätze durch.</p>
 </section>
-<section id="schritt-3-mischen" class="level4" data-number="16.2.0.3">
-<h4 data-number="16.2.0.3" class="anchored" data-anchor-id="schritt-3-mischen"><span class="header-section-number">16.2.0.3</span> Schritt 3: Mischen</h4>
+<section id="schritt-3-mischen" class="level4" data-number="15.2.0.3">
+<h4 data-number="15.2.0.3" class="anchored" data-anchor-id="schritt-3-mischen"><span class="header-section-number">15.2.0.3</span> Schritt 3: Mischen</h4>
 <p>Dieser Schritt greift auf die Funktion <code>sample()</code> zurück. Wir erzeugen aus den ursprünglichen Nummerierungen eine neue Nummerierung durch <code>daten %&gt;% mutate( id_neu = sample(id) )</code>. Nach dieser neuen Nummerierung sind unsere Datensätze aber immer noch in der gleichen Reihenfolge und noch nicht gemischt. Wir müssen also die Reihenfolge so anpassen, dass die neue Nummerierung gilt. Das erreichen wir mit dem Funktionsaufruf <code>daten %&gt;% arrange( id_neu )</code>.</p>
 </section>
-<section id="schritt-4-entfernen-des-eindeutigen-vektors-und-exportieren-der-daten" class="level4" data-number="16.2.0.4">
-<h4 data-number="16.2.0.4" class="anchored" data-anchor-id="schritt-4-entfernen-des-eindeutigen-vektors-und-exportieren-der-daten"><span class="header-section-number">16.2.0.4</span> Schritt 4: Entfernen des eindeutigen Vektors und exportieren der Daten</h4>
+<section id="schritt-4-entfernen-des-eindeutigen-vektors-und-exportieren-der-daten" class="level4" data-number="15.2.0.4">
+<h4 data-number="15.2.0.4" class="anchored" data-anchor-id="schritt-4-entfernen-des-eindeutigen-vektors-und-exportieren-der-daten"><span class="header-section-number">15.2.0.4</span> Schritt 4: Entfernen des eindeutigen Vektors und exportieren der Daten</h4>
 <p>Abschliessend müssen wir <strong>unbedingt</strong> die beiden Hilfsvektoren, die wir zum Mischen verwendet haben, aus unserer Stichprobe wieder entfernen. Das erreichen wir mit einer Vektorauswahl: <code>daten %&gt;% select(-c(id, id_neu))</code>.</p>
 </section>
-<section id="vollständige-lösung" class="level4" data-number="16.2.0.5">
-<h4 data-number="16.2.0.5" class="anchored" data-anchor-id="vollständige-lösung"><span class="header-section-number">16.2.0.5</span> Vollständige Lösung</h4>
+<section id="vollständige-lösung" class="level4" data-number="15.2.0.5">
+<h4 data-number="15.2.0.5" class="anchored" data-anchor-id="vollständige-lösung"><span class="header-section-number">15.2.0.5</span> Vollständige Lösung</h4>
 <p>Wir greifen hier auf eine Stichprobe zurück, die Geschlechtsinformationen, Alter und digitale Nutzungsgewohnheiten umfasst. Wir erstellen zwei getrennte Teilstichproben, von denen eine nur die Nutzungsgewohnheiten und das Geschlecht und eine nur die Nutzungsgewohnheiten und das Alter beinhaltet.</p>
 <p>Sie müssen die Datei vor dem Einlesen noch in <code>beispielstichprobe.csv</code> umbenennen.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>daten <span class="ot">=</span> <span class="fu">read_delim</span>(<span class="st">"beispielstichprobe.csv"</span>)</span>
@@ -859,13 +859,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../kapitel/11-daten-kodieren/kapitel.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Daten kombinieren und kodieren</span></span>
+      <a href="../../kapitel/10-matrix-operationen/kapitel.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Matrix-Operationen</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../kapitel/12-daten-formen/kapitel.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Daten umformen</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../kapitel/11-daten-kodieren/kapitel.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Daten kombinieren und kodieren</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
