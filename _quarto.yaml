@@ -21,6 +21,10 @@ book:
   author: 
   - name: Christian Glahn
   page-navigation: true
+
+  repo-url: https://github.com/dxiai/daten-organisation
+  repo-actions: 
+  - issue
   
   chapters:
   - index.qmd
