@@ -113,7 +113,7 @@ Mit
 Umgangssprachlich lassen sich diese Terme folgenderweise umschreiben: 
 
 ::: {#prp-information} 
-Information ergibt sich aus Daten nachdem alle Fehler und Störungen in den Daten entfernt wurden.
+Information ergibt sich aus Daten, nachdem alle Fehler und Störungen in den Daten entfernt wurden.
 :::
 
 ### Das Shannon Limit
