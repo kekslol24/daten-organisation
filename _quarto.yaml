@@ -91,10 +91,10 @@ book:
     - kapitel/10-matrix-operationen/kapitel.md
 
     # Woche 11
-    # TODO (Kapitel zusammenfassen?)
-    - kapitel/11-daten-kodieren/kapitel.md
     # TODO 
     - kapitel/11-indizieren-gruppieren/kapitel.md
+    # TODO (Kapitel zusammenfassen?)
+    - kapitel/11-daten-kodieren/kapitel.md
     # TODO
     - kapitel/12-daten-formen/kapitel.md
 
