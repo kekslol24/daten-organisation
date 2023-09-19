@@ -11,6 +11,10 @@ execute:
 
 ## Universelle Kennzahlen
 
+::: {.callout-warning}
+## Work in Progress
+:::
+
 Wir haben das Zählen mit R und Excel kennengelernt. Diese Operation wenden wir an, um die zwei universellen Kennzahlen von Stichproben zu bestimmen. 
 
 ::: {#def-universelle-kennzahlen} 
