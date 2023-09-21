@@ -4,6 +4,10 @@ execute:
 ---
 # Einleitung
 
+::: {.callout-warning}
+Work in progress
+:::
+
 ## Organisation dieses Buchs
 
 ### Ziele 
@@ -54,7 +58,7 @@ Dieses Buch kann auf zwei Arten gelesen und verwendet werden:
 Dieses Buch verwendet Hervorhebungen und Farbcodes, um die verschiedenen Arten von Informationen zu unterscheiden. 
 
 ::: {#def-beispiel .unnumbered}
-Eine Defintion eines Konzepts oder Begriffs.
+Eine Definition eines Konzepts oder Begriffs.
 :::
 
 > Einrückungen kennzeichnen Anmerkungen und Exkurse.
