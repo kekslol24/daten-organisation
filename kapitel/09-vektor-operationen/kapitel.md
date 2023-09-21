@@ -309,7 +309,8 @@ Beim Aggregieren hängen die Operationen von der jeweiligen vorangehenden Operat
 >
 > $$
 > \begin{aligned}
-> \sum{v^2} = \sum_{i=1}^5 v_i^2 &= 1 + 4 + 9 + 16 + 25 \\
+> \sum{v^2} = \sum_{i=1}^5 v_i^2 &= 1^2 + 2^2 + 3^2 + 4^2 + 5^2 \\
+> &= 1 + 4 + 9 + 16 + 25 \\
 > &= 5 + 9 + 16 + 25 \\
 > &= 14 + 16 + 25 \\
 > &= 30 + 25 \\
