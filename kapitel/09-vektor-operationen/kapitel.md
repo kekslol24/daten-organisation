@@ -4,7 +4,7 @@
 execute: 
   echo: false
 ---
-#  Vektor-Operationen
+#  Vektoroperationen
 
 Im [Kapitel @sec-datentypen] wurden Vektoren unter der allgemeinen @def-vektor eingeführt.
 
